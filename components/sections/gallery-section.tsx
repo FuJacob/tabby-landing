@@ -13,14 +13,38 @@ export function GallerySection() {
   const lastScrollRef = useRef(0);
 
   const images = [
-    { src: "/images/in-action-email-drafting.png", alt: "Composing an email with Tabby" },
-    { src: "/images/in-action-chat-replies.png", alt: "Replying in chat with Tabby" },
-    { src: "/images/in-action-notes-writing.png", alt: "Writing notes with Tabby" },
-    { src: "/images/in-action-docs-writing.png", alt: "Drafting documentation with Tabby" },
-    { src: "/images/in-action-support-response.png", alt: "Responding to support tickets with Tabby" },
-    { src: "/images/in-action-social-posting.png", alt: "Creating social media posts with Tabby" },
-    { src: "/images/in-action-marketing-copy.png", alt: "Writing marketing copy with Tabby" },
-    { src: "/images/in-action-ai-prompting.png", alt: "Building AI prompts with Tabby" },
+    {
+      src: "/images/in-action-email-drafting.png",
+      alt: "Composing an email with Tabby",
+    },
+    {
+      src: "/images/in-action-chat-replies.png",
+      alt: "Replying in chat with Tabby",
+    },
+    {
+      src: "/images/in-action-notes-writing.png",
+      alt: "Writing notes with Tabby",
+    },
+    {
+      src: "/images/in-action-docs-writing.png",
+      alt: "Drafting documentation with Tabby",
+    },
+    {
+      src: "/images/in-action-support-response.png",
+      alt: "Responding to support tickets with Tabby",
+    },
+    {
+      src: "/images/in-action-social-posting.png",
+      alt: "Creating social media posts with Tabby",
+    },
+    {
+      src: "/images/in-action-marketing-copy.png",
+      alt: "Writing marketing copy with Tabby",
+    },
+    {
+      src: "/images/in-action-ai-prompting.png",
+      alt: "Building AI prompts with Tabby",
+    },
   ];
 
   // Calculate section height based on content width
@@ -46,23 +70,23 @@ export function GallerySection() {
 
   const updateTransform = useCallback(() => {
     if (!galleryRef.current || !containerRef.current) return;
-    
+
     const rect = galleryRef.current.getBoundingClientRect();
     const containerWidth = containerRef.current.scrollWidth;
     const viewportWidth = window.innerWidth;
-    
+
     // Total scroll distance needed to reveal all images
     const totalScrollDistance = containerWidth - viewportWidth;
-    
+
     // Current scroll position within this section
     const scrolled = Math.max(0, -rect.top);
-    
+
     // Progress from 0 to 1
     const progress = Math.min(1, scrolled / totalScrollDistance);
-    
+
     // Calculate new translateX
     const newTranslateX = progress * -totalScrollDistance;
-    
+
     setTranslateX(newTranslateX);
   }, []);
 
@@ -72,14 +96,14 @@ export function GallerySection() {
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
       }
-      
+
       // Use requestAnimationFrame for smooth updates
       rafRef.current = requestAnimationFrame(updateTransform);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     updateTransform();
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       if (rafRef.current) {
@@ -89,7 +113,7 @@ export function GallerySection() {
   }, [updateTransform]);
 
   return (
-    <section 
+    <section
       id="in-action"
       ref={galleryRef}
       className="relative bg-background"
@@ -99,17 +123,17 @@ export function GallerySection() {
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="flex h-full items-center">
           {/* Horizontal scrolling container */}
-          <div 
+          <div
             ref={containerRef}
             className="flex gap-6 px-6"
             style={{
               transform: `translate3d(${translateX}px, 0, 0)`,
               WebkitTransform: `translate3d(${translateX}px, 0, 0)`,
-              backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden',
+              backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden",
               perspective: 1000,
               WebkitPerspective: 1000,
-              touchAction: 'pan-y',
+              touchAction: "pan-y",
             }}
           >
             {images.map((image, index) => (
@@ -117,8 +141,8 @@ export function GallerySection() {
                 key={index}
                 className="relative h-[70vh] w-[85vw] flex-shrink-0 overflow-hidden rounded-2xl md:w-[60vw] lg:w-[45vw]"
                 style={{
-                  transform: 'translateZ(0)',
-                  WebkitTransform: 'translateZ(0)',
+                  transform: "translateZ(0)",
+                  WebkitTransform: "translateZ(0)",
                 }}
               >
                 {image.src.startsWith("/images/in-action-") ? (

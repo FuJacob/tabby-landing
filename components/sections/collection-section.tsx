@@ -7,35 +7,40 @@ const accessories = [
   {
     id: 1,
     name: "Email & Messaging",
-    description: "Zip through your inbox. Craft thoughtful replies in half the time.",
+    description:
+      "Zip through your inbox. Craft thoughtful replies in half the time.",
     price: "Free",
     image: "/images/use-case-email-messaging.png",
   },
   {
     id: 2,
     name: "AI Prompt Writing",
-    description: "Type smarter prompts faster — Tabby accelerates your AI workflow too.",
+    description:
+      "Type smarter prompts faster — Tabby accelerates your AI workflow too.",
     price: "Free",
     image: "/images/use-case-ai-prompt-writing.png",
   },
   {
     id: 3,
     name: "Marketing Copy",
-    description: "Craft compelling content in record time. Watch your conversions soar.",
+    description:
+      "Craft compelling content in record time. Watch your conversions soar.",
     price: "Pro",
     image: "/images/use-case-marketing-copy.png",
   },
   {
     id: 4,
     name: "Code Documentation",
-    description: "Write clear, concise docs in a flash. Your team will love you for it.",
+    description:
+      "Write clear, concise docs in a flash. Your team will love you for it.",
     price: "Free",
     image: "/images/use-case-code-documentation.png",
   },
   {
     id: 5,
     name: "Customer Support",
-    description: "Respond quickly yet individually. Keep your customers smiling.",
+    description:
+      "Respond quickly yet individually. Keep your customers smiling.",
     price: "Free",
     image: "/images/use-case-customer-support.png",
   },
@@ -63,7 +68,10 @@ export function CollectionSection() {
         {/* Mobile: Horizontal Carousel */}
         <div className="flex gap-6 overflow-x-auto px-6 pb-4 md:hidden snap-x snap-mandatory scrollbar-hide">
           {accessories.map((accessory) => (
-            <div key={accessory.id} className="group flex-shrink-0 w-[75vw] snap-center">
+            <div
+              key={accessory.id}
+              className="group flex-shrink-0 w-[75vw] snap-center"
+            >
               {/* Image */}
               <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-secondary">
                 {accessory.image.startsWith("/images/use-case-") ? (

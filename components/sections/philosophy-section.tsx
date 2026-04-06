@@ -11,22 +11,22 @@ export function PhilosophySection() {
 
   const updateTransforms = useCallback(() => {
     if (!sectionRef.current) return;
-    
+
     const rect = sectionRef.current.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const sectionHeight = sectionRef.current.offsetHeight;
-    
+
     // Calculate progress based on scroll position
     const scrollableRange = sectionHeight - windowHeight;
     const scrolled = -rect.top;
     const progress = Math.max(0, Math.min(1, scrolled / scrollableRange));
-    
+
     // Alpine comes from left (-100% to 0%)
     setAlpineTranslateX((1 - progress) * -100);
-    
+
     // Forest comes from right (100% to 0%)
     setForestTranslateX((1 - progress) * 100);
-    
+
     // Title fades out as blocks come together
     setTitleOpacity(1 - progress);
   }, []);
@@ -37,14 +37,14 @@ export function PhilosophySection() {
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
       }
-      
+
       // Use requestAnimationFrame for smooth updates
       rafRef.current = requestAnimationFrame(updateTransforms);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     updateTransforms();
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       if (rafRef.current) {
@@ -60,7 +60,7 @@ export function PhilosophySection() {
         <div className="sticky top-0 h-screen flex items-center justify-center">
           <div className="relative w-full">
             {/* Title - positioned behind the blocks */}
-            <div 
+            <div
               className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
               style={{ opacity: titleOpacity }}
             >
@@ -72,13 +72,13 @@ export function PhilosophySection() {
             {/* Product Grid */}
             <div className="relative z-10 grid grid-cols-1 gap-4 px-6 md:grid-cols-2 md:px-12 lg:px-20">
               {/* Alpine Image - comes from left */}
-              <div 
+              <div
                 className="relative aspect-[4/3] overflow-hidden rounded-2xl"
                 style={{
                   transform: `translate3d(${alpineTranslateX}%, 0, 0)`,
                   WebkitTransform: `translate3d(${alpineTranslateX}%, 0, 0)`,
-                  backfaceVisibility: 'hidden',
-                  WebkitBackfaceVisibility: 'hidden',
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
                 }}
               >
                 <div className="absolute inset-0 bg-black" />
@@ -90,13 +90,13 @@ export function PhilosophySection() {
               </div>
 
               {/* Forest Image - comes from right */}
-              <div 
+              <div
                 className="relative aspect-[4/3] overflow-hidden rounded-2xl"
                 style={{
                   transform: `translate3d(${forestTranslateX}%, 0, 0)`,
                   WebkitTransform: `translate3d(${forestTranslateX}%, 0, 0)`,
-                  backfaceVisibility: 'hidden',
-                  WebkitBackfaceVisibility: 'hidden',
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
                 }}
               >
                 <div className="absolute inset-0 bg-black" />
@@ -118,9 +118,10 @@ export function PhilosophySection() {
             Hackathon Project
           </p>
           <p className="mt-8 leading-relaxed text-muted-foreground text-3xl text-center">
-            Tabby is an AI writing assistant that predicts what you are about to type
-            so you can stay focused on ideas, not repetitive keystrokes.
-            Built for fast iteration, clean UX, and a strong local-first experience.
+            Tabby is an AI writing assistant that predicts what you are about to
+            type so you can stay focused on ideas, not repetitive keystrokes.
+            Built for fast iteration, clean UX, and a strong local-first
+            experience.
           </p>
         </div>
       </div>

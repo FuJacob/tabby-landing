@@ -6,8 +6,9 @@ export function TestimonialsSection() {
       {/* Large Text Statement */}
       <div className="px-6 py-24 md:px-12 md:py-32 lg:px-20 lg:py-40">
         <p className="mx-auto max-w-5xl text-2xl leading-relaxed text-foreground md:text-3xl lg:text-[2.5rem] lg:leading-snug">
-          Tabby has quietly become one of my must-have tools. It doesn't try to replace my voice —
-          it simply completes my sentences in a way that feels natural and helps me type much faster.
+          Tabby has quietly become one of my must-have tools. It doesn't try to
+          replace my voice — it simply completes my sentences in a way that
+          feels natural and helps me type much faster.
         </p>
       </div>
 
