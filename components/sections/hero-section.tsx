@@ -8,10 +8,11 @@ const word = "TABBY";
 
 const sideImages = [
   {
-    src: "/images/hero-side-typing-flow-left-1.png",
-    alt: "Tabby side visual left one",
+    src: "/gifs/demo-1.gif",
+    alt: "Tabby demo left one",
     position: "left",
     span: 1,
+    isGif: true,
   },
   {
     src: "/images/hero-side-typing-flow-left-2.png",
@@ -26,10 +27,11 @@ const sideImages = [
     span: 1,
   },
   {
-    src: "/images/hero-side-typing-flow-right-2.png",
-    alt: "Tabby side visual right two",
+    src: "/gifs/demo-2.gif",
+    alt: "Tabby demo right two",
     position: "right",
     span: 1,
+    isGif: true,
   },
 ];
 
@@ -87,7 +89,7 @@ export function HeroSection() {
             style={{
               gap: `${gap}px`,
               padding: `${imageProgress * 16}px`,
-              paddingBottom: `${60 + imageProgress * 40}px`,
+              paddingBottom: `${imageProgress * 40}px`,
             }}
           >
             {/* Left Column */}
@@ -111,7 +113,13 @@ export function HeroSection() {
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
-                    {img.src.startsWith("/images/hero-side-") ? (
+                    {"isGif" in img && img.isGif ? (
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    ) : img.src.startsWith("/images/hero-side-") ? (
                       <FakeVisual variant={img.src} title={img.alt} />
                     ) : (
                       <Image
@@ -125,7 +133,7 @@ export function HeroSection() {
                 ))}
             </div>
 
-            {/* Main Hero Image - Center */}
+            {/* Main Hero Video - Center */}
             <div
               className="relative overflow-hidden will-change-transform"
               style={{
@@ -136,6 +144,17 @@ export function HeroSection() {
               }}
             >
               <div className="absolute inset-0 bg-black" />
+              <div className="absolute inset-0 overflow-hidden">
+                <iframe
+                  src="https://www.youtube.com/embed/CGduGREZtlI?autoplay=1&mute=1&loop=1&playlist=CGduGREZtlI&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+                  className="pointer-events-none absolute top-1/2 left-1/2 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 scale-[1.35]"
+                  style={{ border: "none" }}
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  title="Tabby demo"
+                />
+              </div>
+              <div className="pointer-events-none absolute inset-0 bg-black/45" />
 
               {/* Overlay Text - Fades out first */}
               <div
@@ -182,7 +201,13 @@ export function HeroSection() {
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
-                    {img.src.startsWith("/images/hero-side-") ? (
+                    {"isGif" in img && img.isGif ? (
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    ) : img.src.startsWith("/images/hero-side-") ? (
                       <FakeVisual variant={img.src} title={img.alt} />
                     ) : (
                       <Image

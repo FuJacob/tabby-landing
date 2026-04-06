@@ -18,10 +18,12 @@ export function FooterSection() {
             GitHub
           </Link>
           <Link
-            href="#demo"
+            href="https://github.com/FuJacob/tabby/releases/tag/v0.1.0"
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex w-full items-center justify-center rounded-full bg-foreground px-8 py-4 text-base font-medium text-background transition-opacity hover:opacity-85 sm:w-auto"
           >
-            Watch Demo
+            Install on Mac
           </Link>
         </div>
       </div>

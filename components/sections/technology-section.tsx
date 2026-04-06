@@ -65,10 +65,11 @@ function ScrollRevealText({ text }: { text: string }) {
 
 const sideImages = [
   {
-    src: "/images/how-it-works-side-left-1.png",
-    alt: "How it works side visual left one",
+    src: "/gifs/demo-3.gif",
+    alt: "Think Type Ship demo left one",
     position: "left",
     span: 1,
+    isGif: true,
   },
   {
     src: "/images/how-it-works-side-left-2.png",
@@ -83,10 +84,11 @@ const sideImages = [
     span: 1,
   },
   {
-    src: "/images/how-it-works-side-right-2.png",
-    alt: "How it works side visual right two",
+    src: "/gifs/demo-4.gif",
+    alt: "Think Type Ship demo right two",
     position: "right",
     span: 1,
+    isGif: true,
   },
 ];
 
@@ -187,7 +189,13 @@ export function TechnologySection() {
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
-                    {img.src.startsWith("/images/how-it-works-side-") ? (
+                    {"isGif" in img && img.isGif ? (
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    ) : img.src.startsWith("/images/how-it-works-side-") ? (
                       <FakeVisual variant={img.src} title={img.alt} />
                     ) : (
                       <Image
@@ -273,7 +281,13 @@ export function TechnologySection() {
                       borderRadius: `${borderRadius}px`,
                     }}
                   >
-                    {img.src.startsWith("/images/how-it-works-side-") ? (
+                    {"isGif" in img && img.isGif ? (
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    ) : img.src.startsWith("/images/how-it-works-side-") ? (
                       <FakeVisual variant={img.src} title={img.alt} />
                     ) : (
                       <Image

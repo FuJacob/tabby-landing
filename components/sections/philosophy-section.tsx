@@ -81,7 +81,12 @@ export function PhilosophySection() {
                   WebkitBackfaceVisibility: "hidden",
                 }}
               >
-                <div className="absolute inset-0 bg-black" />
+                <img
+                  src="/gifs/demo-3.gif"
+                  alt="Tabby prototype built in 48 hours"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/35" />
                 <div className="absolute bottom-6 left-6">
                   <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
                     Built in 48 Hours
@@ -99,7 +104,12 @@ export function PhilosophySection() {
                   WebkitBackfaceVisibility: "hidden",
                 }}
               >
-                <div className="absolute inset-0 bg-black" />
+                <img
+                  src="/gifs/demo-4.gif"
+                  alt="Tabby open-source prototype overview"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/35" />
                 <div className="absolute bottom-6 left-6">
                   <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
                     Open-Source Prototype
