@@ -1,67 +1,76 @@
 "use client";
 
+import { FakeVisual } from "@/components/fake-visual";
 import { FadeImage } from "@/components/fade-image";
 
 const features = [
   {
-    title: "Smart Temperature Control",
-    description: "Innovation",
-    image: "/images/d18fe616-5596-4559-90f5-a90f5397d0d8.png",
+    title: "Predicts What You'd Say Anyway",
+    description: "Autocomplete",
+    image: "/images/feature-predictive-autocomplete.png",
   },
   {
-    title: "Ultra-Light Carbon Frame",
-    description: "Performance",
-    image: "/images/e26fa9c3-966d-4966-94a4-954a1e511c1c.png",
+    title: "Works in Every Mac App",
+    description: "Compatibility",
+    image: "/images/feature-works-in-all-mac-apps.png",
   },
   {
-    title: "Weather-Resistant Design",
-    description: "Durability",
-    image: "/images/car.jpg",
+    title: "100% Local — Your Data Stays Put",
+    description: "Privacy",
+    image: "/images/feature-local-processing-privacy.png",
   },
   {
-    title: "Integrated GPS Tracking",
-    description: "Navigation",
-    image: "/images/204cee22-9e85-49e8-9303-1d309af626b0.png",
+    title: "Accept Word-by-Word with Tab",
+    description: "Control",
+    image: "/images/feature-tab-to-accept-suggestions.png",
   },
   {
-    title: "Built-In LED Flashlight",
-    description: "Visibility",
-    image: "/images/led-flashlight-bottle.png",
+    title: "Smart Emoji Suggestions",
+    description: "Expression",
+    image: "/images/feature-smart-emoji-suggestions.png",
   },
   {
-    title: "Self-Heating Technology",
-    description: "Comfort",
-    image: "/images/heating-campfire.png",
+    title: "Fewer Typos, More Confidence",
+    description: "Accuracy",
+    image: "/images/feature-typo-reduction.png",
   },
 ];
 
 export function FeaturedProductsSection() {
   return (
-    <section id="technology" className="bg-background">
+    <section id="how-it-works" className="bg-background">
       {/* Section Title */}
       <div className="px-6 py-20 text-center md:px-12 md:py-28 lg:px-20 lg:py-32 lg:pb-20">
         <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl lg:text-5xl">
-          Engineered for Excellence.
+          Built for Speed.
           <br />
-          Designed for Adventure.
+          Designed to Disappear.
         </h2>
         <p className="mx-auto mt-6 max-w-md text-sm text-muted-foreground">
-          Technology
+          Capabilities
         </p>
       </div>
 
-      {/* Features Grid */}
+      {/* Capabilities Grid */}
       <div className="grid grid-cols-1 gap-4 px-6 pb-20 md:grid-cols-3 md:px-12 lg:px-20">
         {features.map((feature) => (
           <div key={feature.title} className="group">
             {/* Image */}
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-              <FadeImage
-                src={feature.image || "/placeholder.svg"}
-                alt={feature.title}
-                fill
-                className="object-cover group-hover:scale-105"
-              />
+              {feature.image.startsWith("/images/feature-") ? (
+                <FakeVisual
+                  variant={feature.image}
+                  title={feature.title}
+                  className="transition-transform duration-300 group-hover:scale-105"
+                />
+              ) : (
+                <FadeImage
+                  src={feature.image || "/placeholder.svg"}
+                  alt={feature.title}
+                  fill
+                  className="object-cover group-hover:scale-105"
+                />
+              )}
             </div>
 
             {/* Content */}

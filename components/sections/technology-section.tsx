@@ -1,5 +1,6 @@
 "use client";
 
+import { FakeVisual } from "@/components/fake-visual";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -60,26 +61,26 @@ function ScrollRevealText({ text }: { text: string }) {
 
 const sideImages = [
   {
-    src: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?q=80&w=1000",
-    alt: "Forest trail",
+    src: "/images/how-it-works-side-left-1.png",
+    alt: "How it works side visual left one",
     position: "left",
     span: 1,
   },
   {
-    src: "https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?q=80&w=1000",
-    alt: "Mountain peak",
+    src: "/images/how-it-works-side-left-2.png",
+    alt: "How it works side visual left two",
     position: "left",
     span: 1,
   },
   {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1000",
-    alt: "Alpine landscape",
+    src: "/images/how-it-works-side-right-1.png",
+    alt: "How it works side visual right one",
     position: "right",
     span: 1,
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000",
-    alt: "Snow mountain",
+    src: "/images/how-it-works-side-right-2.png",
+    alt: "How it works side visual right two",
     position: "right",
     span: 1,
   },
@@ -91,7 +92,7 @@ export function TechnologySection() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [textProgress, setTextProgress] = useState(0);
   
-  const descriptionText = "Experience outdoor gear reimagined with cutting-edge technology. Alpine & Forest accessories combine ultra-lightweight materials, intelligent temperature control, and weather-resistant engineering to elevate every adventure. From mountain peaks to forest trails, your gear adapts to the conditions.";
+  const descriptionText = "Tabby runs quietly in the background on your Mac, offering the exact words you'd write next — just faster. No prompts, no context switching, no robotic walls of text. Your thoughts, amplified. Tab to accept, keep typing to ignore. Works completely offline.";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -177,12 +178,16 @@ export function TechnologySection() {
                     borderRadius: `${borderRadius}px`,
                   }}
                 >
-                  <Image
-                    src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                  />
+                  {img.src.startsWith("/images/how-it-works-side-") ? (
+                    <FakeVisual variant={img.src} title={img.alt} />
+                  ) : (
+                    <Image
+                      src={img.src || "/placeholder.svg"}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -197,12 +202,7 @@ export function TechnologySection() {
                 borderRadius: `${borderRadius}px`,
               }}
             >
-              <Image
-                src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=2000"
-                alt="Aerial view of camping expedition in wilderness"
-                fill
-                className="object-cover"
-              />
+              <div className="absolute inset-0 bg-black" />
               <div className="absolute inset-0 bg-foreground/40" />
               
               {/* Title Text - Fades out word by word with blur */}
@@ -210,7 +210,7 @@ export function TechnologySection() {
                 className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
               >
                 <h2 className="max-w-3xl font-medium leading-tight tracking-tight text-white md:text-5xl lg:text-7xl text-5xl">
-                  {["Technology", "Meets", "Wilderness."].map((word, index) => {
+                  {["Think.", "Type.", "Ship."].map((word, index) => {
                     // Each word fades out sequentially based on scrollProgress
                     const wordFadeStart = index * 0.07; // Technology: 0, Meets: 0.07, Wilderness: 0.14
                     const wordFadeEnd = wordFadeStart + 0.07;
@@ -257,12 +257,16 @@ export function TechnologySection() {
                     borderRadius: `${borderRadius}px`,
                   }}
                 >
-                  <Image
-                    src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                  />
+                  {img.src.startsWith("/images/how-it-works-side-") ? (
+                    <FakeVisual variant={img.src} title={img.alt} />
+                  ) : (
+                    <Image
+                      src={img.src || "/placeholder.svg"}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
                 </div>
               ))}
             </div>

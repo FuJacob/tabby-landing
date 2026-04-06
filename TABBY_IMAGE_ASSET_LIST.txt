@@ -1,0 +1,52 @@
+TABBY WEBSITE IMAGE ASSET CHECKLIST
+
+Place all files in: public/images/
+Expected format in code: .png
+Total files needed: 33
+
+HERO SECTION
+1. hero-main-tabby-product.png - Main hero image for top fold. Recommended ratio: 16:10 or wider.
+2. hero-side-typing-flow-left-1.png - Hero side tile (left, top). Recommended ratio: 3:4.
+3. hero-side-typing-flow-left-2.png - Hero side tile (left, bottom). Recommended ratio: 3:4.
+4. hero-side-typing-flow-right-1.png - Hero side tile (right, top). Recommended ratio: 3:4.
+5. hero-side-typing-flow-right-2.png - Hero side tile (right, bottom). Recommended ratio: 3:4.
+
+HOW IT WORKS SECTION
+6. how-it-works-main-center.png - Main center visual for the sticky how-it-works animation. Recommended ratio: 16:10 or wider.
+7. how-it-works-side-left-1.png - Side visual (left, top). Recommended ratio: 3:4.
+8. how-it-works-side-left-2.png - Side visual (left, bottom). Recommended ratio: 3:4.
+9. how-it-works-side-right-1.png - Side visual (right, top). Recommended ratio: 3:4.
+10. how-it-works-side-right-2.png - Side visual (right, bottom). Recommended ratio: 3:4.
+
+FEATURE CARDS SECTION
+11. feature-predictive-autocomplete.png - Visual for predictive autocomplete feature. Recommended ratio: 4:3.
+12. feature-works-in-all-mac-apps.png - Visual for app compatibility feature. Recommended ratio: 4:3.
+13. feature-local-processing-privacy.png - Visual for local processing and privacy feature. Recommended ratio: 4:3.
+14. feature-tab-to-accept-suggestions.png - Visual for tab-to-accept interaction feature. Recommended ratio: 4:3.
+15. feature-smart-emoji-suggestions.png - Visual for emoji suggestion feature. Recommended ratio: 4:3.
+16. feature-typo-reduction.png - Visual for typo reduction and confidence feature. Recommended ratio: 4:3.
+
+PLANS SECTION
+17. plans-starter-email-autocomplete.png - Starter plan visual (email autocomplete). Recommended ratio: 4:3.
+18. plans-pro-terminal-autocomplete.png - Pro plan visual (terminal autocomplete). Recommended ratio: 4:3.
+
+WORKS EVERYWHERE SECTION
+19. use-case-email-messaging.png - Use case card for email and messaging. Recommended ratio: 2:3.
+20. use-case-ai-prompt-writing.png - Use case card for AI prompt writing. Recommended ratio: 2:3.
+21. use-case-marketing-copy.png - Use case card for marketing copy. Recommended ratio: 2:3.
+22. use-case-code-documentation.png - Use case card for code documentation. Recommended ratio: 2:3.
+23. use-case-customer-support.png - Use case card for customer support. Recommended ratio: 2:3.
+24. use-case-social-media-posts.png - Use case card for social media posts. Recommended ratio: 2:3.
+
+IN ACTION GALLERY SECTION
+25. in-action-email-drafting.png - In action gallery image for email drafting. Recommended ratio: landscape (about 4:3).
+26. in-action-chat-replies.png - In action gallery image for chat replies. Recommended ratio: landscape (about 4:3).
+27. in-action-notes-writing.png - In action gallery image for note writing. Recommended ratio: landscape (about 4:3).
+28. in-action-docs-writing.png - In action gallery image for docs writing. Recommended ratio: landscape (about 4:3).
+29. in-action-support-response.png - In action gallery image for support responses. Recommended ratio: landscape (about 4:3).
+30. in-action-social-posting.png - In action gallery image for social posting. Recommended ratio: landscape (about 4:3).
+31. in-action-marketing-copy.png - In action gallery image for marketing copy creation. Recommended ratio: landscape (about 4:3).
+32. in-action-ai-prompting.png - In action gallery image for AI prompting. Recommended ratio: landscape (about 4:3).
+
+TESTIMONIAL SECTION
+33. testimonial-creator-using-tabby.png - Testimonial banner image. Recommended ratio: 16:9.

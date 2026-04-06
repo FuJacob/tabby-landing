@@ -1,5 +1,6 @@
 "use client";
 
+import { FakeVisual } from "@/components/fake-visual";
 import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
 
@@ -12,14 +13,14 @@ export function GallerySection() {
   const lastScrollRef = useRef(0);
 
   const images = [
-    { src: "/images/bottle-bike.png", alt: "Thermal bottle on bike" },
-    { src: "/images/bottle-lake.png", alt: "Thermal bottle by lake" },
-    { src: "/images/bottle-water.png", alt: "Thermal bottle in water" },
-    { src: "/images/bottle-stream.png", alt: "Thermal bottle by stream" },
-    { src: "/images/bottle-fire.png", alt: "Thermal bottle by fire" },
-    { src: "/images/bottle-snow.png", alt: "Thermal bottle in snow" },
-    { src: "/images/bottle-mountain.png", alt: "Thermal bottle on mountain" },
-    { src: "/images/bottle-canyon.png", alt: "Thermal bottle at canyon" },
+    { src: "/images/in-action-email-drafting.png", alt: "Composing an email with Tabby" },
+    { src: "/images/in-action-chat-replies.png", alt: "Replying in chat with Tabby" },
+    { src: "/images/in-action-notes-writing.png", alt: "Writing notes with Tabby" },
+    { src: "/images/in-action-docs-writing.png", alt: "Drafting documentation with Tabby" },
+    { src: "/images/in-action-support-response.png", alt: "Responding to support tickets with Tabby" },
+    { src: "/images/in-action-social-posting.png", alt: "Creating social media posts with Tabby" },
+    { src: "/images/in-action-marketing-copy.png", alt: "Writing marketing copy with Tabby" },
+    { src: "/images/in-action-ai-prompting.png", alt: "Building AI prompts with Tabby" },
   ];
 
   // Calculate section height based on content width
@@ -89,7 +90,7 @@ export function GallerySection() {
 
   return (
     <section 
-      id="gallery"
+      id="in-action"
       ref={galleryRef}
       className="relative bg-background"
       style={{ height: sectionHeight }}
@@ -120,13 +121,17 @@ export function GallerySection() {
                   WebkitTransform: 'translateZ(0)',
                 }}
               >
-                <Image
-                  src={image.src || "/placeholder.svg"}
-                  alt={image.alt}
-                  fill
-                  className="object-cover"
-                  priority={index < 3}
-                />
+                {image.src.startsWith("/images/in-action-") ? (
+                  <FakeVisual variant={image.src} title={image.alt} />
+                ) : (
+                  <Image
+                    src={image.src || "/placeholder.svg"}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                    priority={index < 3}
+                  />
+                )}
               </div>
             ))}
           </div>

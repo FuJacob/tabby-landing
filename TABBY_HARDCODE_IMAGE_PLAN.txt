@@ -1,0 +1,58 @@
+TABBY IMAGE PLAN: HARDCODE VS REAL ASSETS
+
+Goal: reduce asset dependency and ship UI fast.
+
+CAN HARDCODE NOW (NO DESIGNER ASSETS REQUIRED YET)
+These can be rendered with code-based placeholders, gradients, mock windows, or styled cards.
+
+HERO SIDE TILES
+- hero-side-typing-flow-left-1.png
+- hero-side-typing-flow-left-2.png
+- hero-side-typing-flow-right-1.png
+- hero-side-typing-flow-right-2.png
+
+HOW IT WORKS SIDE TILES
+- how-it-works-side-left-1.png
+- how-it-works-side-left-2.png
+- how-it-works-side-right-1.png
+- how-it-works-side-right-2.png
+
+FEATURE CARDS
+- feature-predictive-autocomplete.png
+- feature-works-in-all-mac-apps.png
+- feature-local-processing-privacy.png
+- feature-tab-to-accept-suggestions.png
+- feature-smart-emoji-suggestions.png
+- feature-typo-reduction.png
+
+WORKS EVERYWHERE CARDS
+- use-case-email-messaging.png
+- use-case-ai-prompt-writing.png
+- use-case-marketing-copy.png
+- use-case-code-documentation.png
+- use-case-customer-support.png
+- use-case-social-media-posts.png
+
+IN ACTION GALLERY
+- in-action-email-drafting.png
+- in-action-chat-replies.png
+- in-action-notes-writing.png
+- in-action-docs-writing.png
+- in-action-support-response.png
+- in-action-social-posting.png
+- in-action-marketing-copy.png
+- in-action-ai-prompting.png
+
+Subtotal hardcode-first candidates: 28
+
+SHOULD BE REAL ASSETS FIRST (BEST ROI FOR QUALITY)
+These are high-visibility hero/proof visuals where custom imagery matters most.
+
+- hero-main-tabby-product.png
+- how-it-works-main-center.png
+- plans-starter-email-autocomplete.png
+- plans-pro-terminal-autocomplete.png
+- testimonial-creator-using-tabby.png
+Subtotal priority real assets: 5
+
+If needed, these 5 can also be hardcoded temporarily, but visual trust/brand quality will drop noticeably.

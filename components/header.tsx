@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,45 +28,49 @@ export function Header() {
     >
       <div className="flex items-center justify-between transition-all duration-300 px-2 pl-5 py-2">
         {/* Logo */}
-        <Link href="#" className={`text-lg font-medium tracking-tight transition-colors duration-300 ${isScrolled ? "text-foreground" : "text-white"}`}>
-          EVASION
+        <Link href="#overview" className={`inline-flex items-center gap-2 text-lg font-medium tracking-tight transition-colors duration-300 ${isScrolled ? "text-foreground" : "text-white"}`}>
+          <Image
+            src="/logo.png"
+            alt="Tabby logo"
+            width={20}
+            height={20}
+            className="h-5 w-5 rounded-md"
+          />
+          <span>Tabby</span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-10 md:flex">
           <Link
-            href="#products"
+            href="#overview"
             className={`text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
           >
-            Products
+            Overview
           </Link>
           <Link
-            href="#technology"
+            href="#project"
             className={`text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
           >
-            Technology
-          </Link>
-          <Link
-            href="#gallery"
-            className={`text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
-          >
-            Gallery
-          </Link>
-          <Link
-            href="#accessories"
-            className={`text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white"}`}
-          >
-            Accessories
+            Project
           </Link>
         </nav>
 
         {/* CTA */}
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-3 md:flex">
           <Link
-            href="#reserve"
+            href="https://github.com"
+            target="_blank"
+            rel="noreferrer"
+            className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${isScrolled ? "border border-border bg-background text-foreground hover:bg-muted" : "bg-white/15 text-white backdrop-blur hover:bg-white/25"}`}
+          >
+            <FaGithub className="h-4 w-4" aria-hidden="true" />
+            GitHub
+          </Link>
+          <Link
+            href="#demo"
             className={`px-4 py-2 text-sm font-medium transition-all rounded-full ${isScrolled ? "bg-foreground text-background hover:opacity-80" : "bg-white text-foreground hover:bg-white/90"}`}
           >
-            Buy the product
+            Watch Demo
           </Link>
         </div>
 
@@ -84,39 +90,35 @@ export function Header() {
         <div className="border-t border-border bg-background px-6 py-8 md:hidden rounded-b-2xl">
           <nav className="flex flex-col gap-6">
             <Link
-              href="#products"
+              href="#overview"
               className="text-lg text-foreground"
               onClick={() => setIsMenuOpen(false)}
             >
-              Products
+              Overview
             </Link>
             <Link
-              href="#technology"
+              href="#project"
               className="text-lg text-foreground"
               onClick={() => setIsMenuOpen(false)}
             >
-              Technology
+              Project
             </Link>
             <Link
-              href="#gallery"
-              className="text-lg text-foreground"
+              href="https://github.com"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-center text-sm font-medium text-foreground"
               onClick={() => setIsMenuOpen(false)}
             >
-              Gallery
+              <FaGithub className="h-4 w-4" aria-hidden="true" />
+              GitHub
             </Link>
             <Link
-              href="#accessories"
-              className="text-lg text-foreground"
+              href="#demo"
+              className="bg-foreground px-5 py-3 text-center text-sm font-medium text-background rounded-full"
               onClick={() => setIsMenuOpen(false)}
             >
-              Accessories
-            </Link>
-            <Link
-              href="#reserve"
-              className="mt-4 bg-foreground px-5 py-3 text-center text-sm font-medium text-background rounded-full"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Reserve
+              Watch Demo
             </Link>
           </nav>
         </div>

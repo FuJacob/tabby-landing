@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
 
 export function PhilosophySection() {
@@ -55,7 +54,7 @@ export function PhilosophySection() {
   }, [updateTransforms]);
 
   return (
-    <section id="products" className="bg-background">
+    <section id="project" className="bg-background">
       {/* Scroll-Animated Product Grid */}
       <div ref={sectionRef} className="relative" style={{ height: "200vh" }}>
         <div className="sticky top-0 h-screen flex items-center justify-center">
@@ -66,7 +65,7 @@ export function PhilosophySection() {
               style={{ opacity: titleOpacity }}
             >
               <h2 className="text-[12vw] font-medium leading-[0.95] tracking-tighter text-foreground md:text-[10vw] lg:text-[8vw] text-center px-6">
-                Meet Alpine & Forest.
+                Think. Type. Flow.
               </h2>
             </div>
 
@@ -82,15 +81,10 @@ export function PhilosophySection() {
                   WebkitBackfaceVisibility: 'hidden',
                 }}
               >
-                <Image
-                  src="/images/product-backpack.png"
-                  alt="V1 Expedition Backpack in alpine setting"
-                  fill
-                  className="object-cover"
-                />
+                <div className="absolute inset-0 bg-black" />
                 <div className="absolute bottom-6 left-6">
                   <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
-                    Alpine $299
+                    Built in 48 Hours
                   </span>
                 </div>
               </div>
@@ -105,15 +99,10 @@ export function PhilosophySection() {
                   WebkitBackfaceVisibility: 'hidden',
                 }}
               >
-                <Image
-                  src="/images/02cdc426-dff4-4dff-b131-1b134c3699b5.png"
-                  alt="V1 Thermal mug in forest setting"
-                  fill
-                  className="object-cover"
-                />
+                <div className="absolute inset-0 bg-black" />
                 <div className="absolute bottom-6 left-6">
                   <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
-                    Forest $199
+                    Open-Source Prototype
                   </span>
                 </div>
               </div>
@@ -126,11 +115,12 @@ export function PhilosophySection() {
       <div className="px-6 py-20 md:px-12 md:py-28 lg:px-20 lg:py-36 lg:pb-14">
         <div className="text-center">
           <p className="text-xs uppercase tracking-widest text-muted-foreground">
-            First generation
+            Hackathon Project
           </p>
           <p className="mt-8 leading-relaxed text-muted-foreground text-3xl text-center">
-            Alpine & Forest are high-tech outdoor accessories designed for modern adventurers. 
-            Lightweight, durable, and engineered for extreme conditions.
+            Tabby is an AI writing assistant that predicts what you are about to type
+            so you can stay focused on ideas, not repetitive keystrokes.
+            Built for fast iteration, clean UX, and a strong local-first experience.
           </p>
         </div>
       </div>

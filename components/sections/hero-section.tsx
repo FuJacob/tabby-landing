@@ -1,32 +1,33 @@
 "use client";
 
+import { FakeVisual } from "@/components/fake-visual";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const word = "EVASION";
+const word = "TABBY";
 
 const sideImages = [
   {
-    src: "https://images.unsplash.com/photo-1517824806704-9040b037703b?q=80&w=1000",
-    alt: "Mountain hiking adventure",
+    src: "/images/hero-side-typing-flow-left-1.png",
+    alt: "Tabby side visual left one",
     position: "left",
     span: 1,
   },
   {
-    src: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?q=80&w=1000",
-    alt: "Camping under stars",
+    src: "/images/hero-side-typing-flow-left-2.png",
+    alt: "Tabby side visual left two",
     position: "left",
     span: 1,
   },
   {
-    src: "https://images.unsplash.com/photo-1533873984035-25970ab07461?q=80&w=1000",
-    alt: "Forest exploration",
+    src: "/images/hero-side-typing-flow-right-1.png",
+    alt: "Tabby side visual right one",
     position: "right",
     span: 1,
   },
   {
-    src: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?q=80&w=1000",
-    alt: "Lake camping view",
+    src: "/images/hero-side-typing-flow-right-2.png",
+    alt: "Tabby side visual right two",
     position: "right",
     span: 1,
   },
@@ -76,7 +77,7 @@ export function HeroSection() {
   const sideTranslateY = -(imageProgress * 15); // Move up by 15% when fully expanded
 
   return (
-    <section ref={sectionRef} className="relative bg-background">
+    <section id="overview" ref={sectionRef} className="relative bg-background">
       {/* Sticky container for scroll animation */}
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="flex h-full w-full items-center justify-center">
@@ -105,12 +106,16 @@ export function HeroSection() {
                     borderRadius: `${borderRadius}px`,
                   }}
                 >
-                  <Image
-                    src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                  />
+                  {img.src.startsWith("/images/hero-side-") ? (
+                    <FakeVisual variant={img.src} title={img.alt} />
+                  ) : (
+                    <Image
+                      src={img.src || "/placeholder.svg"}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -125,13 +130,7 @@ export function HeroSection() {
                 borderRadius: `${borderRadius}px`,
               }}
             >
-              <Image
-                src="/images/hero-main.png"
-                alt="Mountain landscape with camping tent at sunset"
-                fill
-                className="object-cover"
-                priority
-              />
+              <div className="absolute inset-0 bg-black" />
               
               {/* Overlay Text - Fades out first */}
               <div 
@@ -175,12 +174,16 @@ export function HeroSection() {
                     borderRadius: `${borderRadius}px`,
                   }}
                 >
-                  <Image
-                    src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                  />
+                  {img.src.startsWith("/images/hero-side-") ? (
+                    <FakeVisual variant={img.src} title={img.alt} />
+                  ) : (
+                    <Image
+                      src={img.src || "/placeholder.svg"}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -195,9 +198,9 @@ export function HeroSection() {
       {/* Tagline Section */}
       <div className="px-6 pt-32 pb-28 md:pt-48 md:px-12 md:pb-36 lg:px-20 lg:pt-56 lg:pb-44">
         <p className="mx-auto max-w-2xl text-center text-2xl leading-relaxed text-muted-foreground md:text-3xl lg:text-[2.5rem] lg:leading-snug">
-          Lightweight, durable
+          Built in a weekend, designed for real writing,
           <br />
-          and adventure-ready.
+          powered by Tabby.
         </p>
       </div>
     </section>

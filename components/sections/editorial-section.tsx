@@ -1,10 +1,10 @@
 "use client";
 
 const specs = [
-  { label: "Weight", value: "400g" },
-  { label: "Capacity", value: "0.5L - 2L" },
-  { label: "Setup", value: "2 min" },
-  { label: "Packed size", value: "30 x 15 cm" },
+  { label: "Typing saved", value: "50%" },
+  { label: "Apps supported", value: "All" },
+  { label: "Setup time", value: "< 5 min" },
+  { label: "Languages", value: "20+" },
 ];
 
 export function EditorialSection() {
