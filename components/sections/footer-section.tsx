@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
+import { FaApple } from "react-icons/fa";
 
 export function FooterSection() {
   return (
@@ -21,8 +22,9 @@ export function FooterSection() {
             href="https://github.com/FuJacob/tabby/releases/tag/v0.1.0"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex w-full items-center justify-center rounded-full bg-foreground px-8 py-4 text-base font-medium text-background transition-opacity hover:opacity-85 sm:w-auto"
+            className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-foreground px-8 py-4 text-base font-medium text-background transition-opacity hover:opacity-85 sm:w-auto"
           >
+            <FaApple className="h-5 w-5" aria-hidden="true" />
             Install on Mac
           </Link>
         </div>

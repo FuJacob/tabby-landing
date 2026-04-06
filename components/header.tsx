@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { FaApple, FaGithub } from "react-icons/fa";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,8 +75,9 @@ export function Header() {
             href="https://github.com/FuJacob/tabby/releases/tag/v0.1.0"
             target="_blank"
             rel="noreferrer"
-            className={`px-4 py-2 text-sm font-medium transition-all rounded-full ${isScrolled ? "bg-foreground text-background hover:opacity-80" : "bg-white text-foreground hover:bg-white/90"}`}
+            className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all rounded-full ${isScrolled ? "bg-foreground text-background hover:opacity-80" : "bg-white text-foreground hover:bg-white/90"}`}
           >
+            <FaApple className="h-4 w-4" aria-hidden="true" />
             Install on Mac
           </Link>
         </div>
@@ -124,9 +125,10 @@ export function Header() {
               href="https://github.com/FuJacob/tabby/releases/tag/v0.1.0"
               target="_blank"
               rel="noreferrer"
-              className="bg-foreground px-5 py-3 text-center text-sm font-medium text-background rounded-full"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3 text-center text-sm font-medium text-background"
               onClick={() => setIsMenuOpen(false)}
             >
+              <FaApple className="h-4 w-4" aria-hidden="true" />
               Install on Mac
             </Link>
           </nav>
