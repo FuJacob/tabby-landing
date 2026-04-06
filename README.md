@@ -76,8 +76,8 @@ A few seconds saved per message adds up quickly over a full day.
 - Caret anchoring uses AX range bounds and fallback heuristics so ghost text can be placed near the live insertion point across different apps.
 - Input monitoring uses a global key tap to detect typing/navigation and Tab acceptance, then debounces generation to avoid noisy triggers.
 - Prompting supports two modes:
-	- Guided mode: structured inline instructions plus optional screen-context hints.
-	- Prefix Only mode: raw prefix continuation with no extra instruction framing.
+  - Guided mode: structured inline instructions plus optional screen-context hints.
+  - Prefix Only mode: raw prefix continuation with no extra instruction framing.
 - Models are local GGUF files running in-process via llama.cpp through LlamaSwift (no remote API endpoint dependency).
 - Models are downloaded on demand after install and loaded from the local runtime folder, so app updates and model updates stay independent.
 - Suggestion flow is continuous: generate a tail, render ghost text at the caret, accept with Tab in chunks, and reject stale outputs when context changes.
@@ -135,9 +135,9 @@ xcodebuild -project tabby.xcodeproj -scheme tabby -configuration Debug -sdk maco
 3. Drag `Tabby.app` into `Applications`.
 4. Open `Applications` and launch Tabby.
 5. Grant permissions when prompted:
-	 - Accessibility (required)
-	 - Input Monitoring (required)
-	 - Screen Recording (optional, only for visual context features)
+   - Accessibility (required)
+   - Input Monitoring (required)
+   - Screen Recording (optional, only for visual context features)
 6. Download a model from the Welcome screen, or add your own `.gguf` into the model folder.
 7. If you manually add a model file, press **Refresh Model List** in Tabby.
 
@@ -202,8 +202,8 @@ xcodebuild -project tabby.xcodeproj -scheme tabby -configuration Debug -sdk maco
 ### 6) Troubleshooting
 
 1. No suggestions appearing:
-	 - Re-check Accessibility and Input Monitoring permissions.
+   - Re-check Accessibility and Input Monitoring permissions.
 2. Model missing in picker:
-	 - Confirm file extension is `.gguf` and click **Refresh Model List**.
+   - Confirm file extension is `.gguf` and click **Refresh Model List**.
 3. Overlay placement issues in specific apps:
-	 - Switch focus away and back, then retry typing.
+   - Switch focus away and back, then retry typing.
