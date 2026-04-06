@@ -83,13 +83,13 @@ export function PhilosophySection() {
               >
                 <img
                   src="/gifs/demo-3.gif"
-                  alt="Tabby prototype built in 48 hours"
+                  alt="Tabby workflow preview"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/35" />
                 <div className="absolute bottom-6 left-6">
                   <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
-                    Built in 48 Hours
+                    Built for Daily Writing
                   </span>
                 </div>
               </div>
@@ -106,13 +106,13 @@ export function PhilosophySection() {
               >
                 <img
                   src="/gifs/demo-4.gif"
-                  alt="Tabby open-source prototype overview"
+                  alt="Tabby assistant preview"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/35" />
                 <div className="absolute bottom-6 left-6">
                   <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
-                    Open-Source Prototype
+                    Open-Source Core
                   </span>
                 </div>
               </div>
@@ -125,12 +125,12 @@ export function PhilosophySection() {
       <div className="px-6 py-20 md:px-12 md:py-28 lg:px-20 lg:py-36 lg:pb-14">
         <div className="text-center">
           <p className="text-xs uppercase tracking-widest text-muted-foreground">
-            Hackathon Project
+            AI Writing Assistant
           </p>
           <p className="mt-8 leading-relaxed text-muted-foreground text-3xl text-center">
             Tabby is an AI writing assistant that predicts what you are about to
             type so you can stay focused on ideas, not repetitive keystrokes.
-            Built for fast iteration, clean UX, and a strong local-first
+            Built for focused writing, clean UX, and a strong local-first
             experience.
           </p>
         </div>

@@ -7,14 +7,14 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Tabby | Hackathon Project",
+  title: "Tabby | AI Writing Assistant for macOS",
   description:
-    "Tabby is a hackathon-built AI autocomplete for macOS that predicts your next words in any app while you stay in flow.",
+    "Tabby is an AI autocomplete assistant for macOS that predicts your next words in any app while you stay in flow.",
   generator: "v0.app",
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/logo1.png",
+    shortcut: "/logo1.png",
+    apple: "/logo1.png",
   },
 };
 

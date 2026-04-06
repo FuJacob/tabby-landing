@@ -35,7 +35,7 @@ export function Header() {
           className={`inline-flex items-center gap-2 text-lg font-medium tracking-tight transition-colors duration-300 ${isScrolled ? "text-foreground" : "text-white"}`}
         >
           <Image
-            src="/logo.png"
+            src="/logo1.png"
             alt="Tabby logo"
             width={20}
             height={20}
