@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AppleIcon } from "./icons";
 
 const ctaActionClass =
-  "inline-flex h-20 min-w-[280px] items-center justify-center rounded-[1.9rem] border border-neutral-900 bg-white px-10 text-[2rem] font-medium leading-none tracking-tight text-neutral-900 transition hover:bg-neutral-100 sm:min-w-[440px] sm:text-[2.7rem]";
+  "inline-flex h-20 min-w-[280px] items-center justify-center gap-3 rounded-[1.9rem] border border-neutral-900 bg-white px-10 text-[2rem] font-medium leading-none tracking-tight text-neutral-900 transition hover:bg-neutral-100 sm:min-w-[440px] sm:text-[2.7rem]";
 
 export function SloganCtaSection() {
   return (
@@ -26,6 +27,7 @@ export function SloganCtaSection() {
         </h2>
 
         <Link href="#" className={ctaActionClass}>
+          <AppleIcon className="h-7 w-7 sm:h-8 sm:w-8" />
           Download for Mac
         </Link>
       </div>

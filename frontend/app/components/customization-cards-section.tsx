@@ -1,7 +1,15 @@
+import Image from "next/image";
+
 function PlaceholderPanel() {
   return (
-    <div className="mt-5 flex h-40 items-center justify-center rounded-[1.8rem] border border-neutral-300 bg-neutral-50 text-4xl font-medium tracking-tight text-neutral-800 sm:h-48 sm:text-5xl">
-      placeholder
+    <div className="mt-5 h-40 overflow-hidden rounded-[1.8rem] border border-neutral-300 bg-neutral-50 sm:h-48">
+      <Image
+        src="/placeholder.jpg"
+        alt="Feature placeholder"
+        width={1200}
+        height={900}
+        className="h-full w-full object-cover"
+      />
     </div>
   );
 }

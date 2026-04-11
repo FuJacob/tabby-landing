@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type PlaceholderBlockProps = {
   className?: string;
 };
@@ -5,9 +7,15 @@ type PlaceholderBlockProps = {
 function PlaceholderBlock({ className = "" }: PlaceholderBlockProps) {
   return (
     <div
-      className={`flex h-44 items-center justify-center rounded-[1.9rem] border border-neutral-300 bg-neutral-50 text-xl font-medium tracking-tight text-neutral-700 sm:h-52 ${className}`}
+      className={`h-44 overflow-hidden rounded-[1.9rem] border border-neutral-300 bg-neutral-50 sm:h-52 ${className}`}
     >
-      placeholder
+      <Image
+        src="/placeholder.jpg"
+        alt="Feature placeholder"
+        width={1200}
+        height={900}
+        className="h-full w-full object-cover"
+      />
     </div>
   );
 }
