@@ -1,0 +1,26 @@
+import { AppsCarouselSection } from "./components/apps-carousel-section";
+import { DemoVideoSection } from "./components/demo-video-section";
+import { Header } from "./components/header";
+import { Hero } from "./components/hero";
+import { SectionShell } from "./components/section-shell";
+
+export default function Home() {
+  return (
+    <div className="bg-neutral-100 px-2 pb-2 pt-6 sm:px-4 sm:pb-4 sm:pt-10 lg:px-6 lg:pb-6 lg:pt-14">
+      <div className="flex flex-col gap-5 sm:gap-7">
+        <SectionShell>
+          <Header />
+          <Hero />
+        </SectionShell>
+
+        <SectionShell>
+          <AppsCarouselSection />
+        </SectionShell>
+
+        <SectionShell>
+          <DemoVideoSection />
+        </SectionShell>
+      </div>
+    </div>
+  );
+}
