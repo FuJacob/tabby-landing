@@ -1,8 +1,11 @@
 import { AppsCarouselSection } from "./components/apps-carousel-section";
+import { AlternatingFeatureSection } from "./components/alternating-feature-section";
+import { CustomizationCardsSection } from "./components/customization-cards-section";
 import { DemoVideoSection } from "./components/demo-video-section";
 import { Header } from "./components/header";
 import { Hero } from "./components/hero";
 import { SectionShell } from "./components/section-shell";
+import { SloganCtaSection } from "./components/slogan-cta-section";
 
 export default function Home() {
   return (
@@ -19,6 +22,17 @@ export default function Home() {
 
         <SectionShell>
           <DemoVideoSection />
+        </SectionShell>
+
+        <SectionShell>
+          <CustomizationCardsSection />
+        </SectionShell>
+
+        <SectionShell>
+          <SloganCtaSection />
+        </SectionShell>
+        <SectionShell>
+          <AlternatingFeatureSection />
         </SectionShell>
       </div>
     </div>
