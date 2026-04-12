@@ -23,7 +23,7 @@ export function AppsCarouselSection() {
         Mail, notes, docs, messages, wherever you happen to be typing.
       </p>
 
-      <div className="mt-8 overflow-hidden rounded-[1.5rem] border-2 border-line bg-surface-2 px-3 py-4 shadow-[0_5px_0_var(--line)] sm:px-4 sm:py-5">
+      <div className="relative mt-8 overflow-hidden rounded-[1.5rem] px-3 py-4 sm:px-4 sm:py-5">
         <div
           className="tabby-marquee-track"
           aria-label="Supported apps carousel"
@@ -37,6 +37,15 @@ export function AppsCarouselSection() {
             />
           ))}
         </div>
+
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-background to-transparent sm:w-14"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-background to-transparent sm:w-14"
+        />
       </div>
     </div>
   );

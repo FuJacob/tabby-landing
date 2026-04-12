@@ -32,23 +32,17 @@ export default function ReleaseNotesPage() {
       summary="A concise log of product updates."
       updatedAt="APR 12, 2026"
     >
-      <section className="tabby-panel-soft rounded-[1.2rem] p-4 sm:p-5">
-        <ul className="space-y-3">
-          {RELEASES.map((release) => (
-            <li key={release.version} className="space-y-1">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h2 className="tabby-display text-[1.7rem] leading-none tracking-tight text-ink sm:text-[2rem]">
-                  {release.version}
-                </h2>
-                <p className="text-xs font-semibold tracking-[0.08em] text-subtle sm:text-sm">
-                  {release.date}
-                </p>
-              </div>
-              <p>{release.note}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <ul className="space-y-3">
+        {RELEASES.map((release) => (
+          <li key={release.version} className="space-y-1">
+            <p className="font-semibold text-ink">
+              {release.version}
+              <span className="font-medium text-subtle"> - {release.date}</span>
+            </p>
+            <p>{release.note}</p>
+          </li>
+        ))}
+      </ul>
     </LegalPageShell>
   );
 }

@@ -14,7 +14,7 @@ function CustomItem({
   preview,
 }: CustomItemProps) {
   return (
-    <article className="space-y-4">
+    <article className="flex h-full flex-col gap-4">
       <p className="text-sm font-medium tracking-tight text-moss sm:text-base">
         {eyebrow}
       </p>
@@ -24,7 +24,7 @@ function CustomItem({
       <p className="max-w-md text-sm leading-relaxed tracking-tight text-muted sm:text-base">
         {description}
       </p>
-      <div>{preview}</div>
+      <div className="mt-auto lg:h-[190px]">{preview}</div>
     </article>
   );
 }
@@ -45,7 +45,7 @@ export function CustomizationCardsSection() {
           title="choose your model"
           description="Pick the balance that fits your workflow, from instant completions to slower but sharper suggestions."
           preview={
-            <div className="tabby-panel-soft rounded-[1.5rem] p-5">
+            <div className="tabby-panel-soft h-full rounded-[1.5rem] p-5">
               <div className="space-y-4">
                 <div className="flex items-center justify-between gap-3 border-b-2 border-line-soft pb-3">
                   <span className="font-medium tracking-tight text-ink">
@@ -80,7 +80,7 @@ export function CustomizationCardsSection() {
           title="keep it short or long"
           description="Keep completions short and invisible, or let tabby expand into fuller suggestions when you need momentum."
           preview={
-            <div className="tabby-panel-soft rounded-[1.5rem] p-5">
+            <div className="tabby-panel-soft h-full rounded-[1.5rem] p-5">
               <div className="flex items-center justify-between text-sm font-medium tracking-tight text-muted">
                 <span>Short</span>
                 <span>Medium</span>
@@ -101,20 +101,21 @@ export function CustomizationCardsSection() {
         <CustomItem
           eyebrow="tone"
           title="nudge the voice"
-          description="Dial the suggestions toward warm, direct, or concise without forcing a rigid preset."
+          description="Customize the tone between warm, concise, or direct and keep editing naturally."
           preview={
-            <div className="tabby-panel-soft rounded-[1.5rem] p-5">
+            <div className="tabby-panel-soft h-full rounded-[1.5rem] p-5">
               <p className="text-sm font-medium tracking-tight text-moss">
                 warm / concise / direct
               </p>
               <p className="mt-4 text-sm leading-relaxed tracking-tight text-muted">
-                Thanks for the quick turnaround
+                Hey Maya,
                 <span className="text-accent">
-                  . I tightened the message and kept the tone warm.
+                  {" thanks again for turning this around so quickly - really appreciate it."}
                 </span>
               </p>
               <p className="mt-4 text-sm tracking-tight text-subtle">
-                Just enough guidance to sound like you on a good day.
+                Keep typing and tabby adjusts the tone without locking you into
+                one preset.
               </p>
             </div>
           }

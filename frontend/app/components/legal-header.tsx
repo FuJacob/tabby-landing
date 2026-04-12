@@ -5,7 +5,7 @@ export type LegalPageKey = "privacy" | "terms" | "release-notes";
 
 const LEGAL_LINKS: Array<{ key: LegalPageKey; href: string; label: string }> = [
   { key: "privacy", href: "/privacy", label: "Privacy" },
-  { key: "terms", href: "/terms", label: "Terms" },
+  { key: "terms", href: "/terms", label: "Terms of Service" },
   { key: "release-notes", href: "/release-notes", label: "Release notes" },
 ];
 

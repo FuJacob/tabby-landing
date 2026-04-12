@@ -8,7 +8,16 @@ import { Header } from "./components/header";
 import { Hero } from "./components/hero";
 import { SectionShell } from "./components/section-shell";
 import { SloganCtaSection } from "./components/slogan-cta-section";
+import { TestimonialsSection } from "./components/testimonials-section";
 import { FloatingButton } from "./components/floating-button";
+
+function SectionDivider() {
+  return (
+    <section aria-hidden="true" className="px-6 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-[1220px] border-t-2 border-line-soft opacity-70" />
+    </section>
+  );
+}
 
 export default function Home() {
   return (
@@ -31,20 +40,30 @@ export default function Home() {
           <DemoVideoSection />
         </section>
 
+        <SectionDivider />
+
         <section
           id="how-it-works"
           className="tabby-anchor px-6 sm:px-8 lg:px-10"
         >
-          <CustomizationCardsSection />
+          <AlternatingFeatureSection />
         </section>
 
         <section className="px-6 sm:px-8 lg:px-10">
-          <AlternatingFeatureSection />
+          <CustomizationCardsSection />
+        </section>
+
+        <SectionDivider />
+
+        <section className="px-6 sm:px-8 lg:px-10">
+          <TestimonialsSection />
         </section>
 
         <section id="faq" className="tabby-anchor px-6 sm:px-8 lg:px-10">
           <FaqSection />
         </section>
+
+        <SectionDivider />
 
         <section className="px-6 sm:px-8 lg:px-10">
           <SloganCtaSection />

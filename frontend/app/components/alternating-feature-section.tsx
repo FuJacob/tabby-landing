@@ -42,7 +42,7 @@ export function AlternatingFeatureSection() {
         Here are a few examples of how it can help you write faster in different
         apps.
       </p>
-      <div className="mt-10 space-y-10 sm:space-y-12">
+      <div className="mt-12 space-y-12 sm:space-y-14 md:space-y-16">
         <div className="grid gap-6 md:grid-cols-2 md:items-center">
           <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem]">
             Write your emails faster
@@ -53,28 +53,51 @@ export function AlternatingFeatureSection() {
             suggestion=". If you are aligned, I can send the final version before lunch."
           />
         </div>
-      </div>
-      <div className="grid gap-6 md:grid-cols-2 md:items-center">
-        <FeatureBlock
-          className="md:order-1"
-          label="notes"
-          typed="The customer kept circling back to onboarding friction"
-          suggestion=", so I captured the main blockers and the workaround they actually trusted."
-        />
-        <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem] md:order-2 md:text-right">
-          Write your notes faster
-        </h3>
-      </div>
+        <div className="grid gap-6 md:grid-cols-2 md:items-center">
+          <FeatureBlock
+            className="md:order-1"
+            label="notes"
+            typed="The customer kept circling back to onboarding friction"
+            suggestion=", so I captured the main blockers and the workaround they actually trusted."
+          />
+          <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem] md:order-2 md:text-right">
+            Write your notes faster
+          </h3>
+        </div>
 
-      <div className="grid gap-6 md:grid-cols-2 md:items-center">
-        <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem]">
-          Write your docs faster
-        </h3>
-        <FeatureBlock
-          label="docs"
-          typed="This release introduces quieter inline suggestions across every text field"
-          suggestion=", with per-model controls and a lighter system footprint on macOS."
-        />
+        <div className="grid gap-6 md:grid-cols-2 md:items-center">
+          <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem]">
+            Write your docs faster
+          </h3>
+          <FeatureBlock
+            label="docs"
+            typed="This release introduces quieter inline suggestions across every text field"
+            suggestion=", with per-model controls and a lighter system footprint on macOS."
+          />
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 md:items-center">
+          <FeatureBlock
+            className="md:order-1"
+            label="messages"
+            typed="Hey Sam, I pushed the latest changes and cleaned up the edge cases"
+            suggestion=". If you want, I can post a short summary in the channel too."
+          />
+          <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem] md:order-2 md:text-right">
+            Write your messages faster
+          </h3>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 md:items-center">
+          <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem]">
+            Write your updates faster
+          </h3>
+          <FeatureBlock
+            label="updates"
+            typed="Quick update: onboarding drop-off improved after the new checklist"
+            suggestion=". I will share the full numbers and the next experiment in tomorrow's sync."
+          />
+        </div>
       </div>
     </section>
   );

@@ -1,23 +1,43 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AppleIcon, GithubIcon } from "./icons";
+
+const footerPrimaryActionClass =
+  "tabby-button tabby-button-primary inline-flex h-12 w-full items-center justify-center gap-2 rounded-[1rem] px-6 text-[1rem] font-semibold leading-none tracking-tight sm:h-14 sm:text-[1.2rem]";
+
+const footerSecondaryActionClass =
+  "tabby-button tabby-button-secondary inline-flex h-14 w-full items-center justify-center gap-2 rounded-[1rem] px-6 text-[1rem] font-semibold leading-none tracking-tight sm:text-[1.2rem]";
 
 const FOOTER_LINKS = [
   { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
+  { label: "Terms of Service", href: "/terms" },
   { label: "Release notes", href: "/release-notes" },
 ] as const;
 
 export function FinalFooterSection() {
   return (
     <section className="border-t-2 border-line-soft pt-8 sm:pt-10">
-      <div className="space-y-4">
-        <h2 className="tabby-display max-w-[700px] text-[3.4rem] leading-[0.9] tracking-tight text-ink sm:text-[5.4rem]">
-          type a lot faster.
-        </h2>
-        <p className="max-w-xl text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-          Cozy AI autocomplete for the everyday notes, emails, and messages
-          you were going to write anyway.
-        </p>
+      <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="space-y-4">
+          <h2 className="tabby-display max-w-[700px] text-[3.4rem] leading-[0.9] tracking-tight text-ink sm:text-[5.4rem]">
+            type a lot faster.
+          </h2>
+          <p className="max-w-xl text-sm leading-relaxed tracking-tight text-muted sm:text-base">
+            Cozy AI autocomplete for the everyday notes, emails, and messages
+            you were going to write anyway.
+          </p>
+        </div>
+
+        <div className="w-full max-w-[340px] space-y-3">
+          <Link href="#" className={footerPrimaryActionClass}>
+            <AppleIcon className="h-5 w-5" />
+            Download for Mac
+          </Link>
+          <Link href="#" className={footerSecondaryActionClass}>
+            <GithubIcon className="h-5 w-5" />
+            GitHub
+          </Link>
+        </div>
       </div>
 
       <div className="mt-10 flex flex-col gap-4 border-t-2 border-line-soft pt-6 lg:flex-row lg:items-center lg:justify-between">
