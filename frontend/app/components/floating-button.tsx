@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AppleIcon } from "./icons";
-import { bottomButtonClass } from "./final-footer-section";
+
+const floatingActionClass =
+  "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
 
 export const FloatingButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,8 +36,8 @@ export const FloatingButton = () => {
   }
 
   return (
-    <div className="tabby-float-cta-enter fixed bottom-4 right-3 z-50 w-[min(340px,calc(100vw-1.5rem))] sm:bottom-6 sm:right-6">
-      <Link href="#" className={bottomButtonClass}>
+    <div className="tabby-float-cta-enter fixed bottom-4 right-3 z-50 sm:bottom-6 sm:right-6">
+      <Link href="#" className={floatingActionClass}>
         <AppleIcon className="h-5 w-5" />
         Download for Mac
       </Link>
