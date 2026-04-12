@@ -1,24 +1,27 @@
 import Image from "next/image";
 
 type TabbyLogoChipProps = {
+  label: string;
   className?: string;
 };
 
-export function TabbyLogoChip({ className }: TabbyLogoChipProps) {
+export function TabbyLogoChip({ label, className }: TabbyLogoChipProps) {
   return (
     <div
-      className={`inline-flex h-14 min-w-[180px] shrink-0 items-center justify-center gap-2 rounded-3xl border border-neutral-900 bg-white px-6 text-lg font-medium tracking-tight text-neutral-900 ${
+      className={`tabby-chip inline-flex h-14 min-w-[170px] shrink-0 items-center gap-3 rounded-[1.25rem] px-4 text-sm font-medium tracking-tight text-ink sm:min-w-[190px] sm:text-base ${
         className ?? ""
       }`}
     >
-      <Image
-        src="/32.png"
-        alt="Tabby logo"
-        width={20}
-        height={20}
-        className="h-6 w-6 rounded-md"
-      />
-      <span>Tabby</span>
+      <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-line bg-surface-3">
+        <Image
+          src="/white-logo.png"
+          alt="Tabby logo"
+          width={20}
+          height={20}
+          className="h-5 w-5"
+        />
+      </div>
+      <span>{label}</span>
     </div>
   );
 }

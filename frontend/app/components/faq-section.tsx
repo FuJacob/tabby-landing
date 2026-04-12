@@ -54,28 +54,34 @@ const FAQ_ITEMS = [
 export function FaqSection() {
   return (
     <section className="mx-auto w-full max-w-4xl">
-      <h2 className="text-center text-[2.2rem] font-semibold leading-none tracking-tight text-neutral-900 sm:text-[2.7rem]">
-        Frequently asked Questions
+      <div className="text-center">
+        <span className="tabby-pill inline-flex rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]">
+          Questions
+        </span>
+      </div>
+
+      <h2 className="mt-4 text-center text-[2.2rem] font-semibold leading-none tracking-tight text-ink sm:text-[2.7rem]">
+        Frequently asked questions
       </h2>
 
-      <div className="mt-8 overflow-hidden rounded-[2rem] border border-neutral-300 bg-neutral-50 sm:mt-10">
+      <div className="tabby-panel mt-8 overflow-hidden rounded-[2rem] sm:mt-10">
         {FAQ_ITEMS.map((item, index) => (
           <details
             key={item.question}
-            className={`group ${index === 0 ? "" : "border-t border-neutral-300"}`}
+            className={`group ${index === 0 ? "" : "border-t border-line"}`}
           >
             <summary className="list-none cursor-pointer px-6 py-5 [&::-webkit-details-marker]:hidden">
               <div className="flex items-center justify-between gap-4">
-                <span className="text-left text-base font-medium tracking-tight text-neutral-900 sm:text-lg">
+                <span className="text-left text-base font-medium tracking-tight text-ink sm:text-lg">
                   {item.question}
                 </span>
-                <span className="text-2xl leading-none text-neutral-500 transition-transform duration-200 group-open:rotate-45">
+                <span className="text-2xl leading-none text-accent transition-transform duration-200 group-open:rotate-45">
                   +
                 </span>
               </div>
             </summary>
 
-            <p className="px-6 pb-6 pr-14 text-sm leading-relaxed text-neutral-700 sm:text-base">
+            <p className="px-6 pb-6 pr-14 text-sm leading-relaxed text-muted sm:text-base">
               {item.answer}
             </p>
           </details>

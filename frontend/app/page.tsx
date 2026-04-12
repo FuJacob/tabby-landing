@@ -11,8 +11,8 @@ import { SloganCtaSection } from "./components/slogan-cta-section";
 
 export default function Home() {
   return (
-    <div className="bg-neutral-100 px-2 pb-2 pt-6 sm:px-4 sm:pb-4 sm:pt-10 lg:px-6 lg:pb-6 lg:pt-14">
-      <div className="flex flex-col gap-5 sm:gap-7">
+    <div className="relative px-3 pb-3 pt-5 sm:px-4 sm:pb-4 sm:pt-8 lg:px-6 lg:pb-6 lg:pt-10">
+      <div className="flex flex-col gap-4 sm:gap-5">
         <SectionShell>
           <Header />
           <Hero />
