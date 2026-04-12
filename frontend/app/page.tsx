@@ -11,40 +11,40 @@ import { SloganCtaSection } from "./components/slogan-cta-section";
 
 export default function Home() {
   return (
-    <div className="relative px-3 pb-3 pt-5 sm:px-4 sm:pb-4 sm:pt-8 lg:px-6 lg:pb-6 lg:pt-10">
-      <div className="flex flex-col gap-4 sm:gap-5">
+    <div className="relative px-3 pb-14 pt-5 sm:px-4 sm:pb-16 sm:pt-8 lg:px-6 lg:pb-20 lg:pt-10">
+      <div className="mx-auto flex w-full max-w-[1380px] flex-col gap-16 sm:gap-20 lg:gap-24">
         <SectionShell>
           <Header />
           <Hero />
         </SectionShell>
 
-        <SectionShell>
+        <section className="px-2 sm:px-4">
           <AppsCarouselSection />
-        </SectionShell>
+        </section>
 
-        <SectionShell>
+        <SectionShell className="max-w-[1180px]">
           <DemoVideoSection />
         </SectionShell>
 
-        <SectionShell>
+        <section className="px-2 sm:px-4">
           <CustomizationCardsSection />
-        </SectionShell>
+        </section>
 
-        <SectionShell>
+        <section className="px-2 sm:px-4">
           <AlternatingFeatureSection />
-        </SectionShell>
+        </section>
 
-        <SectionShell>
+        <section className="px-2 sm:px-4">
           <FaqSection />
-        </SectionShell>
+        </section>
 
-        <SectionShell>
+        <section className="px-2 sm:px-4">
           <SloganCtaSection />
-        </SectionShell>
+        </section>
 
-        <SectionShell>
+        <section className="px-2 sm:px-4">
           <FinalFooterSection />
-        </SectionShell>
+        </section>
       </div>
     </div>
   );

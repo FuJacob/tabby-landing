@@ -1,13 +1,13 @@
 const FAQ_ITEMS = [
   {
-    question: "What is Tabby?",
+    question: "What is tabby?",
     answer:
-      "Tabby is an AI writing assistant that helps you draft emails, notes, and docs faster with suggestions that match your tone.",
+      "tabby is an AI writing assistant that helps you draft emails, notes, and docs faster with suggestions that match your tone.",
   },
   {
-    question: "Which apps does Tabby support?",
+    question: "Which apps does tabby support?",
     answer:
-      "Tabby is designed to work across common writing surfaces, including email, docs, and note-taking workflows.",
+      "tabby is designed to work across common writing surfaces, including email, docs, and note-taking workflows.",
   },
   {
     question: "Can I customize the writing style?",
@@ -20,9 +20,9 @@ const FAQ_ITEMS = [
       "Yes. You can set short, medium, or long response goals so suggestions fit the length you want.",
   },
   {
-    question: "Does Tabby support multiple models?",
+    question: "Does tabby support multiple models?",
     answer:
-      "Yes. Tabby can be configured with different model options so you can pick one that fits your quality and speed preferences.",
+      "Yes. tabby can be configured with different model options so you can pick one that fits your quality and speed preferences.",
   },
   {
     question: "How fast are suggestions generated?",
@@ -37,10 +37,10 @@ const FAQ_ITEMS = [
   {
     question: "Is my data private?",
     answer:
-      "Tabby is built with privacy in mind and aims to minimize data exposure while processing only what is needed for suggestions.",
+      "tabby is built with privacy in mind and aims to minimize data exposure while processing only what is needed for suggestions.",
   },
   {
-    question: "Can teams use Tabby together?",
+    question: "Can teams use tabby together?",
     answer:
       "Yes. Teams can align on tone and workflows so everyone writes with a more consistent voice.",
   },
@@ -54,21 +54,18 @@ const FAQ_ITEMS = [
 export function FaqSection() {
   return (
     <section className="mx-auto w-full max-w-4xl">
-      <div className="text-center">
-        <span className="tabby-pill inline-flex rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]">
-          Questions
-        </span>
-      </div>
-
-      <h2 className="mt-4 text-center text-[2.2rem] font-semibold leading-none tracking-tight text-ink sm:text-[2.7rem]">
-        Frequently asked questions
+      <h2 className="tabby-display text-center text-[2.8rem] leading-none tracking-tight text-ink sm:text-[4rem]">
+        questions, answered
       </h2>
+      <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
+        The basics, without the enterprise brochure voice.
+      </p>
 
-      <div className="tabby-panel mt-8 overflow-hidden rounded-[2rem] sm:mt-10">
+      <div className="mt-10 border-y-2 border-line">
         {FAQ_ITEMS.map((item, index) => (
           <details
             key={item.question}
-            className={`group ${index === 0 ? "" : "border-t border-line"}`}
+            className={`group ${index === 0 ? "" : "border-t-2 border-line-soft"}`}
           >
             <summary className="list-none cursor-pointer px-6 py-5 [&::-webkit-details-marker]:hidden">
               <div className="flex items-center justify-between gap-4">

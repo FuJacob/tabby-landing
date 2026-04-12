@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AppleIcon, GithubIcon, SparklesIcon } from "./icons";
+import { AppleIcon, GithubIcon } from "./icons";
 
 const secondaryActionClass =
-  "tabby-button tabby-button-secondary inline-flex h-14 items-center justify-center gap-2 rounded-full px-6 text-base font-semibold tracking-tight sm:h-15 sm:px-7 sm:text-lg";
+  "tabby-button tabby-button-secondary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
 
 const primaryActionClass =
-  "tabby-button tabby-button-primary inline-flex h-14 items-center justify-center gap-2 rounded-full px-6 text-base font-semibold tracking-tight sm:h-15 sm:px-7 sm:text-lg";
+  "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
 
 type SuggestionLineProps = {
   typed: string;
@@ -25,15 +25,14 @@ function SuggestionLine({ typed, suggestion }: SuggestionLineProps) {
 export function Hero() {
   return (
     <main className="pt-8 sm:pt-10">
-      <section className="flex w-full flex-col gap-10 xl:flex-row xl:items-end xl:justify-between">
-        <div className="max-w-2xl space-y-8">
-          <div className="tabby-chip inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium tracking-tight text-muted">
-            <span className="h-2 w-2 rounded-full bg-accent" />
-            Native AI autocomplete for Mac
-          </div>
+      <section className="grid gap-10 xl:grid-cols-[1.05fr_0.95fr] xl:items-end">
+        <div className="max-w-2xl space-y-7">
+          <p className="text-sm font-medium tracking-tight text-moss sm:text-base">
+            native ai autocomplete for mac
+          </p>
 
           <div className="space-y-6">
-            <h1 className="max-w-2xl text-[2.9rem] font-semibold leading-[1.02] tracking-tight text-ink sm:text-[3.6rem] lg:text-[4.6rem]">
+            <h1 className="tabby-display max-w-2xl text-[3.2rem] leading-[0.94] tracking-tight text-ink sm:text-[4.4rem] lg:text-[5.4rem]">
               What if AI could just finish my sentence? Well, now it can.
             </h1>
             <p className="max-w-xl text-lg leading-relaxed tracking-tight text-muted sm:text-xl">
@@ -54,44 +53,43 @@ export function Hero() {
             </Link>
           </div>
 
-          <p className="text-base font-medium leading-relaxed tracking-tight text-subtle sm:text-lg">
-            Works in email, notes, docs, and more.
+          <p className="max-w-lg text-base leading-relaxed tracking-tight text-subtle sm:text-lg">
+            Works in email, notes, docs, and more, without turning writing
+            into a whole production.
           </p>
         </div>
 
-        <div className="w-full max-w-[580px] rounded-[2.1rem] border border-line bg-surface-2 p-4 shadow-[var(--shadow-soft)] sm:p-5">
-          <div className="tabby-panel h-full rounded-[1.75rem] p-5 sm:p-6">
-            <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="tabby-panel w-full max-w-[600px] rounded-[1.8rem] p-4 sm:p-5">
+          <div className="rounded-[1.45rem] border-2 border-line bg-surface-3 p-5 sm:p-6">
+            <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-line bg-surface-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-[1rem] border-2 border-line bg-surface-2">
                   <Image
                     src="/white-logo.png"
-                    alt="Tabby white logo"
+                    alt="tabby white logo"
                     width={24}
                     height={24}
                     className="h-6 w-6"
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold tracking-tight text-ink">
-                    Compose in Mail
+                  <p className="tabby-display text-[1.6rem] leading-none tracking-tight text-ink">
+                    tabby
                   </p>
                   <p className="text-sm tracking-tight text-subtle">
-                    Quiet help, right when you need it
+                    a little help while you write
                   </p>
                 </div>
               </div>
 
-              <div className="tabby-pill inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em]">
-                <SparklesIcon className="h-3.5 w-3.5" />
-                AI suggestion
-              </div>
+              <p className="text-sm tracking-tight text-moss">
+                suggests softly in the background
+              </p>
             </div>
 
-            <div className="mt-6 rounded-[1.4rem] border border-line bg-background/55 p-5">
-              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-subtle">
-                <span className="h-2 w-2 rounded-full bg-accent" />
-                Draft
+            <div className="mt-6 rounded-[1.35rem] border-2 border-line bg-background p-5">
+              <div className="text-xs font-semibold tracking-[0.12em] text-subtle">
+                draft
               </div>
 
               <div className="mt-4 space-y-4">
@@ -108,13 +106,9 @@ export function Hero() {
                 />
               </div>
 
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
-                <span className="tabby-chip inline-flex rounded-full px-3 py-2 text-sm font-medium tracking-tight text-ink">
-                  Press Tab to accept
-                </span>
-                <span className="text-sm tracking-tight text-subtle">
-                  Accepted text fades into your draft
-                </span>
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t-2 border-line-soft pt-4 text-sm tracking-tight text-subtle">
+                <span>press tab to accept</span>
+                <span>feels like your own next thought</span>
               </div>
             </div>
           </div>

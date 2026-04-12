@@ -12,20 +12,17 @@ function FeatureBlock({
   suggestion,
 }: FeatureBlockProps) {
   return (
-    <div
-      className={`tabby-panel rounded-[1.9rem] p-5 sm:p-6 ${className}`}
-    >
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-        <span className="h-2 w-2 rounded-full bg-accent" />
+    <div className={`tabby-panel-soft rounded-[1.55rem] p-5 sm:p-6 ${className}`}>
+      <div className="text-sm font-medium tracking-tight text-moss">
         {label}
       </div>
-      <div className="mt-4 rounded-[1.4rem] border border-line bg-background/50 p-4">
+      <div className="mt-4 rounded-[1.25rem] border-2 border-line bg-surface-2 p-4">
         <p className="text-sm leading-relaxed tracking-tight text-ink sm:text-base">
           {typed}
           <span className="text-accent">{suggestion}</span>
         </p>
       </div>
-      <div className="mt-4 flex items-center justify-between text-sm tracking-tight text-subtle">
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm tracking-tight text-subtle">
         <span>Ghost text appears inline</span>
         <span>Press Tab to accept</span>
       </div>
@@ -35,13 +32,13 @@ function FeatureBlock({
 
 export function AlternatingFeatureSection() {
   return (
-    <section className="space-y-8 sm:space-y-10">
+    <section className="mx-auto max-w-[1220px] space-y-10 sm:space-y-12">
       <div className="grid gap-6 md:grid-cols-2 md:items-center">
-        <h3 className="text-[2.25rem] font-semibold leading-[0.95] tracking-tight text-ink sm:text-[2.9rem]">
+        <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem]">
           Write your emails faster
         </h3>
         <FeatureBlock
-          label="Email"
+          label="email"
           typed="I folded your feedback into the deck and updated the closing slide"
           suggestion=". If you are aligned, I can send the final version before lunch."
         />
@@ -50,21 +47,21 @@ export function AlternatingFeatureSection() {
       <div className="grid gap-6 md:grid-cols-2 md:items-center">
         <FeatureBlock
           className="md:order-1"
-          label="Notes"
+          label="notes"
           typed="The customer kept circling back to onboarding friction"
           suggestion=", so I captured the main blockers and the workaround they actually trusted."
         />
-        <h3 className="text-[2.25rem] font-semibold leading-[0.95] tracking-tight text-ink sm:text-[2.9rem] md:order-2 md:text-right">
+        <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem] md:order-2 md:text-right">
           Write your notes faster
         </h3>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 md:items-center">
-        <h3 className="text-[2.25rem] font-semibold leading-[0.95] tracking-tight text-ink sm:text-[2.9rem]">
+        <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem]">
           Write your docs faster
         </h3>
         <FeatureBlock
-          label="Docs"
+          label="docs"
           typed="This release introduces quieter inline suggestions across every text field"
           suggestion=", with per-model controls and a lighter system footprint on macOS."
         />
