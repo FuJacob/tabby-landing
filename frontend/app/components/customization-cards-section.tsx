@@ -49,7 +49,7 @@ export function CustomizationCardsSection() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between gap-3 border-b-2 border-line-soft pb-3">
                   <span className="font-medium tracking-tight text-ink">
-                    Balanced
+                    tabby-balanced-1
                   </span>
                   <span className="text-sm tracking-tight text-moss">
                     good place to start
@@ -57,7 +57,7 @@ export function CustomizationCardsSection() {
                 </div>
                 <div className="flex items-center justify-between gap-3 border-b-2 border-line-soft pb-3">
                   <span className="font-medium tracking-tight text-ink">
-                    Fast
+                    tabby-fast-1
                   </span>
                   <span className="text-sm tracking-tight text-subtle">
                     lower latency
@@ -65,7 +65,7 @@ export function CustomizationCardsSection() {
                 </div>
                 <div className="flex items-center justify-between gap-3">
                   <span className="font-medium tracking-tight text-ink">
-                    Precise
+                    tabby-depth-1
                   </span>
                   <span className="text-sm tracking-tight text-subtle">
                     higher quality

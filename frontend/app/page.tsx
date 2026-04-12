@@ -8,6 +8,7 @@ import { Header } from "./components/header";
 import { Hero } from "./components/hero";
 import { SectionShell } from "./components/section-shell";
 import { SloganCtaSection } from "./components/slogan-cta-section";
+import { FloatingButton } from "./components/floating-button";
 
 export default function Home() {
   return (
@@ -15,37 +16,41 @@ export default function Home() {
       id="top"
       className="relative px-3 pb-14 pt-5 sm:px-4 sm:pb-16 sm:pt-8 lg:px-6 lg:pb-20 lg:pt-10"
     >
-      <div className="mx-auto flex w-full max-w-[1380px] flex-col gap-16 sm:gap-20 lg:gap-24">
+      <FloatingButton />
+      <div className="mx-auto flex w-full max-w-[1360px] flex-col gap-16 sm:gap-20 lg:gap-24">
         <SectionShell>
           <Header />
           <Hero />
         </SectionShell>
 
-        <section className="px-2 sm:px-4">
+        <section className="px-6 sm:px-8 lg:px-10">
           <AppsCarouselSection />
         </section>
 
-        <section id="demo" className="tabby-anchor px-2 sm:px-4">
+        <section id="demo" className="tabby-anchor px-6 sm:px-8 lg:px-10">
           <DemoVideoSection />
         </section>
 
-        <section id="how-it-works" className="tabby-anchor px-2 sm:px-4">
+        <section
+          id="how-it-works"
+          className="tabby-anchor px-6 sm:px-8 lg:px-10"
+        >
           <CustomizationCardsSection />
         </section>
 
-        <section className="px-2 sm:px-4">
+        <section className="px-6 sm:px-8 lg:px-10">
           <AlternatingFeatureSection />
         </section>
 
-        <section id="faq" className="tabby-anchor px-2 sm:px-4">
+        <section id="faq" className="tabby-anchor px-6 sm:px-8 lg:px-10">
           <FaqSection />
         </section>
 
-        <section className="px-2 sm:px-4">
+        <section className="px-6 sm:px-8 lg:px-10">
           <SloganCtaSection />
         </section>
 
-        <section className="px-2 sm:px-4">
+        <section className="px-6 sm:px-8 lg:px-10">
           <FinalFooterSection />
         </section>
       </div>

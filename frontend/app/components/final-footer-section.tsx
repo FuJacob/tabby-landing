@@ -5,7 +5,7 @@ import { AppleIcon, GithubIcon } from "./icons";
 const topButtonClass =
   "tabby-button tabby-button-secondary inline-flex h-14 w-full items-center justify-center gap-3 rounded-[1rem] px-8 text-[1.15rem] font-semibold leading-none tracking-tight sm:text-[1.3rem]";
 
-const bottomButtonClass =
+export const bottomButtonClass =
   "tabby-button tabby-button-primary inline-flex h-12 w-full items-center justify-center gap-2 rounded-[1rem] px-6 text-[1rem] font-semibold leading-none tracking-tight sm:h-14 sm:text-[1.2rem]";
 
 const FOOTER_LINKS = [
@@ -17,7 +17,7 @@ const FOOTER_LINKS = [
 
 export function FinalFooterSection() {
   return (
-    <section className="border-t-2 border-line pt-8 sm:pt-10">
+    <section className="border-t-2 border-line-soft pt-8 sm:pt-10">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="space-y-4">
           <h2 className="tabby-display max-w-[700px] text-[3.4rem] leading-[0.9] tracking-tight text-ink sm:text-[5.4rem]">

@@ -24,7 +24,7 @@ function SuggestionLine({ typed, suggestion }: SuggestionLineProps) {
 
 export function Hero() {
   return (
-    <main className="pt-8 sm:pt-10">
+    <main id="hero" className="pt-8 sm:pt-10">
       <section className="grid gap-10 xl:grid-cols-[1.05fr_0.95fr] xl:items-end">
         <div className="max-w-2xl space-y-7">
           <p className="text-sm font-medium tracking-tight text-moss sm:text-base">
