@@ -10,7 +10,7 @@ export function DemoVideoSection() {
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed tracking-tight text-muted sm:text-base">
           See how the suggestions feel inside a real writing flow, instead of
-          floating around like a feature checklist.
+          floating around like a checklist.
         </p>
       </div>
 

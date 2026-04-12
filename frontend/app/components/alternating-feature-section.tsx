@@ -12,7 +12,9 @@ function FeatureBlock({
   suggestion,
 }: FeatureBlockProps) {
   return (
-    <div className={`tabby-panel-soft rounded-[1.55rem] p-5 sm:p-6 ${className}`}>
+    <div
+      className={`tabby-panel-soft rounded-[1.55rem] p-5 sm:p-6 ${className}`}
+    >
       <div className="text-sm font-medium tracking-tight text-moss">
         {label}
       </div>
@@ -32,18 +34,26 @@ function FeatureBlock({
 
 export function AlternatingFeatureSection() {
   return (
-    <section className="mx-auto max-w-[1220px] space-y-10 sm:space-y-12">
-      <div className="grid gap-6 md:grid-cols-2 md:items-center">
-        <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem]">
-          Write your emails faster
-        </h3>
-        <FeatureBlock
-          label="email"
-          typed="I folded your feedback into the deck and updated the closing slide"
-          suggestion=". If you are aligned, I can send the final version before lunch."
-        />
+    <section className="mx-auto max-w-[1220px]">
+      <h2 className="tabby-display text-center text-[2.9rem] leading-none tracking-tight text-ink sm:text-[4.1rem]">
+        main use cases, one by one
+      </h2>
+      <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
+        Here are a few examples of how it can help you write faster in different
+        apps.
+      </p>
+      <div className="mt-10 space-y-10 sm:space-y-12">
+        <div className="grid gap-6 md:grid-cols-2 md:items-center">
+          <h3 className="tabby-display text-[2.75rem] leading-[0.92] tracking-tight text-ink sm:text-[3.6rem]">
+            Write your emails faster
+          </h3>
+          <FeatureBlock
+            label="email"
+            typed="I folded your feedback into the deck and updated the closing slide"
+            suggestion=". If you are aligned, I can send the final version before lunch."
+          />
+        </div>
       </div>
-
       <div className="grid gap-6 md:grid-cols-2 md:items-center">
         <FeatureBlock
           className="md:order-1"

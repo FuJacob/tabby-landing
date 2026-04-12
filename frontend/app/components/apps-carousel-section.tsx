@@ -2,18 +2,20 @@ import { TabbyLogoChip } from "./tabby-logo-chip";
 
 export function AppsCarouselSection() {
   const chips = [
-    "Mail",
-    "Notes",
-    "Docs",
-    "Messages",
-    "Browser",
-    "Calendar",
-    "CRM",
+    { label: "Apple Mail", iconSrc: "/app-icons/apple-mail.png" },
+    { label: "Apple Notes", iconSrc: "/app-icons/apple-notes.svg" },
+    { label: "Google Chrome", iconSrc: "/app-icons/google-chrome.png" },
+    { label: "Microsoft Outlook", iconSrc: "/app-icons/microsoft-outlook.png" },
+    { label: "Gmail", iconSrc: "/app-icons/gmail.svg" },
+    { label: "iMessage", iconSrc: "/app-icons/imessage.svg" },
+    { label: "Notion", iconSrc: "/app-icons/notion.svg" },
+    { label: "Discord", iconSrc: "/app-icons/discord.webp" },
+    { label: "Slack", iconSrc: "/app-icons/slack.png" },
   ];
   const track = [...chips, ...chips];
 
   return (
-    <div className="mx-auto max-w-[1180px]">
+    <div className="mx-auto">
       <h2 className="tabby-display text-center text-[2.7rem] leading-none tracking-tight text-ink sm:text-[3.6rem]">
         Works in apps like
       </h2>
@@ -26,10 +28,11 @@ export function AppsCarouselSection() {
           className="tabby-marquee-track"
           aria-label="Supported apps carousel"
         >
-          {track.map((label, index) => (
+          {track.map((app, index) => (
             <TabbyLogoChip
-              key={`chip-${label}-${index}`}
-              label={label}
+              key={`chip-${app.label}-${index}`}
+              label={app.label}
+              iconSrc={app.iconSrc}
               className="tabby-marquee-item"
             />
           ))}

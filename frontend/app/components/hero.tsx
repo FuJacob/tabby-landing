@@ -33,12 +33,11 @@ export function Hero() {
 
           <div className="space-y-6">
             <h1 className="tabby-display max-w-2xl text-[3.2rem] leading-[0.94] tracking-tight text-ink sm:text-[4.4rem] lg:text-[5.4rem]">
-              What if AI could just finish my sentence? Well, now it can.
+              AI suggestions, <br /> on any app.
             </h1>
             <p className="max-w-xl text-lg leading-relaxed tracking-tight text-muted sm:text-xl">
-              A native Mac autocomplete that writes with you in any app.
-              Faster emails, notes, messages, and docs without breaking your
-              flow.
+              A native Mac autocomplete that writes with you in any app. Faster
+              emails, notes, messages, and docs without breaking your flow.
             </p>
           </div>
 
@@ -54,8 +53,8 @@ export function Hero() {
           </div>
 
           <p className="max-w-lg text-base leading-relaxed tracking-tight text-subtle sm:text-lg">
-            Works in email, notes, docs, and more, without turning writing
-            into a whole production.
+            Works in email, notes, docs, and more, without turning writing into
+            a whole production.
           </p>
         </div>
 

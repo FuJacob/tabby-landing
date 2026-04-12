@@ -77,7 +77,7 @@ export function CustomizationCardsSection() {
         />
         <CustomItem
           eyebrow="length"
-          title="keep it short or let it stretch"
+          title="keep it short or long"
           description="Keep completions short and invisible, or let tabby expand into fuller suggestions when you need momentum."
           preview={
             <div className="tabby-panel-soft rounded-[1.5rem] p-5">

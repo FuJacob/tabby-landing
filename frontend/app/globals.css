@@ -79,10 +79,8 @@ a {
 }
 
 .tabby-display {
-  font-family:
-    var(--font-display),
-    var(--font-body),
-    cursive;
+  font-family: var(--font-display), var(--font-body), cursive;
+  font-weight: 800;
 }
 
 .tabby-shell {
@@ -167,7 +165,7 @@ a {
   flex-wrap: nowrap;
   align-items: center;
   width: max-content;
-  animation: tabby-marquee-scroll 16s linear infinite;
+  animation: tabby-marquee-scroll 30s linear infinite;
   will-change: transform;
 }
 
@@ -183,7 +181,7 @@ a {
 
 @media (min-width: 640px) {
   .tabby-marquee-track {
-    animation-duration: 18s;
+    animation-duration: 30s;
   }
 }
 

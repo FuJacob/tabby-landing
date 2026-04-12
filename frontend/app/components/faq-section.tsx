@@ -61,11 +61,11 @@ export function FaqSection() {
         The basics, without the enterprise brochure voice.
       </p>
 
-      <div className="mt-10 border-y-2 border-line">
-        {FAQ_ITEMS.map((item, index) => (
+      <div className="mt-10 space-y-4">
+        {FAQ_ITEMS.map((item) => (
           <details
             key={item.question}
-            className={`group ${index === 0 ? "" : "border-t-2 border-line-soft"}`}
+            className="group overflow-hidden rounded-[1rem] border-2 border-line bg-surface-3 shadow-[0_4px_0_var(--line)] transition-colors"
           >
             <summary className="list-none cursor-pointer px-6 py-5 [&::-webkit-details-marker]:hidden">
               <div className="flex items-center justify-between gap-4">
@@ -78,9 +78,11 @@ export function FaqSection() {
               </div>
             </summary>
 
-            <p className="px-6 pb-6 pr-14 text-sm leading-relaxed text-muted sm:text-base">
-              {item.answer}
-            </p>
+            <div className="border-t-2 border-line-soft px-6 pb-6 pr-14 pt-4">
+              <p className="text-sm leading-relaxed text-muted sm:text-base">
+                {item.answer}
+              </p>
+            </div>
           </details>
         ))}
       </div>
