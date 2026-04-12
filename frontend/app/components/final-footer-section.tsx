@@ -21,7 +21,7 @@ export function FinalFooterSection() {
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="space-y-4">
           <h2 className="tabby-display max-w-[700px] text-[3.4rem] leading-[0.9] tracking-tight text-ink sm:text-[5.4rem]">
-            type a little faster.
+            type a lot faster.
           </h2>
           <p className="max-w-xl text-sm leading-relaxed tracking-tight text-muted sm:text-base">
             Cozy AI autocomplete for the everyday notes, emails, and messages

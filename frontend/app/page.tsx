@@ -11,7 +11,10 @@ import { SloganCtaSection } from "./components/slogan-cta-section";
 
 export default function Home() {
   return (
-    <div className="relative px-3 pb-14 pt-5 sm:px-4 sm:pb-16 sm:pt-8 lg:px-6 lg:pb-20 lg:pt-10">
+    <div
+      id="top"
+      className="relative px-3 pb-14 pt-5 sm:px-4 sm:pb-16 sm:pt-8 lg:px-6 lg:pb-20 lg:pt-10"
+    >
       <div className="mx-auto flex w-full max-w-[1380px] flex-col gap-16 sm:gap-20 lg:gap-24">
         <SectionShell>
           <Header />
@@ -22,11 +25,11 @@ export default function Home() {
           <AppsCarouselSection />
         </section>
 
-        <SectionShell className="max-w-[1180px]">
+        <section id="demo" className="tabby-anchor px-2 sm:px-4">
           <DemoVideoSection />
-        </SectionShell>
+        </section>
 
-        <section className="px-2 sm:px-4">
+        <section id="how-it-works" className="tabby-anchor px-2 sm:px-4">
           <CustomizationCardsSection />
         </section>
 
@@ -34,7 +37,7 @@ export default function Home() {
           <AlternatingFeatureSection />
         </section>
 
-        <section className="px-2 sm:px-4">
+        <section id="faq" className="tabby-anchor px-2 sm:px-4">
           <FaqSection />
         </section>
 

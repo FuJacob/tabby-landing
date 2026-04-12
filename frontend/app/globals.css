@@ -50,6 +50,10 @@ body {
   min-height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: var(--background);
@@ -149,6 +153,10 @@ a {
   color: var(--foreground);
 }
 
+.tabby-anchor {
+  scroll-margin-top: 1.5rem;
+}
+
 @keyframes tabby-marquee-scroll {
   from {
     transform: translate3d(0, 0, 0);
@@ -174,6 +182,10 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .tabby-marquee-track {
     animation: none;
   }

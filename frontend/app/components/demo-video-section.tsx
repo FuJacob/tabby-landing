@@ -1,10 +1,7 @@
 export function DemoVideoSection() {
   return (
-    <div className="mx-auto max-w-[980px]">
+    <div className="mx-auto">
       <div className="text-center">
-        <p className="text-sm font-medium tracking-tight text-moss sm:text-base">
-          a quick look
-        </p>
         <h2 className="tabby-display mt-4 text-[2.8rem] leading-none tracking-tight text-ink sm:text-[4rem]">
           watch tabby in action
         </h2>
