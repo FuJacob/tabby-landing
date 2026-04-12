@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import type { MouseEvent } from "react";
 import { AppleIcon, GithubIcon } from "./icons";
 
 const textLinks = [
@@ -14,19 +17,47 @@ const secondaryActionClass =
 const primaryActionClass =
   "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-5 text-sm font-semibold tracking-tight sm:h-14 sm:px-6 sm:text-base";
 
+function scrollToAnchor(event: MouseEvent<HTMLAnchorElement>, href: string) {
+  if (!href.startsWith("#")) {
+    return;
+  }
+
+  const target = document.querySelector<HTMLElement>(href);
+  if (!target) {
+    return;
+  }
+
+  const y = target.getBoundingClientRect().top + window.scrollY - 80; // Allow some leeway
+
+  event.preventDefault();
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  window.scrollTo({
+    top: y,
+    behavior: prefersReducedMotion ? "auto" : "smooth",
+  });
+}
+
 export function Header() {
   return (
     <header className="border-b-2 border-line pb-6 sm:pb-8">
       <div className="flex w-full flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-6">
-          <Link href="#top" className="flex items-center sm:gap-1">
-              <Image
-                src="/white-logo.png"
-                alt="tabby paw logo"
-                width={64}
-                height={64}
-                className="h-16 w-16"
-              />
+          <Link
+            href="#top"
+            onClick={(event) => scrollToAnchor(event, "#top")}
+            className="flex items-center sm:gap-1"
+          >
+            <Image
+              src="/white-logo.png"
+              alt="tabby paw logo"
+              width={64}
+              height={64}
+              className="h-16 w-16"
+            />
 
             <span className="tabby-display text-[2.7rem] leading-none tracking-tight text-ink sm:text-[3.2rem]">
               tabby
@@ -41,6 +72,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={(event) => scrollToAnchor(event, link.href)}
                 className="tabby-link text-sm font-semibold tracking-tight sm:text-base"
               >
                 {link.label}
