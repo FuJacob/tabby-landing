@@ -1,17 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AppleIcon, GithubIcon } from "./icons";
+import { CREATOR, DOWNLOAD_URL } from "../lib/site";
+import { AppleIcon, LinkedInIcon, XIcon } from "./icons";
 
 const footerPrimaryActionClass =
   "tabby-button tabby-button-primary inline-flex h-12 w-full items-center justify-center gap-2 rounded-[1rem] px-6 text-[1rem] font-semibold leading-none tracking-tight sm:h-14 sm:text-[1.2rem]";
-
-const footerSecondaryActionClass =
-  "tabby-button tabby-button-secondary inline-flex h-14 w-full items-center justify-center gap-2 rounded-[1rem] px-6 text-[1rem] font-semibold leading-none tracking-tight sm:text-[1.2rem]";
 
 const FOOTER_LINKS = [
   { label: "Privacy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
   { label: "Release notes", href: "/release-notes" },
+] as const;
+
+const SOCIALS = [
+  { label: "LinkedIn", href: CREATOR.linkedin, Icon: LinkedInIcon },
+  { label: "X", href: CREATOR.x, Icon: XIcon },
 ] as const;
 
 export function FinalFooterSection() {
@@ -28,14 +31,10 @@ export function FinalFooterSection() {
           </p>
         </div>
 
-        <div className="w-full max-w-[340px] space-y-3">
-          <Link href="#" className={footerPrimaryActionClass}>
+        <div className="w-full max-w-[340px]">
+          <Link href={DOWNLOAD_URL} className={footerPrimaryActionClass}>
             <AppleIcon className="h-5 w-5" />
             Download for Mac
-          </Link>
-          <Link href="#" className={footerSecondaryActionClass}>
-            <GithubIcon className="h-5 w-5" />
-            GitHub
           </Link>
         </div>
       </div>
@@ -54,6 +53,35 @@ export function FinalFooterSection() {
           <span className="tabby-display text-[2rem] leading-none tracking-tight text-ink sm:text-[2.4rem]">
             tabby
           </span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <span className="text-sm tracking-tight text-subtle sm:text-base">
+            made by{" "}
+            <Link
+              href={CREATOR.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tabby-link font-semibold"
+            >
+              {CREATOR.name}
+            </Link>
+          </span>
+
+          <div className="flex items-center gap-2">
+            {SOCIALS.map(({ label, href, Icon }) => (
+              <Link
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-[0.75rem] border-2 border-line bg-surface-2 text-ink transition-colors hover:bg-surface-3"
+              >
+                <Icon className="h-4 w-4" />
+              </Link>
+            ))}
+          </div>
         </div>
 
         <nav className="flex flex-wrap gap-x-6 gap-y-2">

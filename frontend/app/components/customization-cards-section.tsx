@@ -7,12 +7,7 @@ type CustomItemProps = {
   preview: ReactNode;
 };
 
-function CustomItem({
-  eyebrow,
-  title,
-  description,
-  preview,
-}: CustomItemProps) {
+function CustomItem({ eyebrow, title, description, preview }: CustomItemProps) {
   return (
     <article className="flex h-full flex-col gap-4">
       <p className="text-sm font-medium tracking-tight text-moss sm:text-base">
@@ -110,7 +105,9 @@ export function CustomizationCardsSection() {
               <p className="mt-4 text-sm leading-relaxed tracking-tight text-muted">
                 Hey Maya,
                 <span className="text-accent">
-                  {" thanks again for turning this around so quickly - really appreciate it."}
+                  {
+                    " thanks again for turning this around so quickly - really appreciate it."
+                  }
                 </span>
               </p>
               <p className="mt-4 text-sm tracking-tight text-subtle">

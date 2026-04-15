@@ -6,9 +6,10 @@ import { FaqSection } from "./components/faq-section";
 import { FinalFooterSection } from "./components/final-footer-section";
 import { Header } from "./components/header";
 import { Hero } from "./components/hero";
+import { PricingSection } from "./components/pricing-section";
 import { SectionShell } from "./components/section-shell";
 import { SloganCtaSection } from "./components/slogan-cta-section";
-import { TestimonialsSection } from "./components/testimonials-section";
+import { StructuredData } from "./components/structured-data";
 import { FloatingButton } from "./components/floating-button";
 
 function SectionDivider() {
@@ -25,6 +26,7 @@ export default function Home() {
       id="top"
       className="relative px-3 pb-14 pt-5 sm:px-4 sm:pb-16 sm:pt-8 lg:px-6 lg:pb-20 lg:pt-10"
     >
+      <StructuredData />
       <FloatingButton />
       <div className="mx-auto flex w-full max-w-[1360px] flex-col gap-16 sm:gap-20 lg:gap-24">
         <SectionShell>
@@ -32,12 +34,12 @@ export default function Home() {
           <Hero />
         </SectionShell>
 
-        <section className="px-6 sm:px-8 lg:px-10">
-          <AppsCarouselSection />
-        </section>
-
         <section id="demo" className="tabby-anchor px-6 sm:px-8 lg:px-10">
           <DemoVideoSection />
+        </section>
+
+        <section className="px-6 sm:px-8 lg:px-10">
+          <AppsCarouselSection />
         </section>
 
         <SectionDivider />
@@ -55,12 +57,12 @@ export default function Home() {
 
         <SectionDivider />
 
-        <section className="px-6 sm:px-8 lg:px-10">
-          <TestimonialsSection />
-        </section>
-
         <section id="faq" className="tabby-anchor px-6 sm:px-8 lg:px-10">
           <FaqSection />
+        </section>
+
+        <section id="pricing" className="tabby-anchor px-6 sm:px-8 lg:px-10">
+          <PricingSection />
         </section>
 
         <SectionDivider />

@@ -15,8 +15,8 @@ export default function TermsPage() {
       updatedAt="APR 12, 2026"
     >
       <p>
-        You may use tabby for lawful workflows and are responsible for
-        reviewing generated content before sharing it.
+        You may use tabby for lawful workflows and are responsible for reviewing
+        generated content before sharing it.
       </p>
 
       <p>

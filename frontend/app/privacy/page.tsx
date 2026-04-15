@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LegalPageShell } from "../components/legal-page-shell";
+import { SUPPORT_EMAIL } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy - tabby",
@@ -21,8 +22,11 @@ export default function PrivacyPage() {
 
       <p>
         For privacy or deletion requests, email
-        <a className="tabby-link ml-1 font-semibold" href="mailto:support@tabby.app">
-          support@tabby.app
+        <a
+          className="tabby-link ml-1 font-semibold"
+          href={`mailto:${SUPPORT_EMAIL}`}
+        >
+          {SUPPORT_EMAIL}
         </a>
         .
       </p>

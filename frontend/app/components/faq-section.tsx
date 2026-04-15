@@ -1,4 +1,4 @@
-const FAQ_ITEMS = [
+export const FAQ_ITEMS = [
   {
     question: "What is tabby?",
     answer:

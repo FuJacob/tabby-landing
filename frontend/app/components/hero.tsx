@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AppleIcon, GithubIcon } from "./icons";
-
-const secondaryActionClass =
-  "tabby-button tabby-button-secondary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
+import { DOWNLOAD_URL } from "../lib/site";
+import { AppleIcon } from "./icons";
 
 const primaryActionClass =
   "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
@@ -28,25 +26,22 @@ export function Hero() {
       <section className="grid gap-10 xl:grid-cols-[1.05fr_0.95fr] xl:items-end">
         <div className="max-w-2xl space-y-7">
           <p className="text-sm font-medium tracking-tight text-moss sm:text-base">
-            native ai autocomplete for mac
+            native AI autocomplete for Mac
           </p>
 
           <div className="space-y-6">
             <h1 className="tabby-display max-w-2xl text-[3.2rem] leading-[0.94] tracking-tight text-ink sm:text-[4.4rem] lg:text-[5.4rem]">
-              AI suggestions, <br /> on any app.
+              stop rewriting <br /> the same email.
             </h1>
             <p className="max-w-xl text-lg leading-relaxed tracking-tight text-muted sm:text-xl">
-              A native Mac autocomplete that writes with you in any app. Faster
-              emails, notes, messages, and docs without breaking your flow.
+              tabby is a native macOS AI autocomplete that writes with you in
+              any app. Quiet inline suggestions in Mail, Notes, Slack, and Docs.
+              Press Tab to accept.
             </p>
           </div>
 
           <div className="flex flex-wrap gap-3 sm:gap-4">
-            <Link href="#" className={secondaryActionClass}>
-              <GithubIcon className="h-6 w-6" />
-              GitHub
-            </Link>
-            <Link href="#" className={primaryActionClass}>
+            <Link href={DOWNLOAD_URL} className={primaryActionClass}>
               <AppleIcon className="h-6 w-6" />
               Download for Mac
             </Link>
