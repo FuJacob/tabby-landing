@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { DOWNLOAD_URL } from "../lib/site";
-import { AppleIcon } from "./icons";
+import { DOWNLOAD_URL, GITHUB_URL } from "../lib/site";
+import { AppleIcon, GithubIcon } from "./icons";
+
+const secondaryActionClass =
+  "tabby-button tabby-button-secondary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
 
 const primaryActionClass =
   "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
@@ -26,7 +29,7 @@ export function Hero() {
       <section className="grid gap-10 xl:grid-cols-[1.05fr_0.95fr] xl:items-end">
         <div className="max-w-2xl space-y-7">
           <p className="text-sm font-medium tracking-tight text-moss sm:text-base">
-            native AI autocomplete for Mac
+            free, open-source AI autocomplete for Mac
           </p>
 
           <div className="space-y-6">
@@ -41,6 +44,10 @@ export function Hero() {
           </div>
 
           <div className="flex flex-wrap gap-3 sm:gap-4">
+            <Link href={GITHUB_URL} className={secondaryActionClass}>
+              <GithubIcon className="h-6 w-6" />
+              GitHub
+            </Link>
             <Link href={DOWNLOAD_URL} className={primaryActionClass}>
               <AppleIcon className="h-6 w-6" />
               Download for Mac

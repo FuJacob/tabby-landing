@@ -3,15 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { MouseEvent } from "react";
-import { DOWNLOAD_URL } from "../lib/site";
-import { AppleIcon } from "./icons";
+import { DOWNLOAD_URL, GITHUB_URL } from "../lib/site";
+import { AppleIcon, GithubIcon } from "./icons";
 
 const textLinks = [
   { href: "#demo", label: "demo" },
   { href: "#how-it-works", label: "how it works" },
-  { href: "#pricing", label: "pricing" },
   { href: "#faq", label: "faq" },
 ] as const;
+
+const secondaryActionClass =
+  "tabby-button tabby-button-secondary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-5 text-sm font-semibold tracking-tight sm:h-14 sm:px-6 sm:text-base";
 
 const primaryActionClass =
   "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-5 text-sm font-semibold tracking-tight sm:h-14 sm:px-6 sm:text-base";
@@ -81,6 +83,10 @@ export function Header() {
         </div>
 
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
+          <Link href={GITHUB_URL} className={secondaryActionClass}>
+            <GithubIcon className="h-5 w-5" />
+            GitHub
+          </Link>
           <Link href={DOWNLOAD_URL} className={primaryActionClass}>
             <AppleIcon className="h-5 w-5" />
             Download for Mac

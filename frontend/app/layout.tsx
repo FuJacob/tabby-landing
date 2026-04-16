@@ -15,9 +15,9 @@ const displayFont = Sour_Gummy({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const title = "tabby — native AI autocomplete for Mac";
+const title = "tabby — free, open-source AI autocomplete for Mac";
 const description =
-  "tabby is a native macOS AI autocomplete that writes with you in any app. Press Tab to accept quiet inline suggestions in Mail, Notes, Slack, Docs, and more.";
+  "tabby is a free, open-source macOS AI autocomplete that writes with you in any app. Press Tab to accept quiet inline suggestions in Mail, Notes, Slack, Docs, and more.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -32,6 +32,8 @@ export const metadata: Metadata = {
     "inline AI writing",
     "AI email writing Mac",
     "AI notes Mac",
+    "open source AI writing tool",
+    "free AI autocomplete",
   ],
   authors: [{ name: CREATOR.name, url: CREATOR.linkedin }],
   creator: CREATOR.name,

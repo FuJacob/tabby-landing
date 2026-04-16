@@ -1,8 +1,8 @@
-// Single source of truth for site-wide constants. Update SITE_URL and
-// DOWNLOAD_URL once the production domain and Mac build are available.
+// Single source of truth for site-wide constants.
 
 export const SITE_URL = "https://tabby.app"; // TODO: replace with real domain
-export const DOWNLOAD_URL = "#"; // TODO: replace with real .dmg or App Store URL
+export const GITHUB_URL = "https://github.com/fujacob/tabby";
+export const DOWNLOAD_URL = "https://github.com/fujacob/tabby/releases";
 
 export const SUPPORT_EMAIL = "hi@jacobfu.com";
 

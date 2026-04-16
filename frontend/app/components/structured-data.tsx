@@ -1,4 +1,4 @@
-import { CREATOR, DOWNLOAD_URL, SITE_URL } from "../lib/site";
+import { CREATOR, DOWNLOAD_URL, GITHUB_URL, SITE_URL } from "../lib/site";
 import { FAQ_ITEMS } from "./faq-section";
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {
@@ -21,12 +21,13 @@ export function StructuredData() {
     url: SITE_URL,
     downloadUrl: DOWNLOAD_URL,
     description:
-      "Native macOS AI autocomplete. Press Tab to accept quiet inline suggestions in Mail, Notes, Slack, Docs, and more.",
+      "Free, open-source macOS AI autocomplete. Press Tab to accept quiet inline suggestions in Mail, Notes, Slack, Docs, and more.",
+    isAccessibleForFree: true,
+    installUrl: GITHUB_URL,
     offers: {
       "@type": "Offer",
-      price: "10",
+      price: "0",
       priceCurrency: "USD",
-      category: "LifetimeLicense",
       availability: "https://schema.org/InStock",
     },
     author: {

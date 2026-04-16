@@ -6,7 +6,6 @@ import { FaqSection } from "./components/faq-section";
 import { FinalFooterSection } from "./components/final-footer-section";
 import { Header } from "./components/header";
 import { Hero } from "./components/hero";
-import { PricingSection } from "./components/pricing-section";
 import { SectionShell } from "./components/section-shell";
 import { SloganCtaSection } from "./components/slogan-cta-section";
 import { StructuredData } from "./components/structured-data";
@@ -59,10 +58,6 @@ export default function Home() {
 
         <section id="faq" className="tabby-anchor px-6 sm:px-8 lg:px-10">
           <FaqSection />
-        </section>
-
-        <section id="pricing" className="tabby-anchor px-6 sm:px-8 lg:px-10">
-          <PricingSection />
         </section>
 
         <SectionDivider />

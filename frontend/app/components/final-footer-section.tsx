@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CREATOR, DOWNLOAD_URL } from "../lib/site";
-import { AppleIcon, LinkedInIcon, XIcon } from "./icons";
+import { CREATOR, DOWNLOAD_URL, GITHUB_URL } from "../lib/site";
+import { AppleIcon, GithubIcon, LinkedInIcon, XIcon } from "./icons";
 
 const footerPrimaryActionClass =
   "tabby-button tabby-button-primary inline-flex h-12 w-full items-center justify-center gap-2 rounded-[1rem] px-6 text-[1rem] font-semibold leading-none tracking-tight sm:h-14 sm:text-[1.2rem]";
+
+const footerSecondaryActionClass =
+  "tabby-button tabby-button-secondary inline-flex h-14 w-full items-center justify-center gap-2 rounded-[1rem] px-6 text-[1rem] font-semibold leading-none tracking-tight sm:text-[1.2rem]";
 
 const FOOTER_LINKS = [
   { label: "Privacy", href: "/privacy" },
@@ -31,10 +34,14 @@ export function FinalFooterSection() {
           </p>
         </div>
 
-        <div className="w-full max-w-[340px]">
+        <div className="w-full max-w-[340px] space-y-3">
           <Link href={DOWNLOAD_URL} className={footerPrimaryActionClass}>
             <AppleIcon className="h-5 w-5" />
             Download for Mac
+          </Link>
+          <Link href={GITHUB_URL} className={footerSecondaryActionClass}>
+            <GithubIcon className="h-5 w-5" />
+            GitHub
           </Link>
         </div>
       </div>
