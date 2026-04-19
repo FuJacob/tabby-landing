@@ -91,11 +91,11 @@ export function FloatingNavbar() {
               className="flex min-w-0 items-center gap-3"
             >
               <Image
-                src="/white-logo.png"
+                src="/512.png"
                 alt="tabby paw logo"
                 width={48}
                 height={48}
-                className="h-11 w-11 rounded-[0.95rem] border-2 border-line bg-surface-2 shadow-[0_3px_0_var(--line)] invert contrast-125 mix-blend-multiply"
+                className="h-11 w-11 rounded-[0.95rem] border-2 border-line bg-surface-2 shadow-[0_3px_0_var(--line)]"
               />
               <span className="hidden min-w-0 flex-col justify-center sm:flex">
                 <span className="tabby-display text-[2rem] leading-[0.88] tracking-tight text-ink">

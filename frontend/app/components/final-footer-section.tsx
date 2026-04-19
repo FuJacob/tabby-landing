@@ -54,11 +54,11 @@ export function FinalFooterSection() {
           <div className="flex items-center gap-3">
             <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)]">
               <Image
-                src="/white-logo.png"
+                src="/512.png"
                 alt="tabby paw logo"
                 width={28}
                 height={28}
-                className="h-7 w-7 rounded-[0.45rem] invert contrast-125 mix-blend-multiply"
+                className="h-7 w-7 rounded-[0.45rem]"
               />
             </div>
             <div className="flex h-12 flex-col justify-center">

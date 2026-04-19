@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { CREATOR, SITE_URL } from "./lib/site";
 
@@ -69,6 +70,7 @@ export default function RootLayout({
     <html lang="en" className={`${bodyFont.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background text-ink">
         {children}
+        <Analytics />
       </body>
     </html>
   );

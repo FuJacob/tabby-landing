@@ -321,6 +321,7 @@ export function ScrollProgressBar({ className }: ScrollProgressBarProps) {
 }
 
 type TypewriterProps = {
+  active?: boolean;
   prefix: string;
   suggestion: string;
   loopDelay?: number;
@@ -330,6 +331,7 @@ type TypewriterProps = {
 };
 
 export function Typewriter({
+  active = true,
   prefix,
   suggestion,
   loopDelay = 3000,
@@ -356,6 +358,7 @@ export function Typewriter({
   }, []);
 
   useEffect(() => {
+    if (!active) return;
     if (!isInView) return;
     let timeout: ReturnType<typeof setTimeout>;
 
@@ -378,11 +381,22 @@ export function Typewriter({
     }
 
     return () => clearTimeout(timeout);
-  }, [phase, typed, prefix, loopDelay, isInView]);
+  }, [active, phase, typed, prefix, loopDelay, isInView]);
 
-  const displayedPrefix = phase === "typing" ? typed : prefix;
-  const showSuggestion = phase === "suggesting";
-  const showAccepted = phase === "accepted";
+  useEffect(() => {
+    if (!active) return;
+    const frame = requestAnimationFrame(() => {
+      setTyped("");
+      setPhase("typing");
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [active, prefix, suggestion]);
+
+  const displayedPrefix =
+    active && phase === "typing" ? typed : active ? prefix : "";
+  const showSuggestion = active && phase === "suggesting";
+  const showAccepted = active && phase === "accepted";
 
   return (
     <span ref={containerRef} className={className}>
@@ -408,9 +422,9 @@ export function Typewriter({
           {suggestion}
         </motion.span>
       )}
-      {phase === "typing" && (
+      {active && phase === "typing" && (
         <motion.span
-          className="inline-block w-[2px] h-[1em] align-middle bg-ink ml-[1px]"
+          className="ml-[1px] inline-block h-[1em] w-[2px] align-middle bg-ink"
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 0.9, repeat: Infinity }}
         />

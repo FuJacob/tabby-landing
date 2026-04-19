@@ -118,14 +118,55 @@ a {
 }
 
 .tabby-button {
+  position: relative;
+  overflow: hidden;
   border: 2px solid var(--line);
   box-shadow: 0 4px 0 var(--line);
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
   will-change: transform;
 }
 
-.tabby-button:hover {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 var(--line);
+.tabby-button > * {
+  position: relative;
+  z-index: 1;
+}
+
+.tabby-button::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background: linear-gradient(
+    120deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 62%
+  );
+  opacity: 0.55;
+  transform: translate3d(-160%, 0, 0) rotate(9deg);
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+@media (hover: hover) {
+  .tabby-button:hover {
+    transform: translate3d(0, 2px, 0) scale(0.985);
+    box-shadow: 0 2px 0 var(--line);
+  }
+
+  .tabby-button:hover::after {
+    transform: translate3d(140%, 0, 0) rotate(9deg);
+  }
+}
+
+.tabby-button:active {
+  transform: translate3d(0, 3px, 0) scale(0.98);
+  box-shadow: 0 1px 0 var(--line);
 }
 
 .tabby-button:focus-visible {
@@ -161,6 +202,10 @@ a {
 
 .tabby-anchor {
   scroll-margin-top: 1.5rem;
+}
+
+.tabby-intro-overlay {
+  will-change: opacity;
 }
 
 @keyframes tabby-marquee-scroll {
@@ -254,7 +299,15 @@ a {
     transform: none;
   }
 
+  .tabby-button::after {
+    display: none;
+  }
+
   .tabby-float-cta-enter {
     animation: none;
+  }
+
+  .tabby-intro-overlay {
+    display: none;
   }
 }
