@@ -24,11 +24,6 @@ const fadeUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE } },
 };
 
-const staggerParent: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-};
-
 type FadeInProps = HTMLMotionProps<"div"> & {
   children: ReactNode;
   delay?: number;
@@ -423,4 +418,3 @@ export function Typewriter({
     </span>
   );
 }
-

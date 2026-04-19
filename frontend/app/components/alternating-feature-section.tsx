@@ -152,7 +152,7 @@ export function AlternatingFeatureSection() {
       />
       <FadeIn delay={0.1}>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-          A few examples of Tabby quietly finishing thoughts in the apps you
+          A few examples of tabby quietly finishing thoughts in the apps you
           already use — the typing below is live.
         </p>
       </FadeIn>

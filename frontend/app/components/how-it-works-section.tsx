@@ -122,7 +122,7 @@ export function HowItWorksSection() {
             <Step
               number="01"
               title="Install once"
-              description="Download the .dmg and drag Tabby into Applications. It registers with macOS and starts your local model."
+              description="Download the .dmg and drag tabby into Applications. It registers with macOS and starts your local model."
               visual={<InstallVisual />}
             />
           </ScaleIn>
@@ -132,7 +132,7 @@ export function HowItWorksSection() {
             <Step
               number="02"
               title="Type anywhere"
-              description="Tabby watches your cursor. When you pause mid-sentence, it suggests the next thought inline as ghost text."
+              description="tabby watches your cursor. When you pause mid-sentence, it suggests the next thought inline as ghost text."
               visual={<TypeAnywhereVisual />}
             />
           </ScaleIn>
@@ -142,7 +142,7 @@ export function HowItWorksSection() {
             <Step
               number="03"
               title="Press Tab"
-              description="The suggestion snaps in. Keep typing to adjust it, or press Escape and Tabby steps out of the way."
+              description="The suggestion snaps in. Keep typing to adjust it, or press Escape and tabby steps out of the way."
               visual={<TabVisual />}
             />
           </ScaleIn>

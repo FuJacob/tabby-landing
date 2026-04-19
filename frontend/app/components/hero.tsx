@@ -105,7 +105,7 @@ export function Hero() {
             </HeroReveal>
             <HeroReveal delay={0.3}>
               <p className="max-w-xl text-lg leading-relaxed tracking-tight text-muted sm:text-xl">
-                Tabby is a native macOS AI autocomplete that writes with you in
+                tabby is a native macOS AI autocomplete that writes with you in
                 any app. Quiet inline suggestions in Mail, Notes, Slack, and
                 Docs. Press Tab to accept — nothing leaves your Mac.
               </p>
@@ -149,10 +149,10 @@ export function Hero() {
                   <div className="flex h-8 w-8 items-center justify-center rounded-[0.6rem] border-2 border-line bg-surface-2">
                     <Image
                       src="/white-logo.png"
-                      alt="Tabby logo"
+                      alt="tabby logo"
                       width={18}
                       height={18}
-                      className="h-[18px] w-[18px]"
+                      className="h-[18px] w-[18px] rounded-[0.25rem]"
                     />
                   </div>
                 </div>
@@ -172,8 +172,10 @@ export function Hero() {
                 </p>
                 <p className="text-sm leading-relaxed tracking-tight text-subtle sm:text-base">
                   If you are happy with that pass, I can send the final version
-                  before 4 PM<span className="text-accent">
-                    {" "}so design can ship it today.
+                  before 4 PM
+                  <span className="text-accent">
+                    {" "}
+                    so design can ship it today.
                   </span>
                 </p>
               </div>

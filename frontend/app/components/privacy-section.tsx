@@ -38,7 +38,7 @@ function Pillar({ label, description }: PillarProps) {
 
 function DataFlowVisual() {
   return (
-    <div className="relative flex items-center justify-center rounded-[1.5rem] border-2 border-line bg-surface-3 p-8 shadow-[0_5px_0_var(--line)]">
+    <div className="relative flex min-h-[34rem] items-center justify-center overflow-hidden rounded-[1.7rem] border-2 border-line bg-surface-3 px-6 py-8 shadow-[0_5px_0_var(--line)] sm:px-8 sm:py-10">
       <div
         aria-hidden="true"
         className="absolute inset-0 rounded-[1.5rem] opacity-[0.05]"
@@ -49,7 +49,7 @@ function DataFlowVisual() {
         }}
       />
 
-      <div className="relative flex w-full max-w-[360px] flex-col items-center gap-6">
+      <div className="relative flex w-full max-w-[28rem] flex-col items-center justify-between gap-7">
         <div className="tabby-chip flex items-center gap-3 rounded-[1rem] px-4 py-3">
           <span className="h-2 w-2 rounded-full bg-accent" />
           <span className="text-sm font-medium tracking-tight text-ink">
@@ -73,27 +73,27 @@ function DataFlowVisual() {
           <path d="m6 20 6 6 6-6" />
         </svg>
 
-        <div className="relative flex items-center justify-center rounded-[1.3rem] border-2 border-line bg-background px-8 py-6 shadow-[0_4px_0_var(--line)]">
+        <div className="relative flex h-[10.5rem] w-[10.5rem] items-center justify-center rounded-[1.5rem] border-2 border-line bg-ink shadow-[0_4px_0_var(--line)]">
           <Image
             src="/white-logo.png"
-            alt="Tabby logo"
-            width={52}
-            height={52}
-            className="h-13 w-13"
+            alt="tabby logo"
+            width={76}
+            height={76}
+            className="h-[4.75rem] w-[4.75rem]"
           />
-          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border-2 border-line bg-moss/20 px-3 py-1 text-[0.7rem] font-semibold tracking-[0.1em] text-ink uppercase shadow-[0_2px_0_var(--line)]">
+          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border-2 border-line bg-moss/30 px-3 py-1 text-[0.7rem] font-semibold tracking-[0.1em] text-ink uppercase shadow-[0_2px_0_var(--line)]">
             on your Mac
           </div>
         </div>
 
-        <div className="mt-4 flex w-full items-center justify-between">
-          <div className="flex items-center gap-2 rounded-full border-2 border-dashed border-line-soft bg-background px-3 py-1.5 text-xs tracking-tight text-subtle line-through decoration-accent decoration-2">
+        <div className="mt-2 flex w-full flex-wrap items-center justify-center gap-3 sm:flex-nowrap sm:justify-between">
+          <div className="flex min-w-[6.75rem] items-center justify-center gap-2 rounded-full border-2 border-dashed border-line-soft bg-background px-3 py-1.5 text-xs tracking-tight text-subtle line-through decoration-accent decoration-2">
             cloud
           </div>
-          <div className="flex items-center gap-2 rounded-full border-2 border-dashed border-line-soft bg-background px-3 py-1.5 text-xs tracking-tight text-subtle line-through decoration-accent decoration-2">
+          <div className="flex min-w-[7.5rem] items-center justify-center gap-2 rounded-full border-2 border-dashed border-line-soft bg-background px-3 py-1.5 text-xs tracking-tight text-subtle line-through decoration-accent decoration-2">
             telemetry
           </div>
-          <div className="flex items-center gap-2 rounded-full border-2 border-dashed border-line-soft bg-background px-3 py-1.5 text-xs tracking-tight text-subtle line-through decoration-accent decoration-2">
+          <div className="flex min-w-[7rem] items-center justify-center gap-2 rounded-full border-2 border-dashed border-line-soft bg-background px-3 py-1.5 text-xs tracking-tight text-subtle line-through decoration-accent decoration-2">
             accounts
           </div>
         </div>
@@ -122,7 +122,7 @@ export function PrivacySection() {
 
           <FadeIn delay={0.2}>
             <p className="max-w-xl text-base leading-relaxed tracking-tight text-muted sm:text-lg">
-              Tabby runs a compact language model on Apple&apos;s Neural Engine.
+              tabby runs a compact language model on Apple&apos;s Neural Engine.
               Every keystroke, every suggestion, every token stays inside your
               laptop. No sign-up, no subscription, no background uploads.
             </p>

@@ -99,7 +99,7 @@ export function TestimonialsSection() {
             loved by writers, engineers, and PMs
           </span>
           <h2 className="tabby-display text-[2.7rem] leading-[1.02] tracking-tight text-ink sm:text-[4rem]">
-            people using Tabby, daily
+            people using tabby, daily
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed tracking-tight text-muted sm:text-base">
             A handful of notes from real users writing across email, notes,
@@ -110,15 +110,18 @@ export function TestimonialsSection() {
 
       <Stagger
         stagger={0.1}
-        className="mt-12 grid gap-4 sm:gap-5 md:grid-cols-12 md:auto-rows-[minmax(160px,auto)]"
+        className="mt-12 grid gap-4 sm:gap-5 md:grid-cols-12 md:auto-rows-[minmax(176px,auto)] xl:auto-rows-[minmax(188px,auto)]"
       >
         <StaggerItem className="md:col-span-7 md:row-span-2">
           <ScaleIn>
             <ReviewCard
               accent="featured"
               showBig
-              quoteClassName="text-[1.35rem] sm:text-[1.75rem] lg:text-[2rem] leading-[1.25]"
-              quote="I used to rewrite follow-up emails three times before sending. Now the first suggestion is usually close enough that I tweak a line and hit send. It still sounds like me, just faster."
+              className="min-h-[19rem] lg:min-h-[25rem]"
+              quoteClassName="text-[1.2rem] leading-[1.22] sm:text-[1.55rem] lg:text-[1.82rem]"
+              quote="I used to rewrite follow-up emails three times before sending. Now the first suggestion is usually close enough that I tweak a line and hit send. It still sounds like me, just faster.
+
+. I used to rewrite follow-up emails three times before sending. Now the first suggestion is usually close enough that I tweak a line and hit send. It still sounds like me, just faster."
               name="Maya Chen"
               role="Product Marketing · Stripe"
             />
@@ -128,6 +131,7 @@ export function TestimonialsSection() {
         <StaggerItem className="md:col-span-5">
           <ScaleIn delay={0.08}>
             <ReviewCard
+              className="min-h-[13.5rem] lg:min-h-[15.25rem]"
               quote="The inline ghost text is quiet, which I like. It helps me stay in flow instead of switching to a separate writing tool."
               name="Darren Park"
               role="Engineering Manager"
@@ -139,6 +143,7 @@ export function TestimonialsSection() {
           <ScaleIn delay={0.16}>
             <ReviewCard
               accent="muted"
+              className="min-h-[13.5rem] lg:min-h-[15.25rem]"
               quote="For meeting notes, it picks up where I was going and keeps the tone natural. I spend less time cleaning up rough drafts after calls."
               name="Sofia Malik"
               role="Customer Success"
@@ -146,9 +151,10 @@ export function TestimonialsSection() {
           </ScaleIn>
         </StaggerItem>
 
-        <StaggerItem className="md:col-span-4">
+        <StaggerItem className="md:col-span-5">
           <ScaleIn delay={0.18}>
             <ReviewCard
+              className="min-h-[13.25rem] lg:min-h-[15rem]"
               quote="The local-only story sold me. I can use it on customer email without a privacy review."
               name="Priya Nair"
               role="Security Engineer"
@@ -156,11 +162,12 @@ export function TestimonialsSection() {
           </ScaleIn>
         </StaggerItem>
 
-        <StaggerItem className="md:col-span-8">
+        <StaggerItem className="md:col-span-7">
           <ScaleIn delay={0.22}>
             <ReviewCard
               accent="featured"
-              quoteClassName="sm:text-[1.2rem] lg:text-[1.28rem]"
+              className="min-h-[13.25rem] lg:min-h-[15rem]"
+              quoteClassName="sm:text-[1.15rem] lg:text-[1.22rem]"
               quote="We are shipping updates faster because release summaries and internal docs start with a strong draft instead of a blank page — and nothing leaves the machine."
               name="Noah Rivera"
               role="Product Lead · Loom"

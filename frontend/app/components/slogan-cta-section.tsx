@@ -46,14 +46,14 @@ export function SloganCtaSection() {
 
         <WordReveal
           as="h2"
-          text="ready to try Tabby?"
+          text="ready to try tabby?"
           className="tabby-display max-w-3xl text-[2.8rem] leading-[1] tracking-tight text-ink sm:text-[4.8rem]"
         />
 
         <FadeIn delay={0.15}>
           <p className="max-w-xl text-base leading-relaxed tracking-tight text-muted sm:text-lg">
-            It is built to feel like a small cozy helper that lives on your
-            Mac, not another dashboard asking for attention.
+            It is built to feel like a small cozy helper that lives on your Mac,
+            not another dashboard asking for attention.
           </p>
         </FadeIn>
 

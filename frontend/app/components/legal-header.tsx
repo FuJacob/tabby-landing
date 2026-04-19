@@ -16,17 +16,22 @@ type LegalHeaderProps = {
 export function LegalHeader({ current }: LegalHeaderProps) {
   return (
     <header className="border-b-2 border-line pb-5 sm:pb-6">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <Link href="/" className="flex items-center gap-1">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src="/white-logo.png"
             alt="tabby paw logo"
             width={56}
             height={56}
-            className="h-14 w-14"
+            className="h-14 w-14 rounded-[1rem] border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)]"
           />
-          <span className="tabby-display text-[2.4rem] leading-none tracking-tight text-ink sm:text-[2.8rem]">
-            Tabby
+          <span className="flex h-14 flex-col justify-center">
+            <span className="tabby-display text-[2.4rem] leading-[0.88] tracking-tight text-ink sm:text-[2.8rem]">
+              tabby
+            </span>
+            <span className="mt-1 text-xs font-medium leading-none tracking-tight text-subtle sm:text-sm">
+              legal and release docs
+            </span>
           </span>
         </Link>
 

@@ -148,7 +148,7 @@ export function CustomizationCardsSection() {
       </FadeIn>
       <WordReveal
         as="h2"
-        text="make Tabby feel like yours"
+        text="make tabby feel like yours"
         className="tabby-display mt-4 text-center text-[2.9rem] leading-[1.02] tracking-tight text-ink sm:text-[4.1rem]"
       />
       <FadeIn delay={0.1}>
@@ -176,7 +176,7 @@ export function CustomizationCardsSection() {
             <CustomItem
               eyebrow="length"
               title="short or long"
-              description="Keep completions short and invisible, or let Tabby expand into fuller suggestions when you need momentum."
+              description="Keep completions short and invisible, or let tabby expand into fuller suggestions when you need momentum."
               preview={<LengthPreview />}
             />
           </ScaleIn>

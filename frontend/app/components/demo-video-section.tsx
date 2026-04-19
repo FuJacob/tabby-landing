@@ -14,7 +14,7 @@ export function DemoVideoSection() {
 
       <WordReveal
         as="h2"
-        text="watch Tabby in action"
+        text="watch tabby in action"
         className="tabby-display mt-4 text-center text-[2.8rem] leading-[1.02] tracking-tight text-ink sm:text-[4rem]"
       />
       <FadeIn delay={0.1}>

@@ -4,6 +4,7 @@ import { CustomizationCardsSection } from "./components/customization-cards-sect
 import { DemoVideoSection } from "./components/demo-video-section";
 import { FaqSection } from "./components/faq-section";
 import { FinalFooterSection } from "./components/final-footer-section";
+import { FloatingNavbar } from "./components/floating-navbar";
 import { Header } from "./components/header";
 import { Hero } from "./components/hero";
 import { HowItWorksSection } from "./components/how-it-works-section";
@@ -47,6 +48,7 @@ export default function Home() {
       />
       <StructuredData />
       <ScrollProgressBar />
+      <FloatingNavbar />
       <FloatingButton />
       <div className="relative z-10 mx-auto flex w-full max-w-[1360px] flex-col gap-16 sm:gap-20 lg:gap-24">
         <SectionShell>

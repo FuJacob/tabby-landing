@@ -49,48 +49,55 @@ export function FinalFooterSection() {
         </div>
       </FadeIn>
 
-      <div className="mt-10 flex flex-col gap-4 border-t-2 border-line-soft pt-6 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-[1rem] border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)]">
-            <Image
-              src="/white-logo.png"
-              alt="tabby paw logo"
-              width={22}
-              height={22}
-              className="h-[1.375rem] w-[1.375rem]"
-            />
+      <div className="mt-10 flex flex-col gap-6 border-t-2 border-line-soft pt-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
+          <div className="flex items-center gap-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)]">
+              <Image
+                src="/white-logo.png"
+                alt="tabby paw logo"
+                width={28}
+                height={28}
+                className="h-7 w-7 rounded-[0.45rem]"
+              />
+            </div>
+            <div className="flex h-12 flex-col justify-center">
+              <span className="tabby-display text-[2rem] leading-[0.88] tracking-tight text-ink sm:text-[2.4rem]">
+                tabby
+              </span>
+              <span className="mt-1 text-xs font-medium leading-none tracking-tight text-subtle sm:text-sm">
+                native macOS autocomplete
+              </span>
+            </div>
           </div>
-          <span className="tabby-display text-[2rem] leading-none tracking-tight text-ink sm:text-[2.4rem]">
-            Tabby
-          </span>
-        </div>
 
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-          <span className="text-sm tracking-tight text-subtle sm:text-base">
-            made by{" "}
-            <Link
-              href={CREATOR.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="tabby-link font-semibold"
-            >
-              {CREATOR.name}
-            </Link>
-          </span>
-
-          <div className="flex items-center gap-2">
-            {SOCIALS.map(({ label, href, Icon }) => (
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <span className="text-sm tracking-tight text-subtle sm:text-base">
+              made by{" "}
               <Link
-                key={label}
-                href={href}
-                aria-label={label}
+                href={CREATOR.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-[0.75rem] border-2 border-line bg-surface-2 text-ink transition-colors hover:bg-surface-3"
+                className="tabby-link font-semibold"
               >
-                <Icon className="h-4 w-4" />
+                {CREATOR.name}
               </Link>
-            ))}
+            </span>
+
+            <div className="flex items-center gap-2">
+              {SOCIALS.map(({ label, href, Icon }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-10 items-center justify-center rounded-[0.95rem] border-2 border-line bg-surface-2 text-ink shadow-[0_3px_0_var(--line)] transition-colors hover:bg-surface-3"
+                >
+                  <Icon className="h-4.5 w-4.5" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 

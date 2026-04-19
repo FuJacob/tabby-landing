@@ -2,14 +2,14 @@ import { FadeIn, Stagger, StaggerItem, WordReveal } from "./motion";
 
 export const FAQ_ITEMS = [
   {
-    question: "What is Tabby?",
+    question: "What is tabby?",
     answer:
-      "Tabby is an AI writing assistant that helps you draft emails, notes, and docs faster with suggestions that match your tone — and runs entirely on your Mac.",
+      "tabby is an AI writing assistant that helps you draft emails, notes, and docs faster with suggestions that match your tone — and runs entirely on your Mac.",
   },
   {
-    question: "Which apps does Tabby support?",
+    question: "Which apps does tabby support?",
     answer:
-      "Tabby is designed to work across common writing surfaces, including email, docs, chat, and note-taking apps on macOS.",
+      "tabby is designed to work across common writing surfaces, including email, docs, chat, and note-taking apps on macOS.",
   },
   {
     question: "Can I customize the writing style?",
@@ -22,9 +22,9 @@ export const FAQ_ITEMS = [
       "Yes. You can set short, medium, or long response goals so suggestions fit the length you want.",
   },
   {
-    question: "Does Tabby support multiple models?",
+    question: "Does tabby support multiple models?",
     answer:
-      "Yes. Tabby can be configured with different local model options so you can pick one that fits your quality and speed preferences.",
+      "Yes. tabby can be configured with different local model options so you can pick one that fits your quality and speed preferences.",
   },
   {
     question: "How fast are suggestions generated?",
@@ -39,10 +39,10 @@ export const FAQ_ITEMS = [
   {
     question: "Is my data private?",
     answer:
-      "Yes. Nothing leaves your Mac. No accounts, no cloud, no telemetry. Tabby is open source so you can verify it yourself.",
+      "Yes. Nothing leaves your Mac. No accounts, no cloud, no telemetry. tabby is open source so you can verify it yourself.",
   },
   {
-    question: "Can teams use Tabby together?",
+    question: "Can teams use tabby together?",
     answer:
       "Yes. Teams can align on tone and workflows so everyone writes with a more consistent voice — each install remains local.",
   },
