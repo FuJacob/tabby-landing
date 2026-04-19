@@ -58,7 +58,7 @@ export function Header() {
               alt="tabby paw logo"
               width={64}
               height={64}
-              className="h-14 w-14 rounded-[1rem] border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)] sm:h-16 sm:w-16"
+              className="h-14 w-14 rounded-[1rem] border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)] invert contrast-125 mix-blend-multiply sm:h-16 sm:w-16"
             />
             <span className="flex h-14 flex-col justify-center sm:h-16">
               <span className="tabby-display text-[2.5rem] leading-[0.88] tracking-tight text-ink sm:text-[3rem]">

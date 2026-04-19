@@ -58,7 +58,7 @@ export function FinalFooterSection() {
                 alt="tabby paw logo"
                 width={28}
                 height={28}
-                className="h-7 w-7 rounded-[0.45rem]"
+                className="h-7 w-7 rounded-[0.45rem] invert contrast-125 mix-blend-multiply"
               />
             </div>
             <div className="flex h-12 flex-col justify-center">
@@ -71,47 +71,36 @@ export function FinalFooterSection() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-            <span className="text-sm tracking-tight text-subtle sm:text-base">
-              made by{" "}
-              <Link
-                href={CREATOR.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="tabby-link font-semibold"
-              >
-                {CREATOR.name}
-              </Link>
-            </span>
-
-            <div className="flex items-center gap-2">
-              {SOCIALS.map(({ label, href, Icon }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-[0.95rem] border-2 border-line bg-surface-2 text-ink shadow-[0_3px_0_var(--line)] transition-colors hover:bg-surface-3"
-                >
-                  <Icon className="h-4.5 w-4.5" />
-                </Link>
-              ))}
-            </div>
-          </div>
         </div>
 
-        <nav className="flex flex-wrap gap-x-6 gap-y-2">
-          {FOOTER_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="tabby-link text-[1rem] font-medium leading-none tracking-tight sm:text-[1.1rem]"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between lg:gap-6">
+          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {FOOTER_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="tabby-link text-[1rem] font-medium leading-none tracking-tight sm:text-[1.1rem]"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            {SOCIALS.map(({ label, href, Icon }) => (
+              <Link
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-[0.95rem] border-2 border-line bg-surface-2 text-ink shadow-[0_3px_0_var(--line)] transition-colors hover:bg-surface-3"
+              >
+                <Icon className="h-4.5 w-4.5" />
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

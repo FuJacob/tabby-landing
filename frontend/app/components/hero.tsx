@@ -152,7 +152,7 @@ export function Hero() {
                       alt="tabby logo"
                       width={18}
                       height={18}
-                      className="h-[18px] w-[18px] rounded-[0.25rem]"
+                      className="h-[18px] w-[18px] rounded-[0.25rem] invert contrast-125 mix-blend-multiply"
                     />
                   </div>
                 </div>
