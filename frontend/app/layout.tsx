@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
-import { Manrope, Sour_Gummy } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { CREATOR, SITE_URL } from "./lib/site";
 
-const bodyFont = Manrope({
+const bodyFont = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const displayFont = Sour_Gummy({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const title = "tabby — free, open-source AI autocomplete for Mac";
@@ -74,7 +68,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bodyFont.variable} ${displayFont.variable} h-full antialiased`}
+      className={`${bodyFont.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink">
         {children}

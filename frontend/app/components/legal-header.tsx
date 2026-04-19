@@ -26,7 +26,7 @@ export function LegalHeader({ current }: LegalHeaderProps) {
             className="h-14 w-14"
           />
           <span className="tabby-display text-[2.4rem] leading-none tracking-tight text-ink sm:text-[2.8rem]">
-            tabby
+            Tabby
           </span>
         </Link>
 

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { DOWNLOAD_URL } from "../lib/site";
 import { AppleIcon } from "./icons";
 
 const floatingActionClass =
@@ -37,7 +38,7 @@ export const FloatingButton = () => {
 
   return (
     <div className="tabby-float-cta-enter fixed bottom-4 right-3 z-50 sm:bottom-6 sm:right-6">
-      <Link href="#" className={floatingActionClass}>
+      <Link href={DOWNLOAD_URL} className={floatingActionClass}>
         <AppleIcon className="h-5 w-5" />
         Download for Mac
       </Link>

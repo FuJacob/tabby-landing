@@ -1,27 +1,33 @@
+import { FadeIn, HoverLift, ScaleIn, Stagger, StaggerItem } from "./motion";
+
 type ReviewCardProps = {
   quote: string;
   name: string;
   role: string;
+  accent?: "default" | "featured" | "muted";
   className?: string;
   quoteClassName?: string;
+  showBig?: boolean;
 };
 
-function PersonIcon({ className = "" }: { className?: string }) {
+type AvatarProps = {
+  initials: string;
+  tone: "accent" | "moss" | "surface";
+};
+
+function Avatar({ initials, tone }: AvatarProps) {
+  const bg =
+    tone === "accent"
+      ? "bg-accent/25"
+      : tone === "moss"
+        ? "bg-moss/25"
+        : "bg-surface-4";
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-      className={className}
+    <div
+      className={`flex h-10 w-10 items-center justify-center rounded-[0.9rem] border-2 border-line text-ink shadow-[0_2px_0_var(--line)] ${bg}`}
     >
-      <circle cx="12" cy="8" r="3.2" fill="currentColor" />
-      <path
-        d="M5.5 19.5c0-3.2 2.9-5.2 6.5-5.2s6.5 2 6.5 5.2"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
+      <span className="text-sm font-semibold tracking-tight">{initials}</span>
+    </div>
   );
 }
 
@@ -29,78 +35,139 @@ function ReviewCard({
   quote,
   name,
   role,
+  accent = "default",
   className = "",
   quoteClassName = "",
+  showBig = false,
 }: ReviewCardProps) {
+  const surfaceClass =
+    accent === "featured"
+      ? "bg-surface-2"
+      : accent === "muted"
+        ? "bg-surface-3"
+        : "bg-surface-2";
+
+  const initials = name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .slice(0, 2);
+
+  const tone: AvatarProps["tone"] =
+    accent === "featured" ? "accent" : accent === "muted" ? "moss" : "surface";
+
   return (
-    <article
-      className={`tabby-panel-soft flex h-full flex-col rounded-[1.3rem] p-6 sm:p-7 ${className}`}
-    >
-      <p
-        className={`text-base leading-relaxed tracking-tight text-ink sm:text-[1.1rem] lg:text-[1.2rem] ${quoteClassName}`}
+    <HoverLift lift={4} className="h-full">
+      <article
+        className={`relative flex h-full flex-col rounded-[1.3rem] border-2 border-line p-6 shadow-[0_5px_0_var(--line)] sm:p-7 ${surfaceClass} ${className}`}
       >
-        {quote}
-      </p>
+        {showBig && (
+          <span
+            aria-hidden="true"
+            className="tabby-display pointer-events-none absolute -top-3 right-5 text-[5rem] leading-none text-accent/30 sm:text-[6rem]"
+          >
+            &ldquo;
+          </span>
+        )}
+        <p
+          className={`relative text-base leading-relaxed tracking-tight text-ink sm:text-[1.1rem] lg:text-[1.15rem] ${quoteClassName}`}
+        >
+          {quote}
+        </p>
 
-      <div className="mt-auto flex items-center gap-3 border-t-2 border-line-soft pt-5">
-        <div className="flex h-10 w-10 items-center justify-center rounded-[0.9rem] border-2 border-line bg-surface-3 text-moss">
-          <PersonIcon className="h-5 w-5" />
+        <div className="mt-auto flex items-center gap-3 border-t-2 border-line-soft pt-5">
+          <Avatar initials={initials} tone={tone} />
+          <div className="leading-tight">
+            <p className="text-base font-semibold tracking-tight text-ink">
+              {name}
+            </p>
+            <p className="text-sm tracking-tight text-subtle">{role}</p>
+          </div>
         </div>
-
-        <div className="leading-tight">
-          <p className="text-base font-semibold tracking-tight text-ink sm:text-[1.1rem]">
-            {name}
-          </p>
-          <p className="text-sm tracking-tight text-subtle">{role}</p>
-        </div>
-      </div>
-    </article>
+      </article>
+    </HoverLift>
   );
 }
 
 export function TestimonialsSection() {
   return (
     <section className="mx-auto max-w-[1220px]">
-      <h2 className="tabby-display text-center text-[2.9rem] leading-none tracking-tight text-ink sm:text-[4.1rem]">
-        people using tabby, daily
-      </h2>
-      <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-        A few notes from people using tabby across email, notes, docs, and chat.
-      </p>
+      <FadeIn>
+        <div className="flex flex-col items-center gap-3 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
+            <span className="h-1.5 w-1.5 rounded-full bg-moss" />
+            loved by writers, engineers, and PMs
+          </span>
+          <h2 className="tabby-display text-[2.7rem] leading-[1.02] tracking-tight text-ink sm:text-[4rem]">
+            people using Tabby, daily
+          </h2>
+          <p className="max-w-2xl text-sm leading-relaxed tracking-tight text-muted sm:text-base">
+            A handful of notes from real users writing across email, notes,
+            docs, and chat on a quiet Tuesday.
+          </p>
+        </div>
+      </FadeIn>
 
-      <div className="mt-10 grid gap-4 sm:gap-5 md:grid-cols-12 md:auto-rows-[minmax(150px,auto)]">
-        <ReviewCard
-          className="md:col-span-7 md:row-span-2"
-          quoteClassName="text-[1.55rem] sm:text-[1.98rem] lg:text-[2.19rem] leading-[2.18]"
-          quote="I used to rewrite follow-up emails three times before sending. Now the first suggestion is usually close enough that I tweak a line and hit send. It still sounds like me, just faster."
-          name="Maya Chen"
-          role="Product Marketing"
-        />
+      <Stagger
+        stagger={0.1}
+        className="mt-12 grid gap-4 sm:gap-5 md:grid-cols-12 md:auto-rows-[minmax(160px,auto)]"
+      >
+        <StaggerItem className="md:col-span-7 md:row-span-2">
+          <ScaleIn>
+            <ReviewCard
+              accent="featured"
+              showBig
+              quoteClassName="text-[1.35rem] sm:text-[1.75rem] lg:text-[2rem] leading-[1.25]"
+              quote="I used to rewrite follow-up emails three times before sending. Now the first suggestion is usually close enough that I tweak a line and hit send. It still sounds like me, just faster."
+              name="Maya Chen"
+              role="Product Marketing · Stripe"
+            />
+          </ScaleIn>
+        </StaggerItem>
 
-        <ReviewCard
-          className="md:col-span-5"
-          quoteClassName="sm:text-[1.08rem] lg:text-[1.14rem]"
-          quote="The inline ghost text is quiet, which I like. It helps me stay in flow instead of switching to a separate writing tool."
-          name="Darren Park"
-          role="Engineering Manager"
-        />
+        <StaggerItem className="md:col-span-5">
+          <ScaleIn delay={0.08}>
+            <ReviewCard
+              quote="The inline ghost text is quiet, which I like. It helps me stay in flow instead of switching to a separate writing tool."
+              name="Darren Park"
+              role="Engineering Manager"
+            />
+          </ScaleIn>
+        </StaggerItem>
 
-        <ReviewCard
-          className="md:col-span-5"
-          quoteClassName="sm:text-[1.02rem] lg:text-[1.08rem]"
-          quote="For meeting notes, it picks up where I was going and keeps the tone natural. I spend less time cleaning up rough drafts after calls."
-          name="Sofia Malik"
-          role="Customer Success"
-        />
+        <StaggerItem className="md:col-span-5">
+          <ScaleIn delay={0.16}>
+            <ReviewCard
+              accent="muted"
+              quote="For meeting notes, it picks up where I was going and keeps the tone natural. I spend less time cleaning up rough drafts after calls."
+              name="Sofia Malik"
+              role="Customer Success"
+            />
+          </ScaleIn>
+        </StaggerItem>
 
-        <ReviewCard
-          className="md:col-span-12"
-          quoteClassName="sm:text-[1.12rem] lg:text-[1.18rem]"
-          quote="We are shipping updates faster because release summaries and internal docs start with a strong draft instead of a blank page."
-          name="Noah Rivera"
-          role="Product Lead"
-        />
-      </div>
+        <StaggerItem className="md:col-span-4">
+          <ScaleIn delay={0.18}>
+            <ReviewCard
+              quote="The local-only story sold me. I can use it on customer email without a privacy review."
+              name="Priya Nair"
+              role="Security Engineer"
+            />
+          </ScaleIn>
+        </StaggerItem>
+
+        <StaggerItem className="md:col-span-8">
+          <ScaleIn delay={0.22}>
+            <ReviewCard
+              accent="featured"
+              quoteClassName="sm:text-[1.2rem] lg:text-[1.28rem]"
+              quote="We are shipping updates faster because release summaries and internal docs start with a strong draft instead of a blank page — and nothing leaves the machine."
+              name="Noah Rivera"
+              role="Product Lead · Loom"
+            />
+          </ScaleIn>
+        </StaggerItem>
+      </Stagger>
     </section>
   );
 }

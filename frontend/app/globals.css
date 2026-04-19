@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #2a1d18;
-  --foreground: #f5e5d0;
-  --muted-foreground: #dcc3a7;
-  --subtle-foreground: #b69779;
-  --surface-1: #4a352b;
-  --surface-2: #5a4135;
-  --surface-3: #6a4f40;
-  --surface-4: #7b6051;
-  --line: #170f0b;
-  --line-soft: rgba(245, 229, 208, 0.14);
-  --accent: #c9785b;
-  --accent-soft: #e09d84;
-  --moss: #8d9671;
-  --button-primary: #d8b18b;
-  --button-primary-hover: #e2bf9d;
-  --button-text: #24160f;
-  --shadow-shell: 0 9px 0 var(--line);
-  --shadow-card: 0 5px 0 var(--line);
+  --background: #faf8f3;
+  --foreground: #0a0a0a;
+  --muted-foreground: #3d3d3d;
+  --subtle-foreground: #6f6f6f;
+  --surface-1: #f3efe4;
+  --surface-2: #f6f2e8;
+  --surface-3: #ece5d2;
+  --surface-4: #e0d7be;
+  --line: #0a0a0a;
+  --line-soft: rgba(10, 10, 10, 0.12);
+  --accent: #d35a3c;
+  --accent-soft: #f4a896;
+  --moss: #5e8b4c;
+  --button-primary: #0a0a0a;
+  --button-primary-hover: #1f1f1f;
+  --button-text: #faf8f3;
+  --shadow-shell: 0 7px 0 var(--line);
+  --shadow-card: 0 4px 0 var(--line);
 }
 
 @theme inline {
@@ -78,13 +78,19 @@ a {
 }
 
 ::selection {
-  background: rgba(201, 120, 91, 0.38);
+  background: rgba(211, 90, 60, 0.28);
   color: var(--foreground);
 }
 
 .tabby-display {
-  font-family: var(--font-display), var(--font-body), cursive;
-  font-weight: 800;
+  font-family:
+    var(--font-body),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .tabby-shell {
@@ -101,14 +107,14 @@ a {
 
 .tabby-panel-soft {
   border: 2px solid var(--line);
-  background: rgba(245, 229, 208, 0.08);
+  background: var(--surface-2);
   box-shadow: var(--shadow-card);
 }
 
 .tabby-chip {
   border: 2px solid var(--line);
   background: var(--surface-2);
-  box-shadow: 0 4px 0 var(--line);
+  box-shadow: 0 3px 0 var(--line);
 }
 
 .tabby-button {
@@ -167,6 +173,16 @@ a {
   }
 }
 
+@keyframes tabby-marquee-scroll-reverse {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @keyframes tabby-float-cta-enter {
   from {
     opacity: 0;
@@ -189,8 +205,13 @@ a {
   flex-wrap: nowrap;
   align-items: center;
   width: max-content;
-  animation: tabby-marquee-scroll 30s linear infinite;
+  animation: tabby-marquee-scroll 36s linear infinite;
   will-change: transform;
+}
+
+.tabby-marquee-track-reverse {
+  animation-name: tabby-marquee-scroll-reverse;
+  animation-duration: 44s;
 }
 
 .tabby-marquee-item {
@@ -202,7 +223,8 @@ a {
     scroll-behavior: auto;
   }
 
-  .tabby-marquee-track {
+  .tabby-marquee-track,
+  .tabby-marquee-track-reverse {
     animation: none;
   }
 }

@@ -12,8 +12,3 @@ export const CREATOR = {
   x: "https://x.com/fujacobb",
   xHandle: "@fujacobb",
 } as const;
-
-export const SOCIAL_LINKS = [
-  { label: "LinkedIn", href: CREATOR.linkedin },
-  { label: "X", href: CREATOR.x },
-] as const;

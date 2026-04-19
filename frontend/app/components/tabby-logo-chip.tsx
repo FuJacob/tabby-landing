@@ -17,7 +17,7 @@ export function TabbyLogoChip({
         className ?? ""
       }`}
     >
-      <div className="flex h-10 w-10 items-center justify-center rounded-[0.95rem] border-2 border-line bg-[#f2dfc8]">
+      <div className="flex h-10 w-10 items-center justify-center rounded-[0.95rem] border-2 border-line bg-white">
         <Image
           src={iconSrc}
           alt={`${label} icon`}
