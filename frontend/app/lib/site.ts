@@ -4,7 +4,7 @@ export const SITE_URL = "https://tabby.app"; // TODO: replace with real domain
 export const GITHUB_URL = "https://github.com/fujacob/tabby";
 export const DOWNLOAD_URL = "https://github.com/fujacob/tabby/releases";
 
-export const SUPPORT_EMAIL = "hi@jacobfu.com";
+export const SUPPORT_EMAIL = "hi@tabbyapp.dev";
 
 export const CREATOR = {
   name: "Jacob Fu",

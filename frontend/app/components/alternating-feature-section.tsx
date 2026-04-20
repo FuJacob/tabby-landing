@@ -1,54 +1,113 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FadeIn, Typewriter, WordReveal } from "./motion";
+import Image from "next/image";
+import { useEffect, useId, useRef } from "react";
+import { FadeIn, WordReveal } from "./motion";
 
-type FeatureBlockProps = {
+const VIDEO_ID = "p3TIgxQFQGE";
+
+// Load the YT IFrame API script once across all players
+let ytApiLoading = false;
+const ytReadyCallbacks: (() => void)[] = [];
+
+function onYTReady(cb: () => void) {
+  if (typeof window === "undefined") return;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if ((window as any).YT?.Player) {
+    cb();
+    return;
+  }
+  ytReadyCallbacks.push(cb);
+  if (!ytApiLoading) {
+    ytApiLoading = true;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).onYouTubeIframeAPIReady = () => {
+      ytReadyCallbacks.forEach((fn) => fn());
+      ytReadyCallbacks.length = 0;
+    };
+    const s = document.createElement("script");
+    s.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(s);
+  }
+}
+
+type SegmentPlayerProps = { start: number; end: number };
+
+function SegmentPlayer({ start, end }: SegmentPlayerProps) {
+  const uid = useId().replace(/:/g, "yt");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const playerRef = useRef<any>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    onYTReady(() => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      playerRef.current = new (window as any).YT.Player(uid, {
+        videoId: VIDEO_ID,
+        playerVars: {
+          start,
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          disablekb: 1,
+          rel: 0,
+          playsinline: 1,
+          modestbranding: 1,
+        },
+        events: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          onReady: (e: any) => {
+            e.target.playVideo();
+            intervalRef.current = setInterval(() => {
+              try {
+                const t = playerRef.current?.getCurrentTime?.();
+                if (typeof t === "number" && t >= end) {
+                  playerRef.current.seekTo(start, true);
+                }
+              } catch {
+                // player not ready yet
+              }
+            }, 150);
+          },
+        },
+      });
+    });
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [uid, start, end]);
+
+  return <div id={uid} className="h-full w-full" />;
+}
+
+type VideoBlockProps = {
   className?: string;
   label: string;
-  typed: string;
-  suggestion: string;
+  start: number;
+  end: number;
 };
 
-function FeatureBlock({
-  className = "",
-  label,
-  typed,
-  suggestion,
-}: FeatureBlockProps) {
+function VideoBlock({ className = "", label, start, end }: VideoBlockProps) {
   return (
     <div
-      className={`tabby-panel-soft rounded-[1.55rem] p-5 sm:p-6 ${className}`}
+      className={`tabby-panel-soft rounded-[1.55rem] p-4 sm:p-5 ${className}`}
     >
-      <div className="flex items-center justify-between">
+      <div className="mb-3 flex items-center justify-between">
         <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-[0.14em] text-ink uppercase shadow-[0_2px_0_var(--line)]">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           {label}
         </span>
-        <span className="text-xs tracking-tight text-subtle">
-          inline · live
-        </span>
+        <div className="flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-full border border-line bg-[#FF5F57]" />
+          <span className="h-2.5 w-2.5 rounded-full border border-line bg-[#FEBC2E]" />
+          <span className="h-2.5 w-2.5 rounded-full border border-line bg-[#28C840]" />
+        </div>
       </div>
-      <div className="mt-4 rounded-[1.25rem] border-2 border-line bg-surface-2 p-4">
-        <p className="text-sm leading-relaxed tracking-tight text-ink sm:text-base">
-          <Typewriter
-            prefix={typed}
-            suggestion={suggestion}
-            suggestionClassName="text-accent"
-          />
-        </p>
-      </div>
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm tracking-tight text-subtle">
-        <span className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-moss" />
-          Ghost text appears inline
-        </span>
-        <span className="flex items-center gap-2">
-          <kbd className="inline-flex h-6 items-center rounded-[0.4rem] border-2 border-line bg-surface-2 px-1.5 text-[0.65rem] font-semibold text-ink shadow-[0_2px_0_var(--line)]">
-            Tab
-          </kbd>
-          to accept
-        </span>
+      <div className="relative aspect-video w-full overflow-hidden rounded-[1.1rem] border-2 border-line bg-background">
+        <SegmentPlayer start={start} end={end} />
+        <div className="absolute inset-0 z-10" />
       </div>
     </div>
   );
@@ -72,38 +131,38 @@ const slideRight = {
   },
 };
 
-type HeadlineProps = {
-  text: string;
-  align?: "left" | "right";
-};
+type HeadlineProps = { text: string; icon: string; iconPad?: boolean; align?: "left" | "right" };
 
-function SectionHeadline({ text, align = "left" }: HeadlineProps) {
+function SectionHeadline({ text, icon, iconPad = false, align = "left" }: HeadlineProps) {
   return (
-    <h3
-      className={`tabby-display text-[2.75rem] leading-[0.96] tracking-tight text-ink sm:text-[3.6rem] ${
-        align === "right" ? "md:text-right" : ""
-      }`}
-    >
-      {text}
-    </h3>
+    <div className={align === "right" ? "md:flex md:justify-end" : ""}>
+      <div className="inline-flex items-center gap-4">
+        <Image
+          src={icon}
+          alt=""
+          width={56}
+          height={56}
+          className={`h-12 w-12 shrink-0 rounded-[0.85rem] border-2 border-line shadow-[0_3px_0_var(--line)] sm:h-14 sm:w-14${iconPad ? " p-2" : ""}`}
+        />
+        <h3 className="tabby-display text-[2.75rem] leading-[0.96] tracking-tight text-ink sm:text-[3.6rem]">
+          {text}
+        </h3>
+      </div>
+    </div>
   );
 }
 
 type FeatureRowProps = {
   layout: "text-left" | "text-right";
   headline: string;
+  icon: string;
+  iconPad?: boolean;
   label: string;
-  typed: string;
-  suggestion: string;
+  start: number;
+  end: number;
 };
 
-function FeatureRow({
-  layout,
-  headline,
-  label,
-  typed,
-  suggestion,
-}: FeatureRowProps) {
+function FeatureRow({ layout, headline, icon, iconPad, label, start, end }: FeatureRowProps) {
   const textFromLeft = layout === "text-left";
 
   return (
@@ -117,6 +176,8 @@ function FeatureRow({
       >
         <SectionHeadline
           text={headline}
+          icon={icon}
+          iconPad={iconPad}
           align={textFromLeft ? "left" : "right"}
         />
       </motion.div>
@@ -128,7 +189,7 @@ function FeatureRow({
         transition={{ delay: 0.12 }}
         className={textFromLeft ? "" : "md:order-1"}
       >
-        <FeatureBlock label={label} typed={typed} suggestion={suggestion} />
+        <VideoBlock label={label} start={start} end={end} />
       </motion.div>
     </div>
   );
@@ -136,7 +197,7 @@ function FeatureRow({
 
 export function AlternatingFeatureSection() {
   return (
-    <section className="mx-auto max-w-[1220px]">
+    <section className="mx-auto max-w-305">
       <FadeIn>
         <div className="flex flex-col items-center gap-3 text-center">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
@@ -152,45 +213,43 @@ export function AlternatingFeatureSection() {
       />
       <FadeIn delay={0.1}>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-          A few examples of tabby quietly finishing thoughts in the apps you
-          already use — the typing below is live.
+          A few examples of Tabby quietly finishing thoughts in the apps you
+          already use — clips from a real session.
         </p>
       </FadeIn>
       <div className="mt-14 space-y-14 sm:space-y-16 md:space-y-20">
         <FeatureRow
           layout="text-left"
           headline="Write your emails faster"
+          icon="/app-icons/gmail.svg"
           label="email"
-          typed="I folded your feedback into the deck and updated the closing slide"
-          suggestion=". If you are aligned, I can send the final version before lunch."
+          start={14}
+          end={22}
         />
         <FeatureRow
           layout="text-right"
           headline="Write your notes faster"
+          icon="/app-icons/apple-notes.svg"
           label="notes"
-          typed="The customer kept circling back to onboarding friction"
-          suggestion=", so I captured the main blockers and the workaround they actually trusted."
+          start={23}
+          end={32}
         />
         <FeatureRow
           layout="text-left"
-          headline="Write your docs faster"
-          label="docs"
-          typed="This release introduces quieter inline suggestions across every text field"
-          suggestion=", with per-model controls and a lighter system footprint on macOS."
+          headline="Write your Slack messages faster"
+          icon="/app-icons/slack.png"
+          iconPad
+          label="slack"
+          start={33}
+          end={40}
         />
         <FeatureRow
           layout="text-right"
           headline="Write your messages faster"
+          icon="/app-icons/imessage.svg"
           label="messages"
-          typed="Hey Sam, I pushed the latest changes and cleaned up the edge cases"
-          suggestion=". If you want, I can post a short summary in the channel too."
-        />
-        <FeatureRow
-          layout="text-left"
-          headline="Write your updates faster"
-          label="updates"
-          typed="Quick update: onboarding drop-off improved after the new checklist"
-          suggestion=". I will share the full numbers and the next experiment in tomorrow's sync."
+          start={41}
+          end={50}
         />
       </div>
     </section>

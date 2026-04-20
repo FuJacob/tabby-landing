@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { DOWNLOAD_URL, GITHUB_URL } from "../lib/site";
 import { AppleIcon, GithubIcon } from "./icons";
@@ -11,10 +10,10 @@ import { ParallaxY, Typewriter } from "./motion";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const secondaryActionClass =
-  "tabby-button tabby-button-secondary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
+  "tabby-button tabby-button-secondary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
 
 const primaryActionClass =
-  "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
+  "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
 
 const copyContainer: Variants = {
   hidden: {},
@@ -50,7 +49,7 @@ const underlineVariants: Variants = {
   visible: {
     scaleX: 1,
     opacity: 1,
-    transition: { duration: 0.75, ease: EASE, delay: 0.18 },
+    transition: { duration: 1.1, ease: EASE, delay: 1 },
   },
 };
 
@@ -110,20 +109,11 @@ function StatusBadge() {
 function TabKeyCap() {
   return (
     <div className="inline-flex items-center gap-3 text-sm tracking-tight text-muted">
-      <kbd className="inline-flex h-9 min-w-[44px] items-center justify-center rounded-[0.6rem] border-2 border-line bg-surface-2 px-2.5 text-xs font-semibold text-ink shadow-[0_3px_0_var(--line)]">
+      <kbd className="inline-flex h-10 items-center gap-1.5 rounded-[0.6rem] bg-ink px-3 text-sm font-semibold tracking-tight text-background shadow-[0_4px_0_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.1)]">
+        <span className="text-base leading-none opacity-60">⇥</span>
         Tab
       </kbd>
       <span>to accept</span>
-    </div>
-  );
-}
-
-function MacWindowChrome() {
-  return (
-    <div className="flex items-center gap-1.5">
-      <span className="h-3 w-3 rounded-full border border-line bg-[#FF5F57]" />
-      <span className="h-3 w-3 rounded-full border border-line bg-[#FEBC2E]" />
-      <span className="h-3 w-3 rounded-full border border-line bg-[#28C840]" />
     </div>
   );
 }
@@ -138,7 +128,7 @@ function BackdropPattern({
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[2rem]"
+      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-4xl"
     >
       <ParallaxY
         strength={shouldReduceMotion ? 0 : 40}
@@ -188,7 +178,8 @@ function BackdropPattern({
         }}
         className="absolute inset-0"
         style={{
-          backgroundImage: "radial-gradient(circle, #0a0a0a 1px, transparent 1px)",
+          backgroundImage:
+            "radial-gradient(circle, #0a0a0a 1px, transparent 1px)",
           backgroundSize: "22px 22px",
         }}
       />
@@ -216,7 +207,7 @@ function HeroHeadline({ revealState }: { revealState: "hidden" | "visible" }) {
             <motion.span
               aria-hidden="true"
               variants={underlineVariants}
-              className="absolute inset-x-0 bottom-1 -z-0 h-[0.34em] origin-left rounded-sm bg-accent-soft/80"
+              className="absolute inset-x-0 bottom-1 z-0 h-[0.34em] origin-left rounded-sm bg-accent-soft/80"
             />
           </span>
         </motion.span>
@@ -253,15 +244,6 @@ export function Hero() {
               <HeroHeadline revealState={revealState} />
             </motion.div>
 
-            <motion.p
-              variants={copyItem}
-              className="max-w-xl text-lg leading-relaxed tracking-tight text-muted sm:text-xl"
-            >
-              tabby is a native macOS AI autocomplete that writes with you in
-              any app. Quiet inline suggestions in Mail, Notes, Slack, and
-              Docs. Press Tab to accept and stay in flow without sending your
-              writing anywhere else.
-            </motion.p>
           </div>
 
           <motion.div
@@ -270,7 +252,7 @@ export function Hero() {
           >
             <Link href={GITHUB_URL} className={secondaryActionClass}>
               <GithubIcon className="h-6 w-6" />
-              GitHub
+              Star on GitHub
             </Link>
             <Link href={DOWNLOAD_URL} className={primaryActionClass}>
               <AppleIcon className="h-6 w-6" />
@@ -281,21 +263,13 @@ export function Hero() {
             </div>
           </motion.div>
 
-          <motion.p
-            variants={copyItem}
-            className="max-w-lg text-base leading-relaxed tracking-tight text-subtle sm:text-lg"
-          >
-            Runs on your Mac&apos;s Neural Engine. No accounts, no cloud
-            round-trips, no telemetry, just quiet text that finishes your
-            sentence and gets out of the way.
-          </motion.p>
         </motion.div>
 
         <motion.div
           variants={heroPanel}
           initial="hidden"
           animate={revealState}
-          className="relative w-full max-w-[620px]"
+          className="relative w-full max-w-155"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -323,61 +297,28 @@ export function Hero() {
               variants={panelContent}
               initial="hidden"
               animate={revealState}
-              className="overflow-hidden rounded-[1.45rem] border-2 border-line bg-surface-3 p-4 sm:p-5"
+              className="overflow-hidden rounded-[1.45rem] border-2 border-line bg-background p-7 sm:p-9"
             >
-              <motion.div
+              <motion.p
                 variants={panelItem}
-                className="flex items-center justify-between gap-3 border-b-2 border-line-soft pb-3"
+                className="text-[1.35rem] leading-[1.35] tracking-tight text-ink sm:text-[1.7rem] lg:text-[2rem]"
               >
-                <MacWindowChrome />
-                <span className="text-xs font-medium tracking-[0.14em] text-subtle uppercase">
-                  draft · mail.app
-                </span>
-                <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-[0.6rem] border-2 border-line bg-surface-2">
-                    <Image
-                      src="/512.png"
-                      alt="tabby logo"
-                      width={18}
-                      height={18}
-                      className="h-[18px] w-[18px] rounded-[0.25rem]"
-                    />
-                  </div>
-                </div>
-              </motion.div>
+                <Typewriter
+                  active={revealState === "visible"}
+                  prefix="I reviewed the launch copy and the tone already feels strong"
+                  suggestion=". I tightened the headline and simplified the closing CTA."
+                  suggestionClassName="text-accent"
+                  loopDelay={3200}
+                />
+              </motion.p>
 
               <motion.div
                 variants={panelItem}
-                className="mt-4 space-y-4 rounded-[1.1rem] border-2 border-line bg-background p-4 sm:p-5"
-              >
-                <p className="text-sm leading-relaxed tracking-tight text-ink sm:text-base">
-                  Hi Maya,
-                </p>
-                <p className="text-sm leading-relaxed tracking-tight text-ink sm:text-base">
-                  <Typewriter
-                    active={revealState === "visible"}
-                    prefix="I reviewed the launch copy and the tone already feels strong"
-                    suggestion=". I tightened the headline and simplified the closing CTA."
-                    suggestionClassName="text-accent"
-                    loopDelay={3200}
-                  />
-                </p>
-                <p className="text-sm leading-relaxed tracking-tight text-subtle sm:text-base">
-                  If you are happy with that pass, I can send the final version
-                  before 4 PM
-                  <span className="text-accent">
-                    {" "}
-                    so design can ship it today.
-                  </span>
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={panelItem}
-                className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs tracking-tight text-subtle sm:text-sm"
+                className="mt-8 flex items-center justify-between text-sm tracking-tight text-subtle"
               >
                 <div className="flex items-center gap-2">
-                  <kbd className="inline-flex h-7 items-center justify-center rounded-[0.5rem] border-2 border-line bg-surface-2 px-2 text-[0.7rem] font-semibold text-ink shadow-[0_2px_0_var(--line)]">
+                  <kbd className="inline-flex h-8 items-center gap-1 rounded-lg bg-ink px-2.5 text-xs font-semibold tracking-tight text-background shadow-[0_3px_0_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.1)]">
+                    <span className="text-sm leading-none opacity-60">⇥</span>
                     Tab
                   </kbd>
                   <span>to accept</span>

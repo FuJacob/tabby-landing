@@ -6,7 +6,7 @@ import { DOWNLOAD_URL } from "../lib/site";
 import { AppleIcon } from "./icons";
 
 const floatingActionClass =
-  "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
+  "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-6 text-base font-semibold tracking-tight sm:h-14 sm:px-7";
 
 export const FloatingButton = () => {
   const [isVisible, setIsVisible] = useState(false);

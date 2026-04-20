@@ -12,16 +12,24 @@ export default function PrivacyPage() {
     <LegalPageShell
       current="privacy"
       title="Privacy"
-      summary="A minimal overview of what data tabby uses and how you can contact us."
-      updatedAt="APR 12, 2026"
+      summary="tabby collects no personal data, no usage analytics, and no cloud-stored writing data."
+      updatedAt="APR 19, 2026"
     >
+      <p>We collect 0 personal information.</p>
+
       <p>
-        We use account details, device metadata, and usage events required to
-        operate and improve tabby.
+        tabby does not require an account, does not run a hosted dashboard, and
+        does not send your writing or prompts to our servers.
       </p>
 
       <p>
-        For privacy or deletion requests, email
+        The app is built around local-first behavior. Your text stays on your
+        Mac, and there is no analytics or telemetry pipeline tied to your
+        identity.
+      </p>
+
+      <p>
+        For questions or concerns, email
         <a
           className="tabby-link ml-1 font-semibold"
           href={`mailto:${SUPPORT_EMAIL}`}

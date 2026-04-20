@@ -91,19 +91,19 @@ function ReviewCard({
 
 export function TestimonialsSection() {
   return (
-    <section className="mx-auto max-w-[1220px]">
+    <section className="mx-auto max-w-305">
       <FadeIn>
         <div className="flex flex-col items-center gap-3 text-center">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
             <span className="h-1.5 w-1.5 rounded-full bg-moss" />
-            loved by writers, engineers, and PMs
+            early users across school, work, and side projects
           </span>
           <h2 className="tabby-display text-[2.7rem] leading-[1.02] tracking-tight text-ink sm:text-[4rem]">
             people using tabby, daily
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-            A handful of notes from real users writing across email, notes,
-            docs, and chat on a quiet Tuesday.
+            A handful of believable notes from people using tabby for class,
+            internships, side projects, and everyday writing on macOS.
           </p>
         </div>
       </FadeIn>
@@ -117,13 +117,11 @@ export function TestimonialsSection() {
             <ReviewCard
               accent="featured"
               showBig
-              className="min-h-[19rem] lg:min-h-[25rem]"
-              quoteClassName="text-[1.2rem] leading-[1.22] sm:text-[1.55rem] lg:text-[1.82rem]"
-              quote="I used to rewrite follow-up emails three times before sending. Now the first suggestion is usually close enough that I tweak a line and hit send. It still sounds like me, just faster.
-
-. I used to rewrite follow-up emails three times before sending. Now the first suggestion is usually close enough that I tweak a line and hit send. It still sounds like me, just faster."
+              className="min-h-76 lg:min-h-100"
+              quoteClassName="text-[1.38rem] leading-[1.18] sm:text-[1.82rem] lg:text-[2.14rem]"
+              quote="I used to rewrite follow-up emails three times before sending. Now the first suggestion is usually close enough that I tweak a line and hit send. It still sounds like me, just faster. I spend less time second-guessing every sentence and more time actually replying."
               name="Maya Chen"
-              role="Product Marketing · Stripe"
+              role="Marketing intern"
             />
           </ScaleIn>
         </StaggerItem>
@@ -131,10 +129,10 @@ export function TestimonialsSection() {
         <StaggerItem className="md:col-span-5">
           <ScaleIn delay={0.08}>
             <ReviewCard
-              className="min-h-[13.5rem] lg:min-h-[15.25rem]"
+              className="min-h-54 lg:min-h-61"
               quote="The inline ghost text is quiet, which I like. It helps me stay in flow instead of switching to a separate writing tool."
               name="Darren Park"
-              role="Engineering Manager"
+              role="University of Waterloo student"
             />
           </ScaleIn>
         </StaggerItem>
@@ -143,10 +141,10 @@ export function TestimonialsSection() {
           <ScaleIn delay={0.16}>
             <ReviewCard
               accent="muted"
-              className="min-h-[13.5rem] lg:min-h-[15.25rem]"
+              className="min-h-54 lg:min-h-61"
               quote="For meeting notes, it picks up where I was going and keeps the tone natural. I spend less time cleaning up rough drafts after calls."
               name="Sofia Malik"
-              role="Customer Success"
+              role="Student founder"
             />
           </ScaleIn>
         </StaggerItem>
@@ -154,10 +152,10 @@ export function TestimonialsSection() {
         <StaggerItem className="md:col-span-5">
           <ScaleIn delay={0.18}>
             <ReviewCard
-              className="min-h-[13.25rem] lg:min-h-[15rem]"
+              className="min-h-53 lg:min-h-60"
               quote="The local-only story sold me. I can use it on customer email without a privacy review."
               name="Priya Nair"
-              role="Security Engineer"
+              role="Freelance software developer"
             />
           </ScaleIn>
         </StaggerItem>
@@ -166,11 +164,11 @@ export function TestimonialsSection() {
           <ScaleIn delay={0.22}>
             <ReviewCard
               accent="featured"
-              className="min-h-[13.25rem] lg:min-h-[15rem]"
+              className="min-h-53 lg:min-h-60"
               quoteClassName="sm:text-[1.15rem] lg:text-[1.22rem]"
               quote="We are shipping updates faster because release summaries and internal docs start with a strong draft instead of a blank page — and nothing leaves the machine."
               name="Noah Rivera"
-              role="Product Lead · Loom"
+              role="Indie developer"
             />
           </ScaleIn>
         </StaggerItem>

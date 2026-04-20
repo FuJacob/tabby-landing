@@ -314,7 +314,7 @@ export function ScrollProgressBar({ className }: ScrollProgressBarProps) {
       style={{ scaleX, transformOrigin: "0% 50%" }}
       className={
         className ??
-        "fixed left-0 right-0 top-0 z-50 h-[3px] bg-accent"
+        "fixed left-0 right-0 top-0 z-50 h-0.75 bg-accent"
       }
     />
   );
@@ -424,7 +424,7 @@ export function Typewriter({
       )}
       {active && phase === "typing" && (
         <motion.span
-          className="ml-[1px] inline-block h-[1em] w-[2px] align-middle bg-ink"
+          className="ml-px inline-block h-[1em] w-0.5 align-middle bg-ink"
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 0.9, repeat: Infinity }}
         />

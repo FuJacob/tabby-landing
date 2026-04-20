@@ -18,11 +18,11 @@ export function LegalPageShell({
 }: LegalPageShellProps) {
   return (
     <div className="relative px-3 pb-14 pt-5 sm:px-4 sm:pb-16 sm:pt-8 lg:px-6 lg:pb-20 lg:pt-10">
-      <div className="mx-auto w-full max-w-[1360px]">
+      <div className="mx-auto w-full max-w-340">
         <LegalHeader current={current} />
       </div>
 
-      <main className="mx-auto mt-8 w-full max-w-[900px] space-y-6 px-1 text-sm leading-relaxed tracking-tight text-muted sm:mt-10 sm:text-base">
+      <main className="mx-auto mt-8 w-full max-w-225 space-y-6 px-1 text-sm leading-relaxed tracking-tight text-muted sm:mt-10 sm:text-base">
         <h1 className="tabby-display text-[2.6rem] leading-[0.95] tracking-tight text-ink sm:text-[3.4rem] lg:text-[4rem]">
           {title}
         </h1>

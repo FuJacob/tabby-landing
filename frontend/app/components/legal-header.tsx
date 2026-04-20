@@ -23,7 +23,7 @@ export function LegalHeader({ current }: LegalHeaderProps) {
             alt="tabby paw logo"
             width={56}
             height={56}
-            className="h-14 w-14 rounded-[1rem] border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)]"
+            className="h-14 w-14 rounded-2xl border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)]"
           />
           <span className="flex h-14 flex-col justify-center">
             <span className="tabby-display text-[2.4rem] leading-[0.88] tracking-tight text-ink sm:text-[2.8rem]">

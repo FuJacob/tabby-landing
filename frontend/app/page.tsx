@@ -21,10 +21,10 @@ import { FloatingButton } from "./components/floating-button";
 function SectionDivider() {
   return (
     <section aria-hidden="true" className="px-6 sm:px-8 lg:px-10">
-      <div className="mx-auto flex max-w-[1220px] items-center gap-4">
-        <div className="h-[2px] flex-1 bg-line-soft" />
+      <div className="mx-auto flex max-w-305 items-center gap-4">
+        <div className="h-0.5 flex-1 bg-line-soft" />
         <div className="h-1.5 w-1.5 rounded-full bg-line-soft" />
-        <div className="h-[2px] flex-1 bg-line-soft" />
+        <div className="h-0.5 flex-1 bg-line-soft" />
       </div>
     </section>
   );
@@ -48,11 +48,19 @@ export default function Home() {
             backgroundSize: "40px 40px",
           }}
         />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-40 -top-40 z-0 h-[34rem] w-[34rem] rounded-full bg-moss/20 blur-[140px] sm:h-[42rem] sm:w-[42rem] lg:-left-56 lg:-top-56 lg:h-[52rem] lg:w-[52rem]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-40 -top-40 z-0 h-[34rem] w-[34rem] rounded-full bg-accent-soft/30 blur-[140px] sm:h-[42rem] sm:w-[42rem] lg:-right-56 lg:-top-56 lg:h-[52rem] lg:w-[52rem]"
+        />
         <StructuredData />
         <ScrollProgressBar />
         <FloatingNavbar />
         <FloatingButton />
-        <div className="relative z-10 mx-auto flex w-full max-w-[1360px] flex-col gap-16 sm:gap-20 lg:gap-24">
+        <div className="relative z-10 mx-auto flex w-full max-w-340 flex-col gap-16 sm:gap-20 lg:gap-24">
           <SectionShell>
             <Header />
             <Hero />

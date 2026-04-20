@@ -14,10 +14,10 @@ const textLinks = [
 ] as const;
 
 const secondaryActionClass =
-  "tabby-button tabby-button-secondary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-5 text-sm font-semibold tracking-tight sm:h-14 sm:px-6 sm:text-base";
+  "tabby-button tabby-button-secondary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-5 text-sm font-semibold tracking-tight sm:h-14 sm:px-6 sm:text-base";
 
 const primaryActionClass =
-  "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-[1rem] px-5 text-sm font-semibold tracking-tight sm:h-14 sm:px-6 sm:text-base";
+  "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-5 text-sm font-semibold tracking-tight sm:h-14 sm:px-6 sm:text-base";
 
 function scrollToAnchor(event: MouseEvent<HTMLAnchorElement>, href: string) {
   if (!href.startsWith("#")) {
@@ -56,16 +56,16 @@ export function Header() {
             <Image
               src="/512.png"
               alt="tabby paw logo"
-              width={64}
-              height={64}
-              className="h-14 w-14 rounded-[1rem] border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)] sm:h-16 sm:w-16"
+              width={48}
+              height={48}
+              className="h-11 w-11 rounded-[0.95rem] border-2 border-line bg-surface-2 shadow-[0_3px_0_var(--line)]"
             />
-            <span className="flex h-14 flex-col justify-center sm:h-16">
+            <span className="flex h-11 flex-col justify-center">
               <span className="tabby-display text-[2.5rem] leading-[0.88] tracking-tight text-ink sm:text-[3rem]">
                 tabby
               </span>
               <span className="mt-1 text-xs font-medium leading-none tracking-tight text-subtle sm:text-sm">
-                native macOS autocomplete
+                macOS AI autocomplete
               </span>
             </span>
           </Link>
@@ -90,7 +90,7 @@ export function Header() {
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
           <Link href={GITHUB_URL} className={secondaryActionClass}>
             <GithubIcon className="h-5 w-5" />
-            GitHub
+            Star on GitHub
           </Link>
           <Link href={DOWNLOAD_URL} className={primaryActionClass}>
             <AppleIcon className="h-5 w-5" />

@@ -6,14 +6,14 @@ import { AppleIcon, GithubIcon } from "./icons";
 import { FadeIn, ParallaxY, ScaleIn, WordReveal } from "./motion";
 
 const primaryActionClass =
-  "tabby-button tabby-button-primary inline-flex h-14 min-w-[260px] items-center justify-center gap-3 rounded-[1rem] px-8 text-[1.15rem] font-semibold leading-none tracking-tight sm:h-16 sm:min-w-[320px] sm:text-[1.4rem]";
+  "tabby-button tabby-button-primary inline-flex h-14 min-w-[260px] items-center justify-center gap-3 rounded-2xl px-8 text-[1.15rem] font-semibold leading-none tracking-tight sm:h-16 sm:min-w-[320px] sm:text-[1.4rem]";
 
 const secondaryActionClass =
-  "tabby-button tabby-button-secondary inline-flex h-14 items-center justify-center gap-2 rounded-[1rem] px-6 text-[1.05rem] font-semibold leading-none tracking-tight sm:h-16 sm:text-[1.2rem]";
+  "tabby-button tabby-button-secondary inline-flex h-14 items-center justify-center gap-2 rounded-2xl px-6 text-[1.05rem] font-semibold leading-none tracking-tight sm:h-16 sm:text-[1.2rem]";
 
 export function SloganCtaSection() {
   return (
-    <section className="relative overflow-hidden rounded-[2rem] border-2 border-line bg-surface-2 px-6 py-14 shadow-[0_7px_0_var(--line)] sm:px-10 sm:py-20">
+    <section className="relative overflow-hidden rounded-4xl border-2 border-line bg-surface-2 px-6 py-14 shadow-[0_7px_0_var(--line)] sm:px-10 sm:py-20">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
@@ -47,7 +47,7 @@ export function SloganCtaSection() {
         <WordReveal
           as="h2"
           text="ready to try tabby?"
-          className="tabby-display max-w-3xl text-[2.8rem] leading-[1] tracking-tight text-ink sm:text-[4.8rem]"
+          className="tabby-display max-w-3xl text-[2.8rem] leading-none tracking-tight text-ink sm:text-[4.8rem]"
         />
 
         <FadeIn delay={0.15}>
@@ -72,7 +72,7 @@ export function SloganCtaSection() {
 
         <FadeIn delay={0.35}>
           <p className="text-xs tracking-tight text-subtle sm:text-sm">
-            macOS 13 Ventura or later · Apple Silicon · ~180MB install
+            macOS 26 or later · Apple Silicon · ~10MB install
           </p>
         </FadeIn>
       </div>

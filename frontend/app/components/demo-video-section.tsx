@@ -43,15 +43,15 @@ export function DemoVideoSection() {
               recording
             </span>
           </div>
-          <div className="aspect-video w-full overflow-hidden rounded-[1.3rem] border-2 border-line bg-background">
+          <div className="relative aspect-video w-full overflow-hidden rounded-[1.3rem] border-2 border-line bg-background">
             <iframe
               className="h-full w-full"
-              src="https://www.youtube.com/embed/CGduGREZtlI?autoplay=1&mute=1&playsinline=1&rel=0&loop=1&playlist=CGduGREZtlI"
+              src="https://www.youtube.com/embed/p3TIgxQFQGE?autoplay=1&mute=1&playsinline=1&rel=0&loop=1&playlist=p3TIgxQFQGE&controls=0&disablekb=1"
               title="tabby demo video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
             />
+            <div className="absolute inset-0 z-10" />
           </div>
         </div>
       </ScaleIn>

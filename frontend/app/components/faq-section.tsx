@@ -4,54 +4,55 @@ export const FAQ_ITEMS = [
   {
     question: "What is tabby?",
     answer:
-      "tabby is an AI writing assistant that helps you draft emails, notes, and docs faster with suggestions that match your tone — and runs entirely on your Mac.",
+      "tabby is an on-device AI autocomplete app for macOS that suggests the next few words while you type in supported text fields. It lives in your menu bar and is designed to help you write emails, notes, messages, and docs faster without leaving the app you are already using.",
   },
   {
-    question: "Which apps does tabby support?",
+    question: "How does tabby actually work?",
     answer:
-      "tabby is designed to work across common writing surfaces, including email, docs, chat, and note-taking apps on macOS.",
+      "tabby watches the currently focused text field through macOS accessibility APIs, reads the text around your caret, generates a short continuation with an on-device model, and shows that continuation as ghost text near the cursor. When the context still matches, you can keep accepting the remaining suggestion in chunks with Tab.",
   },
   {
-    question: "Can I customize the writing style?",
+    question: "Does tabby send my writing to the cloud?",
     answer:
-      "Yes. You can tune style settings so output feels more formal, casual, concise, or detailed depending on your needs.",
+      "No. Tabby's current architecture is built around on-device inference. You can use either Apple Intelligence when it is available on your Mac, or a local open source GGUF model running through tabby's built-in runtime. There is no required hosted inference API in the current product.",
   },
   {
-    question: "Can I control the target word count?",
+    question: "What permissions does tabby need?",
     answer:
-      "Yes. You can set short, medium, or long response goals so suggestions fit the length you want.",
+      "tabby needs Accessibility and Input Monitoring for core autocomplete. Accessibility lets tabby detect the focused editable field, read nearby text, and place suggestions near the caret. Input Monitoring lets tabby detect your typing and handle Tab acceptance. Screen Recording is not required for normal autocomplete use.",
   },
   {
-    question: "Does tabby support multiple models?",
+    question:
+      "What is the difference between Apple Intelligence and Open Source?",
     answer:
-      "Yes. tabby can be configured with different local model options so you can pick one that fits your quality and speed preferences.",
+      "Apple Intelligence uses Apple's on-device system model and does not require downloading a GGUF file. The Open Source engine uses a local model stored on your Mac, which gives you more control over model choice and supports tabby's custom instruction mode. If Apple Intelligence is unavailable on your machine, you can still use the Open Source path.",
   },
   {
-    question: "How fast are suggestions generated?",
+    question: "How do I accept or dismiss a suggestion?",
     answer:
-      "Most suggestions appear in under 80ms because inference runs on Apple's Neural Engine — no network round trip.",
+      "When tabby shows ghost text, press Tab to accept the next chunk of the suggestion. You can keep pressing Tab to move through the remaining tail, or just keep typing normally if you want to go in a different direction. If your text changes enough, tabby will drop the old suggestion and wait for a better one.",
   },
   {
-    question: "Can I edit suggestions before sending?",
+    question: "What apps does tabby work with?",
     answer:
-      "Absolutely. Every suggestion is fully editable, so you can review and adjust wording before sharing anything.",
+      "tabby is built to work across many macOS text fields, including native apps and browser-based editors, but compatibility depends on what each app exposes through accessibility. Some editors provide precise caret and text geometry, while others only expose coarse field information, so placement and reliability can vary by app.",
   },
   {
-    question: "Is my data private?",
+    question: "How do I download models or use my own?",
     answer:
-      "Yes. Nothing leaves your Mac. No accounts, no cloud, no telemetry. tabby is open source so you can verify it yourself.",
+      "If you choose the Open Source engine, you can download a built-in model directly from onboarding or Settings and watch its install progress in the app. You can also open the models folder, drop in your own .gguf file, and refresh the model list without restarting tabby.",
   },
   {
-    question: "Can teams use tabby together?",
+    question: "Why am I not seeing suggestions?",
     answer:
-      "Yes. Teams can align on tone and workflows so everyone writes with a more consistent voice — each install remains local.",
+      "The most common reasons are missing permissions, tabby being disabled, no local model installed for the Open Source engine, Apple Intelligence not being available, or the current app not exposing enough accessibility data for autocomplete. Start by checking Accessibility and Input Monitoring, then confirm your engine and model selection in the menu bar or Settings.",
   },
   {
-    question: "Where can I get updates about new features?",
+    question: "Can I customize how tabby behaves?",
     answer:
-      "You can follow product updates through the app and release notes where new capabilities are announced.",
+      "Yes. You can choose the engine, change suggestion length, switch the indicator style, pick a ghost text color, manage local models, and, for the Open Source engine, choose between Fast mode and Use My Instructions. You can also save custom AI instructions to steer tone, style, audience, or formatting preferences.",
   },
-] as const;
+];
 
 export function FaqSection() {
   return (
@@ -79,7 +80,7 @@ export function FaqSection() {
       <Stagger stagger={0.06} className="mt-10 space-y-3">
         {FAQ_ITEMS.map((item) => (
           <StaggerItem key={item.question}>
-            <details className="group overflow-hidden rounded-[1rem] border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)] transition-all duration-200 open:bg-surface-3 hover:-translate-y-[1px]">
+            <details className="group overflow-hidden rounded-2xl border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)] transition-all duration-200 open:bg-surface-3 hover:-translate-y-px">
               <summary className="list-none cursor-pointer px-6 py-5 [&::-webkit-details-marker]:hidden">
                 <div className="flex items-center justify-between gap-4">
                   <span className="text-left text-base font-medium tracking-tight text-ink sm:text-lg">

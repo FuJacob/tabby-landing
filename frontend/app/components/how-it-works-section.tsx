@@ -34,20 +34,6 @@ const stepCardVariants: Variants = {
   }),
 };
 
-const railNodeVariants: Variants = {
-  hidden: { opacity: 0, y: 12, scale: 0.9 },
-  visible: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.55,
-      ease: EASE,
-      delay: 0.08 + index * 0.08,
-    },
-  }),
-};
-
 function InstallVisual() {
   const prefersReducedMotion = useReducedMotion() ?? false;
 
@@ -70,7 +56,7 @@ function InstallVisual() {
               ? { duration: 0 }
               : { duration: 1.1, repeat: Infinity, ease: "easeInOut" }
           }
-          className="inline-block h-[1em] w-[2px] bg-ink"
+          className="inline-block h-[1em] w-0.5 bg-ink"
         />
         <span className="ml-auto inline-flex h-5 items-center rounded-[0.4rem] border border-line bg-surface-3 px-1.5 text-[0.65rem] text-subtle">
           or .dmg
@@ -155,7 +141,7 @@ function TabVisual() {
               ? { duration: 0 }
               : { duration: 1.3, ease: "easeInOut", repeat: Infinity }
           }
-          className="inline-flex h-10 min-w-[52px] items-center justify-center rounded-[0.6rem] border-2 border-line bg-background px-2.5 text-sm font-semibold text-ink"
+          className="inline-flex h-10 min-w-13 items-center justify-center rounded-[0.6rem] border-2 border-line bg-background px-2.5 text-sm font-semibold text-ink"
         >
           Tab
         </motion.kbd>
@@ -221,64 +207,6 @@ const steps: StepDefinition[] = [
   },
 ];
 
-function ProcessRail() {
-  const prefersReducedMotion = useReducedMotion() ?? false;
-
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.75 }}
-      className="relative hidden md:block"
-    >
-      <div className="relative mx-auto mb-8 max-w-[920px] px-6">
-        <div className="absolute left-[8%] right-[8%] top-[1.55rem] h-[2px] rounded-full bg-line-soft" />
-        <motion.div
-          variants={{
-            hidden: { scaleX: 0.2, opacity: 0.3 },
-            visible: {
-              scaleX: 1,
-              opacity: 1,
-              transition: { duration: 0.85, ease: EASE, delay: 0.06 },
-            },
-          }}
-          style={{ transformOrigin: "0% 50%" }}
-          className="absolute left-[8%] right-[8%] top-[1.55rem] h-[2px] rounded-full bg-accent"
-        />
-        {!prefersReducedMotion ? (
-          <motion.span
-            aria-hidden="true"
-            initial={{ x: "0%" }}
-            whileInView={{ x: "590%" }}
-            viewport={{ once: true, amount: 0.75 }}
-            transition={{ duration: 1.2, ease: EASE, delay: 0.18 }}
-            className="absolute left-[8%] top-[1.55rem] h-3 w-3 -translate-y-1/2 rounded-full border border-line bg-background shadow-[0_2px_0_var(--line)]"
-          />
-        ) : null}
-        <div className="grid grid-cols-3 gap-6">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.number}
-              custom={index}
-              variants={railNodeVariants}
-              className="flex flex-col items-center gap-2 text-center"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-line bg-surface-2 shadow-[0_3px_0_var(--line)]">
-                <span className="text-sm font-semibold tracking-[0.16em] text-ink">
-                  {step.number}
-                </span>
-              </div>
-              <span className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-subtle">
-                {step.railLabel}
-              </span>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 function StepCard({
   index,
   step,
@@ -334,7 +262,7 @@ function StepCard({
         <span className="tabby-display text-[2.8rem] leading-none tracking-tight text-ink/90">
           {step.number}
         </span>
-        <span className="ml-5 h-[2px] flex-1 bg-line-soft" />
+        <span className="ml-5 h-0.5 flex-1 bg-line-soft" />
       </div>
       <div className="space-y-3">
         <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-subtle shadow-[0_2px_0_var(--line)]">
@@ -355,7 +283,7 @@ function StepCard({
 
 export function HowItWorksSection() {
   return (
-    <section className="mx-auto max-w-[1220px]">
+    <section className="mx-auto max-w-305">
       <FadeIn>
         <div className="flex flex-col items-center gap-3 text-center">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
@@ -371,9 +299,6 @@ export function HowItWorksSection() {
           </p>
         </div>
       </FadeIn>
-
-      <ProcessRail />
-
       <motion.div
         initial="hidden"
         whileInView="visible"

@@ -82,7 +82,7 @@ export function FloatingNavbar() {
               : { opacity: 0, y: -12, scale: 0.98 }
           }
           transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-          className="pointer-events-none fixed left-1/2 top-4 z-[70] w-[calc(100%-1rem)] max-w-[1120px] -translate-x-1/2 px-1 sm:w-[calc(100%-2rem)] sm:px-0"
+          className="pointer-events-none fixed left-1/2 top-4 z-70 w-[calc(100%-1rem)] max-w-280 -translate-x-1/2 px-1 sm:w-[calc(100%-2rem)] sm:px-0"
         >
           <div className="pointer-events-auto flex items-center gap-4 rounded-[1.35rem] border-2 border-line bg-background/94 px-4 py-3 shadow-[0_8px_0_var(--line)] backdrop-blur-sm sm:px-5">
             <Link
@@ -102,7 +102,7 @@ export function FloatingNavbar() {
                   tabby
                 </span>
                 <span className="mt-1 text-xs font-medium leading-none tracking-tight text-subtle">
-                  native macOS autocomplete
+                  macOS AI autocomplete
                 </span>
               </span>
             </Link>
@@ -129,7 +129,7 @@ export function FloatingNavbar() {
                 className="tabby-button tabby-button-secondary hidden h-11 items-center justify-center gap-2 rounded-[0.95rem] px-4 text-sm font-semibold tracking-tight md:inline-flex"
               >
                 <GithubIcon className="h-4.5 w-4.5" />
-                GitHub
+                Star on GitHub
               </Link>
               <Link
                 href={DOWNLOAD_URL}

@@ -67,14 +67,14 @@ export function StatsStripSection() {
   });
 
   return (
-    <section ref={sectionRef} className="mx-auto max-w-[1220px]">
-      <div className="mx-auto max-w-[980px] px-1">
+    <section ref={sectionRef} className="mx-auto max-w-305">
+      <div className="mx-auto max-w-245 px-1">
         <div className="mb-5 flex items-center gap-3">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-[0.72rem] font-medium tracking-[0.14em] text-ink uppercase shadow-[0_2px_0_var(--line)]">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             proof at a glance
           </span>
-          <div className="relative hidden h-[2px] flex-1 overflow-hidden rounded-full bg-line-soft sm:block">
+          <div className="relative hidden h-0.5 flex-1 overflow-hidden rounded-full bg-line-soft sm:block">
             <motion.span
               aria-hidden="true"
               style={{ scaleX: smoothLineScale, transformOrigin: "0% 50%" }}
@@ -143,10 +143,10 @@ export function StatsStripSection() {
             className="border-b-2 border-line-soft md:border-b-0"
           >
             <Stat
-              value={9}
-              suffix="+"
-              label="apps supported"
-              hint="Mail, Notes, Slack, Notion, more"
+              value={95}
+              suffix="%"
+              label="of macOS apps supported"
+              hint="Works across most common text fields"
             />
           </motion.div>
           <motion.div

@@ -21,7 +21,7 @@ type CustomItemProps = {
 function CustomItem({ eyebrow, title, description, preview }: CustomItemProps) {
   return (
     <HoverLift lift={5} className="h-full">
-      <article className="tabby-panel-soft flex h-full flex-col gap-4 rounded-[1.55rem] p-6 sm:p-7">
+      <article className="tabby-panel-soft flex h-full min-h-124 flex-col gap-4 rounded-[1.55rem] p-6 sm:min-h-128 sm:p-7">
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-moss sm:text-[0.75rem]">
@@ -31,7 +31,7 @@ function CustomItem({ eyebrow, title, description, preview }: CustomItemProps) {
         <h3 className="text-[1.65rem] font-semibold leading-tight tracking-tight text-ink sm:text-[1.9rem]">
           {title}
         </h3>
-        <p className="max-w-md text-sm leading-relaxed tracking-tight text-muted sm:text-base">
+        <p className="min-h-23 max-w-md text-sm leading-relaxed tracking-tight text-muted sm:min-h-24 sm:text-base">
           {description}
         </p>
         <div className="mt-auto">{preview}</div>
@@ -99,8 +99,8 @@ function LengthPreview() {
         />
       </div>
       <p className="mt-4 text-sm leading-relaxed tracking-tight text-subtle">
-        Suggestions stay concise by default so they still feel like an
-        extension of your own sentence.
+        Suggestions stay concise by default so they still feel like an extension
+        of your own sentence.
       </p>
     </div>
   );
@@ -110,7 +110,10 @@ function TonePreview() {
   const tones = ["warm", "concise", "direct"];
   return (
     <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-5 shadow-[0_3px_0_var(--line)]">
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center rounded-full border-2 border-line bg-moss/15 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-ink shadow-[0_2px_0_var(--line)]">
+          coming soon
+        </span>
         {tones.map((t, i) => (
           <span
             key={t}
@@ -125,11 +128,10 @@ function TonePreview() {
       <p className="mt-4 text-sm leading-relaxed tracking-tight text-muted">
         Hey Maya,
         <span className="text-accent">
-          {" thanks again for turning this around so quickly — really appreciate it."}
+          {
+            " thanks again for turning this around so quickly — really appreciate it."
+          }
         </span>
-      </p>
-      <p className="mt-3 text-xs tracking-tight text-subtle">
-        Tone adjusts without locking you into one preset.
       </p>
     </div>
   );
@@ -137,7 +139,7 @@ function TonePreview() {
 
 export function CustomizationCardsSection() {
   return (
-    <section className="mx-auto max-w-[1220px]">
+    <section className="mx-auto max-w-305">
       <FadeIn>
         <div className="flex flex-col items-center gap-3 text-center">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
@@ -157,16 +159,13 @@ export function CustomizationCardsSection() {
         </p>
       </FadeIn>
 
-      <Stagger
-        stagger={0.12}
-        className="mt-12 grid gap-6 lg:grid-cols-3"
-      >
+      <Stagger stagger={0.12} className="mt-12 grid gap-6 lg:grid-cols-3">
         <StaggerItem>
           <ScaleIn>
             <CustomItem
               eyebrow="models"
               title="choose your model"
-              description="Pick the balance that fits your workflow, from instant completions to slower but sharper suggestions."
+              description="Pick the balance that fits your workflow, from fast completions to sharper suggestions."
               preview={<ModelsPreview />}
             />
           </ScaleIn>
@@ -176,7 +175,7 @@ export function CustomizationCardsSection() {
             <CustomItem
               eyebrow="length"
               title="short or long"
-              description="Keep completions short and invisible, or let tabby expand into fuller suggestions when you need momentum."
+              description="Keep completions short and invisible, or let tabby expand when you need more momentum."
               preview={<LengthPreview />}
             />
           </ScaleIn>
@@ -184,9 +183,9 @@ export function CustomizationCardsSection() {
         <StaggerItem>
           <ScaleIn delay={0.16}>
             <CustomItem
-              eyebrow="tone"
+              eyebrow="ai personalization"
               title="nudge the voice"
-              description="Customize the tone between warm, concise, or direct and keep editing naturally."
+              description="Teach tabby how you naturally write, then steer the tone without losing control of the edit."
               preview={<TonePreview />}
             />
           </ScaleIn>

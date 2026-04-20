@@ -169,7 +169,7 @@ export function useLandingMotion() {
 function LandingSplash({ phase }: { phase: LandingMotionPhase }) {
   return (
     <motion.div
-      className="tabby-intro-overlay fixed inset-0 z-[90] overflow-hidden bg-background"
+      className="tabby-intro-overlay fixed inset-0 z-90 overflow-hidden bg-background"
       initial={{ opacity: 1 }}
       animate={phase === "settled" ? { opacity: 0 } : { opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.24, ease: EASE } }}
@@ -186,7 +186,7 @@ function LandingSplash({ phase }: { phase: LandingMotionPhase }) {
       />
 
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-soft/35 blur-3xl"
+        className="absolute left-1/2 top-1/2 h-128 w-lg -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-soft/35 blur-3xl"
         variants={shellGlowVariants}
         initial="intro"
         animate={phase}
@@ -222,7 +222,7 @@ function LandingSplash({ phase }: { phase: LandingMotionPhase }) {
           variants={shellCardVariants}
           initial="intro"
           animate={phase}
-          className="w-full max-w-[36rem] rounded-[2rem] border-2 border-line bg-surface-2 p-4 shadow-[0_10px_0_var(--line)] sm:p-5"
+          className="w-full max-w-xl rounded-4xl border-2 border-line bg-surface-2 p-4 shadow-[0_10px_0_var(--line)] sm:p-5"
         >
           <div className="rounded-[1.55rem] border-2 border-line bg-surface-3 p-5 sm:p-6">
             <div className="flex items-center justify-between gap-3">
@@ -279,7 +279,7 @@ function LandingSplash({ phase }: { phase: LandingMotionPhase }) {
                       : { opacity: 1, y: 0 }
                   }
                   transition={{ duration: 0.6, ease: EASE, delay: 0.14 }}
-                  className="mx-auto max-w-[28rem] text-sm leading-relaxed tracking-tight text-muted sm:text-base"
+                  className="mx-auto max-w-md text-sm leading-relaxed tracking-tight text-muted sm:text-base"
                 >
                   Quiet local autocomplete, right where you already write.
                 </motion.p>

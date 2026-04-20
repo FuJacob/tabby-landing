@@ -6,43 +6,20 @@ export const metadata: Metadata = {
   description: "Product updates and release notes for tabby.",
 };
 
-const RELEASES = [
-  {
-    version: "v0.9.3",
-    date: "Apr 2026",
-    note: "Performance and reliability improvements.",
-  },
-  {
-    version: "v0.9.2",
-    date: "Mar 2026",
-    note: "Expanded app support and completion quality updates.",
-  },
-  {
-    version: "v0.9.1",
-    date: "Feb 2026",
-    note: "Initial public beta release.",
-  },
-] as const;
-
 export default function ReleaseNotesPage() {
   return (
     <LegalPageShell
       current="release-notes"
       title="Release Notes"
-      summary="A concise log of product updates."
-      updatedAt="APR 12, 2026"
+      summary="There are no public release notes yet because tabby has not launched."
+      updatedAt="APR 19, 2026"
     >
-      <ul className="space-y-3">
-        {RELEASES.map((release) => (
-          <li key={release.version} className="space-y-1">
-            <p className="font-semibold text-ink">
-              {release.version}
-              <span className="font-medium text-subtle"> - {release.date}</span>
-            </p>
-            <p>{release.note}</p>
-          </li>
-        ))}
-      </ul>
+      <p>tabby has not launched yet, so there are no release notes to publish.</p>
+
+      <p>
+        Once the first public version is available, this page will track updates,
+        fixes, and notable product changes.
+      </p>
     </LegalPageShell>
   );
 }
