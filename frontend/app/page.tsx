@@ -48,11 +48,11 @@ export default function Home() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-40 -top-40 z-0 h-[34rem] w-[34rem] rounded-full bg-moss/20 blur-[140px] sm:h-[42rem] sm:w-[42rem] lg:-left-56 lg:-top-56 lg:h-[52rem] lg:w-[52rem]"
+        className="pointer-events-none absolute -left-40 -top-40 z-0 h-136 w-136 rounded-full bg-moss/20 blur-[140px] sm:h-168 sm:w-2xl lg:-left-56 lg:-top-56 lg:h-208 lg:w-208"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-40 -top-40 z-0 h-[34rem] w-[34rem] rounded-full bg-accent-soft/30 blur-[140px] sm:h-[42rem] sm:w-[42rem] lg:-right-56 lg:-top-56 lg:h-[52rem] lg:w-[52rem]"
+        className="pointer-events-none absolute -right-40 -top-40 z-0 h-136 w-136 rounded-full bg-accent-soft/30 blur-[140px] sm:h-168 sm:w-2xl lg:-right-56 lg:-top-56 lg:h-208 lg:w-208"
       />
       <StructuredData />
       <ScrollProgressBar />
