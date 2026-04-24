@@ -33,6 +33,8 @@ export default function PrivacyPage() {
         <a
           className="tabby-link ml-1 font-semibold"
           href={`mailto:${SUPPORT_EMAIL}`}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {SUPPORT_EMAIL}
         </a>

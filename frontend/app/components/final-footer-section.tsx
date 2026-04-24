@@ -37,11 +37,21 @@ export function FinalFooterSection() {
           </div>
 
           <div className="w-full max-w-85 space-y-3">
-            <Link href={DOWNLOAD_URL} className={footerPrimaryActionClass}>
+            <Link
+              href={DOWNLOAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={footerPrimaryActionClass}
+            >
               <AppleIcon className="h-5 w-5" />
               Download for Mac
             </Link>
-            <Link href={GITHUB_URL} className={footerSecondaryActionClass}>
+            <Link
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={footerSecondaryActionClass}
+            >
               <GithubIcon className="h-5 w-5" />
               Star on GitHub
             </Link>
@@ -86,6 +96,8 @@ export function FinalFooterSection() {
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="tabby-link text-sm font-medium leading-none tracking-tight sm:text-base"
             >
               {SUPPORT_EMAIL}

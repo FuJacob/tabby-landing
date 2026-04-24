@@ -204,10 +204,6 @@ a {
   scroll-margin-top: 1.5rem;
 }
 
-.tabby-intro-overlay {
-  will-change: opacity;
-}
-
 @keyframes tabby-marquee-scroll {
   from {
     transform: translate3d(0, 0, 0);
@@ -305,9 +301,5 @@ a {
 
   .tabby-float-cta-enter {
     animation: none;
-  }
-
-  .tabby-intro-overlay {
-    display: none;
   }
 }

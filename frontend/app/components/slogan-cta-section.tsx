@@ -59,11 +59,21 @@ export function SloganCtaSection() {
 
         <ScaleIn delay={0.25} from={0.96}>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href={DOWNLOAD_URL} className={primaryActionClass}>
+            <Link
+              href={DOWNLOAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={primaryActionClass}
+            >
               <AppleIcon className="h-6 w-6 sm:h-7 sm:w-7" />
               Download for Mac
             </Link>
-            <Link href={GITHUB_URL} className={secondaryActionClass}>
+            <Link
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={secondaryActionClass}
+            >
               <GithubIcon className="h-5 w-5" />
               Star on GitHub
             </Link>

@@ -126,6 +126,8 @@ export function FloatingNavbar() {
             <div className="ml-auto flex items-center gap-2">
               <Link
                 href={GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="tabby-button tabby-button-secondary hidden h-11 items-center justify-center gap-2 rounded-[0.95rem] px-4 text-sm font-semibold tracking-tight md:inline-flex"
               >
                 <GithubIcon className="h-4.5 w-4.5" />
@@ -133,6 +135,8 @@ export function FloatingNavbar() {
               </Link>
               <Link
                 href={DOWNLOAD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="tabby-button tabby-button-primary inline-flex h-11 items-center justify-center gap-2 rounded-[0.95rem] px-4 text-sm font-semibold tracking-tight sm:px-5"
               >
                 <AppleIcon className="h-4.5 w-4.5" />

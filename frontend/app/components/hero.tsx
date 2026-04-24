@@ -4,7 +4,6 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { DOWNLOAD_URL, GITHUB_URL } from "../lib/site";
 import { AppleIcon, GithubIcon } from "./icons";
-import { useLandingMotion } from "./landing-motion-shell";
 import { ParallaxY, Typewriter } from "./motion";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -217,9 +216,8 @@ function HeroHeadline({ revealState }: { revealState: "hidden" | "visible" }) {
 }
 
 export function Hero() {
-  const { heroReady } = useLandingMotion();
   const prefersReducedMotion = useReducedMotion() ?? false;
-  const revealState = heroReady || prefersReducedMotion ? "visible" : "hidden";
+  const revealState = "visible" as const;
 
   return (
     <main id="hero" className="relative pt-6 sm:pt-8">
@@ -250,11 +248,21 @@ export function Hero() {
             variants={copyItem}
             className="flex flex-wrap items-center gap-3 sm:gap-4"
           >
-            <Link href={GITHUB_URL} className={secondaryActionClass}>
+            <Link
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={secondaryActionClass}
+            >
               <GithubIcon className="h-6 w-6" />
               Star on GitHub
             </Link>
-            <Link href={DOWNLOAD_URL} className={primaryActionClass}>
+            <Link
+              href={DOWNLOAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={primaryActionClass}
+            >
               <AppleIcon className="h-6 w-6" />
               Download for Mac
             </Link>
