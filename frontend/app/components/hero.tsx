@@ -241,7 +241,6 @@ export function Hero() {
             <motion.div variants={copyItem}>
               <HeroHeadline revealState={revealState} />
             </motion.div>
-
           </div>
 
           <motion.div
@@ -270,7 +269,6 @@ export function Hero() {
               <TabKeyCap />
             </div>
           </motion.div>
-
         </motion.div>
 
         <motion.div
