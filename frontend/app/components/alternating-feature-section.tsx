@@ -92,23 +92,11 @@ type VideoBlockProps = {
 function VideoBlock({ className = "", label, start, end }: VideoBlockProps) {
   return (
     <div
-      className={`tabby-panel-soft rounded-[1.55rem] p-4 sm:p-5 ${className}`}
+      aria-label={`${label} demo video`}
+      className={`relative aspect-video w-full overflow-hidden rounded-[1.35rem] border-2 border-line bg-background shadow-[0_7px_0_var(--line)] ${className}`}
     >
-      <div className="mb-3 flex items-center justify-between">
-        <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-[0.14em] text-ink uppercase shadow-[0_2px_0_var(--line)]">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          {label}
-        </span>
-        <div className="flex items-center gap-1.5">
-          <span className="h-2.5 w-2.5 rounded-full border border-line bg-[#FF5F57]" />
-          <span className="h-2.5 w-2.5 rounded-full border border-line bg-[#FEBC2E]" />
-          <span className="h-2.5 w-2.5 rounded-full border border-line bg-[#28C840]" />
-        </div>
-      </div>
-      <div className="relative aspect-video w-full overflow-hidden rounded-[1.1rem] border-2 border-line bg-background">
-        <SegmentPlayer start={start} end={end} />
-        <div className="absolute inset-0 z-10" />
-      </div>
+      <SegmentPlayer start={start} end={end} />
+      <div className="absolute inset-0 z-10" />
     </div>
   );
 }
@@ -137,13 +125,15 @@ function SectionHeadline({ text, icon, iconPad = false, align = "left" }: Headli
   return (
     <div className={align === "right" ? "md:flex md:justify-end" : ""}>
       <div className="inline-flex items-center gap-4">
-        <Image
-          src={icon}
-          alt=""
-          width={56}
-          height={56}
-          className={`h-12 w-12 shrink-0 rounded-[0.85rem] border-2 border-line shadow-[0_3px_0_var(--line)] sm:h-14 sm:w-14${iconPad ? " p-2" : ""}`}
-        />
+        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-[0.85rem] border-2 border-line bg-surface-2 shadow-[0_3px_0_var(--line)] sm:h-14 sm:w-14">
+          <Image
+            src={icon}
+            alt=""
+            fill
+            sizes="56px"
+            className={`object-contain${iconPad ? " p-2" : " p-1.5"}`}
+          />
+        </div>
         <h3 className="tabby-display text-[2.75rem] leading-[0.96] tracking-tight text-ink sm:text-[3.6rem]">
           {text}
         </h3>
@@ -198,18 +188,10 @@ function FeatureRow({ layout, headline, icon, iconPad, label, start, end }: Feat
 export function AlternatingFeatureSection() {
   return (
     <section className="mx-auto max-w-305">
-      <FadeIn>
-        <div className="flex flex-col items-center gap-3 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            use cases
-          </span>
-        </div>
-      </FadeIn>
       <WordReveal
         as="h2"
         text="main use cases, one by one"
-        className="tabby-display mt-4 text-center text-[2.9rem] leading-[1.02] tracking-tight text-ink sm:text-[4.1rem]"
+        className="tabby-display text-center text-[2.9rem] leading-[1.02] tracking-tight text-ink sm:text-[4.1rem]"
       />
       <FadeIn delay={0.1}>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">

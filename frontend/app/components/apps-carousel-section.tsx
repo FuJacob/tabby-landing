@@ -18,19 +18,10 @@ export function AppsCarouselSection() {
 
   return (
     <div className="mx-auto">
-      <FadeIn>
-        <div className="flex flex-col items-center gap-3 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-moss" />
-            native macOS integration
-          </span>
-        </div>
-      </FadeIn>
-
       <WordReveal
         as="h2"
         text="works in apps like"
-        className="tabby-display mt-4 text-center text-[2.7rem] leading-[1.02] tracking-tight text-ink sm:text-[3.6rem]"
+        className="tabby-display text-center text-[2.7rem] leading-[1.02] tracking-tight text-ink sm:text-[3.6rem]"
       />
       <FadeIn delay={0.1}>
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">

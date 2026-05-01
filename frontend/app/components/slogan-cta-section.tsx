@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { DOWNLOAD_URL, GITHUB_URL } from "../lib/site";
+import { GithubStarLabel } from "./github-star-label";
 import { AppleIcon, GithubIcon } from "./icons";
 import { FadeIn, ParallaxY, ScaleIn, WordReveal } from "./motion";
 
@@ -11,7 +12,11 @@ const primaryActionClass =
 const secondaryActionClass =
   "tabby-button tabby-button-secondary inline-flex h-14 items-center justify-center gap-2 rounded-2xl px-6 text-[1.05rem] font-semibold leading-none tracking-tight sm:h-16 sm:text-[1.2rem]";
 
-export function SloganCtaSection() {
+export function SloganCtaSection({
+  githubStarsLabel,
+}: {
+  githubStarsLabel: string | null;
+}) {
   return (
     <section className="relative overflow-hidden rounded-4xl border-2 border-line bg-surface-2 px-6 py-14 shadow-[0_7px_0_var(--line)] sm:px-10 sm:py-20">
       <div
@@ -37,13 +42,6 @@ export function SloganCtaSection() {
       </ParallaxY>
 
       <div className="relative z-10 flex flex-col items-center gap-7 text-center">
-        <FadeIn>
-          <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-3 px-3 py-1 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            free forever · no account
-          </span>
-        </FadeIn>
-
         <WordReveal
           as="h2"
           text="ready to try tabby?"
@@ -75,7 +73,7 @@ export function SloganCtaSection() {
               className={secondaryActionClass}
             >
               <GithubIcon className="h-5 w-5" />
-              Star on GitHub
+              <GithubStarLabel starsLabel={githubStarsLabel} />
             </Link>
           </div>
         </ScaleIn>

@@ -94,10 +94,6 @@ export function TestimonialsSection() {
     <section className="mx-auto max-w-305">
       <FadeIn>
         <div className="flex flex-col items-center gap-3 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-moss" />
-            early users across school, work, and side projects
-          </span>
           <h2 className="tabby-display text-[2.7rem] leading-[1.02] tracking-tight text-ink sm:text-[4rem]">
             people using tabby, daily
           </h2>

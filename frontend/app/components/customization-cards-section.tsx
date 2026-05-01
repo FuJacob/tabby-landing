@@ -140,18 +140,10 @@ function TonePreview() {
 export function CustomizationCardsSection() {
   return (
     <section className="mx-auto max-w-305">
-      <FadeIn>
-        <div className="flex flex-col items-center gap-3 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-moss" />
-            yours, tuned
-          </span>
-        </div>
-      </FadeIn>
       <WordReveal
         as="h2"
         text="make tabby feel like yours"
-        className="tabby-display mt-4 text-center text-[2.9rem] leading-[1.02] tracking-tight text-ink sm:text-[4.1rem]"
+        className="tabby-display text-center text-[2.9rem] leading-[1.02] tracking-tight text-ink sm:text-[4.1rem]"
       />
       <FadeIn delay={0.1}>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">

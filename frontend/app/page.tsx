@@ -4,7 +4,6 @@ import { CustomizationCardsSection } from "./components/customization-cards-sect
 import { DemoVideoSection } from "./components/demo-video-section";
 import { FaqSection } from "./components/faq-section";
 import { FinalFooterSection } from "./components/final-footer-section";
-import { FloatingNavbar } from "./components/floating-navbar";
 import { Header } from "./components/header";
 import { Hero } from "./components/hero";
 import { HowItWorksSection } from "./components/how-it-works-section";
@@ -16,6 +15,7 @@ import { StatsStripSection } from "./components/stats-strip-section";
 import { StructuredData } from "./components/structured-data";
 import { TestimonialsSection } from "./components/testimonials-section";
 import { FloatingButton } from "./components/floating-button";
+import { GITHUB_URL } from "./lib/site";
 
 function SectionDivider() {
   return (
@@ -29,7 +29,46 @@ function SectionDivider() {
   );
 }
 
-export default function Home() {
+async function getGithubStars() {
+  const repoPath = new URL(GITHUB_URL).pathname;
+  const headers: Record<string, string> = {
+    Accept: "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+
+  if (process.env.GITHUB_TOKEN) {
+    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  }
+
+  try {
+    const response = await fetch(`https://api.github.com/repos${repoPath}`, {
+      headers,
+      next: { revalidate: 3600 },
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = (await response.json()) as {
+      stargazers_count?: number;
+    };
+
+    return typeof data.stargazers_count === "number"
+      ? data.stargazers_count
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+export default async function Home() {
+  const githubStars = await getGithubStars();
+  const githubStarsLabel =
+    githubStars === null
+      ? null
+      : `${githubStars.toLocaleString("en-US")} stars`;
+
   return (
     <div
       id="top"
@@ -46,22 +85,13 @@ export default function Home() {
           backgroundSize: "40px 40px",
         }}
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-40 -top-40 z-0 h-136 w-136 rounded-full bg-moss/20 blur-[140px] sm:h-168 sm:w-2xl lg:-left-56 lg:-top-56 lg:h-208 lg:w-208"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-40 -top-40 z-0 h-136 w-136 rounded-full bg-accent-soft/30 blur-[140px] sm:h-168 sm:w-2xl lg:-right-56 lg:-top-56 lg:h-208 lg:w-208"
-      />
       <StructuredData />
       <ScrollProgressBar />
-      <FloatingNavbar />
       <FloatingButton />
       <div className="relative z-10 mx-auto flex w-full max-w-340 flex-col gap-16 sm:gap-20 lg:gap-24">
         <SectionShell>
-          <Header />
-          <Hero />
+          <Header githubStarsLabel={githubStarsLabel} />
+          <Hero githubStarsLabel={githubStarsLabel} />
         </SectionShell>
 
         <section className="px-6 sm:px-8 lg:px-10">
@@ -114,11 +144,11 @@ export default function Home() {
         <SectionDivider />
 
         <section className="px-6 sm:px-8 lg:px-10">
-          <SloganCtaSection />
+          <SloganCtaSection githubStarsLabel={githubStarsLabel} />
         </section>
 
         <section className="px-6 sm:px-8 lg:px-10">
-          <FinalFooterSection />
+          <FinalFooterSection githubStarsLabel={githubStarsLabel} />
         </section>
       </div>
     </div>

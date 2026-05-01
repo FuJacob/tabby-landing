@@ -16,7 +16,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 function Stat({ value, prefix, suffix, label, hint }: StatProps) {
   return (
-    <div className="flex flex-col gap-1.5 px-4 py-5 sm:px-6">
+    <div className="flex h-full flex-col gap-1.5 rounded-[1.25rem] border-2 border-line bg-background px-4 py-5 shadow-[0_4px_0_var(--line)] sm:px-6">
       <div className="tabby-display text-[2.3rem] leading-none tracking-tight text-ink sm:text-[2.9rem]">
         <CountUp to={value} prefix={prefix} suffix={suffix} />
       </div>
@@ -49,48 +49,13 @@ export function StatsStripSection() {
     prefersReducedMotion ? [1, 1] : [0.965, 1],
   );
   const opacity = useTransform(scrollYProgress, [0, 0.55, 1], [0.18, 0.75, 1]);
-  const lineScale = useTransform(scrollYProgress, [0, 1], [0.18, 1]);
-  const pulseX = useTransform(scrollYProgress, [0, 1], ["2%", "98%"]);
 
   const smoothY = useSpring(translate, { stiffness: 140, damping: 26, mass: 0.55 });
   const smoothScale = useSpring(scale, { stiffness: 150, damping: 24, mass: 0.55 });
   const smoothOpacity = useSpring(opacity, { stiffness: 180, damping: 28, mass: 0.4 });
-  const smoothLineScale = useSpring(lineScale, {
-    stiffness: 170,
-    damping: 26,
-    mass: 0.45,
-  });
-  const smoothPulseX = useSpring(pulseX, {
-    stiffness: 150,
-    damping: 26,
-    mass: 0.5,
-  });
 
   return (
     <section ref={sectionRef} className="mx-auto max-w-305">
-      <div className="mx-auto max-w-245 px-1">
-        <div className="mb-5 flex items-center gap-3">
-          <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-[0.72rem] font-medium tracking-[0.14em] text-ink uppercase shadow-[0_2px_0_var(--line)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            proof at a glance
-          </span>
-          <div className="relative hidden h-0.5 flex-1 overflow-hidden rounded-full bg-line-soft sm:block">
-            <motion.span
-              aria-hidden="true"
-              style={{ scaleX: smoothLineScale, transformOrigin: "0% 50%" }}
-              className="absolute inset-y-0 left-0 right-0 bg-accent"
-            />
-            {!prefersReducedMotion ? (
-              <motion.span
-                aria-hidden="true"
-                style={{ left: smoothPulseX }}
-                className="absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-line bg-background shadow-[0_1px_0_var(--line)]"
-              />
-            ) : null}
-          </div>
-        </div>
-      </div>
-
       <motion.div
         style={{
           y: smoothY,
@@ -98,7 +63,7 @@ export function StatsStripSection() {
           opacity: smoothOpacity,
           transformOrigin: "50% 50%",
         }}
-        className="tabby-panel rounded-[1.6rem] p-2 sm:p-3"
+        className="rounded-[1.6rem] p-2 sm:p-3"
       >
         <motion.div
           initial="hidden"
@@ -110,78 +75,55 @@ export function StatsStripSection() {
               transition: { staggerChildren: 0.1, delayChildren: 0.08 },
             },
           }}
-          className="grid grid-cols-2 divide-line-soft rounded-[1.2rem] border-2 border-line bg-surface-3 md:grid-cols-4 md:divide-x-2"
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4"
         >
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 18 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.62, ease: EASE },
+            {[
+              {
+                value: 80,
+                prefix: "<",
+                suffix: "ms",
+                label: "suggestion latency",
+                hint: "Local inference, no round trip",
               },
-            }}
-            className="border-b-2 border-line-soft md:border-b-0"
-          >
-            <Stat
-              value={80}
-              prefix="<"
-              suffix="ms"
-              label="suggestion latency"
-              hint="Local inference, no round trip"
-            />
-          </motion.div>
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 18 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.62, ease: EASE },
+              {
+                value: 95,
+                suffix: "%",
+                label: "of macOS apps supported",
+                hint: "Works across most common text fields",
               },
-            }}
-            className="border-b-2 border-line-soft md:border-b-0"
-          >
-            <Stat
-              value={95}
-              suffix="%"
-              label="of macOS apps supported"
-              hint="Works across most common text fields"
-            />
-          </motion.div>
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 18 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.62, ease: EASE },
+              {
+                value: 0,
+                label: "data leaves your Mac",
+                hint: "Every token stays on-device",
               },
-            }}
-          >
-            <Stat
-              value={0}
-              label="data leaves your Mac"
-              hint="Every token stays on-device"
-            />
-          </motion.div>
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 18 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.62, ease: EASE },
+              {
+                value: 100,
+                suffix: "%",
+                label: "free & open source",
+                hint: "MIT licensed, built in public",
               },
-            }}
-          >
-            <Stat
-              value={100}
-              suffix="%"
-              label="free & open source"
-              hint="MIT licensed, built in public"
-            />
-          </motion.div>
+            ].map((stat) => (
+              <motion.div
+                key={stat.label}
+                variants={{
+                  hidden: { opacity: 0, y: 18 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.62, ease: EASE },
+                  },
+                }}
+                className="h-full"
+              >
+                <Stat
+                  value={stat.value}
+                  prefix={stat.prefix}
+                  suffix={stat.suffix}
+                  label={stat.label}
+                  hint={stat.hint}
+                />
+              </motion.div>
+            ))}
         </motion.div>
       </motion.div>
     </section>

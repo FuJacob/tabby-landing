@@ -210,11 +210,9 @@ const steps: StepDefinition[] = [
 function StepCard({
   index,
   step,
-  isLast,
 }: {
   index: number;
   step: StepDefinition;
-  isLast: boolean;
 }) {
   return (
     <motion.article
@@ -223,41 +221,6 @@ function StepCard({
       whileHover={{ y: -4, transition: { duration: 0.22, ease: EASE } }}
       className="tabby-panel-soft relative flex h-full flex-col gap-5 rounded-[1.55rem] p-6 sm:p-7"
     >
-      <motion.span
-        initial={{ scaleX: 0.2, opacity: 0.25 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
-        viewport={{ once: true, amount: 0.65 }}
-        transition={{ duration: 0.55, ease: EASE, delay: 0.12 + index * 0.06 }}
-        style={{ transformOrigin: "0% 50%" }}
-        className="absolute inset-x-6 top-0 h-[4px] rounded-full bg-accent"
-      />
-
-      {!isLast ? (
-        <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.65 }}
-          transition={{ duration: 0.45, ease: EASE, delay: 0.35 + index * 0.08 }}
-          className="absolute -right-5 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border-2 border-line bg-background shadow-[0_3px_0_var(--line)] md:flex"
-          aria-hidden="true"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-ink"
-          >
-            <path d="M5 12h14" />
-            <path d="m13 6 6 6-6 6" />
-          </svg>
-        </motion.div>
-      ) : null}
-
       <div className="flex items-center justify-between">
         <span className="tabby-display text-[2.8rem] leading-none tracking-tight text-ink/90">
           {step.number}
@@ -286,10 +249,6 @@ export function HowItWorksSection() {
     <section className="mx-auto max-w-305">
       <FadeIn>
         <div className="flex flex-col items-center gap-3 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            three steps
-          </span>
           <h2 className="tabby-display text-[2.7rem] leading-[1.02] tracking-tight text-ink sm:text-[4rem]">
             how tabby works
           </h2>
@@ -312,12 +271,7 @@ export function HowItWorksSection() {
         className="mt-12 grid gap-6 md:grid-cols-3"
       >
         {steps.map((step, index) => (
-          <StepCard
-            key={step.number}
-            index={index}
-            step={step}
-            isLast={index === steps.length - 1}
-          />
+          <StepCard key={step.number} index={index} step={step} />
         ))}
       </motion.div>
     </section>

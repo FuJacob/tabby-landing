@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CREATOR, DOWNLOAD_URL, GITHUB_URL, SUPPORT_EMAIL } from "../lib/site";
+import { GithubStarLabel } from "./github-star-label";
 import { AppleIcon, GithubIcon, LinkedInIcon, XIcon } from "./icons";
 import { FadeIn } from "./motion";
 
@@ -21,7 +22,11 @@ const SOCIALS = [
   { label: "X", href: CREATOR.x, Icon: XIcon },
 ] as const;
 
-export function FinalFooterSection() {
+export function FinalFooterSection({
+  githubStarsLabel,
+}: {
+  githubStarsLabel: string | null;
+}) {
   return (
     <section className="border-t-2 border-line-soft pt-8 sm:pt-10">
       <FadeIn>
@@ -53,7 +58,7 @@ export function FinalFooterSection() {
               className={footerSecondaryActionClass}
             >
               <GithubIcon className="h-5 w-5" />
-              Star on GitHub
+              <GithubStarLabel starsLabel={githubStarsLabel} />
             </Link>
           </div>
         </div>

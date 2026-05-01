@@ -164,19 +164,12 @@ export function PrivacySection() {
       <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div className="space-y-6">
           <FadeIn>
-            <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-accent/15 px-3 py-1 text-xs font-semibold tracking-[0.14em] uppercase text-ink shadow-[0_2px_0_var(--line)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              local-first
-            </span>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
             <h2 className="tabby-display max-w-xl text-[2.7rem] leading-none tracking-tight text-ink sm:text-[3.9rem]">
               your writing stays on your Mac.
             </h2>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.1}>
             <p className="max-w-xl text-base leading-relaxed tracking-tight text-muted sm:text-lg">
               tabby runs a compact language model on Apple&apos;s Neural Engine.
               Every keystroke, every suggestion, every token stays inside your

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { MouseEvent } from "react";
 import { DOWNLOAD_URL, GITHUB_URL } from "../lib/site";
+import { GithubStarLabel } from "./github-star-label";
 import { AppleIcon, GithubIcon } from "./icons";
 
 const textLinks = [
@@ -43,7 +44,11 @@ function scrollToAnchor(event: MouseEvent<HTMLAnchorElement>, href: string) {
   });
 }
 
-export function Header() {
+export function Header({
+  githubStarsLabel,
+}: {
+  githubStarsLabel: string | null;
+}) {
   return (
     <header id="site-header" className="border-b-2 border-line pb-6 sm:pb-8">
       <div className="flex w-full flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -95,7 +100,7 @@ export function Header() {
             className={secondaryActionClass}
           >
             <GithubIcon className="h-5 w-5" />
-            Star on GitHub
+            <GithubStarLabel starsLabel={githubStarsLabel} />
           </Link>
           <Link
             href={DOWNLOAD_URL}
