@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { useRef } from "react";
 import { CountUp } from "./motion";
 
@@ -50,9 +56,21 @@ export function StatsStripSection() {
   );
   const opacity = useTransform(scrollYProgress, [0, 0.55, 1], [0.18, 0.75, 1]);
 
-  const smoothY = useSpring(translate, { stiffness: 140, damping: 26, mass: 0.55 });
-  const smoothScale = useSpring(scale, { stiffness: 150, damping: 24, mass: 0.55 });
-  const smoothOpacity = useSpring(opacity, { stiffness: 180, damping: 28, mass: 0.4 });
+  const smoothY = useSpring(translate, {
+    stiffness: 140,
+    damping: 26,
+    mass: 0.55,
+  });
+  const smoothScale = useSpring(scale, {
+    stiffness: 150,
+    damping: 24,
+    mass: 0.55,
+  });
+  const smoothOpacity = useSpring(opacity, {
+    stiffness: 180,
+    damping: 28,
+    mass: 0.4,
+  });
 
   return (
     <section ref={sectionRef} className="mx-auto max-w-305">
@@ -77,53 +95,53 @@ export function StatsStripSection() {
           }}
           className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4"
         >
-            {[
-              {
-                value: 80,
-                prefix: "<",
-                suffix: "ms",
-                label: "suggestion latency",
-                hint: "Local inference, no round trip",
-              },
-              {
-                value: 95,
-                suffix: "%",
-                label: "of macOS apps supported",
-                hint: "Works across most common text fields",
-              },
-              {
-                value: 0,
-                label: "data leaves your Mac",
-                hint: "Every token stays on-device",
-              },
-              {
-                value: 100,
-                suffix: "%",
-                label: "free & open source",
-                hint: "MIT licensed, built in public",
-              },
-            ].map((stat) => (
-              <motion.div
-                key={stat.label}
-                variants={{
-                  hidden: { opacity: 0, y: 18 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: { duration: 0.62, ease: EASE },
-                  },
-                }}
-                className="h-full"
-              >
-                <Stat
-                  value={stat.value}
-                  prefix={stat.prefix}
-                  suffix={stat.suffix}
-                  label={stat.label}
-                  hint={stat.hint}
-                />
-              </motion.div>
-            ))}
+          {[
+            {
+              value: 80,
+              prefix: "<",
+              suffix: "ms",
+              label: "suggestion latency",
+              hint: "Local inference, no round trip",
+            },
+            {
+              value: 95,
+              suffix: "%",
+              label: "of macOS apps supported",
+              hint: "Works across most common text fields",
+            },
+            {
+              value: 0,
+              label: "data leaves your Mac",
+              hint: "Every token stays on-device",
+            },
+            {
+              value: 100,
+              suffix: "%",
+              label: "free & open source",
+              hint: "MIT licensed, built in public",
+            },
+          ].map((stat) => (
+            <motion.div
+              key={stat.label}
+              variants={{
+                hidden: { opacity: 0, y: 18 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.62, ease: EASE },
+                },
+              }}
+              className="h-full"
+            >
+              <Stat
+                value={stat.value}
+                prefix={stat.prefix}
+                suffix={stat.suffix}
+                label={stat.label}
+                hint={stat.hint}
+              />
+            </motion.div>
+          ))}
         </motion.div>
       </motion.div>
     </section>

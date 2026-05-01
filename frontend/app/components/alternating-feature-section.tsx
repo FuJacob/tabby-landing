@@ -119,9 +119,19 @@ const slideRight = {
   },
 };
 
-type HeadlineProps = { text: string; icon: string; iconPad?: boolean; align?: "left" | "right" };
+type HeadlineProps = {
+  text: string;
+  icon: string;
+  iconPad?: boolean;
+  align?: "left" | "right";
+};
 
-function SectionHeadline({ text, icon, iconPad = false, align = "left" }: HeadlineProps) {
+function SectionHeadline({
+  text,
+  icon,
+  iconPad = false,
+  align = "left",
+}: HeadlineProps) {
   return (
     <div className={align === "right" ? "md:flex md:justify-end" : ""}>
       <div className="inline-flex items-center gap-4">
@@ -152,7 +162,15 @@ type FeatureRowProps = {
   end: number;
 };
 
-function FeatureRow({ layout, headline, icon, iconPad, label, start, end }: FeatureRowProps) {
+function FeatureRow({
+  layout,
+  headline,
+  icon,
+  iconPad,
+  label,
+  start,
+  end,
+}: FeatureRowProps) {
   const textFromLeft = layout === "text-left";
 
   return (

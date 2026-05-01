@@ -207,13 +207,7 @@ const steps: StepDefinition[] = [
   },
 ];
 
-function StepCard({
-  index,
-  step,
-}: {
-  index: number;
-  step: StepDefinition;
-}) {
+function StepCard({ index, step }: { index: number; step: StepDefinition }) {
   return (
     <motion.article
       custom={index}
