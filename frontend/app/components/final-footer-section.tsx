@@ -22,11 +22,7 @@ const SOCIALS = [
   { label: "X", href: CREATOR.x, Icon: XIcon },
 ] as const;
 
-export function FinalFooterSection({
-  githubStarsLabel,
-}: {
-  githubStarsLabel: string | null;
-}) {
+export function FinalFooterSection() {
   return (
     <section className="border-t-2 border-line-soft pt-8 sm:pt-10">
       <FadeIn>
@@ -58,7 +54,7 @@ export function FinalFooterSection({
               className={footerSecondaryActionClass}
             >
               <GithubIcon className="h-5 w-5" />
-              <GithubStarLabel starsLabel={githubStarsLabel} />
+              <GithubStarLabel />
             </Link>
           </div>
         </div>
@@ -77,9 +73,6 @@ export function FinalFooterSection({
             <div className="flex h-11 flex-col justify-center">
               <span className="tabby-display text-[2rem] leading-[0.88] tracking-tight text-ink sm:text-[2.4rem]">
                 tabby
-              </span>
-              <span className="mt-1 text-xs font-medium leading-none tracking-tight text-subtle sm:text-sm">
-                macOS AI autocomplete
               </span>
             </div>
           </div>

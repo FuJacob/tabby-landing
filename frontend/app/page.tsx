@@ -15,60 +15,7 @@ import { StatsStripSection } from "./components/stats-strip-section";
 import { StructuredData } from "./components/structured-data";
 import { TestimonialsSection } from "./components/testimonials-section";
 import { FloatingButton } from "./components/floating-button";
-import { GITHUB_URL } from "./lib/site";
-
-function SectionDivider() {
-  return (
-    <section aria-hidden="true" className="px-6 sm:px-8 lg:px-10">
-      <div className="mx-auto flex max-w-305 items-center gap-4">
-        <div className="h-0.5 flex-1 bg-line-soft" />
-        <div className="h-1.5 w-1.5 rounded-full bg-line-soft" />
-        <div className="h-0.5 flex-1 bg-line-soft" />
-      </div>
-    </section>
-  );
-}
-
-async function getGithubStars() {
-  const repoPath = new URL(GITHUB_URL).pathname;
-  const headers: Record<string, string> = {
-    Accept: "application/vnd.github+json",
-    "X-GitHub-Api-Version": "2022-11-28",
-  };
-
-  if (process.env.GITHUB_TOKEN) {
-    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
-  }
-
-  try {
-    const response = await fetch(`https://api.github.com/repos${repoPath}`, {
-      headers,
-      next: { revalidate: 3600 },
-    });
-
-    if (!response.ok) {
-      return null;
-    }
-
-    const data = (await response.json()) as {
-      stargazers_count?: number;
-    };
-
-    return typeof data.stargazers_count === "number"
-      ? data.stargazers_count
-      : null;
-  } catch {
-    return null;
-  }
-}
-
-export default async function Home() {
-  const githubStars = await getGithubStars();
-  const githubStarsLabel =
-    githubStars === null
-      ? null
-      : `${githubStars.toLocaleString("en-US")} stars`;
-
+export default function Home() {
   return (
     <div
       id="top"
@@ -90,8 +37,8 @@ export default async function Home() {
       <FloatingButton />
       <div className="relative z-10 mx-auto flex w-full max-w-340 flex-col gap-16 sm:gap-20 lg:gap-24">
         <SectionShell>
-          <Header githubStarsLabel={githubStarsLabel} />
-          <Hero githubStarsLabel={githubStarsLabel} />
+          <Header />
+          <Hero />
         </SectionShell>
 
         <section className="px-6 sm:px-8 lg:px-10">
@@ -106,8 +53,6 @@ export default async function Home() {
           <AppsCarouselSection />
         </section>
 
-        <SectionDivider />
-
         <section
           id="how-it-works"
           className="tabby-anchor px-6 sm:px-8 lg:px-10"
@@ -119,8 +64,6 @@ export default async function Home() {
           <AlternatingFeatureSection />
         </section>
 
-        <SectionDivider />
-
         <section id="privacy" className="tabby-anchor px-6 sm:px-8 lg:px-10">
           <PrivacySection />
         </section>
@@ -129,26 +72,20 @@ export default async function Home() {
           <CustomizationCardsSection />
         </section>
 
-        <SectionDivider />
-
         <section className="px-6 sm:px-8 lg:px-10">
           <TestimonialsSection />
         </section>
-
-        <SectionDivider />
 
         <section id="faq" className="tabby-anchor px-6 sm:px-8 lg:px-10">
           <FaqSection />
         </section>
 
-        <SectionDivider />
-
         <section className="px-6 sm:px-8 lg:px-10">
-          <SloganCtaSection githubStarsLabel={githubStarsLabel} />
+          <SloganCtaSection />
         </section>
 
         <section className="px-6 sm:px-8 lg:px-10">
-          <FinalFooterSection githubStarsLabel={githubStarsLabel} />
+          <FinalFooterSection />
         </section>
       </div>
     </div>

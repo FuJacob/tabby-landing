@@ -54,11 +54,7 @@ function HeroHeadline({ active }: { active: boolean }) {
   );
 }
 
-export function Hero({
-  githubStarsLabel,
-}: {
-  githubStarsLabel: string | null;
-}) {
+export function Hero() {
   const revealState = "visible" as const;
 
   return (
@@ -92,7 +88,7 @@ export function Hero({
               className={secondaryActionClass}
             >
               <GithubIcon className="h-6 w-6 shrink-0" />
-              <GithubStarLabel starsLabel={githubStarsLabel} />
+              <GithubStarLabel />
             </Link>
             <Link
               href={DOWNLOAD_URL}

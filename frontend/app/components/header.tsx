@@ -44,11 +44,7 @@ function scrollToAnchor(event: MouseEvent<HTMLAnchorElement>, href: string) {
   });
 }
 
-export function Header({
-  githubStarsLabel,
-}: {
-  githubStarsLabel: string | null;
-}) {
+export function Header() {
   return (
     <header id="site-header" className="border-b-2 border-line pb-6 sm:pb-8">
       <div className="flex w-full flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -68,9 +64,6 @@ export function Header({
             <span className="flex h-11 flex-col justify-center">
               <span className="tabby-display text-[2.5rem] leading-[0.88] tracking-tight text-ink sm:text-[3rem]">
                 tabby
-              </span>
-              <span className="mt-1 text-xs font-medium leading-none tracking-tight text-subtle sm:text-sm">
-                macOS AI autocomplete
               </span>
             </span>
           </Link>
@@ -100,7 +93,7 @@ export function Header({
             className={secondaryActionClass}
           >
             <GithubIcon className="h-5 w-5" />
-            <GithubStarLabel starsLabel={githubStarsLabel} />
+            <GithubStarLabel />
           </Link>
           <Link
             href={DOWNLOAD_URL}

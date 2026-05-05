@@ -106,31 +106,29 @@ function LengthPreview() {
   );
 }
 
-function TonePreview() {
-  const tones = ["warm", "concise", "direct"];
+function PersonalizationPreview() {
+  const signals = ["writing style", "memory", "adapts over time"];
   return (
     <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-5 shadow-[0_3px_0_var(--line)]">
       <div className="flex flex-wrap items-center gap-2">
         <span className="inline-flex items-center rounded-full border-2 border-line bg-moss/15 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-ink shadow-[0_2px_0_var(--line)]">
           coming soon
         </span>
-        {tones.map((t, i) => (
+        {signals.map((signal, i) => (
           <span
-            key={t}
+            key={signal}
             className={`inline-flex items-center rounded-full border-2 border-line px-3 py-1 text-xs font-semibold tracking-tight shadow-[0_2px_0_var(--line)] ${
               i === 0 ? "bg-accent/20 text-ink" : "bg-background text-muted"
             }`}
           >
-            {t}
+            {signal}
           </span>
         ))}
       </div>
       <p className="mt-4 text-sm leading-relaxed tracking-tight text-muted">
-        Hey Maya,
+        Over time, tabby will learn the way you phrase things,
         <span className="text-accent">
-          {
-            " thanks again for turning this around so quickly — really appreciate it."
-          }
+          {" remember what matters to you, and keep suggestions sounding like you."}
         </span>
       </p>
     </div>
@@ -176,9 +174,9 @@ export function CustomizationCardsSection() {
           <ScaleIn delay={0.16}>
             <CustomItem
               eyebrow="ai personalization"
-              title="nudge the voice"
-              description="Teach tabby how you naturally write, then steer the tone without losing control of the edit."
-              preview={<TonePreview />}
+              title="learns your voice"
+              description="Coming soon: tabby will adapt to how you naturally write, keep lightweight memory over time, and make suggestions feel more like you."
+              preview={<PersonalizationPreview />}
             />
           </ScaleIn>
         </StaggerItem>

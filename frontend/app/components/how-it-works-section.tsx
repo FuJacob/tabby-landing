@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 import { FadeIn } from "./motion";
 
@@ -10,7 +10,6 @@ type StepDefinition = {
   number: string;
   title: string;
   description: string;
-  railLabel: string;
   visual: ReactNode;
 };
 
@@ -35,31 +34,19 @@ const stepCardVariants: Variants = {
 };
 
 function InstallVisual() {
-  const prefersReducedMotion = useReducedMotion() ?? false;
-
   return (
     <div className="rounded-[1.1rem] border-2 border-line bg-surface-2 p-4">
-      <div className="flex items-center gap-2">
-        <span className="h-2.5 w-2.5 rounded-full border border-line bg-[#FF5F57]" />
-        <span className="h-2.5 w-2.5 rounded-full border border-line bg-[#FEBC2E]" />
-        <span className="h-2.5 w-2.5 rounded-full border border-line bg-[#28C840]" />
-      </div>
-      <div className="mt-3 flex items-center gap-2 text-xs font-medium tracking-tight text-ink">
-        <span className="text-moss">$</span>
-        <span>brew install tabby</span>
-        <motion.span
-          animate={
-            prefersReducedMotion ? { opacity: 1 } : { opacity: [1, 0.2, 1] }
-          }
-          transition={
-            prefersReducedMotion
-              ? { duration: 0 }
-              : { duration: 1.1, repeat: Infinity, ease: "easeInOut" }
-          }
-          className="inline-block h-[1em] w-0.5 bg-ink"
-        />
-        <span className="ml-auto inline-flex h-5 items-center rounded-[0.4rem] border border-line bg-surface-3 px-1.5 text-[0.65rem] text-subtle">
-          or .dmg
+      <div className="flex items-center justify-between gap-3 rounded-[0.8rem] border-2 border-line bg-background px-4 py-3 shadow-[0_3px_0_var(--line)]">
+        <div>
+          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-subtle">
+            macOS install
+          </p>
+          <p className="mt-1 text-sm font-semibold tracking-tight text-ink">
+            Download the .dmg
+          </p>
+        </div>
+        <span className="inline-flex items-center rounded-[0.55rem] border-2 border-line bg-accent/15 px-3 py-1.5 text-xs font-semibold tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
+          drag to Applications
         </span>
       </div>
     </div>
@@ -185,8 +172,7 @@ const steps: StepDefinition[] = [
     number: "01",
     title: "Install once",
     description:
-      "Download the .dmg and drag tabby into Applications. It registers with macOS and starts your local model.",
-    railLabel: "install",
+      "Download the .dmg, drag tabby into Applications, and launch it like any other Mac app.",
     visual: <InstallVisual />,
   },
   {
@@ -194,7 +180,6 @@ const steps: StepDefinition[] = [
     title: "Type anywhere",
     description:
       "tabby watches your cursor. When you pause mid-sentence, it suggests the next thought inline as ghost text.",
-    railLabel: "write",
     visual: <TypeAnywhereVisual />,
   },
   {
@@ -202,7 +187,6 @@ const steps: StepDefinition[] = [
     title: "Press Tab",
     description:
       "The suggestion snaps in. Keep typing to adjust it, or press Escape and tabby steps out of the way.",
-    railLabel: "accept",
     visual: <TabVisual />,
   },
 ];
@@ -221,11 +205,7 @@ function StepCard({ index, step }: { index: number; step: StepDefinition }) {
         </span>
         <span className="ml-5 h-0.5 flex-1 bg-line-soft" />
       </div>
-      <div className="space-y-3">
-        <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-subtle shadow-[0_2px_0_var(--line)]">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          {step.railLabel}
-        </span>
+      <div>
         <h3 className="text-[1.55rem] font-semibold leading-tight tracking-tight text-ink sm:text-[1.75rem]">
           {step.title}
         </h3>

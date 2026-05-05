@@ -12,11 +12,7 @@ const primaryActionClass =
 const secondaryActionClass =
   "tabby-button tabby-button-secondary inline-flex h-14 items-center justify-center gap-2 rounded-2xl px-6 text-[1.05rem] font-semibold leading-none tracking-tight sm:h-16 sm:text-[1.2rem]";
 
-export function SloganCtaSection({
-  githubStarsLabel,
-}: {
-  githubStarsLabel: string | null;
-}) {
+export function SloganCtaSection() {
   return (
     <section className="relative overflow-hidden rounded-4xl border-2 border-line bg-surface-2 px-6 py-14 shadow-[0_7px_0_var(--line)] sm:px-10 sm:py-20">
       <div
@@ -73,7 +69,7 @@ export function SloganCtaSection({
               className={secondaryActionClass}
             >
               <GithubIcon className="h-5 w-5" />
-              <GithubStarLabel starsLabel={githubStarsLabel} />
+              <GithubStarLabel />
             </Link>
           </div>
         </ScaleIn>
