@@ -18,6 +18,72 @@ export function AppleIcon(props: IconProps) {
   );
 }
 
+export function ModelIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.8}
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M8 3v3" />
+      <path d="M16 3v3" />
+      <path d="M8 18v3" />
+      <path d="M16 18v3" />
+      <path d="M3 8h3" />
+      <path d="M18 8h3" />
+      <path d="M3 16h3" />
+      <path d="M18 16h3" />
+      <rect width="12" height="12" x="6" y="6" rx="3" />
+      <path d="M10 12h4" />
+      <path d="M12 10v4" />
+    </svg>
+  );
+}
+
+export function PrivateIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.8}
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M7 11V8a5 5 0 0 1 10 0v3" />
+      <rect width="14" height="10" x="5" y="11" rx="3" />
+      <path d="M12 15v2" />
+    </svg>
+  );
+}
+
+export function OpenSourceIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.8}
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M12 4a8 8 0 0 0-3.1 15.38" />
+      <path d="M15.1 19.38A8 8 0 0 0 12 4" />
+      <path d="M9 14.5a3.5 3.5 0 1 1 6 0" />
+      <path d="m8.5 19 3.5-7 3.5 7" />
+    </svg>
+  );
+}
+
 export function LinkedInIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
@@ -33,4 +99,3 @@ export function XIcon(props: IconProps) {
     </svg>
   );
 }
-

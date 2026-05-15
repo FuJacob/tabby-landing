@@ -7,42 +7,35 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
+import { useRef, type ComponentType, type SVGProps } from "react";
+import { ModelIcon, OpenSourceIcon, PrivateIcon } from "./icons";
 import { CountUp } from "./motion";
 
 type StatProps = {
   displayValue: string;
-  countTo?: number;
-  prefix?: string;
-  suffix?: string;
   label: string;
   hint: string;
+  Icon: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
 const STATS: StatProps[] = [
   {
-    displayValue: "100%",
-    countTo: 100,
-    suffix: "%",
-    label: "open source, free forever",
-    hint: "No sign-up, no account, and nothing locked behind a paywall",
+    displayValue: "Models",
+    label: "open source model customization",
+    hint: "Use Tabby's built-in local downloads or bring your own GGUF model.",
+    Icon: ModelIcon,
   },
   {
     displayValue: "100%",
-    countTo: 100,
-    suffix: "%",
-    label: "local, no cloud",
-    hint: "Your text stays on your Mac, with no required hosted API",
+    label: "private, no cloud",
+    hint: "Your text, keystrokes, and suggestions stay on your Mac.",
+    Icon: PrivateIcon,
   },
   {
-    displayValue: "Apple",
-    label: "Intelligence support",
-    hint: "Use Apple’s on-device model when it is available on your machine",
-  },
-  {
-    displayValue: "Any",
-    label: ".gguf support",
-    hint: "Bring your own local model or use Tabby’s built-in downloads",
+    displayValue: "AGPL",
+    label: "open source and free",
+    hint: "No accounts, no dashboard, and nothing locked behind a paywall.",
+    Icon: OpenSourceIcon,
   },
 ];
 
@@ -50,25 +43,28 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 function Stat({
   displayValue,
-  countTo,
-  prefix,
-  suffix,
   label,
   hint,
+  Icon,
 }: StatProps) {
   return (
-    <div className="flex h-full flex-col gap-1.5 rounded-[1.25rem] border-2 border-line bg-background px-4 py-5 shadow-[0_4px_0_var(--line)] sm:px-6">
-      <div className="tabby-display text-[2.3rem] leading-none tracking-tight text-ink sm:text-[2.9rem]">
-        {typeof countTo === "number" ? (
-          <CountUp to={countTo} prefix={prefix} suffix={suffix} />
-        ) : (
-          displayValue
-        )}
+    <div className="flex h-full min-h-64 flex-col rounded-[1.25rem] border-2 border-line bg-background px-5 py-6 shadow-[0_4px_0_var(--line)] sm:px-6">
+      <div className="flex items-start justify-between gap-4">
+        <div className="tabby-display text-[2.55rem] leading-none tracking-tight text-ink sm:text-[3.2rem]">
+          {displayValue === "100%" ? (
+            <CountUp to={100} suffix="%" />
+          ) : (
+            displayValue
+          )}
+        </div>
+        <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-[1rem] border-2 border-line bg-accent-soft text-ink shadow-[0_3px_0_var(--line)] sm:h-14 sm:w-14">
+          <Icon className="h-6 w-6 sm:h-7 sm:w-7" />
+        </div>
       </div>
-      <div className="text-sm font-semibold tracking-tight text-ink sm:text-base">
+      <div className="mt-4 text-base font-semibold tracking-tight text-ink sm:text-lg">
         {label}
       </div>
-      <div className="text-xs leading-relaxed tracking-tight text-subtle sm:text-sm">
+      <div className="mt-2 text-sm leading-relaxed tracking-tight text-subtle sm:text-base">
         {hint}
       </div>
     </div>
@@ -132,7 +128,7 @@ export function StatsStripSection() {
               transition: { staggerChildren: 0.1, delayChildren: 0.08 },
             },
           }}
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4"
+          className="grid grid-cols-1 gap-4 md:grid-cols-3"
         >
           {STATS.map((stat) => (
             <motion.div
@@ -149,11 +145,9 @@ export function StatsStripSection() {
             >
               <Stat
                 displayValue={stat.displayValue}
-                countTo={stat.countTo}
-                prefix={stat.prefix}
-                suffix={stat.suffix}
                 label={stat.label}
                 hint={stat.hint}
+                Icon={stat.Icon}
               />
             </motion.div>
           ))}
