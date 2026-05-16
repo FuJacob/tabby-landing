@@ -1,0 +1,3 @@
+# macOS Finder metadata should never be versioned.
+.DS_Store
+**/.DS_Store
