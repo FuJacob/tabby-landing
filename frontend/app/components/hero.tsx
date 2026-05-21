@@ -52,7 +52,7 @@ export function Hero() {
             className="mx-auto flex max-w-6xl flex-col items-center"
           >
             <h1
-              aria-label="Write at the speed of thought. In any app."
+              aria-label="write at the speed of thought. in any app."
               className="tabby-display mx-auto max-w-5xl text-center leading-[0.94] tracking-tight text-ink"
             >
               <TextAnimate
@@ -66,7 +66,7 @@ export function Hero() {
                 className="inline text-[3.15rem] sm:text-[4.8rem] lg:text-[6.2rem]"
                 segmentClassName="will-change-transform"
               >
-                Write at the speed of thought.
+                write at the speed of thought.
               </TextAnimate>
               <TextAnimate
                 as="span"
@@ -79,7 +79,7 @@ export function Hero() {
                 className="ml-[0.18em] inline text-[3.15rem] text-accent sm:text-[4.8rem] lg:text-[6.2rem]"
                 segmentClassName="will-change-transform"
               >
-                In any app.
+                in any app.
               </TextAnimate>
             </h1>
           </motion.div>
