@@ -24,7 +24,7 @@ export const FAQ_ITEMS = [
   {
     question: "What is the difference between the Apple Intelligence and Open Source engines?",
     answer:
-      "Apple Intelligence uses Apple's built-in FoundationModels runtime - no download required, but it needs macOS 26 and supported hardware. The Open Source engine runs local GGUF models through llama.cpp, ships with two built-in models (tabby-fast and tabby-quality), and lets you bring your own. If Apple Intelligence isn't available on your Mac, the Open Source engine still works.",
+      "Apple Intelligence uses Apple's built-in FoundationModels runtime - no download required, but it needs macOS 26 and supported hardware. The Open Source engine runs local GGUF models through llama.cpp, ships with two built-in models (tabby-fast-1 and tabby-balanced-1), and lets you bring your own. If Apple Intelligence isn't available on your Mac, the Open Source engine still works.",
   },
   {
     question: "What apps does tabby work with?",
@@ -34,7 +34,7 @@ export const FAQ_ITEMS = [
   {
     question: "What permissions does tabby need?",
     answer:
-      "Accessibility and Input Monitoring. Accessibility lets tabby detect the focused field, read nearby text, and place suggestions. Input Monitoring lets tabby see your keystrokes and handle Tab acceptance. Screen Recording is optional and not required for normal use.",
+      "Accessibility, Input Monitoring, and Screen Recording. Accessibility lets tabby detect the focused field, read nearby text, and place suggestions. Input Monitoring lets tabby see your keystrokes and handle Tab acceptance. Screen Recording lets tabby capture a screenshot around the focused field for visual context (OCR).",
   },
   {
     question: "What macOS version do I need?",
@@ -44,7 +44,7 @@ export const FAQ_ITEMS = [
   {
     question: "How much space do the models take?",
     answer:
-      "tabby-fast is about 0.4 GB and tabby-quality is about 0.8 GB. Apple Intelligence uses the system runtime, so no separate download. You can also add your own GGUF models if you prefer something different.",
+      "tabby-fast-1 is about 0.4 GB and tabby-balanced-1 is about 0.8 GB. Apple Intelligence uses the system runtime, so no separate download. You can also add your own GGUF models if you prefer something different.",
   },
   {
     question: "Does tabby work offline?",
@@ -54,12 +54,12 @@ export const FAQ_ITEMS = [
   {
     question: "Why am I not seeing suggestions?",
     answer:
-      "Usually it's a missing permission, tabby being paused, or no model installed yet. Check that Accessibility and Input Monitoring are enabled in System Settings, make sure tabby is active in the menu bar, and confirm you have a model selected. Some apps also don't expose enough accessibility data for tabby to work.",
+      "Usually it's a missing permission, tabby being paused, or no model installed yet. Check that Accessibility, Input Monitoring, and Screen Recording are enabled in System Settings, make sure tabby is active in the menu bar, and confirm you have a model selected. Some apps also don't expose enough accessibility data for tabby to work.",
   },
   {
     question: "Does tabby slow down my Mac?",
     answer:
-      "tabby only runs inference when you pause typing, and the models are designed to be lightweight. tabby-fast uses minimal resources. You might notice slightly more CPU usage with tabby-quality since it's a larger model, but it shouldn't affect normal use.",
+      "tabby only runs inference when you pause typing, and the models are designed to be lightweight. tabby-fast-1 uses minimal resources. You might notice slightly more CPU usage with tabby-balanced-1 since it's a larger model, but it shouldn't affect normal use.",
   },
 ];
 

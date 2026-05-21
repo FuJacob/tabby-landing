@@ -137,9 +137,8 @@ export default function PrivacyPage() {
           and handle Tab key acceptance of suggestions.
         </li>
         <li>
-          <strong>Screen Recording.</strong> Used for visual context capture
-          around the focused input area. You can deny this permission and tabby
-          will still function without visual context.
+          <strong>Screen Recording.</strong> Required to capture a screenshot
+          around the focused field for visual context (OCR).
         </li>
       </ul>
 

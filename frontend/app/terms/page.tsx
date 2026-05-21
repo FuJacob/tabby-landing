@@ -60,7 +60,7 @@ export default function TermsPage() {
         </li>
         <li>
           Understand and consent to the macOS permissions tabby requests
-          (Accessibility, Input Monitoring, and optionally Screen Recording) as
+          (Accessibility, Input Monitoring, and Screen Recording) as
           described in our{" "}
           <a className="tabby-link font-semibold" href="/privacy">
             privacy policy

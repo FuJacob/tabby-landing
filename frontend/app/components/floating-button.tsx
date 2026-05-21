@@ -40,10 +40,6 @@ export const FloatingButton = () => {
 
   return (
     <div className="tabby-float-cta-enter fixed bottom-4 right-3 z-50 flex flex-col items-end gap-2 sm:bottom-6 sm:right-6">
-      <DownloadButton className={floatingActionClass}>
-        <AppleIcon className="h-5 w-5" />
-        Download for Mac
-      </DownloadButton>
       <a
         href="https://buymeacoffee.com/tabbyapp"
         target="_blank"
@@ -60,6 +56,10 @@ export const FloatingButton = () => {
         </svg>
         Buy us a coffee
       </a>
+      <DownloadButton className={floatingActionClass}>
+        <AppleIcon className="h-5 w-5" />
+        Download for Mac
+      </DownloadButton>
     </div>
   );
 };
