@@ -8,7 +8,7 @@ import { Providers } from "./components/providers";
 const bodyFont = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 const title = "tabby - on-device AI autocomplete for macOS";
