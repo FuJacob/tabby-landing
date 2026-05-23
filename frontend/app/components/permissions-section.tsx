@@ -23,7 +23,7 @@ const permissions: Permission[] = [
     icon: "accessibility",
     title: "reads text fields",
     description:
-      "tabby reads the focused text field, caret position, and surrounding text through the macOS Accessibility API. This is how it knows what you've typed and where to place suggestions.",
+      "Reads the focused text field, caret position, and surrounding text via the macOS Accessibility API to place suggestions.",
     stays: "Text content is processed in-memory and never written to disk or sent anywhere.",
   },
   {
@@ -31,7 +31,7 @@ const permissions: Permission[] = [
     icon: "input",
     title: "detects your typing",
     description:
-      "tabby monitors keyboard events to detect typing activity and Tab key presses for accepting suggestions. It categorizes key events but does not log individual keystrokes.",
+      "Monitors keyboard events to detect typing activity and Tab presses for accepting suggestions. Keys are categorized, never logged.",
     stays: "Keystrokes are categorized but never logged, stored, or transmitted.",
   },
   {
@@ -39,7 +39,7 @@ const permissions: Permission[] = [
     icon: "screen",
     title: "captures visual context",
     description:
-      "tabby captures a small region around the focused text field using ScreenCaptureKit. Visual context helps the model understand formatting and what you're replying to.",
+      "Captures a small region around the focused text field via ScreenCaptureKit so the model can read formatting and context.",
     stays: "Screenshots are processed locally in real-time and immediately discarded.",
   },
 ];
