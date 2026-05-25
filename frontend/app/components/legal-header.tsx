@@ -37,8 +37,8 @@ export function LegalHeader({ current }: LegalHeaderProps) {
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/512.png"
-            alt="tabby paw logo"
+            src="/app-icons/new-logo.png"
+            alt="Cotabby logo"
             width={56}
             height={56}
             className="h-14 w-14 rounded-2xl border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)]"

@@ -61,8 +61,8 @@ export function FinalFooterSection() {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
           <div className="flex items-center gap-3">
             <Image
-              src="/512.png"
-              alt="tabby paw logo"
+              src="/app-icons/new-logo.png"
+              alt="Cotabby logo"
               width={48}
               height={48}
               className="h-11 w-11 rounded-[0.95rem] border-2 border-line bg-surface-2 shadow-[0_3px_0_var(--line)]"
