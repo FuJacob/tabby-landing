@@ -23,7 +23,7 @@ function OpenSourceEvidence() {
       <div className="flex items-center gap-2 font-mono text-[0.72rem] sm:text-xs">
         <span className="text-accent-deep">$</span>
         <span className="text-ink">git clone</span>
-        <span className="truncate text-subtle">github.com/fujacob/tabby</span>
+        <span className="truncate text-subtle">github.com/fujacob/cotabby</span>
       </div>
       <div className="mt-2.5 flex flex-wrap gap-1.5">
         <span className="rounded-full bg-accent/15 px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-accent-deep">

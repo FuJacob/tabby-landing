@@ -16,7 +16,7 @@ type GitHubRelease = {
   prerelease: boolean;
 };
 
-const REPO = "fujacob/tabby";
+const REPO = "fujacob/cotabby";
 const RELEASES_URL = `${GITHUB_URL}/releases`;
 
 async function fetchReleases(): Promise<GitHubRelease[] | null> {

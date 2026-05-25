@@ -20,7 +20,7 @@ type GitHubRelease = {
   html_url: string;
 };
 
-const REPO = "fujacob/tabby";
+const REPO = "fujacob/cotabby";
 
 /// Accept both `v1.2.3` and `1.2.3` because the appcast template uses the raw
 /// git tag (`vX.Y.Z`) but a future caller might pass the SemVer string.

@@ -1,6 +1,6 @@
 "use server";
 
-const GITHUB_REPO = "FuJacob/tabby";
+const GITHUB_REPO = "FuJacob/cotabby";
 
 type FeedbackType = "bug" | "feature";
 
