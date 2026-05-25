@@ -7,10 +7,10 @@ import { AppleIcon, DiscordIcon, GithubIcon, LinkedInIcon, XIcon } from "./icons
 import { FadeIn } from "./motion";
 
 const footerPrimaryActionClass =
-  "tabby-button tabby-button-primary inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[1rem] font-semibold leading-none tracking-tight sm:h-14 sm:text-[1.2rem]";
+  "tabby-button tabby-button-primary inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[1rem] font-bold leading-none tracking-tight sm:h-14 sm:text-[1.2rem]";
 
 const footerSecondaryActionClass =
-  "tabby-button tabby-button-secondary inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[1rem] font-semibold leading-none tracking-tight sm:text-[1.2rem]";
+  "tabby-button tabby-button-secondary inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[1rem] font-bold leading-none tracking-tight sm:text-[1.2rem]";
 
 const FOOTER_LINKS = [
   { label: "Privacy", href: "/privacy" },
@@ -84,7 +84,7 @@ export function FinalFooterSection() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="tabby-link text-[1rem] font-medium leading-none tracking-tight sm:text-[1.1rem]"
+                className="tabby-link text-[1rem] font-semibold leading-none tracking-tight sm:text-[1.1rem]"
               >
                 {link.label}
               </Link>
@@ -96,7 +96,7 @@ export function FinalFooterSection() {
               href={`mailto:${SUPPORT_EMAIL}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="tabby-link text-sm font-medium leading-none tracking-tight sm:text-base"
+              className="tabby-link text-sm font-semibold leading-none tracking-tight sm:text-base"
             >
               {SUPPORT_EMAIL}
             </a>

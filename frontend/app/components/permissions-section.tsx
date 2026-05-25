@@ -84,11 +84,11 @@ function PermissionCard({ permission }: { permission: Permission }) {
           <div className="flex h-8 w-8 items-center justify-center rounded-lg border-2 border-line bg-surface-3 text-ink shadow-[0_2px_0_var(--line)]">
             <PermissionIcon type={permission.icon} />
           </div>
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-moss sm:text-[0.75rem]">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-moss sm:text-[0.75rem]">
             {permission.eyebrow}
           </p>
         </div>
-        <h3 className="text-[1.65rem] font-semibold leading-tight tracking-tight text-ink sm:text-[1.9rem]">
+        <h3 className="text-[1.65rem] font-bold leading-tight tracking-tight text-ink sm:text-[1.9rem]">
           {permission.title}
         </h3>
         <p className="max-w-md text-sm leading-relaxed tracking-tight text-muted sm:text-base">

@@ -24,11 +24,11 @@ function CustomItem({ eyebrow, title, description, preview }: CustomItemProps) {
       <article className="tabby-panel-soft flex h-full min-h-124 flex-col gap-4 rounded-[1.55rem] p-6 sm:min-h-128 sm:p-7">
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-moss sm:text-[0.75rem]">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-moss sm:text-[0.75rem]">
             {eyebrow}
           </p>
         </div>
-        <h3 className="text-[1.65rem] font-semibold leading-tight tracking-tight text-ink sm:text-[1.9rem]">
+        <h3 className="text-[1.65rem] font-bold leading-tight tracking-tight text-ink sm:text-[1.9rem]">
           {title}
         </h3>
         <p className="min-h-23 max-w-md text-sm leading-relaxed tracking-tight text-muted sm:min-h-24 sm:text-base">
@@ -61,7 +61,7 @@ function ModelsPreview() {
               <span
                 className={`h-2 w-2 rounded-full ${m.active ? "bg-accent" : "bg-subtle-foreground/40"}`}
               />
-              <span className="text-sm font-semibold tracking-tight text-ink">
+              <span className="text-sm font-bold tracking-tight text-ink">
                 {m.name}
               </span>
             </div>
@@ -76,7 +76,7 @@ function ModelsPreview() {
 function LengthPreview() {
   return (
     <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-5 shadow-[0_3px_0_var(--line)]">
-      <div className="flex items-center justify-between text-xs font-semibold tracking-[0.12em] uppercase text-muted">
+      <div className="flex items-center justify-between text-xs font-bold tracking-[0.12em] uppercase text-muted">
         <span>3-7 words</span>
         <span className="text-ink">7-12 words</span>
         <span>12-20 words</span>
@@ -110,13 +110,13 @@ function PersonalizationPreview() {
   return (
     <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-5 shadow-[0_3px_0_var(--line)]">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center rounded-full border-2 border-line bg-moss/15 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-ink shadow-[0_2px_0_var(--line)]">
+        <span className="inline-flex items-center rounded-full border-2 border-line bg-moss/15 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-ink shadow-[0_2px_0_var(--line)]">
           coming soon
         </span>
         {signals.map((signal, i) => (
           <span
             key={signal}
-            className={`inline-flex items-center rounded-full border-2 border-line px-3 py-1 text-xs font-semibold tracking-tight shadow-[0_2px_0_var(--line)] ${
+            className={`inline-flex items-center rounded-full border-2 border-line px-3 py-1 text-xs font-bold tracking-tight shadow-[0_2px_0_var(--line)] ${
               i === 0 ? "bg-accent/20 text-ink" : "bg-background text-muted"
             }`}
           >

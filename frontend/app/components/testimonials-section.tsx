@@ -26,7 +26,7 @@ function Avatar({ initials, tone }: AvatarProps) {
     <div
       className={`flex h-10 w-10 items-center justify-center rounded-[0.9rem] border-2 border-line text-ink shadow-[0_2px_0_var(--line)] ${bg}`}
     >
-      <span className="text-sm font-semibold tracking-tight">{initials}</span>
+      <span className="text-sm font-bold tracking-tight">{initials}</span>
     </div>
   );
 }
@@ -78,7 +78,7 @@ function ReviewCard({
         <div className="mt-auto flex items-center gap-3 border-t-2 border-line-soft pt-5">
           <Avatar initials={initials} tone={tone} />
           <div className="leading-tight">
-            <p className="text-base font-semibold tracking-tight text-ink">
+            <p className="text-base font-bold tracking-tight text-ink">
               {name}
             </p>
             <p className="text-sm tracking-tight text-subtle">{meta}</p>

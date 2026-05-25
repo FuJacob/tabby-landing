@@ -115,7 +115,7 @@ export function EmailGateProvider({ children }: { children: ReactNode }) {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="tabby-button tabby-button-primary h-12 w-full rounded-xl text-base font-semibold"
+                    className="tabby-button tabby-button-primary h-12 w-full rounded-xl text-base font-bold"
                   >
                     {status === "loading"
                       ? "..."

@@ -48,7 +48,7 @@ function Pillar({ label, description }: PillarProps) {
         </svg>
       </div>
       <div className="flex flex-col gap-1">
-        <span className="text-base font-semibold tracking-tight text-ink">
+        <span className="text-base font-bold tracking-tight text-ink">
           {label}
         </span>
         <span className="text-sm leading-relaxed tracking-tight text-muted">
@@ -84,7 +84,7 @@ function BlockedNode({ label }: { label: string }) {
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" className="shrink-0 text-accent">
         <path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       </svg>
-      <span className="text-xs font-medium tracking-tight text-subtle">{label}</span>
+      <span className="text-xs font-semibold tracking-tight text-subtle">{label}</span>
     </motion.div>
   );
 }
@@ -100,7 +100,7 @@ function DataFlowVisual() {
     >
       {/* Header */}
       <motion.div variants={flowItem} className="mb-6 flex items-center justify-between">
-        <span className="text-xs font-semibold tracking-[0.14em] text-subtle uppercase">your mac</span>
+        <span className="text-xs font-bold tracking-[0.14em] text-subtle uppercase">your mac</span>
         <span className="flex items-center gap-1.5 text-xs tracking-tight text-subtle">
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-moss opacity-60" />
@@ -118,22 +118,22 @@ function DataFlowVisual() {
         {/* Flow row */}
         <div className="flex items-center justify-between gap-2">
           <FlowNode>
-            <span className="text-[0.7rem] font-semibold tracking-widest uppercase text-subtle">input</span>
-            <span className="mt-1 text-sm font-semibold tracking-tight">your text</span>
+            <span className="text-[0.7rem] font-bold tracking-widest uppercase text-subtle">input</span>
+            <span className="mt-1 text-sm font-bold tracking-tight">your text</span>
           </FlowNode>
 
           <Arrow />
 
           <FlowNode accent>
-            <span className="text-[0.7rem] font-semibold tracking-widest uppercase opacity-50">tabby</span>
-            <span className="mt-1 text-sm font-semibold tracking-tight">on-device engine</span>
+            <span className="text-[0.7rem] font-bold tracking-widest uppercase opacity-50">tabby</span>
+            <span className="mt-1 text-sm font-bold tracking-tight">on-device engine</span>
           </FlowNode>
 
           <Arrow />
 
           <FlowNode>
-            <span className="text-[0.7rem] font-semibold tracking-widest uppercase text-moss">output</span>
-            <span className="mt-1 text-sm font-semibold tracking-tight">suggestion</span>
+            <span className="text-[0.7rem] font-bold tracking-widest uppercase text-moss">output</span>
+            <span className="mt-1 text-sm font-bold tracking-tight">suggestion</span>
           </FlowNode>
         </div>
 
@@ -143,7 +143,7 @@ function DataFlowVisual() {
           className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-surface-2 px-3 py-2"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-moss" />
-          <span className="text-xs font-medium tracking-tight text-subtle">
+          <span className="text-xs font-semibold tracking-tight text-subtle">
             Apple Intelligence or local GGUF · no hosted API
           </span>
         </motion.div>
@@ -151,7 +151,7 @@ function DataFlowVisual() {
 
       {/* Blocked items */}
       <motion.div variants={flowContainer} className="mt-5 flex flex-wrap items-center gap-2">
-        <span className="text-xs font-medium tracking-tight text-subtle">blocked:</span>
+        <span className="text-xs font-semibold tracking-tight text-subtle">blocked:</span>
         <BlockedNode label="cloud upload" />
         <BlockedNode label="telemetry" />
         <BlockedNode label="accounts" />

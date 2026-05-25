@@ -13,7 +13,7 @@ export function TabbyLogoChip({
 }: TabbyLogoChipProps) {
   return (
     <div
-      className={`tabby-chip inline-flex h-15 min-w-45 shrink-0 items-center gap-3 rounded-2xl px-4 text-sm font-medium tracking-tight text-ink sm:min-w-52.5 sm:text-base ${
+      className={`tabby-chip inline-flex h-15 min-w-45 shrink-0 items-center gap-3 rounded-2xl px-4 text-sm font-semibold tracking-tight text-ink sm:min-w-52.5 sm:text-base ${
         className ?? ""
       }`}
     >

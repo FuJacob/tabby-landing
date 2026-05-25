@@ -18,7 +18,7 @@ export function LegalHeader({ current }: LegalHeaderProps) {
     <header className="border-b-2 border-line pb-5 sm:pb-6">
       <Link
         href="/"
-        className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-subtle transition-colors hover:text-ink sm:mb-5"
+        className="mb-4 inline-flex items-center gap-1.5 text-sm font-semibold text-subtle transition-colors hover:text-ink sm:mb-5"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ export function LegalHeader({ current }: LegalHeaderProps) {
                 beta
               </span>
             </span>
-            <span className="mt-1 text-xs font-medium leading-none tracking-tight text-subtle sm:text-sm">
+            <span className="mt-1 text-xs font-semibold leading-none tracking-tight text-subtle sm:text-sm">
               legal and release docs
             </span>
           </span>
@@ -67,7 +67,7 @@ export function LegalHeader({ current }: LegalHeaderProps) {
                 key={link.key}
                 href={link.href}
                 aria-current={isCurrent ? "page" : undefined}
-                className={`rounded-[0.8rem] border-2 px-3 py-1.5 text-sm font-semibold tracking-tight transition sm:px-4 sm:text-base ${
+                className={`rounded-[0.8rem] border-2 px-3 py-1.5 text-sm font-bold tracking-tight transition sm:px-4 sm:text-base ${
                   isCurrent
                     ? "border-line bg-surface-4 text-ink"
                     : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"

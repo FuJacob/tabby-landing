@@ -16,13 +16,13 @@ export default function TermsPage() {
       summary="By downloading or using tabby, you agree to these terms. tabby is open-source software provided as-is under the AGPL-3.0 license."
       updatedAt="MAY 20, 2026"
     >
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">Acceptance</h2>
+      <h2 className="text-lg font-bold text-ink sm:text-xl">Acceptance</h2>
       <p>
         By downloading, installing, or using tabby, you agree to these terms. If
         you do not agree, do not use the software.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Description of service
       </h2>
       <p>
@@ -32,11 +32,11 @@ export default function TermsPage() {
         All inference runs on your Mac - no text is sent to external servers.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">License</h2>
+      <h2 className="text-lg font-bold text-ink sm:text-xl">License</h2>
       <p>
         tabby is open-source software licensed under the{" "}
         <a
-          className="tabby-link font-semibold"
+          className="tabby-link font-bold"
           href={`${GITHUB_URL}/blob/main/LICENSE`}
           target="_blank"
           rel="noopener noreferrer"
@@ -49,7 +49,7 @@ export default function TermsPage() {
         same license.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         User responsibilities
       </h2>
       <ul className="list-disc space-y-2 pl-5">
@@ -62,7 +62,7 @@ export default function TermsPage() {
           Understand and consent to the macOS permissions tabby requests
           (Accessibility, Input Monitoring, and Screen Recording) as
           described in our{" "}
-          <a className="tabby-link font-semibold" href="/privacy">
+          <a className="tabby-link font-bold" href="/privacy">
             privacy policy
           </a>
           .
@@ -73,7 +73,7 @@ export default function TermsPage() {
         </li>
       </ul>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         AI-generated content
       </h2>
       <p>
@@ -84,7 +84,7 @@ export default function TermsPage() {
         whether to use any suggestion.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Intellectual property
       </h2>
       <p>
@@ -94,7 +94,7 @@ export default function TermsPage() {
         or store it outside your device.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Third-party components
       </h2>
       <p>
@@ -106,7 +106,7 @@ export default function TermsPage() {
         these third-party components.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Disclaimer of warranties
       </h2>
       <p>
@@ -118,7 +118,7 @@ export default function TermsPage() {
         will be uninterrupted, error-free, or free of harmful components.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Limitation of liability
       </h2>
       <p>
@@ -129,7 +129,7 @@ export default function TermsPage() {
         theory of liability.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Indemnification
       </h2>
       <p>
@@ -138,7 +138,7 @@ export default function TermsPage() {
         of tabby or violation of these terms.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Modification of terms
       </h2>
       <p>
@@ -147,7 +147,7 @@ export default function TermsPage() {
         posted constitutes acceptance of the revised terms.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Governing law
       </h2>
       <p>
@@ -157,11 +157,11 @@ export default function TermsPage() {
         maintainer resides.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">Contact</h2>
+      <h2 className="text-lg font-bold text-ink sm:text-xl">Contact</h2>
       <p>
         Questions about these terms? Email{" "}
         <a
-          className="tabby-link font-semibold"
+          className="tabby-link font-bold"
           href={`mailto:${SUPPORT_EMAIL}`}
         >
           {SUPPORT_EMAIL}

@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       summary="tabby runs entirely on your Mac. No accounts, no cloud processing, no analytics. This policy explains exactly what the app accesses and why."
       updatedAt="MAY 20, 2026"
     >
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">Overview</h2>
+      <h2 className="text-lg font-bold text-ink sm:text-xl">Overview</h2>
       <p>
         tabby is an on-device AI autocomplete app for macOS. It is designed
         around a local-first architecture - your writing, keystrokes, and
@@ -24,7 +24,7 @@ export default function PrivacyPage() {
         dashboards, and no cloud-based processing.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         What the app accesses locally
       </h2>
       <p>
@@ -58,7 +58,7 @@ export default function PrivacyPage() {
         </li>
       </ul>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         What the app does not collect
       </h2>
       <ul className="list-disc space-y-2 pl-5">
@@ -69,7 +69,7 @@ export default function PrivacyPage() {
         <li>No cookies or tracking pixels</li>
       </ul>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Network activity
       </h2>
       <p>
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
         <li>
           <strong>Update checks.</strong> tabby uses{" "}
           <a
-            className="tabby-link font-semibold"
+            className="tabby-link font-bold"
             href="https://sparkle-project.org"
             target="_blank"
             rel="noopener noreferrer"
@@ -88,14 +88,14 @@ export default function PrivacyPage() {
             Sparkle
           </a>{" "}
           to check for app updates from{" "}
-          <span className="font-semibold">updates.tabbyapp.dev</span>. Automatic
+          <span className="font-bold">updates.tabbyapp.dev</span>. Automatic
           update checks are disabled by default.
         </li>
         <li>
           <strong>Model downloads.</strong> When you choose to download an
           open-source GGUF model, tabby fetches it from{" "}
           <a
-            className="tabby-link font-semibold"
+            className="tabby-link font-bold"
             href="https://huggingface.co"
             target="_blank"
             rel="noopener noreferrer"
@@ -107,7 +107,7 @@ export default function PrivacyPage() {
       </ul>
       <p>No other network requests are made by the app.</p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Local storage
       </h2>
       <ul className="list-disc space-y-2 pl-5">
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
         </li>
       </ul>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         macOS permissions
       </h2>
       <p>tabby requests the following macOS permissions:</p>
@@ -142,7 +142,7 @@ export default function PrivacyPage() {
         </li>
       </ul>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Third-party components
       </h2>
       <p>
@@ -169,11 +169,11 @@ export default function PrivacyPage() {
         </li>
       </ul>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">Open source</h2>
+      <h2 className="text-lg font-bold text-ink sm:text-xl">Open source</h2>
       <p>
         tabby is licensed under{" "}
         <a
-          className="tabby-link font-semibold"
+          className="tabby-link font-bold"
           href={`${GITHUB_URL}/blob/main/LICENSE`}
           target="_blank"
           rel="noopener noreferrer"
@@ -182,7 +182,7 @@ export default function PrivacyPage() {
         </a>
         . The full source code is available on{" "}
         <a
-          className="tabby-link font-semibold"
+          className="tabby-link font-bold"
           href={GITHUB_URL}
           target="_blank"
           rel="noopener noreferrer"
@@ -192,7 +192,7 @@ export default function PrivacyPage() {
         . You can audit exactly what the app does at any time.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Children&apos;s privacy
       </h2>
       <p>
@@ -201,24 +201,24 @@ export default function PrivacyPage() {
         from anyone, there is no data to identify or remove.
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">
+      <h2 className="text-lg font-bold text-ink sm:text-xl">
         Changes to this policy
       </h2>
       <p>
         If this policy changes, we will update this page and the &quot;last
         updated&quot; date above. For significant changes, we will note them in
         the{" "}
-        <a className="tabby-link font-semibold" href="/release-notes">
+        <a className="tabby-link font-bold" href="/release-notes">
           release notes
         </a>
         .
       </p>
 
-      <h2 className="text-lg font-semibold text-ink sm:text-xl">Contact</h2>
+      <h2 className="text-lg font-bold text-ink sm:text-xl">Contact</h2>
       <p>
         Questions about this policy? Email{" "}
         <a
-          className="tabby-link font-semibold"
+          className="tabby-link font-bold"
           href={`mailto:${SUPPORT_EMAIL}`}
         >
           {SUPPORT_EMAIL}

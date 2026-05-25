@@ -15,7 +15,7 @@ export default function FeedbackPage() {
         <header className="border-b-2 border-line pb-5 sm:pb-6">
           <Link
             href="/"
-            className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-subtle transition-colors hover:text-ink sm:mb-5"
+            className="mb-4 inline-flex items-center gap-1.5 text-sm font-semibold text-subtle transition-colors hover:text-ink sm:mb-5"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ export default function FeedbackPage() {
                   beta
                 </span>
               </span>
-              <span className="mt-1 text-xs font-medium leading-none tracking-tight text-subtle sm:text-sm">
+              <span className="mt-1 text-xs font-semibold leading-none tracking-tight text-subtle sm:text-sm">
                 feedback
               </span>
             </span>

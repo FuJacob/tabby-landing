@@ -6,7 +6,7 @@ import { submitFeedback } from "./action";
 type FeedbackType = "bug" | "feature";
 
 const inputClass =
-  "w-full rounded-xl border-2 border-line-soft bg-surface-2 px-4 py-3 text-sm font-medium tracking-tight text-ink placeholder:text-subtle/60 transition focus:border-line focus:outline-none sm:text-base";
+  "w-full rounded-xl border-2 border-line-soft bg-surface-2 px-4 py-3 text-sm font-semibold tracking-tight text-ink placeholder:text-subtle/60 transition focus:border-line focus:outline-none sm:text-base";
 
 const textareaClass = `${inputClass} min-h-28 resize-y`;
 
@@ -51,7 +51,7 @@ export function FeedbackForm() {
         <button
           type="button"
           onClick={() => setType("bug")}
-          className={`rounded-xl border-2 px-4 py-2 text-sm font-semibold tracking-tight transition sm:text-base ${
+          className={`rounded-xl border-2 px-4 py-2 text-sm font-bold tracking-tight transition sm:text-base ${
             type === "bug"
               ? "border-line bg-surface-4 text-ink"
               : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"
@@ -62,7 +62,7 @@ export function FeedbackForm() {
         <button
           type="button"
           onClick={() => setType("feature")}
-          className={`rounded-xl border-2 px-4 py-2 text-sm font-semibold tracking-tight transition sm:text-base ${
+          className={`rounded-xl border-2 px-4 py-2 text-sm font-bold tracking-tight transition sm:text-base ${
             type === "feature"
               ? "border-line bg-surface-4 text-ink"
               : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"
@@ -76,7 +76,7 @@ export function FeedbackForm() {
       <div>
         <label
           htmlFor="title"
-          className="mb-1.5 block text-sm font-semibold tracking-tight text-ink"
+          className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
         >
           Title <span className="text-accent">*</span>
         </label>
@@ -98,7 +98,7 @@ export function FeedbackForm() {
       <div>
         <label
           htmlFor="description"
-          className="mb-1.5 block text-sm font-semibold tracking-tight text-ink"
+          className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
         >
           Description <span className="text-accent">*</span>
         </label>
@@ -121,7 +121,7 @@ export function FeedbackForm() {
           <div>
             <label
               htmlFor="steps"
-              className="mb-1.5 block text-sm font-semibold tracking-tight text-ink"
+              className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
             >
               Steps to Reproduce
             </label>
@@ -136,7 +136,7 @@ export function FeedbackForm() {
           <div>
             <label
               htmlFor="expected"
-              className="mb-1.5 block text-sm font-semibold tracking-tight text-ink"
+              className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
             >
               Expected Behavior
             </label>
@@ -152,7 +152,7 @@ export function FeedbackForm() {
             <div className="flex-1">
               <label
                 htmlFor="appVersion"
-                className="mb-1.5 block text-sm font-semibold tracking-tight text-ink"
+                className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
               >
                 tabby Version
               </label>
@@ -167,7 +167,7 @@ export function FeedbackForm() {
             <div className="flex-1">
               <label
                 htmlFor="macosVersion"
-                className="mb-1.5 block text-sm font-semibold tracking-tight text-ink"
+                className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
               >
                 macOS Version
               </label>
@@ -188,7 +188,7 @@ export function FeedbackForm() {
         <div>
           <label
             htmlFor="expected"
-            className="mb-1.5 block text-sm font-semibold tracking-tight text-ink"
+            className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
           >
             Use Case
           </label>
@@ -204,7 +204,7 @@ export function FeedbackForm() {
       {/* Result message */}
       {result && (
         <div
-          className={`rounded-xl border-2 px-4 py-3 text-sm font-medium tracking-tight ${
+          className={`rounded-xl border-2 px-4 py-3 text-sm font-semibold tracking-tight ${
             result.success
               ? "border-moss/40 bg-moss/10 text-ink"
               : "border-accent/40 bg-accent/10 text-ink"
@@ -218,7 +218,7 @@ export function FeedbackForm() {
                 href={result.issueUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold underline underline-offset-2 transition-colors hover:text-muted"
+                className="font-bold underline underline-offset-2 transition-colors hover:text-muted"
               >
                 View on GitHub
               </a>
@@ -231,7 +231,7 @@ export function FeedbackForm() {
       <button
         type="submit"
         disabled={pending}
-        className="tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-6 text-sm font-semibold tracking-tight disabled:opacity-50 sm:h-14 sm:px-8 sm:text-base"
+        className="tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-6 text-sm font-bold tracking-tight disabled:opacity-50 sm:h-14 sm:px-8 sm:text-base"
       >
         {pending ? "Submitting..." : "Submit Feedback"}
       </button>

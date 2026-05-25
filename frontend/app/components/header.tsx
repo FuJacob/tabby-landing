@@ -16,10 +16,10 @@ const textLinks = [
 ] as const;
 
 const secondaryActionClass =
-  "tabby-button tabby-button-secondary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-5 text-sm font-semibold tracking-tight sm:h-14 sm:px-6 sm:text-base";
+  "tabby-button tabby-button-secondary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-5 text-sm font-bold tracking-tight sm:h-14 sm:px-6 sm:text-base";
 
 const primaryActionClass =
-  "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-5 text-sm font-semibold tracking-tight sm:h-14 sm:px-6 sm:text-base";
+  "tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-5 text-sm font-bold tracking-tight sm:h-14 sm:px-6 sm:text-base";
 
 function scrollToAnchor(event: MouseEvent<HTMLAnchorElement>, href: string) {
   if (!href.startsWith("#")) {
@@ -81,7 +81,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={(event) => scrollToAnchor(event, link.href)}
-                className="tabby-link text-sm font-semibold tracking-tight transition hover:text-ink sm:text-base"
+                className="tabby-link text-sm font-bold tracking-tight transition hover:text-ink sm:text-base"
               >
                 {link.label}
               </Link>

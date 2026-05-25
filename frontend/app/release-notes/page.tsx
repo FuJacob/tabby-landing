@@ -70,7 +70,7 @@ function ReleaseBody({ markdown }: { markdown: string }) {
       elements.push(
         <h3
           key={key++}
-          className="text-base font-semibold text-ink"
+          className="text-base font-bold text-ink"
           dangerouslySetInnerHTML={{
             __html: inlineMarkdown(trimmed.slice(3)),
           }}
@@ -100,7 +100,7 @@ function inlineMarkdown(text: string): string {
     .replace(/>/g, "&gt;")
     .replace(
       /\*\*(.+?)\*\*/g,
-      '<strong class="font-semibold text-ink">$1</strong>',
+      '<strong class="font-bold text-ink">$1</strong>',
     )
     .replace(
       /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
@@ -131,10 +131,10 @@ export default async function ReleaseNotesPage() {
       {releases.map((release, i) => (
         <div key={release.tag_name} className="space-y-3">
           <div>
-            <h2 className="text-lg font-semibold text-ink sm:text-xl">
+            <h2 className="text-lg font-bold text-ink sm:text-xl">
               {release.tag_name}
             </h2>
-            <p className="text-xs font-medium tracking-wide text-subtle">
+            <p className="text-xs font-semibold tracking-wide text-subtle">
               {formatDate(release.published_at)}
               {i === 0 ? " · Latest" : ""}
               {release.prerelease ? " · Pre-release" : ""}
@@ -151,7 +151,7 @@ export default async function ReleaseNotesPage() {
       <p className="border-t-2 border-line pt-6">
         Full commit history and release assets are available on{" "}
         <a
-          className="tabby-link font-semibold"
+          className="tabby-link font-bold"
           href={RELEASES_URL}
           target="_blank"
           rel="noopener noreferrer"

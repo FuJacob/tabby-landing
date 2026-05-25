@@ -27,7 +27,7 @@ export function LegalPageShell({
           {title}
         </h1>
         <p className="max-w-3xl">{summary}</p>
-        <p className="text-xs font-medium tracking-[0.08em] text-subtle sm:text-sm">
+        <p className="text-xs font-semibold tracking-[0.08em] text-subtle sm:text-sm">
           LAST UPDATED {updatedAt}
         </p>
 

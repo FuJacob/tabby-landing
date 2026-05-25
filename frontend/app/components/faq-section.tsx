@@ -83,7 +83,7 @@ export function FaqSection() {
             <details className="group overflow-hidden rounded-2xl border-2 border-line bg-surface-2 shadow-[0_4px_0_var(--line)] transition-all duration-200 open:bg-surface-3 hover:-translate-y-px">
               <summary className="list-none cursor-pointer px-6 py-5 [&::-webkit-details-marker]:hidden">
                 <div className="flex items-center justify-between gap-4">
-                  <span className="text-left text-base font-medium tracking-tight text-ink sm:text-lg">
+                  <span className="text-left text-base font-semibold tracking-tight text-ink sm:text-lg">
                     {item.question}
                   </span>
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-line bg-background text-xl leading-none text-ink transition-transform duration-200 group-open:rotate-45 group-open:bg-accent/20">

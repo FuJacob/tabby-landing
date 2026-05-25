@@ -38,14 +38,14 @@ function InstallVisual() {
     <div className="rounded-[1.1rem] border-2 border-line bg-surface-2 p-4">
       <div className="flex items-center justify-between gap-3 rounded-[0.8rem] border-2 border-line bg-background px-4 py-3 shadow-[0_3px_0_var(--line)]">
         <div>
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-subtle">
+          <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-subtle">
             macOS install
           </p>
-          <p className="mt-1 text-sm font-semibold tracking-tight text-ink">
+          <p className="mt-1 text-sm font-bold tracking-tight text-ink">
             Download the .dmg
           </p>
         </div>
-        <span className="inline-flex items-center rounded-[0.55rem] border-2 border-line bg-accent/15 px-3 py-1.5 text-xs font-semibold tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
+        <span className="inline-flex items-center rounded-[0.55rem] border-2 border-line bg-accent/15 px-3 py-1.5 text-xs font-bold tracking-tight text-ink shadow-[0_2px_0_var(--line)]">
           drag to Applications
         </span>
       </div>
@@ -81,7 +81,7 @@ function TypeAnywhereVisual() {
               transition: { duration: 0.42, ease: EASE },
             },
           }}
-          className="inline-flex items-center rounded-[0.7rem] border-2 border-line bg-surface-2 px-3 py-1.5 text-xs font-medium tracking-tight text-ink shadow-[0_2px_0_var(--line)] sm:text-sm"
+          className="inline-flex items-center rounded-[0.7rem] border-2 border-line bg-surface-2 px-3 py-1.5 text-xs font-semibold tracking-tight text-ink shadow-[0_2px_0_var(--line)] sm:text-sm"
         >
           {app}
         </motion.span>
@@ -96,7 +96,7 @@ function TypeAnywhereVisual() {
             transition: { duration: 0.42, ease: EASE },
           },
         }}
-        className="inline-flex items-center rounded-[0.7rem] border-2 border-dashed border-line-soft px-3 py-1.5 text-xs font-medium tracking-tight text-subtle sm:text-sm"
+        className="inline-flex items-center rounded-[0.7rem] border-2 border-dashed border-line-soft px-3 py-1.5 text-xs font-semibold tracking-tight text-subtle sm:text-sm"
       >
         + anywhere
       </motion.span>
@@ -128,7 +128,7 @@ function TabVisual() {
               ? { duration: 0 }
               : { duration: 1.3, ease: "easeInOut", repeat: Infinity }
           }
-          className="inline-flex h-10 min-w-13 items-center justify-center rounded-[0.6rem] border-2 border-line bg-background px-2.5 text-sm font-semibold text-ink"
+          className="inline-flex h-10 min-w-13 items-center justify-center rounded-[0.6rem] border-2 border-line bg-background px-2.5 text-sm font-bold text-ink"
         >
           Tab
         </motion.kbd>
@@ -148,7 +148,7 @@ function TabVisual() {
           <path d="m13 6 6 6-6 6" />
         </svg>
         <span className="text-sm tracking-tight text-ink">
-          ghost text becomes <span className="font-semibold">your</span> words
+          ghost text becomes <span className="font-bold">your</span> words
         </span>
       </div>
       <div className="mt-4 overflow-hidden rounded-[0.8rem] border border-line-soft bg-background px-3 py-2 text-sm tracking-tight text-muted">
@@ -206,7 +206,7 @@ function StepCard({ index, step }: { index: number; step: StepDefinition }) {
         <span className="ml-5 h-0.5 flex-1 bg-line-soft" />
       </div>
       <div>
-        <h3 className="text-[1.55rem] font-semibold leading-tight tracking-tight text-ink sm:text-[1.75rem]">
+        <h3 className="text-[1.55rem] font-bold leading-tight tracking-tight text-ink sm:text-[1.75rem]">
           {step.title}
         </h3>
       </div>

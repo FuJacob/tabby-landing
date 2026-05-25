@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Inter_Tight } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { CREATOR, SITE_URL } from "./lib/site";
 import { Providers } from "./components/providers";
 
-const bodyFont = Inter({
+const bodyFont = Inter_Tight({
   variable: "--font-body",
   subsets: ["latin"],
 });
