@@ -56,7 +56,7 @@ export function Header() {
           <Link
             href="#top"
             onClick={(event) => scrollToAnchor(event, "#top")}
-            className="group flex items-center gap-3"
+            className="flex items-center gap-3"
           >
             <Image
               src="/app-icons/new-logo.png"
@@ -66,7 +66,7 @@ export function Header() {
               className="h-11 w-11 rounded-[0.95rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--line)]"
             />
             <span className="flex h-11 items-center gap-2">
-              <span className="tabby-display text-[2.5rem] leading-[0.88] tracking-tight text-ink underline-offset-[8px] decoration-accent decoration-[3px] group-hover:underline sm:text-[3rem]">
+              <span className="tabby-display text-[2.5rem] leading-[0.88] tracking-tight text-ink sm:text-[3rem]">
                 Cotabby
               </span>
               <span className="text-[0.65rem] font-semibold uppercase leading-none tracking-widest text-ink/40">
