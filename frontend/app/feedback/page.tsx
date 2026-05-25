@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FeedbackForm } from "./feedback-form";
 
 export const metadata: Metadata = {
-  title: "Feedback - tabby",
+  title: "Feedback - Cotabby",
   description: "Report a bug or request a feature for tabby.",
 };
 
@@ -29,7 +29,7 @@ export default function FeedbackPage() {
                 clipRule="evenodd"
               />
             </svg>
-            Back to tabby
+            Back to Cotabby
           </Link>
           <Link href="/" className="flex items-center gap-3">
             <Image
@@ -42,7 +42,7 @@ export default function FeedbackPage() {
             <span className="flex h-14 flex-col justify-center">
               <span className="flex items-center gap-2">
                 <span className="tabby-display text-[2.4rem] leading-[0.88] tracking-tight text-ink sm:text-[2.8rem]">
-                  tabby
+                  Cotabby
                 </span>
                 <span className="text-[0.55rem] font-semibold uppercase leading-none tracking-widest text-ink/40">
                   beta

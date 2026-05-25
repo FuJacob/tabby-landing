@@ -127,7 +127,7 @@ export function PermissionsSection() {
       />
       <FadeIn delay={0.1}>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-          tabby needs three macOS permissions to work. Here&apos;s exactly what
+          Cotabby needs three macOS permissions to work. Here&apos;s exactly what
           each one does and why nothing ever leaves your machine.
         </p>
       </FadeIn>

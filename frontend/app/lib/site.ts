@@ -5,7 +5,7 @@ export const GITHUB_URL = "https://github.com/fujacob/tabby";
 export const DOWNLOAD_URL = "https://github.com/FuJacob/tabby/releases/latest/download/tabby.dmg";
 
 export const DISCORD_URL = "https://discord.gg/qBq5RHcruX";
-export const SUPPORT_EMAIL = "hi@tabbyapp.dev";
+export const SUPPORT_EMAIL = "support@cotabby.app";
 
 export const CREATOR = {
   name: "Jacob Fu",

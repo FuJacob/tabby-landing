@@ -69,7 +69,7 @@ export function FinalFooterSection() {
             />
             <div className="flex h-11 items-center gap-2">
               <span className="tabby-display text-[2rem] leading-[0.88] tracking-tight text-ink sm:text-[2.4rem]">
-                tabby
+                Cotabby
               </span>
               <span className="text-[0.55rem] font-semibold uppercase leading-none tracking-widest text-ink/40">
                 beta

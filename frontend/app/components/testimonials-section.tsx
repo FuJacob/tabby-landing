@@ -95,10 +95,10 @@ export function TestimonialsSection() {
       <FadeIn>
         <div className="flex flex-col items-center gap-3 text-center">
           <h2 className="tabby-display text-[2.7rem] leading-[1.02] tracking-tight text-ink sm:text-[4rem]">
-            people using tabby, daily
+            people using Cotabby, daily
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-            A handful of believable notes from people using tabby for class,
+            A handful of believable notes from people using Cotabby for class,
             internships, side projects, and everyday writing on macOS.
           </p>
         </div>

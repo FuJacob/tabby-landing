@@ -1,5 +1,5 @@
 import { FadeIn, WordReveal } from "./motion";
-import { TabbyLogoChip } from "./tabby-logo-chip";
+import { CotabbyLogoChip } from "./cotabby-logo-chip";
 
 export function AppsCarouselSection() {
   const chips = [
@@ -35,7 +35,7 @@ export function AppsCarouselSection() {
           aria-label="Supported apps carousel"
         >
           {track.map((app, index) => (
-            <TabbyLogoChip
+            <CotabbyLogoChip
               key={`chip-${app.label}-${index}`}
               label={app.label}
               iconSrc={app.iconSrc}
@@ -48,7 +48,7 @@ export function AppsCarouselSection() {
           aria-hidden="true"
         >
           {reverseTrack.map((app, index) => (
-            <TabbyLogoChip
+            <CotabbyLogoChip
               key={`chip-rev-${app.label}-${index}`}
               label={app.label}
               iconSrc={app.iconSrc}

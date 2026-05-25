@@ -172,21 +172,21 @@ const steps: StepDefinition[] = [
     number: "01",
     title: "Install once",
     description:
-      "Download the .dmg, drag tabby into Applications, and launch it like any other Mac app.",
+      "Download the .dmg, drag Cotabby into Applications, and launch it like any other Mac app.",
     visual: <InstallVisual />,
   },
   {
     number: "02",
     title: "Type anywhere",
     description:
-      "tabby watches your cursor. When you pause mid-sentence, it suggests the next thought inline as ghost text.",
+      "Cotabby watches your cursor. When you pause mid-sentence, it suggests the next thought inline as ghost text.",
     visual: <TypeAnywhereVisual />,
   },
   {
     number: "03",
     title: "Press Tab",
     description:
-      "The suggestion snaps in. Keep typing to adjust it, or press Escape and tabby steps out of the way.",
+      "The suggestion snaps in. Keep typing to adjust it, or press Escape and Cotabby steps out of the way.",
     visual: <TabVisual />,
   },
 ];
@@ -224,7 +224,7 @@ export function HowItWorksSection() {
       <FadeIn>
         <div className="flex flex-col items-center gap-3 text-center">
           <h2 className="tabby-display text-[2.7rem] leading-[1.02] tracking-tight text-ink sm:text-[4rem]">
-            how tabby works
+            how Cotabby works
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed tracking-tight text-muted sm:text-base">
             Install once. It lives in your menu bar and listens quietly in every

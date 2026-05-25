@@ -4,7 +4,7 @@ import { LegalPageShell } from "../components/legal-page-shell";
 import { GITHUB_URL } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Release Notes - tabby",
+  title: "Release Notes - Cotabby",
   description: "Product updates and release notes for tabby.",
 };
 

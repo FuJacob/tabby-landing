@@ -64,7 +64,7 @@ export function Header() {
             />
             <span className="flex h-11 items-center gap-2">
               <span className="tabby-display text-[2.5rem] leading-[0.88] tracking-tight text-ink sm:text-[3rem]">
-                tabby
+                Cotabby
               </span>
               <span className="text-[0.65rem] font-semibold uppercase leading-none tracking-widest text-ink/40">
                 beta

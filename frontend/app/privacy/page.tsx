@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LegalPageShell } from "../components/legal-page-shell";
 import { GITHUB_URL, SUPPORT_EMAIL } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Privacy - tabby",
+  title: "Privacy - Cotabby",
   description:
-    "Privacy policy for tabby - on-device AI autocomplete for macOS.",
+    "Privacy policy for Cotabby - on-device AI autocomplete for macOS.",
 };
 
 export default function PrivacyPage() {
@@ -13,12 +14,12 @@ export default function PrivacyPage() {
     <LegalPageShell
       current="privacy"
       title="Privacy"
-      summary="tabby runs entirely on your Mac. No accounts, no cloud processing, no analytics. This policy explains exactly what the app accesses and why."
+      summary="Cotabby runs entirely on your Mac. No accounts, no cloud processing, no analytics. This policy explains exactly what the app accesses and why."
       updatedAt="MAY 20, 2026"
     >
       <h2 className="text-lg font-bold text-ink sm:text-xl">Overview</h2>
       <p>
-        tabby is an on-device AI autocomplete app for macOS. It is designed
+        Cotabby is an on-device AI autocomplete app for macOS. It is designed
         around a local-first architecture - your writing, keystrokes, and
         suggestions never leave your Mac. There are no user accounts, no hosted
         dashboards, and no cloud-based processing.
@@ -28,31 +29,31 @@ export default function PrivacyPage() {
         What the app accesses locally
       </h2>
       <p>
-        To provide inline suggestions, tabby reads data from your Mac through
+        To provide inline suggestions, Cotabby reads data from your Mac through
         macOS system APIs. All of this data stays on your device and is never
         transmitted.
       </p>
       <ul className="list-disc space-y-2 pl-5">
         <li>
-          <strong>Accessibility API data.</strong> tabby reads the content of the
+          <strong>Accessibility API data.</strong> Cotabby reads the content of the
           currently focused text field, caret position, and element bounds
           through the macOS Accessibility API. This is how it knows what you are
           typing and where to place suggestions.
         </li>
         <li>
-          <strong>Input Monitoring.</strong> tabby monitors global keyboard
+          <strong>Input Monitoring.</strong> Cotabby monitors global keyboard
           events to detect typing activity and Tab key presses for accepting
           suggestions. It categorizes key events (text input, navigation,
           shortcuts) but does not log or store individual keystrokes.
         </li>
         <li>
-          <strong>Clipboard contents.</strong> tabby reads the system clipboard
+          <strong>Clipboard contents.</strong> Cotabby reads the system clipboard
           at the time of generating a suggestion to provide additional context to
           the local language model. Clipboard data is not cached, stored, or
           transmitted.
         </li>
         <li>
-          <strong>Screen capture.</strong> tabby can capture a region around the
+          <strong>Screen capture.</strong> Cotabby can capture a region around the
           focused text field using ScreenCaptureKit to provide visual context.
           These captures are processed locally and are not stored or transmitted.
         </li>
@@ -73,12 +74,12 @@ export default function PrivacyPage() {
         Network activity
       </h2>
       <p>
-        tabby makes two types of network requests, both optional and
+        Cotabby makes two types of network requests, both optional and
         user-visible:
       </p>
       <ul className="list-disc space-y-2 pl-5">
         <li>
-          <strong>Update checks.</strong> tabby uses{" "}
+          <strong>Update checks.</strong> Cotabby uses{" "}
           <a
             className="tabby-link font-bold"
             href="https://sparkle-project.org"
@@ -93,7 +94,7 @@ export default function PrivacyPage() {
         </li>
         <li>
           <strong>Model downloads.</strong> When you choose to download an
-          open-source GGUF model, tabby fetches it from{" "}
+          open-source GGUF model, Cotabby fetches it from{" "}
           <a
             className="tabby-link font-bold"
             href="https://huggingface.co"
@@ -126,7 +127,7 @@ export default function PrivacyPage() {
       <h2 className="text-lg font-bold text-ink sm:text-xl">
         macOS permissions
       </h2>
-      <p>tabby requests the following macOS permissions:</p>
+      <p>Cotabby requests the following macOS permissions:</p>
       <ul className="list-disc space-y-2 pl-5">
         <li>
           <strong>Accessibility.</strong> Required to detect focused text fields,
@@ -146,7 +147,7 @@ export default function PrivacyPage() {
         Third-party components
       </h2>
       <p>
-        tabby integrates the following third-party components. None of them
+        Cotabby integrates the following third-party components. None of them
         transmit your data off-device:
       </p>
       <ul className="list-disc space-y-2 pl-5">
@@ -171,7 +172,7 @@ export default function PrivacyPage() {
 
       <h2 className="text-lg font-bold text-ink sm:text-xl">Open source</h2>
       <p>
-        tabby is licensed under{" "}
+        Cotabby is licensed under{" "}
         <a
           className="tabby-link font-bold"
           href={`${GITHUB_URL}/blob/main/LICENSE`}
@@ -196,8 +197,8 @@ export default function PrivacyPage() {
         Children&apos;s privacy
       </h2>
       <p>
-        tabby is not directed at children under 13. We do not knowingly collect
-        any data from children. Since tabby does not collect personal information
+        Cotabby is not directed at children under 13. We do not knowingly collect
+        any data from children. Since Cotabby does not collect personal information
         from anyone, there is no data to identify or remove.
       </p>
 
@@ -208,9 +209,9 @@ export default function PrivacyPage() {
         If this policy changes, we will update this page and the &quot;last
         updated&quot; date above. For significant changes, we will note them in
         the{" "}
-        <a className="tabby-link font-bold" href="/release-notes">
+        <Link className="tabby-link font-bold" href="/release-notes">
           release notes
-        </a>
+        </Link>
         .
       </p>
 

@@ -154,7 +154,7 @@ export function FeedbackForm() {
                 htmlFor="appVersion"
                 className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
               >
-                tabby Version
+                Cotabby Version
               </label>
               <input
                 id="appVersion"

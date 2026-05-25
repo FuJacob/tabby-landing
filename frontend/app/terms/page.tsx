@@ -3,9 +3,9 @@ import { LegalPageShell } from "../components/legal-page-shell";
 import { GITHUB_URL, SUPPORT_EMAIL } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Terms of Service - tabby",
+  title: "Terms of Service - Cotabby",
   description:
-    "Terms of service for tabby - on-device AI autocomplete for macOS.",
+    "Terms of service for Cotabby - on-device AI autocomplete for macOS.",
 };
 
 export default function TermsPage() {
@@ -13,12 +13,12 @@ export default function TermsPage() {
     <LegalPageShell
       current="terms"
       title="Terms of Service"
-      summary="By downloading or using tabby, you agree to these terms. tabby is open-source software provided as-is under the AGPL-3.0 license."
+      summary="By downloading or using Cotabby, you agree to these terms. Cotabby is open-source software provided as-is under the AGPL-3.0 license."
       updatedAt="MAY 20, 2026"
     >
       <h2 className="text-lg font-bold text-ink sm:text-xl">Acceptance</h2>
       <p>
-        By downloading, installing, or using tabby, you agree to these terms. If
+        By downloading, installing, or using Cotabby, you agree to these terms. If
         you do not agree, do not use the software.
       </p>
 
@@ -26,7 +26,7 @@ export default function TermsPage() {
         Description of service
       </h2>
       <p>
-        tabby is a macOS menu bar application that provides on-device AI
+        Cotabby is a macOS menu bar application that provides on-device AI
         autocomplete across text fields. It uses local language models to
         generate inline suggestions that appear as ghost text near your cursor.
         All inference runs on your Mac - no text is sent to external servers.
@@ -34,7 +34,7 @@ export default function TermsPage() {
 
       <h2 className="text-lg font-bold text-ink sm:text-xl">License</h2>
       <p>
-        tabby is open-source software licensed under the{" "}
+        Cotabby is open-source software licensed under the{" "}
         <a
           className="tabby-link font-bold"
           href={`${GITHUB_URL}/blob/main/LICENSE`}
@@ -43,7 +43,7 @@ export default function TermsPage() {
         >
           GNU Affero General Public License v3.0 (AGPL-3.0)
         </a>
-        . You are free to use, modify, and distribute tabby under the terms of
+        . You are free to use, modify, and distribute Cotabby under the terms of
         that license. If you distribute a modified version or make it available
         over a network, you must also make your modifications available under the
         same license.
@@ -53,13 +53,13 @@ export default function TermsPage() {
         User responsibilities
       </h2>
       <ul className="list-disc space-y-2 pl-5">
-        <li>Use tabby only for lawful purposes.</li>
+        <li>Use Cotabby only for lawful purposes.</li>
         <li>
           Review all AI-generated suggestions before sharing, publishing, or
           acting on them.
         </li>
         <li>
-          Understand and consent to the macOS permissions tabby requests
+          Understand and consent to the macOS permissions Cotabby requests
           (Accessibility, Input Monitoring, and Screen Recording) as
           described in our{" "}
           <a className="tabby-link font-bold" href="/privacy">
@@ -68,7 +68,7 @@ export default function TermsPage() {
           .
         </li>
         <li>
-          Do not use tabby to generate content that is illegal, harmful, or
+          Do not use Cotabby to generate content that is illegal, harmful, or
           infringes on the rights of others.
         </li>
       </ul>
@@ -77,9 +77,9 @@ export default function TermsPage() {
         AI-generated content
       </h2>
       <p>
-        tabby generates text suggestions using local language models. These
+        Cotabby generates text suggestions using local language models. These
         suggestions may be inaccurate, incomplete, biased, or inappropriate.
-        tabby does not guarantee the quality, accuracy, or fitness of any
+        Cotabby does not guarantee the quality, accuracy, or fitness of any
         generated content. You are solely responsible for reviewing and deciding
         whether to use any suggestion.
       </p>
@@ -88,8 +88,8 @@ export default function TermsPage() {
         Intellectual property
       </h2>
       <p>
-        The tabby source code is licensed under AGPL-3.0. Your content - the
-        text you write and the suggestions you accept - belongs to you. tabby
+        The Cotabby source code is licensed under AGPL-3.0. Your content - the
+        text you write and the suggestions you accept - belongs to you. Cotabby
         does not claim any rights over your content and has no ability to access
         or store it outside your device.
       </p>
@@ -98,11 +98,11 @@ export default function TermsPage() {
         Third-party components
       </h2>
       <p>
-        tabby incorporates third-party software including llama.cpp,
+        Cotabby incorporates third-party software including llama.cpp,
         Apple&apos;s FoundationModels framework, and the Sparkle update
-        framework. GGUF models downloaded through tabby are hosted by Hugging
+        framework. GGUF models downloaded through Cotabby are hosted by Hugging
         Face. Each of these components is governed by its own license and terms.
-        By using tabby, you also agree to comply with the applicable terms of
+        By using Cotabby, you also agree to comply with the applicable terms of
         these third-party components.
       </p>
 
@@ -110,11 +110,11 @@ export default function TermsPage() {
         Disclaimer of warranties
       </h2>
       <p>
-        tabby is provided <strong>&quot;as-is&quot;</strong> and{" "}
+        Cotabby is provided <strong>&quot;as-is&quot;</strong> and{" "}
         <strong>&quot;as available&quot;</strong> without warranties of any kind,
         whether express or implied, including but not limited to implied
         warranties of merchantability, fitness for a particular purpose, and
-        non-infringement. The tabby maintainers do not warrant that the software
+        non-infringement. The Cotabby maintainers do not warrant that the software
         will be uninterrupted, error-free, or free of harmful components.
       </p>
 
@@ -122,10 +122,10 @@ export default function TermsPage() {
         Limitation of liability
       </h2>
       <p>
-        To the maximum extent permitted by applicable law, the tabby maintainers
+        To the maximum extent permitted by applicable law, the Cotabby maintainers
         shall not be liable for any indirect, incidental, special,
         consequential, or punitive damages, or any loss of profits, data, or
-        use, arising out of or related to your use of tabby, regardless of the
+        use, arising out of or related to your use of Cotabby, regardless of the
         theory of liability.
       </p>
 
@@ -133,9 +133,9 @@ export default function TermsPage() {
         Indemnification
       </h2>
       <p>
-        You agree to indemnify and hold harmless the tabby maintainers and
+        You agree to indemnify and hold harmless the Cotabby maintainers and
         contributors from any claims, damages, or expenses arising from your use
-        of tabby or violation of these terms.
+        of Cotabby or violation of these terms.
       </p>
 
       <h2 className="text-lg font-bold text-ink sm:text-xl">
@@ -143,7 +143,7 @@ export default function TermsPage() {
       </h2>
       <p>
         We may update these terms from time to time. Changes will be reflected on
-        this page with an updated date. Continued use of tabby after changes are
+        this page with an updated date. Continued use of Cotabby after changes are
         posted constitutes acceptance of the revised terms.
       </p>
 
@@ -152,7 +152,7 @@ export default function TermsPage() {
       </h2>
       <p>
         These terms are governed by and construed in accordance with applicable
-        local laws. Any disputes arising from these terms or your use of tabby
+        local laws. Any disputes arising from these terms or your use of Cotabby
         shall be resolved in the courts of the jurisdiction where the primary
         maintainer resides.
       </p>

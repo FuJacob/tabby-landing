@@ -41,7 +41,7 @@ export function SloganCtaSection() {
       <div className="relative z-10 flex flex-col items-center gap-7 text-center">
         <WordReveal
           as="h2"
-          text="ready to try tabby?"
+          text="ready to try Cotabby?"
           className="tabby-display max-w-3xl text-[2.8rem] leading-none tracking-tight text-ink sm:text-[4.8rem]"
         />
 

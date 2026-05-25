@@ -1,16 +1,16 @@
 import Image from "next/image";
 
-type TabbyLogoChipProps = {
+type CotabbyLogoChipProps = {
   label: string;
   iconSrc: string;
   className?: string;
 };
 
-export function TabbyLogoChip({
+export function CotabbyLogoChip({
   label,
   iconSrc,
   className,
-}: TabbyLogoChipProps) {
+}: CotabbyLogoChipProps) {
   return (
     <div
       className={`tabby-chip inline-flex h-15 min-w-45 shrink-0 items-center gap-3 rounded-2xl px-4 text-sm font-semibold tracking-tight text-ink sm:min-w-52.5 sm:text-base ${

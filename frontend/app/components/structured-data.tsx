@@ -15,7 +15,7 @@ export function StructuredData() {
   const softwareApp = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "tabby",
+    name: "Cotabby",
     operatingSystem: "macOS",
     applicationCategory: "ProductivityApplication",
     url: SITE_URL,

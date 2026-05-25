@@ -125,7 +125,7 @@ function DataFlowVisual() {
           <Arrow />
 
           <FlowNode accent>
-            <span className="text-[0.7rem] font-bold tracking-widest uppercase opacity-50">tabby</span>
+            <span className="text-[0.7rem] font-bold tracking-widest uppercase opacity-50">Cotabby</span>
             <span className="mt-1 text-sm font-bold tracking-tight">on-device engine</span>
           </FlowNode>
 
@@ -173,7 +173,7 @@ export function PrivacySection() {
 
           <FadeIn delay={0.1}>
             <p className="max-w-xl text-base leading-relaxed tracking-tight text-muted sm:text-lg">
-              tabby runs through on-device engines on your Mac, whether that is
+              Cotabby runs through on-device engines on your Mac, whether that is
               Apple Intelligence or a local GGUF model. Every keystroke and
               suggestion stays on-device, with no required hosted API, no
               sign-up, and no background uploads.

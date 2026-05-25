@@ -2,39 +2,39 @@ import { FadeIn, Stagger, StaggerItem, WordReveal } from "./motion";
 
 export const FAQ_ITEMS = [
   {
-    question: "What is tabby?",
+    question: "What is Cotabby?",
     answer:
-      "tabby is an on-device AI autocomplete for macOS. It sits in your menu bar, watches the text field you're typing in, and suggests the next few words as ghost text. Everything runs locally on your Mac.",
+      "Cotabby is an on-device AI autocomplete for macOS. It sits in your menu bar, watches the text field you're typing in, and suggests the next few words as ghost text. Everything runs locally on your Mac.",
   },
   {
-    question: "Is tabby free?",
+    question: "Is Cotabby free?",
     answer:
-      "Yes. tabby is free and open source under AGPL. No account, no subscription, no usage limits.",
+      "Yes. Cotabby is free and open source under AGPL. No account, no subscription, no usage limits.",
   },
   {
-    question: "Does tabby send my writing to the cloud?",
+    question: "Does Cotabby send my writing to the cloud?",
     answer:
-      "No. All inference happens on your Mac. tabby uses either Apple Intelligence or a local GGUF model - there is no cloud API in the current product. Your text never leaves your machine.",
+      "No. All inference happens on your Mac. Cotabby uses either Apple Intelligence or a local GGUF model - there is no cloud API in the current product. Your text never leaves your machine.",
   },
   {
-    question: "How does tabby actually work?",
+    question: "How does Cotabby actually work?",
     answer:
-      "tabby reads the focused text field through macOS Accessibility APIs, feeds the text around your caret to an on-device model, and renders the continuation as ghost text near your cursor. Press Tab to accept in chunks, or just keep typing to ignore it.",
+      "Cotabby reads the focused text field through macOS Accessibility APIs, feeds the text around your caret to an on-device model, and renders the continuation as ghost text near your cursor. Press Tab to accept in chunks, or just keep typing to ignore it.",
   },
   {
     question: "What is the difference between the Apple Intelligence and Open Source engines?",
     answer:
-      "Apple Intelligence uses Apple's built-in FoundationModels runtime - no download required, but it needs macOS 26 and supported hardware. The Open Source engine runs local GGUF models through llama.cpp, ships with two built-in models (tabby-fast-1 and tabby-balanced-1), and lets you bring your own. If Apple Intelligence isn't available on your Mac, the Open Source engine still works.",
+      "Apple Intelligence uses Apple's built-in FoundationModels runtime - no download required, but it needs macOS 26 and supported hardware. The Open Source engine runs local GGUF models through llama.cpp, ships with two built-in models (cotabby-fast-1 and cotabby-balanced-1), and lets you bring your own. If Apple Intelligence isn't available on your Mac, the Open Source engine still works.",
   },
   {
-    question: "What apps does tabby work with?",
+    question: "What apps does Cotabby work with?",
     answer:
       "Most macOS text fields - Mail, Slack, Notes, iMessage, browser text areas, and more. Compatibility depends on what each app exposes through Accessibility APIs, so placement and reliability can vary. Some apps work great, others are hit or miss.",
   },
   {
-    question: "What permissions does tabby need?",
+    question: "What permissions does Cotabby need?",
     answer:
-      "Accessibility, Input Monitoring, and Screen Recording. Accessibility lets tabby detect the focused field, read nearby text, and place suggestions. Input Monitoring lets tabby see your keystrokes and handle Tab acceptance. Screen Recording lets tabby capture a screenshot around the focused field for visual context (OCR).",
+      "Accessibility, Input Monitoring, and Screen Recording. Accessibility lets Cotabby detect the focused field, read nearby text, and place suggestions. Input Monitoring lets Cotabby see your keystrokes and handle Tab acceptance. Screen Recording lets Cotabby capture a screenshot around the focused field for visual context (OCR).",
   },
   {
     question: "What macOS version do I need?",
@@ -44,22 +44,22 @@ export const FAQ_ITEMS = [
   {
     question: "How much space do the models take?",
     answer:
-      "tabby-fast-1 is about 0.4 GB and tabby-balanced-1 is about 0.8 GB. Apple Intelligence uses the system runtime, so no separate download. You can also add your own GGUF models if you prefer something different.",
+      "cotabby-fast-1 is about 0.4 GB and cotabby-balanced-1 is about 0.8 GB. Apple Intelligence uses the system runtime, so no separate download. You can also add your own GGUF models if you prefer something different.",
   },
   {
-    question: "Does tabby work offline?",
+    question: "Does Cotabby work offline?",
     answer:
-      "Yes. Once a model is downloaded, tabby runs entirely offline. No network connection needed for suggestions.",
+      "Yes. Once a model is downloaded, Cotabby runs entirely offline. No network connection needed for suggestions.",
   },
   {
     question: "Why am I not seeing suggestions?",
     answer:
-      "Usually it's a missing permission, tabby being paused, or no model installed yet. Check that Accessibility, Input Monitoring, and Screen Recording are enabled in System Settings, make sure tabby is active in the menu bar, and confirm you have a model selected. Some apps also don't expose enough accessibility data for tabby to work.",
+      "Usually it's a missing permission, Cotabby being paused, or no model installed yet. Check that Accessibility, Input Monitoring, and Screen Recording are enabled in System Settings, make sure Cotabby is active in the menu bar, and confirm you have a model selected. Some apps also don't expose enough accessibility data for Cotabby to work.",
   },
   {
-    question: "Does tabby slow down my Mac?",
+    question: "Does Cotabby slow down my Mac?",
     answer:
-      "tabby only runs inference when you pause typing, and the models are designed to be lightweight. tabby-fast-1 uses minimal resources. You might notice slightly more CPU usage with tabby-balanced-1 since it's a larger model, but it shouldn't affect normal use.",
+      "Cotabby only runs inference when you pause typing, and the models are designed to be lightweight. cotabby-fast-1 uses minimal resources. You might notice slightly more CPU usage with cotabby-balanced-1 since it's a larger model, but it shouldn't affect normal use.",
   },
 ];
 

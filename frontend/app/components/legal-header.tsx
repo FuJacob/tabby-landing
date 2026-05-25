@@ -32,7 +32,7 @@ export function LegalHeader({ current }: LegalHeaderProps) {
             clipRule="evenodd"
           />
         </svg>
-        Back to tabby
+        Back to Cotabby
       </Link>
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <Link href="/" className="flex items-center gap-3">
@@ -46,7 +46,7 @@ export function LegalHeader({ current }: LegalHeaderProps) {
           <span className="flex h-14 flex-col justify-center">
             <span className="flex items-center gap-2">
               <span className="tabby-display text-[2.4rem] leading-[0.88] tracking-tight text-ink sm:text-[2.8rem]">
-                tabby
+                Cotabby
               </span>
               <span className="text-[0.55rem] font-semibold uppercase leading-none tracking-widest text-ink/40">
                 beta

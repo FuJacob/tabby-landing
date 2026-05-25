@@ -5,7 +5,7 @@ export function DemoVideoSection() {
     <div className="mx-auto">
       <WordReveal
         as="h2"
-        text="watch tabby in action"
+        text="watch Cotabby in action"
         className="tabby-display text-center text-[2.8rem] leading-[1.02] tracking-tight text-ink sm:text-[4rem]"
       />
       <FadeIn delay={0.1}>
@@ -29,7 +29,7 @@ export function DemoVideoSection() {
             <iframe
               className="h-full w-full"
               src="https://www.youtube.com/embed/p3TIgxQFQGE?autoplay=1&mute=1&playsinline=1&rel=0&loop=1&playlist=p3TIgxQFQGE&controls=0&disablekb=1"
-              title="tabby demo video"
+              title="Cotabby demo video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
             />

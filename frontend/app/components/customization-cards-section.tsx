@@ -42,8 +42,8 @@ function CustomItem({ eyebrow, title, description, preview }: CustomItemProps) {
 
 function ModelsPreview() {
   const models = [
-    { name: "tabby-fast-1", note: "~0.4 GB · speed-optimized", active: true },
-    { name: "tabby-balanced-1", note: "~0.8 GB · higher quality", active: false },
+    { name: "cotabby-fast-1", note: "~0.4 GB · speed-optimized", active: true },
+    { name: "cotabby-balanced-1", note: "~0.8 GB · higher quality", active: false },
   ];
   return (
     <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-4 shadow-[0_3px_0_var(--line)]">
@@ -125,7 +125,7 @@ function PersonalizationPreview() {
         ))}
       </div>
       <p className="mt-4 text-sm leading-relaxed tracking-tight text-muted">
-        Over time, tabby will learn the way you phrase things,
+        Over time, Cotabby will learn the way you phrase things,
         <span className="text-accent">
           {" remember what matters to you, and keep suggestions sounding like you."}
         </span>
@@ -139,7 +139,7 @@ export function CustomizationCardsSection() {
     <section className="mx-auto max-w-305">
       <WordReveal
         as="h2"
-        text="make tabby feel like yours"
+        text="make Cotabby feel like yours"
         className="tabby-display text-center text-[2.9rem] leading-[1.02] tracking-tight text-ink sm:text-[4.1rem]"
       />
       <FadeIn delay={0.1}>
@@ -164,7 +164,7 @@ export function CustomizationCardsSection() {
             <CustomItem
               eyebrow="length"
               title="short or long"
-              description="Three presets control how many words tabby suggests at a time. Default is 7-12 - enough to finish your thought, not enough to take over."
+              description="Three presets control how many words Cotabby suggests at a time. Default is 7-12 - enough to finish your thought, not enough to take over."
               preview={<LengthPreview />}
             />
           </ScaleIn>
@@ -174,7 +174,7 @@ export function CustomizationCardsSection() {
             <CustomItem
               eyebrow="ai personalization"
               title="learns your voice"
-              description="Coming soon: tabby will adapt to how you naturally write, keep lightweight memory over time, and make suggestions feel more like you."
+              description="Coming soon: Cotabby will adapt to how you naturally write, keep lightweight memory over time, and make suggestions feel more like you."
               preview={<PersonalizationPreview />}
             />
           </ScaleIn>
