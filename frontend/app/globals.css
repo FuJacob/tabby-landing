@@ -11,8 +11,9 @@
   --surface-4: #ece7d2;
   --line: #0a0a0a;
   --line-soft: rgba(10, 10, 10, 0.12);
-  --accent: #e08777;
-  --accent-soft: #f7c2b6;
+  --accent: #2b7fff;
+  --accent-soft: #cfe2ff;
+  --accent-deep: #1857c4;
   --moss: #8eae82;
   --button-primary: #0a0a0a;
   --button-primary-hover: #1f1f1f;
@@ -35,10 +36,12 @@
   --color-line-soft: var(--line-soft);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-deep: var(--accent-deep);
   --color-moss: var(--moss);
   --color-button-primary: var(--button-primary);
   --color-button-text: var(--button-text);
   --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
 * {
@@ -78,19 +81,20 @@ a {
 }
 
 ::selection {
-  background: rgba(211, 90, 60, 0.28);
+  background: rgba(43, 127, 255, 0.24);
   color: var(--foreground);
 }
 
 .tabby-display {
   font-family:
+    var(--font-display),
     var(--font-body),
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
 }
 
 .tabby-shell {

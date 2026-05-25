@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { Bricolage_Grotesque, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { CREATOR, SITE_URL } from "./lib/site";
 import { Providers } from "./components/providers";
 
-const bodyFont = DM_Sans({
+const bodyFont = Inter({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
-const title = "tabby - on-device AI autocomplete for macOS";
+const displayFont = Bricolage_Grotesque({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const title = "Cotabby - on-device AI autocomplete for macOS";
 const description =
   "On-device AI autocomplete for macOS text fields. Use Apple Intelligence or local GGUF models, accept inline suggestions with Tab, and keep every token on your Mac.";
 
@@ -19,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title,
   description,
-  applicationName: "tabby",
+  applicationName: "Cotabby",
   keywords: [
     "Mac autocomplete",
     "macOS text fields",
@@ -36,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "tabby",
+    siteName: "Cotabby",
     title,
     description,
     locale: "en_US",
@@ -55,7 +60,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bodyFont.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${bodyFont.variable} ${displayFont.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col bg-background text-ink">
         <Providers>{children}</Providers>
         <Analytics />
