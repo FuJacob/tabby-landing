@@ -41,7 +41,7 @@ export const FloatingButton = () => {
   return (
     <div className="tabby-float-cta-enter fixed bottom-4 right-3 z-50 flex flex-col items-end gap-2 sm:bottom-6 sm:right-6">
       <a
-        href="https://buymeacoffee.com/tabbyapp"
+        href="https://ko-fi.com/cotabby"
         target="_blank"
         rel="noopener noreferrer"
         className={bmcClass}
