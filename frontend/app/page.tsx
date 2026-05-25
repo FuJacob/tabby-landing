@@ -22,13 +22,14 @@ export default function Home() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none fixed inset-0 z-0"
         style={{
           backgroundImage: `
-          linear-gradient(to right, #e5e7eb 1px, transparent 1px),
-          linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)
-        `,
-          backgroundSize: "40px 40px",
+            linear-gradient(90deg, rgba(14,42,71,0.22) 1px, transparent 0),
+            linear-gradient(180deg, rgba(14,42,71,0.22) 1px, transparent 0),
+            repeating-linear-gradient(45deg, rgba(108,184,230,0.22) 0 2px, transparent 2px 6px)
+          `,
+          backgroundSize: "96px 96px, 96px 96px, 96px 96px",
         }}
       />
       <StructuredData />
