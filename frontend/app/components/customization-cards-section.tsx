@@ -22,7 +22,7 @@ type CustomItemProps = {
 function CustomItem({ icon: Icon, title, description, preview }: CustomItemProps) {
   return (
     <HoverLift lift={5} className="h-full">
-      <article className="tabby-panel-soft flex h-full min-h-124 flex-col gap-4 rounded-[1.55rem] p-6 sm:min-h-128 sm:p-7">
+      <article className="tabby-panel-soft flex h-full flex-col gap-4 rounded-[1.55rem] p-6 sm:p-7">
         <div className="flex items-center gap-3">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-line bg-surface-3 text-ink shadow-[0_3.4px_0_var(--line)]">
             <Icon className="h-5 w-5" strokeWidth={2} />
@@ -42,37 +42,38 @@ function CustomItem({ icon: Icon, title, description, preview }: CustomItemProps
 
 const MODELS = [
   {
-    name: "tabby-pico-1",
-    note: "~0.1 GB · ultra-light",
-    tag: "pico",
+    name: "tabby-1-nano",
+    file: "SmolLM2-135M-Instruct-q8_0.gguf",
+    size: "~0.1 GB",
+    source: "Mungert/SmolLM2-135M-Instruct-GGUF",
+    tag: "nano",
     color: "#36b5c4",
     tint: "rgba(54, 181, 196, 0.16)",
   },
   {
-    name: "tabby-nano-1",
-    note: "~0.4 GB · tiny & fast",
-    tag: "nano",
+    name: "tabby-1-mini",
+    file: "Qwen3-0.6B-Q4_K_M.gguf",
+    size: "~0.4 GB",
+    source: "unsloth/Qwen3-0.6B-GGUF",
+    tag: "mini",
     color: "#e0a32e",
     tint: "rgba(224, 163, 46, 0.16)",
   },
   {
-    name: "tabby-fast-1",
-    note: "~0.4 GB · speed-optimized",
-    tag: "fast",
+    name: "tabby-1-base",
+    file: "gemma-4-E2B-it-Q4_K_M.gguf",
+    size: "~3.1 GB",
+    source: "unsloth/gemma-4-E2B-it-GGUF",
+    tag: "base",
     color: "#ff8273",
     tint: "rgba(255, 130, 115, 0.16)",
   },
   {
-    name: "tabby-balanced-1",
-    note: "~3.1 GB · balanced quality",
-    tag: "balanced",
-    color: "#5aa888",
-    tint: "rgba(90, 168, 136, 0.16)",
-  },
-  {
-    name: "tabby-max-1",
-    note: "~5.0 GB · most capable",
-    tag: "max",
+    name: "tabby-1-pro",
+    file: "gemma-4-E4B-it-Q4_K_M.gguf",
+    size: "~5.0 GB",
+    source: "unsloth/gemma-4-E4B-it-GGUF",
+    tag: "pro",
     color: "#8b7fd4",
     tint: "rgba(139, 127, 212, 0.16)",
   },
@@ -114,10 +115,20 @@ function ModelsPreview() {
               transition={{ duration: 0.4 }}
             />
             <div className="relative z-10 min-w-0 flex-1">
-              <p className="text-sm font-bold tracking-tight text-ink">
-                {m.name}
+              <div className="flex items-center gap-2">
+                <p className="truncate text-sm font-bold tracking-tight text-ink">
+                  {m.name}
+                </p>
+                <span className="shrink-0 rounded-full border border-line-soft bg-background px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-widest text-subtle">
+                  {m.size}
+                </span>
+              </div>
+              <p className="truncate text-xs tracking-tight text-subtle">
+                {m.file}
               </p>
-              <p className="text-xs tracking-tight text-subtle">{m.note}</p>
+              <p className="truncate text-[0.65rem] tracking-tight text-subtle/80">
+                {m.source}
+              </p>
             </div>
             {isActive && (
               <motion.span
@@ -126,7 +137,7 @@ function ModelsPreview() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 style={{ backgroundColor: m.color }}
-                className="relative z-10 shrink-0 rounded-full px-2.5 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-white"
+                className="relative z-10 shrink-0 rounded-full px-2.5 py-0.5 text-[0.62rem] font-bold uppercase tracking-widest text-white"
               >
                 {m.tag}
               </motion.span>
@@ -214,18 +225,18 @@ export function CustomizationCardsSection() {
       </FadeIn>
 
       <Stagger stagger={0.12} className="mt-12 grid gap-6 lg:grid-cols-3">
-        <StaggerItem>
-          <ScaleIn>
+        <StaggerItem className="h-full">
+          <ScaleIn className="h-full">
             <CustomItem
               icon={Cpu}
               title="choose your model"
-              description="Five built-in models ship with Cotabby - from the featherweight pico for instant suggestions up to max when you want the sharpest output. You can also drop in your own GGUF."
+              description="Four built-in models ship with Cotabby - tabby-1-nano for instant suggestions, to tabby-1-pro for the sharpest output. Also drop in your own GGUF."
               preview={<ModelsPreview />}
             />
           </ScaleIn>
         </StaggerItem>
-        <StaggerItem>
-          <ScaleIn delay={0.08}>
+        <StaggerItem className="h-full">
+          <ScaleIn delay={0.08} className="h-full">
             <CustomItem
               icon={SlidersHorizontal}
               title="short or long"
@@ -234,8 +245,8 @@ export function CustomizationCardsSection() {
             />
           </ScaleIn>
         </StaggerItem>
-        <StaggerItem>
-          <ScaleIn delay={0.16}>
+        <StaggerItem className="h-full">
+          <ScaleIn delay={0.16} className="h-full">
             <CustomItem
               icon={Sparkles}
               title="learns your voice"

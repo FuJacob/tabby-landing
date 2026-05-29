@@ -33,11 +33,11 @@ export default function FeedbackPage() {
           </Link>
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/app-icons/new-logo.png"
+              src="/app-icons/cotabby-logo-dark.png"
               alt="Cotabby logo"
               width={56}
               height={56}
-              className="h-14 w-14 rounded-2xl border-2 border-line bg-surface-2 shadow-[0_6.7px_0_var(--line)]"
+              className="h-14 w-14"
             />
             <span className="flex h-14 flex-col justify-center">
               <span className="flex items-center gap-2">

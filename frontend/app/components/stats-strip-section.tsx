@@ -26,10 +26,10 @@ function OpenSourceEvidence() {
         <span className="truncate text-subtle">github.com/fujacob/cotabby</span>
       </div>
       <div className="mt-2.5 flex flex-wrap gap-1.5">
-        <span className="rounded-full bg-accent/15 px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-accent-deep">
+        <span className="rounded-full bg-accent/15 px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-widest text-accent-deep">
           AGPL-3.0
         </span>
-        <span className="rounded-full bg-background px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-subtle">
+        <span className="rounded-full bg-background px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-widest text-subtle">
           free forever
         </span>
       </div>
@@ -66,7 +66,7 @@ function OnDeviceEvidence() {
 function ModelEvidence() {
   const engines = [
     { name: "Apple Intelligence", tag: "system" },
-    { name: "Open-source GGUF", tag: "3 built-in" },
+    { name: "Open-source GGUF", tag: "4 built-in" },
     { name: "Bring your own", tag: ".gguf" },
   ];
   return (
