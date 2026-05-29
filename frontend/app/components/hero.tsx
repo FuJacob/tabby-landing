@@ -161,7 +161,7 @@ export function Hero() {
               style={{
                 color: "#ec4899",
                 textDecorationLine: "underline",
-                  textDecorationColor: "#ec4899",
+                textDecorationColor: "#ec4899",
                 textDecorationThickness: "1px",
                 textUnderlineOffset: "2px",
               }}
