@@ -1,6 +1,26 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
+import {
+  Bug,
+  Camera,
+  CheckCircle2,
+  ChevronDown,
+  ChevronUp,
+  ExternalLink,
+  GripVertical,
+  Lightbulb,
+  ListOrdered,
+  MessageSquare,
+  Monitor,
+  Package,
+  Plus,
+  Sparkles,
+  Target,
+  Type as TypeIcon,
+  X,
+} from "lucide-react";
+import { GithubIcon } from "../components/icons";
 import { createScreenshotUploadUrls, submitFeedback } from "./action";
 import { getSupabase } from "../lib/supabase";
 import {
@@ -9,15 +29,59 @@ import {
   MAX_SCREENSHOTS,
   MAX_SCREENSHOT_BYTES,
 } from "../lib/feedback";
+import type { LucideIcon } from "lucide-react";
 
 type FeedbackType = "bug" | "feature";
 
 type Screenshot = { file: File; previewUrl: string };
 
+type Step = { id: string; value: string };
+
 const inputClass =
   "w-full rounded-xl border-2 border-line-soft bg-surface-2 px-4 py-3 text-sm font-semibold tracking-tight text-ink placeholder:text-subtle/60 transition focus:border-line focus:outline-none sm:text-base";
 
 const textareaClass = `${inputClass} min-h-28 resize-y`;
+
+const STEP_PLACEHOLDERS = [
+  "Open Cotabby preferences",
+  "Switch to the Models tab",
+  "What happens next?",
+];
+
+function newStepId() {
+  return Math.random().toString(36).slice(2, 9);
+}
+
+function freshSteps(): Step[] {
+  return [{ id: newStepId(), value: "" }];
+}
+
+function FieldLabel({
+  icon: Icon,
+  htmlFor,
+  children,
+  required,
+}: {
+  icon: LucideIcon;
+  htmlFor?: string;
+  children: React.ReactNode;
+  required?: boolean;
+}) {
+  return (
+    <label
+      htmlFor={htmlFor}
+      className="mb-1.5 flex items-center gap-2 text-sm font-bold tracking-tight text-ink"
+    >
+      <span className="grid h-7 w-7 place-items-center rounded-lg border-2 border-line-soft bg-surface-2 text-ink">
+        <Icon className="h-3.5 w-3.5" strokeWidth={2.25} />
+      </span>
+      <span className="flex items-center gap-1">
+        {children}
+        {required && <span className="text-accent">*</span>}
+      </span>
+    </label>
+  );
+}
 
 export function FeedbackForm() {
   const [type, setType] = useState<FeedbackType>("bug");
@@ -27,6 +91,8 @@ export function FeedbackForm() {
   );
   const [screenshots, setScreenshots] = useState<Screenshot[]>([]);
   const [fileError, setFileError] = useState<string | null>(null);
+  const [steps, setSteps] = useState<Step[]>(freshSteps);
+  const [dragId, setDragId] = useState<string | null>(null);
   const [result, setResult] = useState<{
     success: boolean;
     message: string;
@@ -75,6 +141,92 @@ export function FeedbackForm() {
     setScreenshots((prev) => prev.filter((s) => s.previewUrl !== previewUrl));
     setFileError(null);
   }
+
+  function updateStep(id: string, value: string) {
+    setSteps((prev) => prev.map((s) => (s.id === id ? { ...s, value } : s)));
+  }
+
+  function removeStep(id: string) {
+    setSteps((prev) =>
+      prev.length > 1 ? prev.filter((s) => s.id !== id) : prev,
+    );
+  }
+
+  function addStep() {
+    const id = newStepId();
+    setSteps((prev) => [...prev, { id, value: "" }]);
+    requestAnimationFrame(() => focusStep(id));
+  }
+
+  function insertStepAfter(afterId: string) {
+    const id = newStepId();
+    setSteps((prev) => {
+      const idx = prev.findIndex((s) => s.id === afterId);
+      if (idx === -1) return [...prev, { id, value: "" }];
+      const next = [...prev];
+      next.splice(idx + 1, 0, { id, value: "" });
+      return next;
+    });
+    requestAnimationFrame(() => focusStep(id));
+  }
+
+  function focusStep(id: string) {
+    const el = document.querySelector<HTMLInputElement>(
+      `[data-step-id="${id}"]`,
+    );
+    el?.focus();
+  }
+
+  function handleStepKeyDown(
+    id: string,
+    e: React.KeyboardEvent<HTMLInputElement>,
+  ) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      insertStepAfter(id);
+    }
+  }
+
+  function moveStep(id: string, direction: -1 | 1) {
+    setSteps((prev) => {
+      const idx = prev.findIndex((s) => s.id === id);
+      if (idx === -1) return prev;
+      const target = idx + direction;
+      if (target < 0 || target >= prev.length) return prev;
+      const next = [...prev];
+      [next[idx], next[target]] = [next[target], next[idx]];
+      return next;
+    });
+  }
+
+  function handleDragStart(id: string, e: React.DragEvent<HTMLDivElement>) {
+    setDragId(id);
+    e.dataTransfer.effectAllowed = "move";
+  }
+
+  function handleDragOver(id: string, e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    if (!dragId || dragId === id) return;
+    setSteps((prev) => {
+      const from = prev.findIndex((s) => s.id === dragId);
+      const to = prev.findIndex((s) => s.id === id);
+      if (from === -1 || to === -1) return prev;
+      const next = [...prev];
+      const [moved] = next.splice(from, 1);
+      next.splice(to, 0, moved);
+      return next;
+    });
+  }
+
+  function handleDragEnd() {
+    setDragId(null);
+  }
+
+  const stepsCombined = steps
+    .map((s) => s.value.trim())
+    .filter(Boolean)
+    .map((value, i) => `${i + 1}. ${value}`)
+    .join("\n");
 
   async function uploadScreenshots(): Promise<
     { ok: true; paths: string[] } | { ok: false; error: string }
@@ -139,6 +291,7 @@ export function FeedbackForm() {
       if (res.success) {
         screenshots.forEach((s) => URL.revokeObjectURL(s.previewUrl));
         setScreenshots([]);
+        setSteps(freshSteps());
         setFileError(null);
         setResult({
           success: true,
@@ -156,44 +309,86 @@ export function FeedbackForm() {
       ? "Uploading screenshots..."
       : pending
         ? "Submitting..."
-        : "Submit Feedback";
+        : type === "bug"
+          ? "Submit Bug Report"
+          : "Submit Feature Request";
+
+  // Success state — show a celebratory card with a prominent GitHub link.
+  if (result?.success) {
+    return (
+      <div className="mt-8 rounded-3xl border-2 border-line bg-surface-2 p-8 text-center shadow-[0_6.7px_0_var(--line)] sm:p-10">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-line bg-moss/15 shadow-[0_5px_0_var(--line)]">
+          <CheckCircle2 className="h-9 w-9 text-ink" strokeWidth={2} />
+        </div>
+        <h3 className="tabby-display mt-5 text-[2rem] leading-tight text-ink sm:text-[2.4rem]">
+          thanks for sending this in!
+        </h3>
+        <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed tracking-tight text-muted sm:text-base">
+          {result.issueUrl
+            ? "We've opened a GitHub issue for it. Star or subscribe to follow updates and chime in with more details if anything changes."
+            : result.message}
+        </p>
+
+        {result.issueUrl && (
+          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <a
+              href={result.issueUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tabby-button tabby-button-secondary inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-sm font-bold tracking-tight sm:h-14 sm:w-auto sm:px-7 sm:text-base"
+            >
+              <GithubIcon className="h-5 w-5" />
+              View issue on GitHub
+              <ExternalLink className="h-4 w-4" strokeWidth={2.25} />
+            </a>
+            <button
+              type="button"
+              onClick={() => setResult(null)}
+              className="tabby-button tabby-button-primary inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-sm font-bold tracking-tight sm:h-14 sm:w-auto sm:px-7 sm:text-base"
+            >
+              Send another
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <form action={handleSubmit} className="mt-8 space-y-5">
       {/* Type toggle */}
-      <fieldset className="flex gap-2">
+      <fieldset className="grid grid-cols-2 gap-2">
         <button
           type="button"
           onClick={() => setType("bug")}
-          className={`rounded-xl border-2 px-4 py-2 text-sm font-bold tracking-tight transition sm:text-base ${
+          className={`flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-3 text-sm font-bold tracking-tight transition sm:text-base ${
             type === "bug"
-              ? "border-line bg-surface-4 text-ink"
+              ? "border-line bg-surface-4 text-ink shadow-[0_3.4px_0_var(--line)]"
               : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"
           }`}
         >
+          <Bug className="h-4 w-4" strokeWidth={2.25} />
           Bug Report
         </button>
         <button
           type="button"
           onClick={() => setType("feature")}
-          className={`rounded-xl border-2 px-4 py-2 text-sm font-bold tracking-tight transition sm:text-base ${
+          className={`flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-3 text-sm font-bold tracking-tight transition sm:text-base ${
             type === "feature"
-              ? "border-line bg-surface-4 text-ink"
+              ? "border-line bg-surface-4 text-ink shadow-[0_3.4px_0_var(--line)]"
               : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"
           }`}
         >
+          <Lightbulb className="h-4 w-4" strokeWidth={2.25} />
           Feature Request
         </button>
       </fieldset>
 
       {/* Title */}
       <div>
-        <label
-          htmlFor="title"
-          className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
-        >
-          Title <span className="text-accent">*</span>
-        </label>
+        <FieldLabel icon={TypeIcon} htmlFor="title" required>
+          Title
+        </FieldLabel>
         <input
           id="title"
           name="title"
@@ -210,12 +405,9 @@ export function FeedbackForm() {
 
       {/* Description */}
       <div>
-        <label
-          htmlFor="description"
-          className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
-        >
-          Description <span className="text-accent">*</span>
-        </label>
+        <FieldLabel icon={MessageSquare} htmlFor="description" required>
+          Description
+        </FieldLabel>
         <textarea
           id="description"
           name="description"
@@ -233,27 +425,92 @@ export function FeedbackForm() {
       {type === "bug" && (
         <>
           <div>
-            <label
-              htmlFor="steps"
-              className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
+            <FieldLabel icon={ListOrdered}>Steps to Reproduce</FieldLabel>
+            <div className="space-y-2">
+              {steps.map((step, idx) => {
+                const isDragging = dragId === step.id;
+                return (
+                  <div
+                    key={step.id}
+                    draggable
+                    onDragStart={(e) => handleDragStart(step.id, e)}
+                    onDragOver={(e) => handleDragOver(step.id, e)}
+                    onDragEnd={handleDragEnd}
+                    className={`flex items-center gap-1.5 rounded-xl border-2 transition ${
+                      isDragging
+                        ? "border-line bg-surface-3 opacity-60"
+                        : "border-line-soft bg-surface-2 hover:border-line/60"
+                    }`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="grid h-10 w-7 shrink-0 cursor-grab place-items-center text-subtle transition-colors hover:text-ink active:cursor-grabbing"
+                      title="Drag to reorder"
+                    >
+                      <GripVertical className="h-4 w-4" strokeWidth={2.25} />
+                    </span>
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg border-2 border-line-soft bg-surface text-xs font-bold text-ink">
+                      {idx + 1}
+                    </span>
+                    <input
+                      type="text"
+                      data-step-id={step.id}
+                      value={step.value}
+                      onChange={(e) => updateStep(step.id, e.target.value)}
+                      onKeyDown={(e) => handleStepKeyDown(step.id, e)}
+                      placeholder={
+                        STEP_PLACEHOLDERS[idx] ?? "What happens next?"
+                      }
+                      className="min-w-0 flex-1 bg-transparent px-2 py-2.5 text-sm font-semibold tracking-tight text-ink placeholder:text-subtle/60 focus:outline-none sm:text-base"
+                    />
+                    <div className="flex shrink-0 items-center gap-0.5 pr-1.5">
+                      <button
+                        type="button"
+                        onClick={() => moveStep(step.id, -1)}
+                        disabled={idx === 0}
+                        aria-label={`Move step ${idx + 1} up`}
+                        className="grid h-7 w-7 place-items-center rounded-md text-subtle transition-colors hover:bg-surface-3 hover:text-ink disabled:opacity-30 disabled:hover:bg-transparent"
+                      >
+                        <ChevronUp className="h-4 w-4" strokeWidth={2.25} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => moveStep(step.id, 1)}
+                        disabled={idx === steps.length - 1}
+                        aria-label={`Move step ${idx + 1} down`}
+                        className="grid h-7 w-7 place-items-center rounded-md text-subtle transition-colors hover:bg-surface-3 hover:text-ink disabled:opacity-30 disabled:hover:bg-transparent"
+                      >
+                        <ChevronDown className="h-4 w-4" strokeWidth={2.25} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => removeStep(step.id)}
+                        disabled={steps.length === 1}
+                        aria-label={`Remove step ${idx + 1}`}
+                        className="grid h-7 w-7 place-items-center rounded-md text-subtle transition-colors hover:bg-accent/15 hover:text-accent disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-subtle"
+                      >
+                        <X className="h-4 w-4" strokeWidth={2.25} />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <button
+              type="button"
+              onClick={addStep}
+              className="mt-2 inline-flex items-center gap-1.5 rounded-xl border-2 border-dashed border-line-soft bg-surface-2 px-3 py-2 text-xs font-bold tracking-tight text-muted transition hover:border-line hover:text-ink sm:text-sm"
             >
-              Steps to Reproduce
-            </label>
-            <textarea
-              id="steps"
-              name="steps"
-              placeholder="1. Open app&#10;2. Type in...&#10;3. ..."
-              className={textareaClass}
-            />
+              <Plus className="h-3.5 w-3.5" strokeWidth={2.5} />
+              Add step
+            </button>
+            <input type="hidden" name="steps" value={stepsCombined} />
           </div>
 
           <div>
-            <label
-              htmlFor="expected"
-              className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
-            >
+            <FieldLabel icon={Target} htmlFor="expected">
               Expected Behavior
-            </label>
+            </FieldLabel>
             <textarea
               id="expected"
               name="expected"
@@ -264,27 +521,22 @@ export function FeedbackForm() {
 
           <div className="flex gap-3">
             <div className="flex-1">
-              <label
-                htmlFor="appVersion"
-                className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
-              >
+              <FieldLabel icon={Package} htmlFor="appVersion" required>
                 Cotabby Version
-              </label>
+              </FieldLabel>
               <input
                 id="appVersion"
                 name="appVersion"
                 type="text"
+                required
                 placeholder="e.g. 0.4.2"
                 className={inputClass}
               />
             </div>
             <div className="flex-1">
-              <label
-                htmlFor="macosVersion"
-                className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
-              >
+              <FieldLabel icon={Monitor} htmlFor="macosVersion">
                 macOS Version
-              </label>
+              </FieldLabel>
               <input
                 id="macosVersion"
                 name="macosVersion"
@@ -300,12 +552,9 @@ export function FeedbackForm() {
       {/* Feature-specific field */}
       {type === "feature" && (
         <div>
-          <label
-            htmlFor="expected"
-            className="mb-1.5 block text-sm font-bold tracking-tight text-ink"
-          >
+          <FieldLabel icon={Sparkles} htmlFor="expected">
             Use Case
-          </label>
+          </FieldLabel>
           <textarea
             id="expected"
             name="expected"
@@ -317,10 +566,10 @@ export function FeedbackForm() {
 
       {/* Screenshots */}
       <div>
-        <label className="mb-1.5 block text-sm font-bold tracking-tight text-ink">
+        <FieldLabel icon={Camera}>
           Screenshots{" "}
           <span className="font-medium text-subtle">(optional)</span>
-        </label>
+        </FieldLabel>
         <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
           {screenshots.map((s) => (
             <div
@@ -338,9 +587,9 @@ export function FeedbackForm() {
                 onClick={() => removeScreenshot(s.previewUrl)}
                 disabled={pending}
                 aria-label={`Remove ${s.file.name}`}
-                className="absolute right-1.5 top-1.5 flex h-6 w-6 items-center justify-center rounded-lg border-2 border-line bg-surface text-base leading-none text-ink shadow-[0_2px_0_var(--line)] transition hover:bg-surface-4 disabled:opacity-50"
+                className="absolute right-1.5 top-1.5 grid h-6 w-6 place-items-center rounded-lg border-2 border-line bg-surface text-ink shadow-[0_2px_0_var(--line)] transition hover:bg-surface-4 disabled:opacity-50"
               >
-                &times;
+                <X className="h-3 w-3" strokeWidth={2.5} />
               </button>
             </div>
           ))}
@@ -358,7 +607,7 @@ export function FeedbackForm() {
                 }}
                 className="sr-only"
               />
-              <span className="text-2xl leading-none">+</span>
+              <Plus className="h-5 w-5" strokeWidth={2.25} />
               <span className="text-xs font-bold tracking-tight">Add</span>
             </label>
           )}
@@ -373,29 +622,10 @@ export function FeedbackForm() {
         )}
       </div>
 
-      {/* Result message */}
-      {result && (
-        <div
-          className={`rounded-xl border-2 px-4 py-3 text-sm font-semibold tracking-tight ${
-            result.success
-              ? "border-moss/40 bg-moss/10 text-ink"
-              : "border-accent/40 bg-accent/10 text-ink"
-          }`}
-        >
+      {/* Error message */}
+      {result && !result.success && (
+        <div className="rounded-xl border-2 border-accent/40 bg-accent/10 px-4 py-3 text-sm font-semibold tracking-tight text-ink">
           {result.message}
-          {result.issueUrl && (
-            <>
-              {" "}
-              <a
-                href={result.issueUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-bold underline underline-offset-2 transition-colors hover:text-muted"
-              >
-                View on GitHub
-              </a>
-            </>
-          )}
         </div>
       )}
 
@@ -403,8 +633,13 @@ export function FeedbackForm() {
       <button
         type="submit"
         disabled={pending}
-        className="tabby-button tabby-button-primary inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-6 text-sm font-bold tracking-tight disabled:opacity-50 sm:h-14 sm:px-8 sm:text-base"
+        className="tabby-button tabby-button-primary inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-sm font-bold tracking-tight disabled:opacity-50 sm:h-14 sm:w-auto sm:px-8 sm:text-base"
       >
+        {type === "bug" ? (
+          <Bug className="h-4 w-4" strokeWidth={2.25} />
+        ) : (
+          <Lightbulb className="h-4 w-4" strokeWidth={2.25} />
+        )}
         {submitLabel}
       </button>
     </form>
