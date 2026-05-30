@@ -22,6 +22,9 @@ type FeedbackPayload = {
   expectedBehavior?: string;
   appVersion?: string;
   macosVersion?: string;
+  model?: string;
+  chip?: string;
+  memoryGB?: string;
   screenshotPaths?: string[];
   categories?: string[];
 };
@@ -123,12 +126,7 @@ function buildBugBody(data: FeedbackPayload): string {
   if (data.expectedBehavior) {
     body += `### Expected Behavior\n${data.expectedBehavior}\n\n`;
   }
-  if (data.appVersion || data.macosVersion) {
-    body += `### Environment\n`;
-    if (data.appVersion) body += `- **tabby version:** ${data.appVersion}\n`;
-    if (data.macosVersion) body += `- **macOS version:** ${data.macosVersion}\n`;
-    body += `\n`;
-  }
+  body += buildEnvironmentSection(data);
   body += buildScreenshotsSection(data.screenshotPaths);
   body += `---\n*Submitted via tabby feedback form*`;
   return body;
@@ -140,9 +138,23 @@ function buildFeatureBody(data: FeedbackPayload): string {
   if (data.expectedBehavior) {
     body += `### Use Case\n${data.expectedBehavior}\n\n`;
   }
+  body += buildEnvironmentSection(data);
   body += buildScreenshotsSection(data.screenshotPaths);
   body += `---\n*Submitted via tabby feedback form*`;
   return body;
+}
+
+// Shared between bug and feature bodies so hardware context lands on every issue when the user
+// came in from the desktop app (and is silently omitted otherwise).
+function buildEnvironmentSection(data: FeedbackPayload): string {
+  const lines: string[] = [];
+  if (data.appVersion) lines.push(`- **Cotabby version:** ${data.appVersion}`);
+  if (data.macosVersion) lines.push(`- **macOS version:** ${data.macosVersion}`);
+  if (data.model) lines.push(`- **Mac model:** ${data.model}`);
+  if (data.chip) lines.push(`- **Chip:** ${data.chip}`);
+  if (data.memoryGB) lines.push(`- **Memory:** ${data.memoryGB} GB`);
+  if (lines.length === 0) return "";
+  return `### Environment\n${lines.join("\n")}\n\n`;
 }
 
 export async function submitFeedback(

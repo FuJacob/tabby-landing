@@ -1,14 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import {
   Bug,
   Camera,
   CheckCircle2,
   ChevronDown,
   ChevronUp,
+  Cpu,
   ExternalLink,
   GripVertical,
+  HardDrive,
+  Laptop,
   Lightbulb,
   ListOrdered,
   MessageSquare,
@@ -16,6 +19,7 @@ import {
   Package,
   Plus,
   Sparkles,
+  Sparkle,
   Target,
   Type as TypeIcon,
   X,
@@ -62,6 +66,42 @@ function freshSteps(): Step[] {
   return [{ id: newStepId(), value: "" }];
 }
 
+/// Snapshot of host details Cotabby attaches to the feedback URL. Each field is independently
+/// optional so a partial fill (e.g. running an older build that doesn't yet send hardware) still
+/// pre-fills the rest.
+type PrefilledEnvironment = {
+  appVersion?: string;
+  macosVersion?: string;
+  model?: string;
+  chip?: string;
+  memoryGB?: string;
+};
+
+const ENV_KEYS = [
+  "appVersion",
+  "macosVersion",
+  "model",
+  "chip",
+  "memoryGB",
+] as const;
+
+function readPrefilledEnvironment(): PrefilledEnvironment {
+  if (typeof window === "undefined") return {};
+  const params = new URLSearchParams(window.location.search);
+  const env: PrefilledEnvironment = {};
+  for (const key of ENV_KEYS) {
+    const value = params.get(key);
+    if (value && value.trim()) env[key] = value.trim();
+  }
+  return env;
+}
+
+function readPrefilledType(): FeedbackType | null {
+  if (typeof window === "undefined") return null;
+  const value = new URLSearchParams(window.location.search).get("type");
+  return value === "bug" || value === "feature" ? value : null;
+}
+
 function FieldLabel({
   htmlFor,
   children,
@@ -84,8 +124,20 @@ function FieldLabel({
 }
 
 export function FeedbackForm() {
-  const [type, setType] = useState<FeedbackType>("bug");
+  // `useMemo` keeps the URL read out of the render loop without forcing a state setup. The
+  // `?type=` param can flip the initial Bug/Feature toggle so a "Suggest a feature" entry point
+  // from the desktop app lands the user on the right form.
+  const initialEnvironment = useMemo(readPrefilledEnvironment, []);
+  const initialType = useMemo(readPrefilledType, []);
+  const hasPrefilledEnvironment = Object.keys(initialEnvironment).length > 0;
+
+  const [type, setType] = useState<FeedbackType>(initialType ?? "bug");
   const [categories, setCategories] = useState<string[]>([]);
+  const [appVersion, setAppVersion] = useState(initialEnvironment.appVersion ?? "");
+  const [macosVersion, setMacosVersion] = useState(initialEnvironment.macosVersion ?? "");
+  const [model, setModel] = useState(initialEnvironment.model ?? "");
+  const [chip, setChip] = useState(initialEnvironment.chip ?? "");
+  const [memoryGB, setMemoryGB] = useState(initialEnvironment.memoryGB ?? "");
   const [pending, startTransition] = useTransition();
   const [phase, setPhase] = useState<"idle" | "uploading" | "submitting">(
     "idle",
@@ -283,8 +335,11 @@ export function FeedbackForm() {
         description: formData.get("description") as string,
         stepsToReproduce: (formData.get("steps") as string) || undefined,
         expectedBehavior: (formData.get("expected") as string) || undefined,
-        appVersion: (formData.get("appVersion") as string) || undefined,
-        macosVersion: (formData.get("macosVersion") as string) || undefined,
+        appVersion: appVersion.trim() || undefined,
+        macosVersion: macosVersion.trim() || undefined,
+        model: model.trim() || undefined,
+        chip: chip.trim() || undefined,
+        memoryGB: memoryGB.trim() || undefined,
         screenshotPaths,
         categories: categories.length > 0 ? categories : undefined,
       });
@@ -559,16 +614,35 @@ export function FeedbackForm() {
             />
           </div>
 
-          <div className="flex gap-3">
+        </>
+      )}
+
+      {/* Environment — shown for bugs unconditionally (with version required), and for feature
+          requests only when the desktop app already pre-filled the data so we never make a
+          curious feature submitter fill in hardware details by hand. */}
+      {(type === "bug" || hasPrefilledEnvironment) && (
+        <div className="space-y-3 rounded-2xl border-2 border-line-soft bg-surface-2 p-4 sm:p-5">
+          {hasPrefilledEnvironment && (
+            <div className="flex items-start gap-2 rounded-xl border-2 border-line-soft bg-surface px-3 py-2 text-xs font-semibold tracking-tight text-muted sm:text-sm">
+              <Sparkle className="mt-0.5 h-3.5 w-3.5 shrink-0" strokeWidth={2.25} />
+              <span>
+                Environment auto-filled from your device. Edit anything that looks wrong.
+              </span>
+            </div>
+          )}
+
+          <div className="flex flex-col gap-3 sm:flex-row">
             <div className="flex-1">
-              <FieldLabel icon={Package} htmlFor="appVersion" required>
+              <FieldLabel icon={Package} htmlFor="appVersion" required={type === "bug"}>
                 Cotabby Version
               </FieldLabel>
               <input
                 id="appVersion"
                 name="appVersion"
                 type="text"
-                required
+                required={type === "bug"}
+                value={appVersion}
+                onChange={(e) => setAppVersion(e.target.value)}
                 placeholder="e.g. 0.4.2"
                 className={inputClass}
               />
@@ -581,12 +655,63 @@ export function FeedbackForm() {
                 id="macosVersion"
                 name="macosVersion"
                 type="text"
+                value={macosVersion}
+                onChange={(e) => setMacosVersion(e.target.value)}
                 placeholder="e.g. 15.5"
                 className={inputClass}
               />
             </div>
           </div>
-        </>
+
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex-1">
+              <FieldLabel icon={Laptop} htmlFor="model">
+                Mac Model{" "}
+                <span className="font-medium text-subtle">(optional)</span>
+              </FieldLabel>
+              <input
+                id="model"
+                name="model"
+                type="text"
+                value={model}
+                onChange={(e) => setModel(e.target.value)}
+                placeholder="e.g. MacBookPro18,1"
+                className={inputClass}
+              />
+            </div>
+            <div className="flex-1">
+              <FieldLabel icon={Cpu} htmlFor="chip">
+                Chip{" "}
+                <span className="font-medium text-subtle">(optional)</span>
+              </FieldLabel>
+              <input
+                id="chip"
+                name="chip"
+                type="text"
+                value={chip}
+                onChange={(e) => setChip(e.target.value)}
+                placeholder="e.g. Apple M1 Pro"
+                className={inputClass}
+              />
+            </div>
+            <div className="sm:w-32">
+              <FieldLabel icon={HardDrive} htmlFor="memoryGB">
+                Memory{" "}
+                <span className="font-medium text-subtle">(GB)</span>
+              </FieldLabel>
+              <input
+                id="memoryGB"
+                name="memoryGB"
+                type="text"
+                inputMode="numeric"
+                value={memoryGB}
+                onChange={(e) => setMemoryGB(e.target.value)}
+                placeholder="e.g. 16"
+                className={inputClass}
+              />
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Feature-specific field */}
