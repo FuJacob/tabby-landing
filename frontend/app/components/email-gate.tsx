@@ -56,6 +56,8 @@ export function EmailGateProvider({ children }: { children: ReactNode }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const downloadWindow =
+      mode === "download" ? window.open("about:blank", "_blank") : null;
     setStatus("loading");
 
     try {
@@ -65,12 +67,18 @@ export function EmailGateProvider({ children }: { children: ReactNode }) {
       if (error) throw error;
       setStatus("success");
       if (mode === "download") {
-        triggerDownload();
+        if (downloadWindow) {
+          downloadWindow.opener = null;
+          downloadWindow.location.href = DOWNLOAD_URL;
+        } else {
+          triggerDownload();
+        }
         setTimeout(() => setIsOpen(false), 1500);
       } else {
         setTimeout(() => setIsOpen(false), 1800);
       }
     } catch {
+      if (downloadWindow) downloadWindow.close();
       setStatus("error");
     }
   };
