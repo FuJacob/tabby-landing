@@ -10,13 +10,11 @@ import {
 import { Plus } from "lucide-react";
 import Image from "next/image";
 import { useRef, type ReactNode } from "react";
-import { PawMark } from "./paw-mark";
 
 type CardProps = {
   title: string;
   description: string;
   evidence: ReactNode;
-  pawClassName: string;
 };
 
 function OpenSourceEvidence() {
@@ -105,30 +103,24 @@ const CARDS: CardProps[] = [
     title: "Open Source",
     description: "Read every line, fork it, contribute back.",
     evidence: <OpenSourceEvidence />,
-    pawClassName: "right-6 top-6 w-12 -rotate-[14deg]",
   },
   {
     title: "Local",
     description: "Your writing never leaves your Mac.",
     evidence: <OnDeviceEvidence />,
-    pawClassName: "right-7 top-5 w-11 rotate-[19deg]",
   },
   {
     title: "Model Customization",
     description: "Pick your engine. Swap it whenever.",
     evidence: <ModelEvidence />,
-    pawClassName: "right-5 top-7 w-[3.4rem] -rotate-[27deg]",
   },
 ];
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-function Card({ title, description, evidence, pawClassName }: CardProps) {
+function Card({ title, description, evidence }: CardProps) {
   return (
     <div className="relative flex h-full flex-col overflow-hidden rounded-[1.25rem] border-2 border-line bg-surface px-5 py-6 shadow-[0_6.7px_0_var(--line)] sm:px-6">
-      <PawMark
-        className={`pointer-events-none absolute z-0 text-ink/80 ${pawClassName}`}
-      />
       <div className="tabby-display relative z-10 text-[1.6rem] leading-[1.05] tracking-tight text-ink sm:text-[1.95rem]">
         {title}
       </div>
@@ -216,7 +208,6 @@ export function StatsStripSection() {
                 title={card.title}
                 description={card.description}
                 evidence={card.evidence}
-                pawClassName={card.pawClassName}
               />
             </m.div>
           ))}
