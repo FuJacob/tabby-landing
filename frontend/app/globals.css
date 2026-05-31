@@ -214,18 +214,25 @@ a {
 
 @keyframes tabby-button-shimmer-sweep {
   0%,
-  78% {
+  68% {
     transform: translate3d(-160%, 0, 0) rotate(9deg);
   }
 
-  94%,
+  92%,
   100% {
     transform: translate3d(140%, 0, 0) rotate(9deg);
   }
 }
 
 .tabby-button-shimmer::after {
-  animation: tabby-button-shimmer-sweep 3s cubic-bezier(0.22, 1, 0.36, 1)
+  background: linear-gradient(
+    120deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.95) 50%,
+    transparent 68%
+  );
+  opacity: 1;
+  animation: tabby-button-shimmer-sweep 5s cubic-bezier(0.22, 1, 0.36, 1)
     infinite;
 }
 
