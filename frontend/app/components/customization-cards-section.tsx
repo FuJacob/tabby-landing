@@ -231,8 +231,8 @@ export function CustomizationCardsSection() {
         </p>
       </FadeIn>
 
-      <Stagger stagger={0.12} className="mt-12 grid gap-6 lg:grid-cols-3">
-        <StaggerItem className="mx-auto h-full w-full max-w-md lg:max-w-none">
+      <Stagger stagger={0.12} className="mt-12 grid gap-6 md:grid-cols-3">
+        <StaggerItem className="h-full">
           <ScaleIn className="h-full">
             <CustomItem
               icon={Cpu}
@@ -242,7 +242,7 @@ export function CustomizationCardsSection() {
             />
           </ScaleIn>
         </StaggerItem>
-        <StaggerItem className="mx-auto h-full w-full max-w-md lg:max-w-none">
+        <StaggerItem className="h-full">
           <ScaleIn delay={0.08} className="h-full">
             <CustomItem
               icon={SlidersHorizontal}
@@ -252,7 +252,7 @@ export function CustomizationCardsSection() {
             />
           </ScaleIn>
         </StaggerItem>
-        <StaggerItem className="mx-auto h-full w-full max-w-md lg:max-w-none">
+        <StaggerItem className="h-full">
           <ScaleIn delay={0.16} className="h-full">
             <CustomItem
               icon={Sparkles}
