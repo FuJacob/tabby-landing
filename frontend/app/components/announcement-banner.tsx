@@ -32,8 +32,8 @@ export function AnnouncementBanner() {
 
   return (
     <div
-      style={{ color: "#ffffff" }}
-      className="fixed inset-x-0 top-0 z-[60] flex min-h-12 items-center justify-center bg-accent-deep px-4 py-2 text-sm font-medium tracking-tight sm:text-base"
+      style={{ color: "#ffffff", backgroundColor: "#ec4899" }}
+      className="fixed inset-x-0 top-0 z-[60] flex min-h-12 items-center justify-center px-4 py-2 text-sm font-medium tracking-tight sm:text-base"
     >
       <span className="text-center">
         v0.5.0-beta released {relative}. Send feedback at{" "}
