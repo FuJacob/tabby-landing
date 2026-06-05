@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { m } from "framer-motion";
 import { Cpu, SlidersHorizontal, Sparkles, type LucideIcon } from "lucide-react";
 import {
@@ -80,75 +80,33 @@ const MODELS = [
 ] as const;
 
 function ModelsPreview() {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(
-      () => setActive((i) => (i + 1) % MODELS.length),
-      2200,
-    );
-    return () => clearInterval(id);
-  }, []);
-
   return (
     <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-2 shadow-[0_5px_0_var(--line)]">
-      {MODELS.map((model, i) => {
-        const isActive = i === active;
-        return (
-          <div
-            key={model.name}
-            className="relative flex items-center gap-3 rounded-[0.85rem] px-3 py-2.5"
-          >
-            <m.div
-              initial={false}
-              animate={{ opacity: isActive ? 1 : 0 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              style={{ backgroundColor: model.tint }}
-              className="pointer-events-none absolute inset-0 rounded-[0.85rem]"
-            />
-            <span className="relative z-10 h-2 w-2 shrink-0">
-              <span
-                aria-hidden
-                className="absolute inset-0 rounded-full"
-                style={{ background: "rgba(120, 120, 120, 0.4)" }}
-              />
-              <m.span
-                aria-hidden
-                initial={false}
-                animate={{ opacity: isActive ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-                style={{ backgroundColor: model.color }}
-                className="absolute inset-0 rounded-full"
-              />
-            </span>
-            <div className="relative z-10 min-w-0 flex-1">
-              <div className="flex items-center gap-2">
-                <p className="truncate text-sm font-bold tracking-tight text-ink">
-                  {model.name}
-                </p>
-                <span className="shrink-0 rounded-full border border-line-soft bg-background px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-widest text-subtle">
-                  {model.size}
-                </span>
-              </div>
-              <p className="truncate text-xs tracking-tight text-subtle">
-                {model.file}
+      {MODELS.map((model) => (
+        <div
+          key={model.name}
+          style={{ backgroundColor: model.tint }}
+          className="relative flex items-center gap-3 rounded-[0.85rem] px-3 py-2.5"
+        >
+          <span
+            className="h-2 w-2 shrink-0 rounded-full"
+            style={{ backgroundColor: model.color }}
+          />
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2">
+              <p className="truncate text-sm font-bold tracking-tight text-ink">
+                {model.name}
               </p>
+              <span className="shrink-0 rounded-full border border-line-soft bg-background px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-widest text-subtle">
+                {model.size}
+              </span>
             </div>
-            {isActive && (
-              <m.span
-                key={model.tag}
-                initial={{ opacity: 0, y: 5, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                style={{ backgroundColor: model.color }}
-                className="relative z-10 shrink-0 rounded-full px-2.5 py-0.5 text-[0.62rem] font-bold uppercase tracking-widest text-white"
-              >
-                {model.tag}
-              </m.span>
-            )}
+            <p className="truncate text-xs tracking-tight text-subtle">
+              {model.file}
+            </p>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 }
