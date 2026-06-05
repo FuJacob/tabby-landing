@@ -1,8 +1,11 @@
 import { AppsCarouselSection } from "./components/apps-carousel-section";
 import { AlternatingFeatureSection } from "./components/alternating-feature-section";
+import { CommunityProofSection } from "./components/community-proof-section";
+import { ComparisonSection } from "./components/comparison-section";
 import { CustomizationCardsSection } from "./components/customization-cards-section";
 import { DemoVideoSection } from "./components/demo-video-section";
 import { FaqSection } from "./components/faq-section";
+import { MenuBarSection } from "./components/menu-bar-section";
 import { PermissionsSection } from "./components/permissions-section";
 import { FinalFooterSection } from "./components/final-footer-section";
 import { Header } from "./components/header";
@@ -31,9 +34,9 @@ export default function Home() {
         className="pointer-events-none fixed inset-0 z-0"
         style={{
           backgroundImage: `
-            linear-gradient(90deg, rgba(28,28,28,0.10) 1px, transparent 0),
-            linear-gradient(180deg, rgba(28,28,28,0.10) 1px, transparent 0),
-            repeating-linear-gradient(45deg, rgba(255,130,115,0.14) 0 2px, transparent 2px 6px)
+            linear-gradient(90deg, var(--grid-line) 1px, transparent 0),
+            linear-gradient(180deg, var(--grid-line) 1px, transparent 0),
+            repeating-linear-gradient(45deg, var(--grid-accent) 0 2px, transparent 2px 6px)
           `,
           backgroundSize: "96px 96px, 96px 96px, 96px 96px",
         }}
@@ -81,6 +84,10 @@ export default function Home() {
         </section>
 
         <section className="px-6 sm:px-8 lg:px-10">
+          <MenuBarSection />
+        </section>
+
+        <section className="px-6 sm:px-8 lg:px-10">
           <AlternatingFeatureSection />
         </section>
 
@@ -88,8 +95,16 @@ export default function Home() {
           <CustomizationCardsSection />
         </section>
 
+        <section className="px-6 sm:px-8 lg:px-10">
+          <ComparisonSection />
+        </section>
+
         <section id="privacy" className="tabby-anchor px-6 sm:px-8 lg:px-10">
           <PermissionsSection />
+        </section>
+
+        <section className="px-6 sm:px-8 lg:px-10">
+          <CommunityProofSection />
         </section>
 
         <section id="faq" className="tabby-anchor px-6 sm:px-8 lg:px-10">

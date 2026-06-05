@@ -8,6 +8,7 @@ import { DownloadButton } from "./download-button";
 import { useEmailGate } from "./email-gate";
 import { GithubStarLabel } from "./github-star-label";
 import { AppleIcon, GithubIcon } from "./icons";
+import { ThemeToggle } from "./theme-toggle";
 
 const textLinks = [
   { href: "#demo", label: "demo" },
@@ -65,7 +66,7 @@ export function Header() {
               height={48}
               sizes="44px"
               priority
-              className="h-11 w-11 rounded-[0.95rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--line)]"
+              className="h-11 w-11 rounded-[0.95rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--shadow-color)]"
             />
             <span className="flex h-11 items-center gap-2">
               <span className="tabby-display text-[2.5rem] leading-[0.88] tracking-tight text-ink sm:text-[3rem]">
@@ -98,6 +99,7 @@ export function Header() {
             >
               join mailing list
             </button>
+            <ThemeToggle className="ml-1" />
           </nav>
         </div>
 

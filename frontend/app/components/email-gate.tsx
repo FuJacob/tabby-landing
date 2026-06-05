@@ -135,7 +135,7 @@ export function EmailGateProvider({ children }: { children: ReactNode }) {
                   : { opacity: 0, scale: 0.96, y: 10 }
               }
               transition={{ duration: 0.32, ease: EASE }}
-              className="relative w-full max-w-md rounded-3xl border-2 border-line bg-surface p-8 shadow-[0_13.4px_0_var(--line)]"
+              className="relative w-full max-w-md rounded-3xl border-2 border-line bg-surface p-8 shadow-[0_13.4px_0_var(--shadow-color)]"
             >
             <button
               type="button"

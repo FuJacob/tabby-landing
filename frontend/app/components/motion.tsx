@@ -2,6 +2,7 @@
 
 import {
   m,
+  useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
@@ -149,11 +150,13 @@ export function ParallaxY({
   ...rest
 }: ParallaxYProps) {
   const localRef = useRef<HTMLDivElement | null>(null);
+  const prefersReducedMotion = useReducedMotion() ?? false;
   const { scrollYProgress } = useScroll({
     target: targetRef ?? localRef,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [strength, -strength]);
+  const range = prefersReducedMotion ? 0 : strength;
+  const y = useTransform(scrollYProgress, [0, 1], [range, -range]);
   const smooth = useSpring(y, { stiffness: 120, damping: 24, mass: 0.4 });
 
   return (
@@ -333,9 +336,16 @@ export function ScrollProgressBar({ className }: ScrollProgressBarProps) {
     <div
       ref={ref}
       aria-hidden="true"
-      style={{ transformOrigin: "0% 50%", transform: "scaleX(0)" }}
+      // Sits flush under the announcement banner (top = banner height) so it
+      // isn't hidden behind it; drops to the viewport top once the banner is
+      // dismissed.
+      style={{
+        transformOrigin: "0% 50%",
+        transform: "scaleX(0)",
+        top: "var(--banner-height)",
+      }}
       className={
-        className ?? "fixed left-0 right-0 top-0 z-50 h-0.75 bg-accent"
+        className ?? "fixed left-0 right-0 z-40 h-0.75 bg-accent"
       }
     />
   );

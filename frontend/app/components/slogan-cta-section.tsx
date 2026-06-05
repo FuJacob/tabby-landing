@@ -7,6 +7,7 @@ import { GithubStarLabel } from "./github-star-label";
 import { AppleIcon, GithubIcon } from "./icons";
 import { PawMark } from "./paw-mark";
 import { FadeIn, ScaleIn, WordReveal } from "./motion";
+import { SpotlightCard } from "./spotlight-card";
 
 const primaryActionClass =
   "tabby-button tabby-button-blue inline-flex h-14 min-w-[260px] items-center justify-center gap-3 rounded-2xl px-8 text-[1.15rem] font-bold leading-none tracking-tight sm:h-16 sm:min-w-[320px] sm:text-[1.4rem]";
@@ -16,7 +17,11 @@ const secondaryActionClass =
 
 export function SloganCtaSection() {
   return (
-    <section className="relative overflow-hidden rounded-4xl border-2 border-line bg-surface-2 px-6 py-14 shadow-[0_11.8px_0_var(--line)] sm:px-10 sm:py-20">
+    <SpotlightCard
+      radius={460}
+      color="rgba(255, 130, 115, 0.16)"
+      className="overflow-hidden rounded-4xl border-2 border-line bg-surface-2 px-6 py-14 shadow-[0_11.8px_0_var(--shadow-color)] sm:px-10 sm:py-20"
+    >
       <PawMark className="pointer-events-none absolute right-8 top-7 z-10 w-12 -rotate-12 text-ink/80 sm:w-14" />
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
         <PawMark className="absolute left-[3%] top-8 w-9 rotate-[16deg] text-ink/15 sm:w-11" />
@@ -32,7 +37,7 @@ export function SloganCtaSection() {
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage:
-            "radial-gradient(circle, #0a0a0a 1px, transparent 1px)",
+            "radial-gradient(circle, var(--dot-color) 1px, transparent 1px)",
           backgroundSize: "20px 20px",
         }}
       />
@@ -74,6 +79,6 @@ export function SloganCtaSection() {
           </p>
         </FadeIn>
       </div>
-    </section>
+    </SpotlightCard>
   );
 }

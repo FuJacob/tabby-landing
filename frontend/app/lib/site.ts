@@ -13,3 +13,12 @@ export const CREATOR = {
   x: "https://x.com/fujacobb",
   xHandle: "@fujacobb",
 } as const;
+
+// Current release shown in the announcement banner. Bumping `version` re-shows
+// the banner to visitors who dismissed an older one.
+export const RELEASE = {
+  version: "v0.4.2-beta",
+  date: "2026-06-02T00:00:00Z",
+} as const;
+
+export const BANNER_DISMISS_KEY = "cotabby-banner-dismissed";

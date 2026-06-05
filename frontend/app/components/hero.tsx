@@ -12,6 +12,7 @@ import { GITHUB_URL } from "../lib/site";
 import { DownloadButton } from "./download-button";
 import { GhostAcceptText } from "./ghost-accept-text";
 import { GithubStarLabel } from "./github-star-label";
+import { HeroTypingDemo } from "./hero-typing-demo";
 import { AppleIcon, GithubIcon } from "./icons";
 import { TextAnimate } from "./text";
 
@@ -106,6 +107,9 @@ export function Hero() {
                     delay={0.1}
                     startOnView={false}
                     once
+                    // h1 already carries the full aria-label; skip the
+                    // duplicate sr-only copy each rotation would otherwise add.
+                    accessible={false}
                     className="inline text-[3.15rem] sm:text-[4.8rem] lg:text-[6.2rem]"
                     segmentClassName="will-change-transform"
                   >
@@ -148,6 +152,13 @@ export function Hero() {
             </DownloadButton>
           </m.div>
 
+          <m.div
+            variants={copyItem}
+            className="relative z-30 mt-12 w-full max-w-xl"
+          >
+            <HeroTypingDemo />
+          </m.div>
+
           <m.p
             variants={copyItem}
             className="mt-5 text-xs tracking-tight text-subtle sm:text-sm"
@@ -157,14 +168,9 @@ export function Hero() {
               href="https://ko-fi.com/cotabby"
               target="_blank"
               rel="noopener noreferrer"
-              className="group font-semibold"
-              style={{
-                color: "#ec4899",
-                textDecorationLine: "underline",
-                textDecorationColor: "#ec4899",
-                textDecorationThickness: "1px",
-                textUnderlineOffset: "2px",
-              }}
+              // Utility classes win now that the `a {}` reset is in @layer base
+              // (previously needed inline styles to beat the unlayered reset).
+              className="group font-semibold text-[#ec4899] underline decoration-[#ec4899] decoration-1 underline-offset-2"
             >
               Support development &amp; buy us a coffee
               <svg
