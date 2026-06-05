@@ -14,6 +14,8 @@ import { GhostAcceptText } from "./ghost-accept-text";
 import { GithubStarLabel } from "./github-star-label";
 import { AppleIcon, GithubIcon } from "./icons";
 import { TextAnimate } from "./text";
+import { HeroAppDemo } from "./hero-app-demo";
+import { HeroReveal } from "./motion";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -73,20 +75,20 @@ export function Hero() {
 
   return (
     <main id="hero" className="relative mt-6 sm:mt-8">
-      <section className="mx-auto flex max-w-[88rem] flex-col items-center px-2 pt-14 pb-28 text-center sm:px-4 sm:py-14 lg:py-18">
+      <section className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-12 px-2 pt-14 pb-24 sm:px-4 sm:py-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] lg:gap-16 lg:py-16">
         <m.div
           variants={copyContainer}
           initial="hidden"
           animate={revealState}
-          className="flex w-full flex-col items-center"
+          className="flex w-full flex-col items-center lg:items-start lg:text-left"
         >
           <m.div
             variants={copyItem}
-            className="mx-auto flex max-w-[88rem] flex-col items-center"
+            className="mx-auto flex max-w-[88rem] flex-col items-center lg:mx-0 lg:items-start"
           >
             <h1
               aria-label={`${headline.lead} ${headline.accept}`}
-              className="tabby-display mx-auto max-w-[88rem] text-center leading-[0.94] tracking-tight text-ink"
+              className="tabby-display mx-auto max-w-[88rem] text-center leading-[0.94] tracking-tight text-ink lg:mx-0 lg:text-left"
             >
               <AnimatePresence mode="wait">
                 <m.span
@@ -106,7 +108,7 @@ export function Hero() {
                     delay={0.1}
                     startOnView={false}
                     once
-                    className="inline text-[3.15rem] sm:text-[4.8rem] lg:text-[6.2rem]"
+                    className="inline text-[3.15rem] sm:text-[4.8rem] lg:text-[4.6rem]"
                     segmentClassName="will-change-transform"
                   >
                     {headline.lead}
@@ -114,7 +116,7 @@ export function Hero() {
                   <GhostAcceptText
                     text={headline.accept}
                     startDelay={1.3}
-                    className="ml-[0.18em] inline text-[3.15rem] sm:text-[4.8rem] lg:text-[6.2rem]"
+                    className="ml-[0.18em] inline text-[3.15rem] sm:text-[4.8rem] lg:text-[4.6rem]"
                   />
                 </m.span>
               </AnimatePresence>
@@ -123,7 +125,7 @@ export function Hero() {
 
           <m.p
             variants={copyItem}
-            className="mt-6 max-w-3xl text-balance text-base leading-relaxed tracking-tight text-muted sm:text-xl lg:text-2xl"
+            className="mt-6 max-w-3xl text-balance text-base leading-relaxed tracking-tight text-muted sm:text-xl lg:text-xl"
           >
             Open-source AI autocomplete for the apps you already use, powered
             by Apple Intelligence or local models and kept entirely on your Mac.
@@ -131,7 +133,7 @@ export function Hero() {
 
           <m.div
             variants={copyItem}
-            className="mt-9 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row"
+            className="mt-9 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row lg:justify-start"
           >
             <Link
               href={GITHUB_URL}
@@ -180,6 +182,10 @@ export function Hero() {
             </Link>
           </m.p>
         </m.div>
+
+        <HeroReveal delay={0.15} className="w-full">
+          <HeroAppDemo />
+        </HeroReveal>
       </section>
     </main>
   );

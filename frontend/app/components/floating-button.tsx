@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AppleIcon } from "./icons";
 import { DownloadButton } from "./download-button";
+import { AppleIcon } from "./icons";
+import { SupportButton } from "./support-button";
 
 const floatingActionClass =
   "tabby-button tabby-button-blue inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-6 text-base font-bold tracking-tight sm:h-14 sm:px-7";
 
 const bmcClass =
-  "tabby-button inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-white px-4 text-sm font-bold tracking-tight text-[#ec4899] hover:bg-white/85 sm:h-11 sm:px-5 sm:text-base";
+  "h-10 gap-1.5 rounded-xl px-4 text-sm sm:h-11 sm:px-5 sm:text-base";
 
 export const FloatingButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,22 +41,10 @@ export const FloatingButton = () => {
 
   return (
     <div className="tabby-float-cta-enter fixed bottom-4 right-3 z-50 flex flex-col items-end gap-2 sm:bottom-6 sm:right-6">
-      <a
-        href="https://ko-fi.com/cotabby"
-        target="_blank"
-        rel="noopener noreferrer"
+      <SupportButton
         className={bmcClass}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="#ec4899"
-          className="h-4 w-4 sm:h-4.5 sm:w-4.5"
-        >
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-        </svg>
-        Support Cotabby
-      </a>
+        iconClassName="h-4 w-4 sm:h-4.5 sm:w-4.5"
+      />
       <DownloadButton className={floatingActionClass}>
         <AppleIcon className="h-5 w-5" />
         Download for Mac

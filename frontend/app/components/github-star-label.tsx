@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { CountUp } from "./motion";
 
-const FALLBACK = 600;
+const FALLBACK = 700;
 
 export function GithubStarLabel() {
   const [stars, setStars] = useState(FALLBACK);
