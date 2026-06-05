@@ -1,12 +1,13 @@
 "use client";
 
-import { m, type Variants, useReducedMotion } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import { Folder } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { FadeIn } from "./motion";
 import { DownloadButton } from "./download-button";
 import { AppleIcon } from "./icons";
+import { useSequencedPhases } from "./use-sequenced-phases";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -39,6 +40,14 @@ const stepCardVariants: Variants = {
 
 type InstallPhase = "idle" | "dragging" | "dropped" | "hidden" | "reset";
 
+const INSTALL_ORDER = [
+  "idle",
+  "dragging",
+  "dropped",
+  "hidden",
+  "reset",
+] as const satisfies readonly InstallPhase[];
+
 const INSTALL_PHASE_DURATION_MS: Record<InstallPhase, number> = {
   idle: 500,
   dragging: 1100,
@@ -47,38 +56,11 @@ const INSTALL_PHASE_DURATION_MS: Record<InstallPhase, number> = {
   reset: 350,
 };
 
-const INSTALL_NEXT_PHASE: Record<InstallPhase, InstallPhase> = {
-  idle: "dragging",
-  dragging: "dropped",
-  dropped: "hidden",
-  hidden: "reset",
-  reset: "idle",
-};
-
 function InstallVisual() {
-  const prefersReducedMotion = useReducedMotion() ?? false;
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [isInView, setIsInView] = useState(false);
-  const [phase, setPhase] = useState<InstallPhase>("idle");
-
-  useEffect(() => {
-    const node = containerRef.current;
-    if (!node) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.45 },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (prefersReducedMotion || !isInView) return;
-    const id = setTimeout(() => {
-      setPhase((p) => INSTALL_NEXT_PHASE[p]);
-    }, INSTALL_PHASE_DURATION_MS[phase]);
-    return () => clearTimeout(id);
-  }, [phase, isInView, prefersReducedMotion]);
+  const { phase, prefersReducedMotion, containerRef } = useSequencedPhases(
+    INSTALL_ORDER,
+    INSTALL_PHASE_DURATION_MS,
+  );
 
   const atDestination = phase === "dragging" || phase === "dropped" || phase === "hidden";
   const shrunk = phase === "dropped" || phase === "hidden";
@@ -109,7 +91,7 @@ function InstallVisual() {
             duration: INSTALL_PHASE_DURATION_MS[phase] / 1000,
             ease: phase === "dragging" ? EASE : "easeOut",
           }}
-          className="absolute top-1/2 z-10 h-9 w-9 -translate-y-1/2 overflow-hidden rounded-[0.55rem] border-2 border-line bg-surface shadow-[0_2px_0_var(--line)]"
+          className="absolute top-1/2 z-10 h-9 w-9 -translate-y-1/2 overflow-hidden rounded-[0.55rem] border-2 border-line bg-surface shadow-[0_2px_0_var(--shadow-color)]"
         >
           <Image
             src="/app-icons/new-logo.webp"
@@ -119,7 +101,7 @@ function InstallVisual() {
             className="object-cover"
           />
         </m.div>
-        <div className="flex h-10 w-11 shrink-0 items-center justify-center rounded-[0.55rem] border-2 border-line bg-moss/25 shadow-[0_2px_0_var(--line)]">
+        <div className="flex h-10 w-11 shrink-0 items-center justify-center rounded-[0.55rem] border-2 border-line bg-moss/25 shadow-[0_2px_0_var(--shadow-color)]">
           <Folder className="h-5 w-5 text-ink" strokeWidth={2.2} />
         </div>
       </div>
@@ -176,7 +158,7 @@ function TypeAnywhereVisual() {
           }}
           role="img"
           aria-label={app.name}
-          className="relative h-11 w-11 overflow-hidden rounded-[0.7rem] border-2 border-line bg-surface-2 shadow-[0_3.4px_0_var(--line)]"
+          className="relative h-11 w-11 overflow-hidden rounded-[0.7rem] border-2 border-line bg-surface-2 shadow-[0_3.4px_0_var(--shadow-color)]"
         >
           <Image
             src={app.icon}
@@ -225,6 +207,18 @@ type TabPhase =
   | "done"
   | "reset";
 
+const TAB_ORDER = [
+  "idle",
+  "ghost-1",
+  "tap-1",
+  "ghost-2",
+  "tap-2",
+  "ghost-3",
+  "tap-3",
+  "done",
+  "reset",
+] as const satisfies readonly TabPhase[];
+
 const TAB_PHASE_DURATION_MS: Record<TabPhase, number> = {
   idle: 450,
   "ghost-1": 600,
@@ -235,18 +229,6 @@ const TAB_PHASE_DURATION_MS: Record<TabPhase, number> = {
   "tap-3": 360,
   done: 1600,
   reset: 450,
-};
-
-const TAB_NEXT_PHASE: Record<TabPhase, TabPhase> = {
-  idle: "ghost-1",
-  "ghost-1": "tap-1",
-  "tap-1": "ghost-2",
-  "ghost-2": "tap-2",
-  "tap-2": "ghost-3",
-  "ghost-3": "tap-3",
-  "tap-3": "done",
-  done: "reset",
-  reset: "idle",
 };
 
 // For each fragment index i (0-2): visible from ghost-(i+1) onward; turns ink during tap-(i+1).
@@ -263,29 +245,10 @@ const TAB_INK_PHASES: Record<number, readonly TabPhase[]> = {
 };
 
 function TabVisual() {
-  const prefersReducedMotion = useReducedMotion() ?? false;
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [isInView, setIsInView] = useState(false);
-  const [phase, setPhase] = useState<TabPhase>("idle");
-
-  useEffect(() => {
-    const node = containerRef.current;
-    if (!node) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.45 },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (prefersReducedMotion || !isInView) return;
-    const id = setTimeout(() => {
-      setPhase((p) => TAB_NEXT_PHASE[p]);
-    }, TAB_PHASE_DURATION_MS[phase]);
-    return () => clearTimeout(id);
-  }, [phase, isInView, prefersReducedMotion]);
+  const { phase, prefersReducedMotion, containerRef } = useSequencedPhases(
+    TAB_ORDER,
+    TAB_PHASE_DURATION_MS,
+  );
 
   const isPressing =
     phase === "tap-1" || phase === "tap-2" || phase === "tap-3";
@@ -325,7 +288,7 @@ function TabVisual() {
               ? { duration: 0.32, ease: "easeOut", times: [0, 0.4, 1] }
               : { duration: 0.18, ease: "easeOut" }
           }
-          style={{ boxShadow: "0 3px 0 var(--line)" }}
+          style={{ boxShadow: "0 3px 0 var(--shadow-color)" }}
           className="inline-flex h-11 min-w-14 items-center justify-center rounded-[0.65rem] border-2 border-line bg-background px-3 text-base font-bold text-ink"
         >
           Tab

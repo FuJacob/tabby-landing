@@ -17,7 +17,7 @@ export function SectionShell({ children, className }: SectionShellProps) {
         className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
-            "radial-gradient(circle, #0a0a0a 1px, transparent 1px)",
+            "radial-gradient(circle, var(--dot-color) 1px, transparent 1px)",
           backgroundSize: "22px 22px",
         }}
       />

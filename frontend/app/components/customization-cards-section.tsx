@@ -3,14 +3,8 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { m } from "framer-motion";
 import { Cpu, SlidersHorizontal, Sparkles, type LucideIcon } from "lucide-react";
-import {
-  FadeIn,
-  HoverLift,
-  ScaleIn,
-  Stagger,
-  StaggerItem,
-  WordReveal,
-} from "./motion";
+import { FadeIn, ScaleIn, Stagger, StaggerItem, WordReveal } from "./motion";
+import { TiltCard } from "./tilt-card";
 
 type CustomItemProps = {
   icon: LucideIcon;
@@ -21,10 +15,10 @@ type CustomItemProps = {
 
 function CustomItem({ icon: Icon, title, description, preview }: CustomItemProps) {
   return (
-    <HoverLift lift={5} className="h-full">
+    <TiltCard max={5} className="h-full">
       <article className="tabby-panel-soft flex h-full flex-col gap-4 rounded-[1.55rem] p-6 sm:p-7">
         <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-line bg-surface-3 text-ink shadow-[0_3.4px_0_var(--line)]">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-line bg-surface-3 text-ink shadow-[0_3.4px_0_var(--shadow-color)]">
             <Icon className="h-5 w-5" strokeWidth={2} />
           </div>
           <h3 className="text-[1.65rem] font-bold leading-tight tracking-tight text-ink sm:text-[1.9rem]">
@@ -36,7 +30,7 @@ function CustomItem({ icon: Icon, title, description, preview }: CustomItemProps
         </p>
         <div className="mt-auto">{preview}</div>
       </article>
-    </HoverLift>
+    </TiltCard>
   );
 }
 
@@ -91,7 +85,7 @@ function ModelsPreview() {
   }, []);
 
   return (
-    <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-2 shadow-[0_5px_0_var(--line)]">
+    <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-2 shadow-[0_5px_0_var(--shadow-color)]">
       {MODELS.map((model, i) => {
         const isActive = i === active;
         return (
@@ -158,7 +152,7 @@ function ModelsPreview() {
 
 function LengthPreview() {
   return (
-    <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-5 shadow-[0_5px_0_var(--line)]">
+    <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-5 shadow-[0_5px_0_var(--shadow-color)]">
       <div className="flex items-center justify-between text-xs font-bold tracking-[0.12em] uppercase text-muted">
         <span>3-7 words</span>
         <span className="text-ink">7-12 words</span>
@@ -180,7 +174,7 @@ function LengthPreview() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="pointer-events-none absolute inset-y-0 left-0 w-full"
         >
-          <span className="absolute left-0 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-line bg-background shadow-[0_3.4px_0_var(--line)]" />
+          <span className="absolute left-0 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-line bg-background shadow-[0_3.4px_0_var(--shadow-color)]" />
         </m.div>
       </div>
       <p className="mt-4 text-sm leading-relaxed tracking-tight text-subtle">
@@ -194,15 +188,15 @@ function LengthPreview() {
 function PersonalizationPreview() {
   const signals = ["writing style", "memory", "adapts over time"];
   return (
-    <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-5 shadow-[0_5px_0_var(--line)]">
+    <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-5 shadow-[0_5px_0_var(--shadow-color)]">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center rounded-full border-2 border-line bg-moss/15 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-ink shadow-[0_3.4px_0_var(--line)]">
+        <span className="inline-flex items-center rounded-full border-2 border-line bg-moss/15 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-ink shadow-[0_3.4px_0_var(--shadow-color)]">
           coming soon
         </span>
         {signals.map((signal, i) => (
           <span
             key={signal}
-            className={`inline-flex items-center rounded-full border-2 border-line px-3 py-1 text-xs font-bold tracking-tight shadow-[0_3.4px_0_var(--line)] ${
+            className={`inline-flex items-center rounded-full border-2 border-line px-3 py-1 text-xs font-bold tracking-tight shadow-[0_3.4px_0_var(--shadow-color)] ${
               i === 0 ? "bg-accent/20 text-ink" : "bg-background text-muted"
             }`}
           >

@@ -4,6 +4,7 @@ import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { FadeIn, WordReveal } from "./motion";
+import { DemoGif } from "./demo-gif";
 
 const VIDEO_ID = "p3TIgxQFQGE";
 
@@ -126,7 +127,7 @@ function VideoBlock({ className = "", label, start, end }: VideoBlockProps) {
     <div
       role="img"
       aria-label={`${label} demo video`}
-      className={`relative aspect-video w-full overflow-hidden rounded-[1.35rem] border-2 border-line bg-surface shadow-[0_11.8px_0_var(--line)] ${className}`}
+      className={`relative aspect-video w-full overflow-hidden rounded-[1.35rem] border-2 border-line bg-surface shadow-[0_11.8px_0_var(--shadow-color)] ${className}`}
     >
       <SegmentPlayer start={start} end={end} />
       <div className="absolute inset-0 z-10" />
@@ -168,7 +169,7 @@ function SectionHeadline({
   return (
     <div className={align === "right" ? "md:flex md:justify-end" : ""}>
       <div className="inline-flex items-center gap-4">
-        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-[0.85rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--line)] sm:h-14 sm:w-14">
+        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-[0.85rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--shadow-color)] sm:h-14 sm:w-14">
           <Image
             src={icon}
             alt=""
@@ -194,6 +195,8 @@ type FeatureRowProps = {
   start?: number;
   end?: number;
   visual?: ReactNode;
+  /** Self-framed media (e.g. <DemoGif/>) rendered without the aspect-video box. */
+  media?: ReactNode;
 };
 
 function FeatureRow({
@@ -205,6 +208,7 @@ function FeatureRow({
   start,
   end,
   visual,
+  media,
 }: FeatureRowProps) {
   const textFromLeft = layout === "text-left";
 
@@ -232,10 +236,12 @@ function FeatureRow({
         transition={{ delay: 0.12 }}
         className={textFromLeft ? "" : "md:order-1"}
       >
-        {visual !== undefined ? (
+        {media !== undefined ? (
+          media
+        ) : visual !== undefined ? (
           <div
             aria-label={`${label} demo`}
-            className="relative aspect-video w-full overflow-hidden rounded-[1.35rem] border-2 border-line bg-surface shadow-[0_11.8px_0_var(--line)]"
+            className="relative aspect-video w-full overflow-hidden rounded-[1.35rem] border-2 border-line bg-surface shadow-[0_11.8px_0_var(--shadow-color)]"
           >
             {visual}
           </div>
@@ -358,7 +364,7 @@ function EmojiAutocompleteVisual() {
               exit={{ opacity: 0, scale: 0.96, y: -4 }}
               transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
               style={{ transformOrigin: "top left" }}
-              className="absolute left-[5.2rem] top-[2.85rem] z-10 w-[13.5rem] overflow-hidden rounded-[0.85rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--line)] sm:left-[6rem] sm:top-[3.15rem] sm:w-[15rem]"
+              className="absolute left-[5.2rem] top-[2.85rem] z-10 w-[13.5rem] overflow-hidden rounded-[0.85rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--shadow-color)] sm:left-[6rem] sm:top-[3.15rem] sm:w-[15rem]"
             >
               <div className="flex items-center px-3 py-2 font-mono text-[0.78rem] tracking-tight">
                 <span className="text-subtle">:</span>
@@ -435,16 +441,33 @@ export function AlternatingFeatureSection() {
           icon="/app-icons/slack.webp"
           iconPad
           label="slack"
-          start={33}
-          end={40}
+          media={
+            <DemoGif
+              src="/app-icons/slack.gif"
+              width={500}
+              height={182}
+              alt="Cotabby suggesting the rest of a Slack message and accepting it with Tab"
+              icon="/app-icons/slack.webp"
+              iconPad
+              label="Slack"
+            />
+          }
         />
         <FeatureRow
           layout="text-right"
           headline="write your messages faster"
           icon="/app-icons/imessage.svg"
           label="messages"
-          start={41}
-          end={50}
+          media={
+            <DemoGif
+              src="/app-icons/imessage.gif"
+              width={677}
+              height={233}
+              alt="Cotabby suggesting the rest of an iMessage and accepting it with Tab"
+              icon="/app-icons/imessage.svg"
+              label="iMessage"
+            />
+          }
         />
         <FeatureRow
           layout="text-left"

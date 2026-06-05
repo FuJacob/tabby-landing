@@ -66,7 +66,7 @@ export function FinalFooterSection() {
               width={48}
               height={48}
               sizes="44px"
-              className="h-11 w-11 rounded-[0.95rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--line)]"
+              className="h-11 w-11 rounded-[0.95rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--shadow-color)]"
             />
             <div className="flex h-11 items-center gap-2">
               <span className="tabby-display text-[2rem] leading-[0.88] tracking-tight text-ink sm:text-[2.4rem]">
@@ -110,7 +110,7 @@ export function FinalFooterSection() {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-[0.95rem] border-2 border-line bg-surface-2 text-ink shadow-[0_5px_0_var(--line)] transition-colors hover:bg-surface-3"
+                  className="flex h-10 w-10 items-center justify-center rounded-[0.95rem] border-2 border-line bg-surface-2 text-ink shadow-[0_5px_0_var(--shadow-color)] transition-colors hover:bg-surface-3"
                 >
                   <Icon className="h-4.5 w-4.5" />
                 </Link>

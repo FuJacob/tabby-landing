@@ -9,6 +9,7 @@ import {
   StaggerItem,
   WordReveal,
 } from "./motion";
+import { SpotlightCard } from "./spotlight-card";
 
 type Permission = {
   icon: LucideIcon;
@@ -46,7 +47,7 @@ function PermissionCard({ permission }: { permission: Permission }) {
   return (
     <HoverLift lift={5} className="h-full">
       <article className="tabby-panel-soft flex h-full flex-col rounded-[1.55rem] p-6 sm:p-7">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border-2 border-line bg-surface-3 text-ink shadow-[0_3.4px_0_var(--line)]">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border-2 border-line bg-surface-3 text-ink shadow-[0_3.4px_0_var(--shadow-color)]">
           <Icon className="h-6 w-6" strokeWidth={2} />
         </div>
         <h3 className="mt-5 text-[1.6rem] font-bold leading-tight tracking-tight text-ink sm:text-[1.85rem]">
@@ -71,27 +72,58 @@ function PermissionCard({ permission }: { permission: Permission }) {
 export function PermissionsSection() {
   return (
     <section className="mx-auto max-w-305">
-      <WordReveal
-        as="h2"
-        text="your Mac, your data"
-        className="tabby-display text-center text-[2.9rem] leading-[1.02] tracking-tight text-ink sm:text-[4.1rem]"
-      />
-      <FadeIn delay={0.1}>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-          Cotabby needs three macOS permissions to work. Here&apos;s exactly what
-          each one does and why nothing ever leaves your machine.
-        </p>
-      </FadeIn>
+      {/* Scoped dark panel — flips the design tokens for this subtree only, so
+          the privacy story reads as "lights off, nothing leaves" and gives the
+          page some vertical rhythm. Holds up in both global light and dark. */}
+      <div data-theme="dark">
+        <SpotlightCard
+          radius={520}
+          color="rgba(255, 130, 115, 0.13)"
+          className="overflow-hidden rounded-4xl border-2 border-line bg-background px-6 py-14 shadow-[0_11.8px_0_var(--shadow-color)] sm:px-10 sm:py-16"
+        >
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-0 opacity-[0.05]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, var(--dot-color) 1px, transparent 1px)",
+              backgroundSize: "22px 22px",
+            }}
+          />
+          <div className="relative z-10">
+            <div className="flex flex-col items-center gap-3 text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-line bg-surface-2 px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-ink shadow-[0_3.4px_0_var(--shadow-color)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-moss" />
+                lights off, on by default
+              </span>
+              <WordReveal
+                as="h2"
+                text="your Mac, your data"
+                className="tabby-display text-center text-[2.9rem] leading-[1.02] tracking-tight text-ink sm:text-[4.1rem]"
+              />
+            </div>
+            <FadeIn delay={0.1}>
+              <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
+                Cotabby needs three macOS permissions to work. Here&apos;s exactly
+                what each one does and why nothing ever leaves your machine.
+              </p>
+            </FadeIn>
 
-      <Stagger stagger={0.12} className="mt-14 grid items-stretch gap-8 lg:grid-cols-3">
-        {permissions.map((p, i) => (
-          <StaggerItem key={p.title} className="h-full">
-            <ScaleIn delay={i * 0.08} className="h-full">
-              <PermissionCard permission={p} />
-            </ScaleIn>
-          </StaggerItem>
-        ))}
-      </Stagger>
+            <Stagger
+              stagger={0.12}
+              className="mt-14 grid items-stretch gap-8 lg:grid-cols-3"
+            >
+              {permissions.map((p, i) => (
+                <StaggerItem key={p.title} className="h-full">
+                  <ScaleIn delay={i * 0.08} className="h-full">
+                    <PermissionCard permission={p} />
+                  </ScaleIn>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </SpotlightCard>
+      </div>
     </section>
   );
 }

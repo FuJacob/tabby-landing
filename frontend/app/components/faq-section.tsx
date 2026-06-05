@@ -29,7 +29,7 @@ export const FAQ_ITEMS = [
   {
     question: "What is the difference between the Apple Intelligence and Open Source engines?",
     answer:
-      "Apple Intelligence uses Apple's built-in FoundationModels runtime - no download required, but it needs macOS 26 and supported hardware. The Open Source engine runs local GGUF models through llama.cpp, ships with four built-in models (tabby-1-nano, tabby-1-mini, tabby-1-base, and tabby-1-pro), and lets you bring your own. If Apple Intelligence isn't available on your Mac, the Open Source engine still works.",
+      "Apple Intelligence uses Apple's built-in FoundationModels runtime - no download required, but it needs macOS 26 and supported hardware. The Open Source engine runs local GGUF models through llama.cpp, ships with four built-in models (tabby-2-nano, tabby-2-mini, tabby-2-base, and tabby-2-pro), and lets you bring your own. If Apple Intelligence isn't available on your Mac, the Open Source engine still works.",
   },
   {
     question: "What apps does Cotabby work with?",
@@ -49,7 +49,7 @@ export const FAQ_ITEMS = [
   {
     question: "How much space do the models take?",
     answer:
-      "They range from about 0.1 GB for tabby-1-nano up to about 5.0 GB for tabby-1-pro, with tabby-1-mini around 0.4 GB and tabby-1-base around 3.1 GB in between. Apple Intelligence uses the system runtime, so no separate download. You can also add your own GGUF models if you prefer something different.",
+      "They range from about 0.8 GB for tabby-2-nano up to about 5.0 GB for tabby-2-pro, with tabby-2-mini around 1.4 GB and tabby-2-base around 4.5 GB in between. Apple Intelligence uses the system runtime, so no separate download. You can also add your own GGUF models if you prefer something different.",
   },
   {
     question: "Does Cotabby work offline?",
@@ -64,7 +64,7 @@ export const FAQ_ITEMS = [
   {
     question: "Does Cotabby slow down my Mac?",
     answer:
-      "Cotabby only runs inference when you pause typing, and the smaller models are designed to be lightweight. tabby-1-nano and tabby-1-mini use minimal resources. You might notice slightly more CPU usage with tabby-1-base and tabby-1-pro, but it shouldn't affect normal use.",
+      "Cotabby only runs inference when you pause typing, and the smaller models are designed to be lightweight. tabby-2-nano and tabby-2-mini use minimal resources. You might notice slightly more CPU usage with tabby-2-base and tabby-2-pro, but it shouldn't affect normal use.",
   },
 ];
 
@@ -85,7 +85,7 @@ export function FaqSection() {
       <Stagger stagger={0.06} className="mt-10 space-y-3">
         {FAQ_ITEMS.map((item) => (
           <StaggerItem key={item.question}>
-            <details className="group overflow-hidden rounded-2xl border-2 border-line bg-surface-2 shadow-[0_6.7px_0_var(--line)] transition-all duration-200 open:bg-surface-3 hover:-translate-y-px">
+            <details className="group overflow-hidden rounded-2xl border-2 border-line bg-surface-2 shadow-[0_6.7px_0_var(--shadow-color)] transition-all duration-200 open:bg-surface-3 hover:-translate-y-px">
               <summary className="list-none cursor-pointer px-6 py-5 [&::-webkit-details-marker]:hidden">
                 <div className="flex items-center justify-between gap-4">
                   <span className="text-left text-base font-semibold tracking-tight text-ink sm:text-lg">

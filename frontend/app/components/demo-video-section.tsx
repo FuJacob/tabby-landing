@@ -21,7 +21,7 @@ export function DemoVideoSection() {
           <LazyYouTube
             videoId="p3TIgxQFQGE"
             title="Cotabby demo video"
-            className="relative aspect-video w-full overflow-hidden rounded-[1.35rem] border-2 border-line bg-surface shadow-[0_11.8px_0_var(--line)]"
+            className="relative aspect-video w-full overflow-hidden rounded-[1.35rem] border-2 border-line bg-surface shadow-[0_11.8px_0_var(--shadow-color)]"
             iframeClassName="h-full w-full object-cover"
           />
         </div>

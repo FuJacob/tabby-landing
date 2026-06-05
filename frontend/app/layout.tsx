@@ -3,9 +3,15 @@ import { Bricolage_Grotesque, Inter_Tight } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
-import { CREATOR, SITE_URL } from "./lib/site";
+import { BANNER_DISMISS_KEY, CREATOR, RELEASE, SITE_URL } from "./lib/site";
 import { AnnouncementBanner } from "./components/announcement-banner";
 import { Providers } from "./components/providers";
+import { THEME_STORAGE_KEY } from "./components/use-theme";
+
+// Runs before first paint: pins the saved theme and pre-collapses the banner if
+// it was already dismissed — so returning visitors get no flash and no layout
+// jump. Kept dependency-free and inlined in <head>.
+const INIT_SCRIPT = `(function(){try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t;}}catch(e){}try{if(localStorage.getItem("${BANNER_DISMISS_KEY}")==="${RELEASE.version}"){document.documentElement.style.setProperty("--banner-height","0px");document.documentElement.classList.add("tabby-banner-dismissed");}}catch(e){}})();`;
 
 const bodyFont = Inter_Tight({
   variable: "--font-body",
@@ -66,13 +72,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${bodyFont.variable} ${displayFont.variable} h-full antialiased`}
     >
       <head>
+        {/* Apply saved theme + banner state before paint to avoid a flash of
+            the wrong palette. Runs ahead of hydration; hence
+            suppressHydrationWarning on <html>. */}
+        <script dangerouslySetInnerHTML={{ __html: INIT_SCRIPT }} />
         <link rel="preconnect" href="https://i.ytimg.com" crossOrigin="" />
         <link rel="preconnect" href="https://www.youtube.com" crossOrigin="" />
       </head>
-      <body className="flex min-h-full flex-col bg-background pt-12 text-ink">
+      <body className="flex min-h-full flex-col bg-background pt-[var(--banner-height)] text-ink">
         <AnnouncementBanner />
         <Providers>{children}</Providers>
         <Analytics />

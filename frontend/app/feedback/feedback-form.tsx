@@ -374,8 +374,8 @@ export function FeedbackForm() {
   // Success state — show a celebratory card with a prominent GitHub link.
   if (result?.success) {
     return (
-      <div className="mt-8 rounded-3xl border-2 border-line bg-surface-2 p-8 text-center shadow-[0_6.7px_0_var(--line)] sm:p-10">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-line bg-moss/15 shadow-[0_5px_0_var(--line)]">
+      <div className="mt-8 rounded-3xl border-2 border-line bg-surface-2 p-8 text-center shadow-[0_6.7px_0_var(--shadow-color)] sm:p-10">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-line bg-moss/15 shadow-[0_5px_0_var(--shadow-color)]">
           <CheckCircle2 className="h-9 w-9 text-ink" strokeWidth={2} />
         </div>
         <h3 className="tabby-display mt-5 text-[2rem] leading-tight text-ink sm:text-[2.4rem]">
@@ -421,7 +421,7 @@ export function FeedbackForm() {
           onClick={() => setType("bug")}
           className={`flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-3 text-sm font-bold tracking-tight transition sm:text-base ${
             type === "bug"
-              ? "border-line bg-surface-4 text-ink shadow-[0_3.4px_0_var(--line)]"
+              ? "border-line bg-surface-4 text-ink shadow-[0_3.4px_0_var(--shadow-color)]"
               : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"
           }`}
         >
@@ -433,7 +433,7 @@ export function FeedbackForm() {
           onClick={() => setType("feature")}
           className={`flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-3 text-sm font-bold tracking-tight transition sm:text-base ${
             type === "feature"
-              ? "border-line bg-surface-4 text-ink shadow-[0_3.4px_0_var(--line)]"
+              ? "border-line bg-surface-4 text-ink shadow-[0_3.4px_0_var(--shadow-color)]"
               : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"
           }`}
         >
@@ -466,7 +466,7 @@ export function FeedbackForm() {
                   title={cat.description}
                   className={`flex items-center gap-1.5 rounded-xl border-2 px-3 py-2 text-xs font-bold tracking-tight transition sm:text-sm ${
                     selected
-                      ? "border-line bg-surface-4 text-ink shadow-[0_3.4px_0_var(--line)]"
+                      ? "border-line bg-surface-4 text-ink shadow-[0_3.4px_0_var(--shadow-color)]"
                       : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"
                   }`}
                 >
@@ -752,7 +752,7 @@ export function FeedbackForm() {
                 onClick={() => removeScreenshot(s.previewUrl)}
                 disabled={pending}
                 aria-label={`Remove ${s.file.name}`}
-                className="absolute right-1.5 top-1.5 grid h-6 w-6 place-items-center rounded-lg border-2 border-line bg-surface text-ink shadow-[0_2px_0_var(--line)] transition hover:bg-surface-4 disabled:opacity-50"
+                className="absolute right-1.5 top-1.5 grid h-6 w-6 place-items-center rounded-lg border-2 border-line bg-surface text-ink shadow-[0_2px_0_var(--shadow-color)] transition hover:bg-surface-4 disabled:opacity-50"
               >
                 <X className="h-3 w-3" strokeWidth={2.5} />
               </button>
