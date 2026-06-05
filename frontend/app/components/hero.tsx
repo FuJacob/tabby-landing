@@ -49,7 +49,7 @@ const copyItem: Variants = {
 const HEADLINES = [
   { lead: "AI suggestions", accept: "for macOS." },
   { lead: "Write faster", accept: "in every app." },
-  { lead: "Finish thoughts", accept: "before you type." },
+  { lead: "Finish thoughts", accept: "instantly." },
   { lead: "Finish words", accept: "right inline." },
 ] as const;
 
