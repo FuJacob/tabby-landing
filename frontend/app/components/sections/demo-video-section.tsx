@@ -1,20 +1,14 @@
 import { LazyYouTube } from "@/app/components/ui/lazy-youtube";
-import { FadeIn, ScaleIn, WordReveal } from "@/app/components/ui/motion";
+import { ScaleIn } from "@/app/components/ui/motion";
+import { SectionHeading } from "@/app/components/ui/section-heading";
 
 export function DemoVideoSection() {
   return (
     <div className="mx-auto">
-      <WordReveal
-        as="h2"
-        text="watch Cotabby in action"
-        className="tabby-display text-center text-[2.8rem] leading-[1.02] tracking-tight text-ink sm:text-[4rem]"
+      <SectionHeading
+        title="watch Cotabby in action"
+        subtitle="See how the suggestions feel inside a real writing flow, instead of floating around like a checklist."
       />
-      <FadeIn delay={0.1}>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-          See how the suggestions feel inside a real writing flow, instead of
-          floating around like a checklist.
-        </p>
-      </FadeIn>
 
       <ScaleIn delay={0.1} from={0.94}>
         <div className="relative isolate mt-10">

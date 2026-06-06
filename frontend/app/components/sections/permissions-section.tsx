@@ -2,13 +2,12 @@
 
 import { Accessibility, Check, Keyboard, ScanLine, type LucideIcon } from "lucide-react";
 import {
-  FadeIn,
   HoverLift,
   ScaleIn,
   Stagger,
   StaggerItem,
-  WordReveal,
 } from "@/app/components/ui/motion";
+import { SectionHeading } from "@/app/components/ui/section-heading";
 
 type Permission = {
   icon: LucideIcon;
@@ -71,17 +70,11 @@ function PermissionCard({ permission }: { permission: Permission }) {
 export function PermissionsSection() {
   return (
     <section className="mx-auto max-w-305">
-      <WordReveal
-        as="h2"
-        text="your Mac, your data"
-        className="tabby-display text-center text-[2.9rem] leading-[1.02] tracking-tight text-ink sm:text-[4.1rem]"
+      <SectionHeading
+        title="your Mac, your data"
+        titleSize="text-[2.9rem] sm:text-[4.1rem]"
+        subtitle="Cotabby needs three macOS permissions to work. Here's exactly what each one does and why nothing ever leaves your machine."
       />
-      <FadeIn delay={0.1}>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-          Cotabby needs three macOS permissions to work. Here&apos;s exactly what
-          each one does and why nothing ever leaves your machine.
-        </p>
-      </FadeIn>
 
       <Stagger stagger={0.12} className="mt-14 grid items-stretch gap-8 lg:grid-cols-3">
         {permissions.map((p, i) => (

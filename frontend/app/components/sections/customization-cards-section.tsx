@@ -4,13 +4,12 @@ import { type ReactNode } from "react";
 import { m } from "framer-motion";
 import { Cpu, SlidersHorizontal, Sparkles, type LucideIcon } from "lucide-react";
 import {
-  FadeIn,
   HoverLift,
   ScaleIn,
   Stagger,
   StaggerItem,
-  WordReveal,
 } from "@/app/components/ui/motion";
+import { SectionHeading } from "@/app/components/ui/section-heading";
 
 type CustomItemProps = {
   icon: LucideIcon;
@@ -178,16 +177,11 @@ function PersonalizationPreview() {
 export function CustomizationCardsSection() {
   return (
     <section className="mx-auto max-w-305">
-      <WordReveal
-        as="h2"
-        text="make Cotabby feel like yours"
-        className="tabby-display text-center text-[2.4rem] leading-[1.02] tracking-tight text-ink sm:text-[4.1rem]"
+      <SectionHeading
+        title="make Cotabby feel like yours"
+        titleSize="text-[2.4rem] sm:text-[4.1rem]"
+        subtitle="Tune the suggestions so they feel helpful, not intrusive."
       />
-      <FadeIn delay={0.1}>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-          Tune the suggestions so they feel helpful, not intrusive.
-        </p>
-      </FadeIn>
 
       <Stagger stagger={0.12} className="mt-12 grid gap-6 md:grid-cols-3">
         <StaggerItem className="h-full">

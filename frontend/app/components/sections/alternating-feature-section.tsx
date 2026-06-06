@@ -3,7 +3,7 @@
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
-import { FadeIn, WordReveal } from "@/app/components/ui/motion";
+import { SectionHeading } from "@/app/components/ui/section-heading";
 
 const VIDEO_ID = "p3TIgxQFQGE";
 
@@ -400,18 +400,11 @@ function EmojiAutocompleteVisual() {
 export function AlternatingFeatureSection() {
   return (
     <section className="mx-auto max-w-305">
-      <WordReveal
-        as="h2"
-        text="main use cases, one by one"
-        className="tabby-display text-center text-[2.9rem] leading-[1.02] tracking-tight text-ink sm:text-[4.1rem]"
+      <SectionHeading
+        title="main use cases, one by one"
+        titleSize="text-[2.9rem] sm:text-[4.1rem]"
+        subtitle="A few examples of Cotabby quietly finishing thoughts (and dropping in the right emoji) in the apps you already use - clips from a real session."
       />
-      <FadeIn delay={0.1}>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-          A few examples of Cotabby quietly finishing thoughts (and dropping in
-          the right emoji) in the apps you already use - clips from a real
-          session.
-        </p>
-      </FadeIn>
       <div className="mt-14 space-y-14 sm:space-y-16 md:space-y-20">
         <FeatureRow
           layout="text-left"

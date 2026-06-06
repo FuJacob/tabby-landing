@@ -1,4 +1,5 @@
-import { FadeIn, Stagger, StaggerItem, WordReveal } from "@/app/components/ui/motion";
+import { Stagger, StaggerItem } from "@/app/components/ui/motion";
+import { SectionHeading } from "@/app/components/ui/section-heading";
 
 export const FAQ_ITEMS = [
   {
@@ -71,16 +72,10 @@ export const FAQ_ITEMS = [
 export function FaqSection() {
   return (
     <section className="mx-auto w-full max-w-4xl">
-      <WordReveal
-        as="h2"
-        text="questions, answered"
-        className="tabby-display text-center text-[2.8rem] leading-[1.02] tracking-tight text-ink sm:text-[4rem]"
+      <SectionHeading
+        title="questions, answered"
+        subtitle="The basics, without the enterprise brochure voice."
       />
-      <FadeIn delay={0.1}>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-          The basics, without the enterprise brochure voice.
-        </p>
-      </FadeIn>
 
       <Stagger stagger={0.06} className="mt-10 space-y-3">
         {FAQ_ITEMS.map((item) => (

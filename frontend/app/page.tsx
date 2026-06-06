@@ -9,6 +9,7 @@ import { Header } from "@/app/components/sections/header";
 import { Hero } from "@/app/components/sections/hero";
 import { HowItWorksSection } from "@/app/components/sections/how-it-works-section";
 import { ScrollProgressBar } from "@/app/components/ui/motion";
+import { Section } from "@/app/components/ui/section";
 import { SectionShell } from "@/app/components/ui/section-shell";
 import { SloganCtaSection } from "@/app/components/sections/slogan-cta-section";
 import { StatsStripSection } from "@/app/components/sections/stats-strip-section";
@@ -49,48 +50,45 @@ export default function Home() {
           <SleepingCatMascot />
         </div>
 
-        <section className="px-6 sm:px-8 lg:px-10">
+        <Section>
           <StatsStripSection />
-        </section>
+        </Section>
 
-        <section id="demo" className="tabby-anchor px-6 sm:px-8 lg:px-10">
+        <Section id="demo">
           <DemoVideoSection />
-        </section>
+        </Section>
 
-        <section className="px-6 sm:px-8 lg:px-10">
+        <Section>
           <AppsCarouselSection />
-        </section>
+        </Section>
 
-        <section
-          id="how-it-works"
-          className="tabby-anchor px-6 sm:px-8 lg:px-10"
-        >
+        <Section id="how-it-works">
           <HowItWorksSection />
-        </section>
+        </Section>
 
-        <section className="px-6 sm:px-8 lg:px-10">
+        <Section>
           <AlternatingFeatureSection />
-        </section>
+        </Section>
 
-        <section className="px-6 sm:px-8 lg:px-10">
+        <Section>
           <CustomizationCardsSection />
-        </section>
+        </Section>
 
-        <section id="privacy" className="tabby-anchor px-6 sm:px-8 lg:px-10">
+        <Section id="privacy">
           <PermissionsSection />
-        </section>
+        </Section>
 
-        <section id="faq" className="tabby-anchor px-6 sm:px-8 lg:px-10">
+        <Section id="faq">
           <FaqSection />
-        </section>
+        </Section>
 
-        <section className="px-6 sm:px-8 lg:px-10">
+        <Section>
           <SloganCtaSection />
-        </section>
+        </Section>
 
-        <section className="px-6 sm:px-8 lg:px-10">
+        <Section>
           <FinalFooterSection />
-        </section>
+        </Section>
 
         <GiantWordmarkSection />
       </div>
