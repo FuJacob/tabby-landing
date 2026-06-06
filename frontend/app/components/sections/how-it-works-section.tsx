@@ -4,9 +4,9 @@ import { m, type Variants, useReducedMotion } from "framer-motion";
 import { Folder } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { FadeIn } from "./motion";
-import { DownloadButton } from "./download-button";
-import { AppleIcon } from "./icons";
+import { FadeIn } from "@/app/components/ui/motion";
+import { DownloadButton } from "@/app/components/ui/download-button";
+import { AppleIcon } from "@/app/components/ui/icons";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 

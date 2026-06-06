@@ -1,5 +1,5 @@
-import { CREATOR, DOWNLOAD_URL, GITHUB_URL, SITE_URL } from "../lib/site";
-import { FAQ_ITEMS } from "./faq-section";
+import { CREATOR, DOWNLOAD_URL, GITHUB_URL, SITE_URL } from "@/app/lib/site";
+import { FAQ_ITEMS } from "@/app/components/sections/faq-section";
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (

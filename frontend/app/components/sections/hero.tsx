@@ -8,13 +8,13 @@ import {
 } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { GITHUB_URL } from "../lib/site";
-import { DownloadButton } from "./download-button";
-import { GithubStarLabel } from "./github-star-label";
-import { AppleIcon, GithubIcon } from "./icons";
-import { HeroAppDemo } from "./hero-app-demo";
-import { HeroReveal } from "./motion";
-import { TabbyButton } from "./tabby-button";
+import { GITHUB_URL } from "@/app/lib/site";
+import { DownloadButton } from "@/app/components/ui/download-button";
+import { GitHubStarLabel } from "@/app/components/ui/github-star-label";
+import { AppleIcon, GithubIcon } from "@/app/components/ui/icons";
+import { HeroAppDemo } from "@/app/components/sections/hero-app-demo";
+import { HeroReveal } from "@/app/components/ui/motion";
+import { TabbyButton } from "@/app/components/ui/tabby-button";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const HERO_ACCEPT_COLOR = "#e85548";
@@ -129,7 +129,7 @@ export function Hero() {
               size="md"
               icon={<GithubIcon className="h-6 w-6 shrink-0" />}
             >
-              <GithubStarLabel />
+              <GitHubStarLabel />
             </TabbyButton>
             <DownloadButton size="md" icon={<AppleIcon className="h-6 w-6 shrink-0" />}>
               Download for Mac

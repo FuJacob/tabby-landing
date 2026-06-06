@@ -7,8 +7,8 @@ import {
   MAX_SCREENSHOTS,
   MAX_SCREENSHOT_BYTES,
   SCREENSHOT_PATH_RE,
-} from "../lib/feedback";
-import { getSupabaseAdmin } from "../lib/supabase-admin";
+} from "@/app/lib/feedback";
+import { getSupabaseAdmin } from "@/app/lib/supabase-admin";
 
 const GITHUB_REPO = "FuJacob/cotabby";
 

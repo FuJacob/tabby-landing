@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { MouseEvent } from "react";
-import { DownloadButton } from "./download-button";
-import { useEmailGate } from "./email-gate";
-import { AppleIcon } from "./icons";
+import { DownloadButton } from "@/app/components/ui/download-button";
+import { useEmailGate } from "@/app/components/ui/email-gate";
+import { AppleIcon } from "@/app/components/ui/icons";
 
 const textLinks = [
   { href: "#demo", label: "demo" },

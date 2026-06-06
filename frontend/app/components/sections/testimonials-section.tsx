@@ -1,4 +1,4 @@
-import { FadeIn, HoverLift, ScaleIn, Stagger, StaggerItem } from "./motion";
+import { FadeIn, HoverLift, ScaleIn, Stagger, StaggerItem } from "@/app/components/ui/motion";
 
 type ReviewCardProps = {
   quote: string;

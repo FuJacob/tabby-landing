@@ -1,8 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useEmailGate } from "./email-gate";
-import { TabbyButton } from "./tabby-button";
+import { useEmailGate } from "@/app/components/ui/email-gate";
+import { TabbyButton } from "@/app/components/ui/tabby-button";
 
 type DownloadButtonProps = {
   size?: "sm" | "md" | "lg";

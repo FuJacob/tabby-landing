@@ -1,5 +1,5 @@
-import { LazyYouTube } from "./lazy-youtube";
-import { FadeIn, ScaleIn, WordReveal } from "./motion";
+import { LazyYouTube } from "@/app/components/ui/lazy-youtube";
+import { FadeIn, ScaleIn, WordReveal } from "@/app/components/ui/motion";
 
 export function DemoVideoSection() {
   return (

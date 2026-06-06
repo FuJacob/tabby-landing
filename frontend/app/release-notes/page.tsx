@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { LegalPageShell } from "../components/legal-page-shell";
-import { GITHUB_URL } from "../lib/site";
+import { LegalPageShell } from "@/app/components/layout/legal-page-shell";
+import { GITHUB_URL } from "@/app/lib/site";
 
 export const metadata: Metadata = {
   title: "Release Notes - Cotabby",

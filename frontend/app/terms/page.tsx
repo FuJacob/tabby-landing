@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { LegalPageShell } from "../components/legal-page-shell";
-import { GITHUB_URL, SUPPORT_EMAIL } from "../lib/site";
+import { LegalPageShell } from "@/app/components/layout/legal-page-shell";
+import { GITHUB_URL, SUPPORT_EMAIL } from "@/app/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Service - Cotabby",

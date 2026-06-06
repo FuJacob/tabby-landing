@@ -1,12 +1,12 @@
 "use client";
 
-import { GITHUB_URL } from "../lib/site";
-import { DownloadButton } from "./download-button";
-import { GithubStarLabel } from "./github-star-label";
-import { AppleIcon, GithubIcon } from "./icons";
-import { PawMark } from "./paw-mark";
-import { FadeIn, ScaleIn, WordReveal } from "./motion";
-import { TabbyButton } from "./tabby-button";
+import { GITHUB_URL } from "@/app/lib/site";
+import { DownloadButton } from "@/app/components/ui/download-button";
+import { GitHubStarLabel } from "@/app/components/ui/github-star-label";
+import { AppleIcon, GithubIcon } from "@/app/components/ui/icons";
+import { PawMark } from "@/app/components/ui/paw-mark";
+import { FadeIn, ScaleIn, WordReveal } from "@/app/components/ui/motion";
+import { TabbyButton } from "@/app/components/ui/tabby-button";
 
 export function SloganCtaSection() {
   return (
@@ -56,7 +56,7 @@ export function SloganCtaSection() {
               size="md"
               icon={<GithubIcon className="h-5 w-5" />}
             >
-              <GithubStarLabel />
+              <GitHubStarLabel />
             </TabbyButton>
           </div>
         </ScaleIn>

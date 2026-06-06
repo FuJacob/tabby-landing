@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CountUp } from "./motion";
+import { CountUp } from "@/app/components/ui/motion";
 
 const FALLBACK = 700;
 
-export function GithubStarLabel() {
+export function GitHubStarLabel() {
   const [stars, setStars] = useState(FALLBACK);
 
   useEffect(() => {

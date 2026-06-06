@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
-import { FadeIn, WordReveal } from "./motion";
-import { CotabbyLogoChip } from "./cotabby-logo-chip";
+import { FadeIn, WordReveal } from "@/app/components/ui/motion";
+import { CotabbyLogoChip } from "@/app/components/ui/cotabby-logo-chip";
 
 const CHIPS = [
   { label: "Apple Mail", iconSrc: "/app-icons/apple-mail.webp" },

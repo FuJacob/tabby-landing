@@ -1,5 +1,5 @@
-import { SUPPORT_URL } from "../lib/site";
-import { TabbyButton } from "./tabby-button";
+import { SUPPORT_URL } from "@/app/lib/site";
+import { TabbyButton } from "@/app/components/ui/tabby-button";
 
 type SupportButtonProps = {
   size?: "sm" | "md" | "lg";

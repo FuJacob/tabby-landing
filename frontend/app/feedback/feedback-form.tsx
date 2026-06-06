@@ -24,16 +24,16 @@ import {
   Type as TypeIcon,
   X,
 } from "lucide-react";
-import { GithubIcon } from "../components/icons";
-import { TabbyButton } from "../components/tabby-button";
+import { GithubIcon } from "@/app/components/ui/icons";
+import { TabbyButton } from "@/app/components/ui/tabby-button";
 import { createScreenshotUploadUrls, submitFeedback } from "./action";
-import { getSupabase } from "../lib/supabase";
+import { getSupabase } from "@/app/lib/supabase";
 import {
   ALLOWED_IMAGE_TYPES,
   FEEDBACK_BUCKET,
   MAX_SCREENSHOTS,
   MAX_SCREENSHOT_BYTES,
-} from "../lib/feedback";
+} from "@/app/lib/feedback";
 import type { LucideIcon } from "lucide-react";
 
 type FeedbackType = "bug" | "feature";

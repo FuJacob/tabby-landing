@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DownloadButton } from "./download-button";
-import { AppleIcon } from "./icons";
-import { SupportButton } from "./support-button";
+import { DownloadButton } from "@/app/components/ui/download-button";
+import { AppleIcon } from "@/app/components/ui/icons";
+import { SupportButton } from "@/app/components/ui/support-button";
 
 export const FloatingButton = () => {
   const [isVisible, setIsVisible] = useState(false);

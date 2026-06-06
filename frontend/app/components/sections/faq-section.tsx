@@ -1,4 +1,4 @@
-import { FadeIn, Stagger, StaggerItem, WordReveal } from "./motion";
+import { FadeIn, Stagger, StaggerItem, WordReveal } from "@/app/components/ui/motion";
 
 export const FAQ_ITEMS = [
   {

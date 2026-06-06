@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { LegalHeader, type LegalPageKey } from "./legal-header";
+import { LegalHeader, type LegalPageKey } from "@/app/components/layout/legal-header";
 
 type LegalPageShellProps = {
   current: LegalPageKey;

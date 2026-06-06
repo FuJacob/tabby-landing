@@ -3,9 +3,9 @@ import { Bricolage_Grotesque, Inter_Tight } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
-import { CREATOR, SITE_URL } from "./lib/site";
-import { AnnouncementBanner } from "./components/announcement-banner";
-import { Providers } from "./components/providers";
+import { CREATOR, SITE_URL } from "@/app/lib/site";
+import { AnnouncementBanner } from "@/app/components/layout/announcement-banner";
+import { Providers } from "@/app/components/ui/providers";
 
 const bodyFont = Inter_Tight({
   variable: "--font-body",

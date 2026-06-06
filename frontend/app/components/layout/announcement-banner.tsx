@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { GITHUB_REPO } from "../lib/site";
-import { AnnouncementBannerRelative } from "./announcement-banner-relative";
+import { GITHUB_REPO } from "@/app/lib/site";
+import { AnnouncementBannerRelative } from "@/app/components/layout/announcement-banner-relative";
 
 type GitHubRelease = {
   tag_name: string;

@@ -9,7 +9,7 @@
 //
 // The companion human-facing page at `/release-notes` (the index) is unchanged.
 
-import { GITHUB_URL } from "../../lib/site";
+import { GITHUB_URL } from "@/app/lib/site";
 
 type GitHubRelease = {
   tag_name: string;

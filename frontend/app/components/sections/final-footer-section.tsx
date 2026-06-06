@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CREATOR, DISCORD_URL, GITHUB_URL, SUPPORT_EMAIL } from "../lib/site";
-import { DownloadButton } from "./download-button";
-import { GithubStarLabel } from "./github-star-label";
-import { AppleIcon, DiscordIcon, GithubIcon, LinkedInIcon, XIcon } from "./icons";
-import { FadeIn } from "./motion";
-import { TabbyButton } from "./tabby-button";
+import { CREATOR, DISCORD_URL, GITHUB_URL, SUPPORT_EMAIL } from "@/app/lib/site";
+import { DownloadButton } from "@/app/components/ui/download-button";
+import { GitHubStarLabel } from "@/app/components/ui/github-star-label";
+import { AppleIcon, DiscordIcon, GithubIcon, LinkedInIcon, XIcon } from "@/app/components/ui/icons";
+import { FadeIn } from "@/app/components/ui/motion";
+import { TabbyButton } from "@/app/components/ui/tabby-button";
 
 const FOOTER_LINKS = [
   { label: "Privacy", href: "/privacy" },
@@ -46,7 +46,7 @@ export function FinalFooterSection() {
               fullWidth
               icon={<GithubIcon className="h-5 w-5" />}
             >
-              <GithubStarLabel />
+              <GitHubStarLabel />
             </TabbyButton>
           </div>
         </div>

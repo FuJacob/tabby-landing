@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { GITHUB_REPO } from "../../lib/site";
+import { GITHUB_REPO } from "@/app/lib/site";
 
 const FALLBACK = 700;
 const STAR_BUCKET_SIZE = 50;

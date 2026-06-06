@@ -12,7 +12,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { DOWNLOAD_URL } from "../lib/site";
+import { DOWNLOAD_URL } from "@/app/lib/site";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const NEWSLETTER_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -70,7 +70,7 @@ export function EmailGateProvider({ children }: { children: ReactNode }) {
     setStatus("loading");
 
     try {
-      const { getSupabase } = await import("../lib/supabase");
+      const { getSupabase } = await import("@/app/lib/supabase");
       const { error } = await getSupabase()
         .from("mailing_list")
         .insert({ email: normalizedEmail });

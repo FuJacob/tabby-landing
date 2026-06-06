@@ -3,7 +3,7 @@
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
-import { FadeIn, WordReveal } from "./motion";
+import { FadeIn, WordReveal } from "@/app/components/ui/motion";
 
 const VIDEO_ID = "p3TIgxQFQGE";
 

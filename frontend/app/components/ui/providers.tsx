@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { LazyMotion, domAnimation } from "framer-motion";
-import { EmailGateProvider } from "./email-gate";
+import { EmailGateProvider } from "@/app/components/ui/email-gate";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (

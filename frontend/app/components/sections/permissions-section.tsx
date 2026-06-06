@@ -8,7 +8,7 @@ import {
   Stagger,
   StaggerItem,
   WordReveal,
-} from "./motion";
+} from "@/app/components/ui/motion";
 
 type Permission = {
   icon: LucideIcon;

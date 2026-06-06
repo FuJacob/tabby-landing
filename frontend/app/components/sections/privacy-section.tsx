@@ -1,7 +1,7 @@
 "use client";
 
 import { m, type Variants } from "framer-motion";
-import { FadeIn, ScaleIn, Stagger, StaggerItem } from "./motion";
+import { FadeIn, ScaleIn, Stagger, StaggerItem } from "@/app/components/ui/motion";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
