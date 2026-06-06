@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { GITHUB_URL } from "@/app/lib/site";
+import { GITHUB_URL, SUPPORT_URL } from "@/app/lib/site";
 import { DownloadButton } from "@/app/components/ui/download-button";
 import { GitHubStarLabel } from "@/app/components/ui/github-star-label";
 import { AppleIcon, GithubIcon } from "@/app/components/ui/icons";
@@ -142,7 +142,7 @@ export function Hero() {
           >
             Cotabby is free and 100% open source.{" "}
             <Link
-              href="https://ko-fi.com/cotabby"
+              href={SUPPORT_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group font-semibold text-accent-pink underline decoration-accent-pink decoration-1 underline-offset-2"

@@ -9,8 +9,7 @@ import {
   SCREENSHOT_PATH_RE,
 } from "@/app/lib/feedback";
 import { getSupabaseAdmin } from "@/app/lib/supabase-admin";
-
-const GITHUB_REPO = "FuJacob/cotabby";
+import { GITHUB_REPO } from "@/app/lib/site";
 
 type FeedbackType = "bug" | "feature";
 

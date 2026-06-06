@@ -1,9 +1,9 @@
 // Single source of truth for site-wide constants.
 
 export const SITE_URL = "https://cotabby.app";
-export const GITHUB_REPO = "fujacob/cotabby";
-export const GITHUB_URL = "https://github.com/FuJacob/cotabby";
-export const DOWNLOAD_URL = "https://github.com/FuJacob/cotabby/releases/latest/download/cotabby.dmg";
+export const GITHUB_REPO = "FuJacob/cotabby";
+export const GITHUB_URL = `https://github.com/${GITHUB_REPO}`;
+export const DOWNLOAD_URL = `${GITHUB_URL}/releases/latest/download/cotabby.dmg`;
 
 export const DISCORD_URL = "https://discord.gg/qBq5RHcruX";
 export const SUPPORT_URL = "https://ko-fi.com/cotabby";

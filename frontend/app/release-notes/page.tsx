@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { LegalPageShell } from "@/app/components/layout/legal-page-shell";
-import { GITHUB_URL } from "@/app/lib/site";
+import { GITHUB_REPO, GITHUB_URL } from "@/app/lib/site";
 
 export const metadata: Metadata = {
   title: "Release Notes - Cotabby",
@@ -16,7 +16,6 @@ type GitHubRelease = {
   prerelease: boolean;
 };
 
-const REPO = "fujacob/cotabby";
 const RELEASES_URL = `${GITHUB_URL}/releases`;
 
 async function fetchReleases(): Promise<GitHubRelease[] | null> {
@@ -26,7 +25,7 @@ async function fetchReleases(): Promise<GitHubRelease[] | null> {
 
   try {
     const res = await fetch(
-      `https://api.github.com/repos/${REPO}/releases?per_page=20`,
+      `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=20`,
       { headers, next: { revalidate: 300 } },
     );
     if (!res.ok) return null;

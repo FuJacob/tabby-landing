@@ -9,7 +9,7 @@
 //
 // The companion human-facing page at `/release-notes` (the index) is unchanged.
 
-import { GITHUB_URL } from "@/app/lib/site";
+import { GITHUB_REPO, GITHUB_URL } from "@/app/lib/site";
 
 type GitHubRelease = {
   tag_name: string;
@@ -20,7 +20,6 @@ type GitHubRelease = {
   html_url: string;
 };
 
-const REPO = "fujacob/cotabby";
 
 /// Accept both `v1.2.3` and `1.2.3` because the appcast template uses the raw
 /// git tag (`vX.Y.Z`) but a future caller might pass the SemVer string.
@@ -36,7 +35,7 @@ async function fetchRelease(tag: string): Promise<GitHubRelease | null> {
 
   try {
     const res = await fetch(
-      `https://api.github.com/repos/${REPO}/releases/tags/${encodeURIComponent(tag)}`,
+      `https://api.github.com/repos/${GITHUB_REPO}/releases/tags/${encodeURIComponent(tag)}`,
       // Revalidate every 5 minutes. Sparkle hits this once per "Check for
       // Updates" click; edge cache + GITHUB_TOKEN keep us well under the
       // unauth 60/hr limit. SWR keeps stale responses serving if GitHub blips.
