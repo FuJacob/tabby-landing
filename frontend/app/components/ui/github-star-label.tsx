@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CountUp } from "@/app/components/ui/motion";
 
 const FALLBACK = 700;
 
@@ -22,5 +21,5 @@ export function GitHubStarLabel({ suffix = "+ GitHub Stars" }: { suffix?: string
     };
   }, []);
 
-  return <CountUp to={stars} duration={1.6} suffix={suffix} />;
+  return <>{stars.toLocaleString()}{suffix}</>;
 }

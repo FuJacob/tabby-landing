@@ -14,7 +14,7 @@ import { GitHubStarLabel } from "@/app/components/ui/github-star-label";
 import { GitHubVersionLabel } from "@/app/components/ui/github-version-label";
 import { AppleIcon, GithubIcon } from "@/app/components/ui/icons";
 import { HeroAppDemo } from "@/app/components/sections/hero-app-demo";
-import { CountUp, HeroReveal } from "@/app/components/ui/motion";
+import { HeroReveal } from "@/app/components/ui/motion";
 import { TabbyButton } from "@/app/components/ui/tabby-button";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -160,7 +160,7 @@ export function Hero() {
               ·
             </span>
             <span>
-              <CountUp to={DOWNLOAD_COUNT} suffix="+ installs" />
+              {DOWNLOAD_COUNT.toLocaleString()}+ installs
             </span>
             <span aria-hidden className="text-line">
               ·
