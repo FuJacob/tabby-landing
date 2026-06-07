@@ -3,7 +3,9 @@
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { IconTile } from "@/app/components/ui/icon-tile";
 import { SectionHeading } from "@/app/components/ui/section-heading";
+import { TabbyPanel } from "@/app/components/ui/tabby-panel";
 
 const VIDEO_ID = "p3TIgxQFQGE";
 
@@ -123,14 +125,15 @@ type VideoBlockProps = {
 
 function VideoBlock({ className = "", label, start, end }: VideoBlockProps) {
   return (
-    <div
+    <TabbyPanel
+      size="xl"
       role="img"
       aria-label={`${label} demo video`}
-      className={`relative aspect-video w-full overflow-hidden rounded-[1.35rem] border-2 border-line bg-surface shadow-[0_11.8px_0_var(--line)] ${className}`}
+      className={`relative aspect-video w-full overflow-hidden ${className}`}
     >
       <SegmentPlayer start={start} end={end} />
       <div className="absolute inset-0 z-10" />
-    </div>
+    </TabbyPanel>
   );
 }
 
@@ -168,7 +171,7 @@ function SectionHeadline({
   return (
     <div className={align === "right" ? "md:flex md:justify-end" : ""}>
       <div className="inline-flex items-center gap-4">
-        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-[0.85rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--line)] sm:h-14 sm:w-14">
+        <IconTile size="lg" tone="bg-surface-2" className="relative">
           <Image
             src={icon}
             alt=""
@@ -176,7 +179,7 @@ function SectionHeadline({
             sizes="56px"
             className={`object-contain${iconPad ? " p-2" : " p-1.5"}`}
           />
-        </div>
+        </IconTile>
         <h3 className="tabby-display text-[2.75rem] leading-[0.96] tracking-tight text-ink sm:text-[3.6rem]">
           {text}
         </h3>
@@ -233,12 +236,13 @@ function FeatureRow({
         className={textFromLeft ? "" : "md:order-1"}
       >
         {visual !== undefined ? (
-          <div
+          <TabbyPanel
+            size="xl"
             aria-label={`${label} demo`}
-            className="relative aspect-video w-full overflow-hidden rounded-[1.35rem] border-2 border-line bg-surface shadow-[0_11.8px_0_var(--line)]"
+            className="relative aspect-video w-full overflow-hidden"
           >
             {visual}
-          </div>
+          </TabbyPanel>
         ) : start !== undefined && end !== undefined ? (
           <VideoBlock label={label} start={start} end={end} />
         ) : null}
@@ -358,7 +362,7 @@ function EmojiAutocompleteVisual() {
               exit={{ opacity: 0, scale: 0.96, y: -4 }}
               transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
               style={{ transformOrigin: "top left" }}
-              className="absolute left-[5.2rem] top-[2.85rem] z-10 w-[13.5rem] overflow-hidden rounded-[0.85rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--line)] sm:left-[6rem] sm:top-[3.15rem] sm:w-[15rem]"
+              className="absolute left-[5.2rem] top-[2.85rem] z-10 w-[13.5rem] overflow-hidden rounded-[1.1rem] border-2 border-line bg-surface-2 shadow-tabby-sm sm:left-[6rem] sm:top-[3.15rem] sm:w-[15rem]"
             >
               <div className="flex items-center px-3 py-2 font-mono text-[0.78rem] tracking-tight">
                 <span className="text-subtle">:</span>

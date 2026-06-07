@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FeedbackForm } from "./feedback-form";
+import { IconTile } from "@/app/components/ui/icon-tile";
 
 export const metadata: Metadata = {
   title: "Feedback - Cotabby",
@@ -32,15 +33,17 @@ export default function FeedbackPage() {
             Back to Cotabby
           </Link>
           <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/app-icons/new-logo.webp"
-              alt="Cotabby logo"
-              width={56}
-              height={56}
-              sizes="56px"
-              className="h-14 w-14 rounded-2xl border-2 border-line bg-surface-2 shadow-[0_6.7px_0_var(--line)]"
-            />
-            <span className="flex h-14 flex-col justify-center">
+            <IconTile size="md" tone="bg-white">
+              <Image
+                src="/logo.png"
+                alt="Cotabby logo"
+                width={48}
+                height={48}
+                sizes="48px"
+                className="h-full w-full object-contain"
+              />
+            </IconTile>
+            <span className="flex flex-col justify-center">
               <span className="flex items-center gap-2">
                 <span className="tabby-display text-[2.4rem] leading-[0.88] tracking-tight text-ink sm:text-[2.8rem]">
                   Cotabby

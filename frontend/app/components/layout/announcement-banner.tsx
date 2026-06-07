@@ -30,7 +30,7 @@ export async function AnnouncementBanner() {
 
   return (
     <div
-      className="fixed inset-x-0 top-0 z-[60] flex min-h-12 items-center justify-center bg-accent-deep px-4 py-2 text-sm font-medium tracking-tight text-white sm:text-base"
+      className="fixed inset-x-0 top-0 z-[60] flex min-h-12 items-center justify-center bg-button-blue px-4 py-2 text-sm font-medium tracking-tight text-white sm:text-base"
     >
       <span className="text-center">
         {release.tag_name} released{" "}

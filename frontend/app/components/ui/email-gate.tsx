@@ -13,6 +13,7 @@ import {
   type ReactNode,
 } from "react";
 import { DOWNLOAD_URL } from "@/app/lib/site";
+import { TabbyPanel } from "@/app/components/ui/tabby-panel";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const NEWSLETTER_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -135,8 +136,9 @@ export function EmailGateProvider({ children }: { children: ReactNode }) {
                   : { opacity: 0, scale: 0.96, y: 10 }
               }
               transition={{ duration: 0.32, ease: EASE }}
-              className="relative w-full max-w-md rounded-3xl border-2 border-line bg-surface p-8 shadow-[0_13.4px_0_var(--line)]"
+              className="w-full max-w-md"
             >
+            <TabbyPanel size="2xl" tone="bg-surface" className="relative p-8">
             <button
               type="button"
               onClick={() => setIsOpen(false)}
@@ -205,6 +207,7 @@ export function EmailGateProvider({ children }: { children: ReactNode }) {
                 )}
               </>
             )}
+            </TabbyPanel>
             </m.div>
           </m.div>
         )}

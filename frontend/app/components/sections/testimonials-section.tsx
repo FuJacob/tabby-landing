@@ -1,4 +1,6 @@
+import { IconTile } from "@/app/components/ui/icon-tile";
 import { FadeIn, HoverLift, ScaleIn, Stagger, StaggerItem } from "@/app/components/ui/motion";
+import { TabbyPanel } from "@/app/components/ui/tabby-panel";
 
 type ReviewCardProps = {
   quote: string;
@@ -23,11 +25,9 @@ function Avatar({ initials, tone }: AvatarProps) {
         ? "bg-accent-blue/25"
         : "bg-surface-4";
   return (
-    <div
-      className={`flex h-10 w-10 items-center justify-center rounded-[0.9rem] border-2 border-line text-ink shadow-[0_3.4px_0_var(--line)] ${bg}`}
-    >
+    <IconTile size="md" tone={`${bg} text-ink`}>
       <span className="text-sm font-bold tracking-tight">{initials}</span>
-    </div>
+    </IconTile>
   );
 }
 
@@ -58,8 +58,11 @@ function ReviewCard({
 
   return (
     <HoverLift lift={4} className="h-full">
-      <article
-        className={`relative flex h-full flex-col rounded-[1.3rem] border-2 border-line p-6 shadow-[0_8.4px_0_var(--line)] sm:p-7 ${surfaceClass} ${className}`}
+      <TabbyPanel
+        as="article"
+        size="lg"
+        tone={surfaceClass}
+        className={`relative flex h-full flex-col p-6 sm:p-7 ${className}`}
       >
         {showBig && (
           <span
@@ -84,7 +87,7 @@ function ReviewCard({
             <p className="text-sm tracking-tight text-subtle">{meta}</p>
           </div>
         </div>
-      </article>
+      </TabbyPanel>
     </HoverLift>
   );
 }

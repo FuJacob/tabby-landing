@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CREATOR, DISCORD_URL, GITHUB_URL, SUPPORT_EMAIL } from "@/app/lib/site";
 import { DownloadButton } from "@/app/components/ui/download-button";
+import { IconTile } from "@/app/components/ui/icon-tile";
 import { GitHubStarLabel } from "@/app/components/ui/github-star-label";
 import { AppleIcon, DiscordIcon, GithubIcon, LinkedInIcon, XIcon } from "@/app/components/ui/icons";
 import { FadeIn } from "@/app/components/ui/motion";
@@ -55,14 +56,16 @@ export function FinalFooterSection() {
       <div className="mt-10 flex flex-col gap-6 border-t-2 border-line-soft pt-6 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
           <div className="flex items-center gap-3">
-            <Image
-              src="/app-icons/new-logo.webp"
-              alt="Cotabby logo"
-              width={48}
-              height={48}
-              sizes="44px"
-              className="h-11 w-11 rounded-[0.95rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--line)]"
-            />
+            <IconTile size="md" tone="bg-white">
+              <Image
+                src="/logo.png"
+                alt="Cotabby logo"
+                width={48}
+                height={48}
+                sizes="44px"
+                className="h-full w-full object-contain"
+              />
+            </IconTile>
             <div className="flex h-11 items-center gap-2">
               <span className="tabby-display text-[2rem] leading-[0.88] tracking-tight text-ink sm:text-[2.4rem]">
                 Cotabby
@@ -105,9 +108,11 @@ export function FinalFooterSection() {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-[0.95rem] border-2 border-line bg-surface-2 text-ink shadow-[0_5px_0_var(--line)] transition-colors hover:bg-surface-3"
+                  className="transition-colors hover:opacity-80"
                 >
-                  <Icon className="h-4.5 w-4.5" />
+                  <IconTile size="md" tone="bg-surface-2 text-ink hover:bg-surface-3">
+                    <Icon className="h-4.5 w-4.5" />
+                  </IconTile>
                 </Link>
               ))}
             </div>

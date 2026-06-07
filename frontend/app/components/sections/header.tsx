@@ -3,14 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { MouseEvent } from "react";
-import { DownloadButton } from "@/app/components/ui/download-button";
-import { useEmailGate } from "@/app/components/ui/email-gate";
-import { AppleIcon } from "@/app/components/ui/icons";
+import { MailingListInput } from "@/app/components/ui/mailing-list-input";
+import { IconTile } from "@/app/components/ui/icon-tile";
 
 const textLinks = [
-  { href: "#demo", label: "demo" },
   { href: "#how-it-works", label: "how it works" },
+  { href: "#privacy", label: "privacy" },
   { href: "#faq", label: "faq" },
+  { href: "/feedback", label: "feedback" },
 ] as const;
 
 function scrollToAnchor(event: MouseEvent<HTMLAnchorElement>, href: string) {
@@ -38,7 +38,6 @@ function scrollToAnchor(event: MouseEvent<HTMLAnchorElement>, href: string) {
 }
 
 export function Header() {
-  const { openMailingList } = useEmailGate();
   return (
     <header id="site-header" className="border-b-2 border-line pb-6 sm:pb-8">
       <div className="flex w-full flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -48,15 +47,17 @@ export function Header() {
             onClick={(event) => scrollToAnchor(event, "#top")}
             className="flex items-center gap-3"
           >
-            <Image
-              src="/app-icons/new-logo.webp"
-              alt="Cotabby logo"
-              width={48}
-              height={48}
-              sizes="44px"
-              priority
-              className="h-11 w-11 rounded-[0.95rem] border-2 border-line bg-surface-2 shadow-[0_5px_0_var(--line)]"
-            />
+            <IconTile size="lg" tone="bg-white">
+              <Image
+                src="/logo.png"
+                alt="Cotabby logo"
+                width={72}
+                height={72}
+                sizes="72px"
+                priority
+                className="h-full w-full object-contain"
+              />
+            </IconTile>
             <span className="flex h-11 items-center gap-2">
               <span className="tabby-display text-[2.5rem] leading-[0.88] tracking-tight text-ink sm:text-[3rem]">
                 Cotabby
@@ -81,20 +82,11 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <button
-              type="button"
-              onClick={openMailingList}
-              className="tabby-link text-sm font-bold tracking-tight transition hover:text-ink sm:text-base"
-            >
-              join mailing list
-            </button>
           </nav>
         </div>
 
         <div className="flex w-full justify-start sm:w-auto sm:items-center lg:justify-end">
-          <DownloadButton size="sm" icon={<AppleIcon className="h-5 w-5" />}>
-            Download for Mac
-          </DownloadButton>
+          <MailingListInput className="sm:w-auto" />
         </div>
       </div>
     </header>

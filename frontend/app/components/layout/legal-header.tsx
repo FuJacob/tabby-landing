@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export type LegalPageKey = "privacy" | "terms" | "release-notes";
@@ -15,10 +14,10 @@ type LegalHeaderProps = {
 
 export function LegalHeader({ current }: LegalHeaderProps) {
   return (
-    <header className="border-b-2 border-line pb-5 sm:pb-6">
+    <header className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-line-soft pb-4">
       <Link
         href="/"
-        className="mb-4 inline-flex items-center gap-1.5 text-sm font-semibold text-subtle transition-colors hover:text-ink sm:mb-5"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-subtle transition-colors hover:text-ink"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -34,52 +33,27 @@ export function LegalHeader({ current }: LegalHeaderProps) {
         </svg>
         Back to Cotabby
       </Link>
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/app-icons/new-logo.webp"
-            alt="Cotabby logo"
-            width={56}
-            height={56}
-            sizes="56px"
-            className="h-14 w-14 rounded-2xl border-2 border-line bg-surface-2 shadow-[0_6.7px_0_var(--line)]"
-          />
-          <span className="flex h-14 flex-col justify-center">
-            <span className="flex items-center gap-2">
-              <span className="tabby-display text-[2.4rem] leading-[0.88] tracking-tight text-ink sm:text-[2.8rem]">
-                Cotabby
-              </span>
-              <span className="text-[0.55rem] font-semibold uppercase leading-none tracking-widest text-ink/40">
-                beta
-              </span>
-            </span>
-            <span className="mt-1 text-xs font-semibold leading-none tracking-tight text-subtle sm:text-sm">
-              legal and release docs
-            </span>
-          </span>
-        </Link>
 
-        <nav aria-label="Legal pages" className="flex flex-wrap gap-2 sm:gap-3">
-          {LEGAL_LINKS.map((link) => {
-            const isCurrent = link.key === current;
+      <nav aria-label="Legal pages" className="flex flex-wrap gap-x-5 gap-y-1.5">
+        {LEGAL_LINKS.map((link) => {
+          const isCurrent = link.key === current;
 
-            return (
-              <Link
-                key={link.key}
-                href={link.href}
-                aria-current={isCurrent ? "page" : undefined}
-                className={`rounded-[0.8rem] border-2 px-3 py-1.5 text-sm font-bold tracking-tight transition sm:px-4 sm:text-base ${
-                  isCurrent
-                    ? "border-line bg-surface-4 text-ink"
-                    : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-      </div>
+          return (
+            <Link
+              key={link.key}
+              href={link.href}
+              aria-current={isCurrent ? "page" : undefined}
+              className={`text-sm font-semibold tracking-tight transition-colors ${
+                isCurrent
+                  ? "text-ink"
+                  : "text-subtle hover:text-ink"
+              }`}
+            >
+              {link.label}
+            </Link>
+          );
+        })}
+      </nav>
     </header>
   );
 }

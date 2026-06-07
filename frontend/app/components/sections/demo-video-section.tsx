@@ -1,6 +1,7 @@
 import { LazyYouTube } from "@/app/components/ui/lazy-youtube";
 import { ScaleIn } from "@/app/components/ui/motion";
 import { SectionHeading } from "@/app/components/ui/section-heading";
+import { TabbyPanel } from "@/app/components/ui/tabby-panel";
 
 export function DemoVideoSection() {
   return (
@@ -11,14 +12,14 @@ export function DemoVideoSection() {
       />
 
       <ScaleIn delay={0.1} from={0.94}>
-        <div className="relative isolate mt-10">
+        <TabbyPanel size="xl" className="relative isolate mt-10 aspect-video w-full overflow-hidden">
           <LazyYouTube
             videoId="p3TIgxQFQGE"
             title="Cotabby demo video"
-            className="relative aspect-video w-full overflow-hidden rounded-[1.35rem] border-2 border-line bg-surface shadow-[0_11.8px_0_var(--line)]"
+            className="h-full w-full"
             iframeClassName="h-full w-full object-cover"
           />
-        </div>
+        </TabbyPanel>
       </ScaleIn>
     </div>
   );

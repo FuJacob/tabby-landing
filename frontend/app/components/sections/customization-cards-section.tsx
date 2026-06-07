@@ -1,178 +1,65 @@
 "use client";
 
-import { type ReactNode } from "react";
-import { m } from "framer-motion";
-import { Cpu, SlidersHorizontal, Sparkles, type LucideIcon } from "lucide-react";
 import {
-  HoverLift,
-  ScaleIn,
-  Stagger,
-  StaggerItem,
-} from "@/app/components/ui/motion";
+  AppWindow,
+  BookOpen,
+  Cpu,
+  Palette,
+  PenLine,
+  Ruler,
+  type LucideIcon,
+} from "lucide-react";
+import Image from "next/image";
+import { IconTile } from "@/app/components/ui/icon-tile";
+import { Stagger, StaggerItem } from "@/app/components/ui/motion";
+import { TabbyPanel } from "@/app/components/ui/tabby-panel";
 import { SectionHeading } from "@/app/components/ui/section-heading";
 
-type CustomItemProps = {
+type Feature = {
   icon: LucideIcon;
+  iconColor: string;
   title: string;
   description: string;
-  preview: ReactNode;
 };
 
-function CustomItem({ icon: Icon, title, description, preview }: CustomItemProps) {
-  return (
-    <HoverLift lift={5} className="h-full">
-      <article className="tabby-panel flex h-full flex-col gap-4 rounded-[1.55rem] p-6 sm:p-7">
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-line bg-surface-3 text-ink shadow-[0_3.4px_0_var(--line)]">
-            <Icon className="h-5 w-5" strokeWidth={2} />
-          </div>
-          <h3 className="text-[1.65rem] font-bold leading-tight tracking-tight text-ink sm:text-[1.9rem]">
-            {title}
-          </h3>
-        </div>
-        <p className="min-h-23 max-w-md text-sm leading-relaxed tracking-tight text-muted sm:min-h-24 sm:text-base">
-          {description}
-        </p>
-        <div className="mt-auto">{preview}</div>
-      </article>
-    </HoverLift>
-  );
-}
-
-const MODELS = [
+const FEATURES: Feature[] = [
   {
-    name: "tabby-2-nano",
-    file: "Qwen3.5-0.8B-Base.i1-Q6_K.gguf",
-    size: "~0.8 GB",
-    source: "mradermacher/Qwen3.5-0.8B-Base-i1-GGUF",
-    tag: "nano",
-    color: "#36b5c4",
-    tint: "rgba(54, 181, 196, 0.16)",
+    icon: Cpu,
+    iconColor: "text-violet-500",
+    title: "your model, your call",
+    description: "Apple Intelligence on-device or your own GGUF. Text never leaves the Mac.",
   },
   {
-    name: "tabby-2-mini",
-    file: "Qwen3.5-2B-Base.i1-Q4_K_M.gguf",
-    size: "~1.4 GB",
-    source: "mradermacher/Qwen3.5-2B-Base-i1-GGUF",
-    tag: "mini",
-    color: "#e0a32e",
-    tint: "rgba(224, 163, 46, 0.16)",
+    icon: Ruler,
+    iconColor: "text-blue-500",
+    title: "dial the length",
+    description: "2–4 words or 12–20. Finish a thought, not an essay.",
   },
   {
-    name: "tabby-2-base",
-    file: "gemma-4-E2B.i1-Q6_K.gguf",
-    size: "~4.5 GB",
-    source: "mradermacher/gemma-4-E2B-i1-GGUF",
-    tag: "base",
-    color: "#ff8273",
-    tint: "rgba(255, 130, 115, 0.16)",
+    icon: PenLine,
+    iconColor: "text-emerald-500",
+    title: "write like you",
+    description: "Drop in a few rules and completions match your voice, not a generic default.",
   },
   {
-    name: "tabby-2-pro",
-    file: "gemma-4-E4B.i1-Q4_K_M.gguf",
-    size: "~5.0 GB",
-    source: "mradermacher/gemma-4-E4B-i1-GGUF",
-    tag: "pro",
-    color: "#8b7fd4",
-    tint: "rgba(139, 127, 212, 0.16)",
+    icon: BookOpen,
+    iconColor: "text-amber-500",
+    title: "feed it context",
+    description: "Paste your jargon or style guide once. Every suggestion remembers it.",
   },
-] as const;
-
-function ModelsPreview() {
-  return (
-    <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-2 shadow-[0_5px_0_var(--line)]">
-      {MODELS.map((model) => (
-        <div
-          key={model.name}
-          style={{ backgroundColor: model.tint }}
-          className="relative flex items-center gap-3 rounded-[0.85rem] px-3 py-2.5"
-        >
-          <span
-            className="h-2 w-2 shrink-0 rounded-full"
-            style={{ backgroundColor: model.color }}
-          />
-          <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2">
-              <p className="truncate text-sm font-bold tracking-tight text-ink">
-                {model.name}
-              </p>
-              <span className="shrink-0 rounded-full border border-line-soft bg-background px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-widest text-subtle">
-                {model.size}
-              </span>
-            </div>
-            <p className="truncate text-xs tracking-tight text-subtle">
-              {model.file}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function LengthPreview() {
-  return (
-    <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-5 shadow-[0_5px_0_var(--line)]">
-      <div className="flex items-center justify-between text-xs font-bold tracking-[0.12em] uppercase text-muted">
-        <span>3-7 words</span>
-        <span className="text-ink">7-12 words</span>
-        <span>12-20 words</span>
-      </div>
-      <div className="relative mt-4 h-2 rounded-full border-2 border-line bg-background">
-        <m.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 0.55 }}
-          viewport={{ once: true, margin: "-10% 0px" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          style={{ transformOrigin: "0% 50%" }}
-          className="absolute inset-y-0 left-0 w-full rounded-full bg-accent"
-        />
-        <m.div
-          initial={{ x: "0%" }}
-          whileInView={{ x: "55%" }}
-          viewport={{ once: true, margin: "-10% 0px" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="pointer-events-none absolute inset-y-0 left-0 w-full"
-        >
-          <span className="absolute left-0 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-line bg-background shadow-[0_3.4px_0_var(--line)]" />
-        </m.div>
-      </div>
-      <p className="mt-4 text-sm leading-relaxed tracking-tight text-subtle">
-        Suggestions stay concise by default so they still feel like an extension
-        of your own sentence.
-      </p>
-    </div>
-  );
-}
-
-function PersonalizationPreview() {
-  const signals = ["writing style", "memory", "adapts over time"];
-  return (
-    <div className="rounded-[1.2rem] border-2 border-line bg-surface-2 p-5 shadow-[0_5px_0_var(--line)]">
-      <div className="flex flex-wrap items-center justify-center gap-2">
-        <span className="inline-flex items-center rounded-full border-2 border-line bg-accent-blue/15 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-ink shadow-[0_3.4px_0_var(--line)]">
-          coming soon
-        </span>
-        {signals.map((signal, i) => (
-          <span
-            key={signal}
-            className={`inline-flex items-center rounded-full border-2 border-line px-3 py-1 text-xs font-bold tracking-tight shadow-[0_3.4px_0_var(--line)] ${
-              i === 0 ? "bg-accent/20 text-ink" : "bg-background text-muted"
-            }`}
-          >
-            {signal}
-          </span>
-        ))}
-      </div>
-      <p className="mt-4 text-center text-sm leading-relaxed tracking-tight text-muted">
-        Cotabby learns the way you phrase things and
-        <span className="text-accent">
-          {" keeps suggestions sounding like you."}
-        </span>
-      </p>
-    </div>
-  );
-}
+  {
+    icon: AppWindow,
+    iconColor: "text-rose-500",
+    title: "pick your apps",
+    description: "Block any app with one toggle. Shows up only where you want it.",
+  },
+  {
+    icon: Palette,
+    iconColor: "text-fuchsia-500",
+    title: "make it invisible",
+    description: "Tweak color and opacity until ghost text blends in and stays out of the way.",
+  },
+];
 
 export function CustomizationCardsSection() {
   return (
@@ -183,38 +70,43 @@ export function CustomizationCardsSection() {
         subtitle="Tune the suggestions so they feel helpful, not intrusive."
       />
 
-      <Stagger stagger={0.12} className="mt-12 grid gap-6 md:grid-cols-3">
-        <StaggerItem className="h-full">
-          <ScaleIn className="h-full">
-            <CustomItem
-              icon={Cpu}
-              title="choose your model"
-              description="Four built-in models ship with Cotabby - tabby-2-nano for instant suggestions, to tabby-2-pro for the sharpest output. Also drop in your own GGUF."
-              preview={<ModelsPreview />}
-            />
-          </ScaleIn>
-        </StaggerItem>
-        <StaggerItem className="h-full">
-          <ScaleIn delay={0.08} className="h-full">
-            <CustomItem
-              icon={SlidersHorizontal}
-              title="short or long"
-              description="Three presets control how many words Cotabby suggests at a time. Default is 7-12 - enough to finish your thought, not enough to take over."
-              preview={<LengthPreview />}
-            />
-          </ScaleIn>
-        </StaggerItem>
-        <StaggerItem className="h-full">
-          <ScaleIn delay={0.16} className="h-full">
-            <CustomItem
-              icon={Sparkles}
-              title="learns your voice"
-              description="Coming soon: Cotabby will adapt to how you write and make suggestions feel more like you."
-              preview={<PersonalizationPreview />}
-            />
-          </ScaleIn>
-        </StaggerItem>
-      </Stagger>
+      <div className="tabby-panel mt-12 grid gap-6 rounded-[1.55rem] p-5 sm:p-7 lg:grid-cols-[1.7fr_1fr] lg:items-center lg:gap-8">
+        <TabbyPanel
+          size="xl"
+          className="relative aspect-video w-full overflow-hidden"
+        >
+          <Image
+            src="/gifs/settings.gif"
+            alt="Cotabby settings"
+            fill
+            unoptimized
+            className="object-cover"
+          />
+        </TabbyPanel>
+
+        <Stagger stagger={0.1} className="flex flex-col gap-4 sm:gap-5">
+          {FEATURES.map((feature) => {
+            const Icon = feature.icon;
+            return (
+              <StaggerItem key={feature.title}>
+                <div className="flex items-start gap-3.5">
+                  <IconTile size="md" tone="bg-surface-3">
+                    <Icon className={`h-5 w-5 ${feature.iconColor}`} strokeWidth={2} />
+                  </IconTile>
+                  <div>
+                    <h3 className="text-lg font-bold leading-tight tracking-tight text-ink sm:text-xl">
+                      {feature.title}
+                    </h3>
+                    <p className="mt-1 text-sm leading-relaxed tracking-tight text-muted">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </StaggerItem>
+            );
+          })}
+        </Stagger>
+      </div>
     </section>
   );
 }

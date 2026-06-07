@@ -25,7 +25,9 @@ import {
   X,
 } from "lucide-react";
 import { GithubIcon } from "@/app/components/ui/icons";
+import { IconTile } from "@/app/components/ui/icon-tile";
 import { TabbyButton } from "@/app/components/ui/tabby-button";
+import { TabbyPanel } from "@/app/components/ui/tabby-panel";
 import { createScreenshotUploadUrls, submitFeedback } from "./action";
 import { getSupabase } from "@/app/lib/supabase";
 import {
@@ -301,10 +303,10 @@ export function FeedbackForm() {
   // Success state — show a celebratory card with a prominent GitHub link.
   if (result?.success) {
     return (
-      <div className="mt-8 rounded-3xl border-2 border-line bg-surface-2 p-8 text-center shadow-[0_6.7px_0_var(--line)] sm:p-10">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-line bg-accent-blue/15 shadow-[0_5px_0_var(--line)]">
+      <TabbyPanel size="2xl" tone="bg-surface-2" className="mt-8 p-8 text-center sm:p-10">
+        <IconTile size="2xl" tone="bg-accent-blue/15 mx-auto">
           <CheckCircle2 className="h-9 w-9 text-ink" strokeWidth={2} />
-        </div>
+        </IconTile>
         <h3 className="tabby-display mt-5 text-[2rem] leading-tight text-ink sm:text-[2.4rem]">
           thanks for sending this in!
         </h3>
@@ -335,7 +337,7 @@ export function FeedbackForm() {
             </TabbyButton>
           </div>
         )}
-      </div>
+      </TabbyPanel>
     );
   }
 
@@ -348,7 +350,7 @@ export function FeedbackForm() {
           onClick={() => setType("bug")}
           className={`flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-3 text-sm font-bold tracking-tight transition sm:text-base ${
             type === "bug"
-              ? "border-line bg-surface-4 text-ink shadow-[0_3.4px_0_var(--line)]"
+              ? "border-line bg-surface-4 text-ink shadow-tabby-xs"
               : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"
           }`}
         >
@@ -360,7 +362,7 @@ export function FeedbackForm() {
           onClick={() => setType("feature")}
           className={`flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-3 text-sm font-bold tracking-tight transition sm:text-base ${
             type === "feature"
-              ? "border-line bg-surface-4 text-ink shadow-[0_3.4px_0_var(--line)]"
+              ? "border-line bg-surface-4 text-ink shadow-tabby-xs"
               : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"
           }`}
         >
@@ -393,7 +395,7 @@ export function FeedbackForm() {
                   title={cat.description}
                   className={`flex items-center gap-1.5 rounded-xl border-2 px-3 py-2 text-xs font-bold tracking-tight transition sm:text-sm ${
                     selected
-                      ? "border-line bg-surface-4 text-ink shadow-[0_3.4px_0_var(--line)]"
+                      ? "border-line bg-surface-4 text-ink shadow-tabby-xs"
                       : "border-line-soft bg-surface-2 text-muted hover:border-line hover:text-ink"
                   }`}
                 >
@@ -679,9 +681,11 @@ export function FeedbackForm() {
                 onClick={() => removeScreenshot(s.previewUrl)}
                 disabled={pending}
                 aria-label={`Remove ${s.file.name}`}
-                className="absolute right-1.5 top-1.5 grid h-6 w-6 place-items-center rounded-lg border-2 border-line bg-surface text-ink shadow-[0_2px_0_var(--line)] transition hover:bg-surface-4 disabled:opacity-50"
+                className="absolute right-1.5 top-1.5 transition disabled:opacity-50"
               >
-                <X className="h-3 w-3" strokeWidth={2.5} />
+                <IconTile size="2xs" tone="bg-surface text-ink hover:bg-surface-4">
+                  <X className="h-3 w-3" strokeWidth={2.5} />
+                </IconTile>
               </button>
             </div>
           ))}

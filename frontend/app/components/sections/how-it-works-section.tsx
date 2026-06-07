@@ -109,17 +109,17 @@ function InstallVisual() {
             duration: INSTALL_PHASE_DURATION_MS[phase] / 1000,
             ease: phase === "dragging" ? EASE : "easeOut",
           }}
-          className="absolute top-1/2 z-10 h-9 w-9 -translate-y-1/2 overflow-hidden rounded-[0.55rem] border-2 border-line bg-surface shadow-[0_2px_0_var(--line)]"
+          className="absolute top-1/2 z-10 h-9 w-9 -translate-y-1/2 overflow-hidden rounded-[0.55rem] border-2 border-line bg-surface shadow-tabby-2xs"
         >
           <Image
-            src="/app-icons/new-logo.webp"
+            src="/logo.png"
             alt=""
             fill
             sizes="36px"
             className="object-cover"
           />
         </m.div>
-        <div className="flex h-10 w-11 shrink-0 items-center justify-center rounded-[0.55rem] border-2 border-line bg-accent-blue/25 shadow-[0_2px_0_var(--line)]">
+        <div className="flex h-10 w-11 shrink-0 items-center justify-center rounded-[0.55rem] border-2 border-line bg-accent-blue/25 shadow-tabby-2xs">
           <Folder className="h-5 w-5 text-ink" strokeWidth={2.2} />
         </div>
       </div>
@@ -177,7 +177,7 @@ function TypeAnywhereVisual() {
           }}
           role="img"
           aria-label={app.name}
-          className="relative h-11 w-11 overflow-hidden rounded-[0.7rem] border-2 border-line bg-surface-2 shadow-[0_3.4px_0_var(--line)]"
+          className="relative h-11 w-11 overflow-hidden rounded-[0.7rem] border-2 border-line bg-surface-2 shadow-tabby-xs"
         >
           <Image
             src={app.icon}

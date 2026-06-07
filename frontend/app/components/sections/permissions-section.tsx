@@ -1,68 +1,81 @@
 "use client";
 
-import { Accessibility, Check, Keyboard, ScanLine, type LucideIcon } from "lucide-react";
+import {
+  Accessibility,
+  ArrowRight,
+  Keyboard,
+  Monitor,
+  type LucideIcon,
+} from "lucide-react";
 import {
   HoverLift,
   ScaleIn,
   Stagger,
   StaggerItem,
 } from "@/app/components/ui/motion";
+import { IconTile } from "@/app/components/ui/icon-tile";
 import { SectionHeading } from "@/app/components/ui/section-heading";
 
 type Permission = {
   icon: LucideIcon;
   title: string;
   description: string;
-  stays: string;
+  /** Tailwind bg color for the icon tile. Shadow is the standard tabby drop. */
+  tileBg: string;
 };
 
 const permissions: Permission[] = [
   {
     icon: Accessibility,
-    title: "reads text fields",
+    title: "Accessibility",
     description:
-      "Reads the focused field, caret position, and nearby text through the macOS Accessibility API to place suggestions.",
-    stays: "Processed in memory, never written to disk or sent anywhere.",
+      "Required to detect focused text fields, read their content, and position ghost text suggestions near the caret.",
+    tileBg: "bg-blue-500",
   },
   {
     icon: Keyboard,
-    title: "detects your typing",
+    title: "Input Monitoring",
     description:
-      "Watches keyboard events to detect typing and Tab presses for accepting suggestions.",
-    stays: "Categorized as you type, never logged, stored, or transmitted.",
+      "Required to detect typing activity and handle Tab key acceptance of suggestions.",
+    tileBg: "bg-amber-500",
   },
   {
-    icon: ScanLine,
-    title: "captures visual context",
+    icon: Monitor,
+    title: "Screen Recording",
     description:
-      "Captures a small region around the focused field via ScreenCaptureKit so the model can read layout and context.",
-    stays: "Read locally in real time, discarded the instant it's used.",
+      "Required to capture a screenshot around the focused field for visual context (OCR).",
+    tileBg: "bg-red-500",
   },
 ];
 
-function PermissionCard({ permission }: { permission: Permission }) {
+const ROW_GRID =
+  "grid-cols-1 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1.5fr)]";
+
+function PermissionRow({ permission }: { permission: Permission }) {
   const Icon = permission.icon;
   return (
-    <HoverLift lift={5} className="h-full">
-      <article className="tabby-panel flex h-full flex-col rounded-[1.55rem] p-6 sm:p-7">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border-2 border-line bg-surface-3 text-ink shadow-[0_3.4px_0_var(--line)]">
-          <Icon className="h-6 w-6" strokeWidth={2} />
+    <HoverLift lift={4}>
+      <div className={`grid ${ROW_GRID} items-stretch gap-4 sm:gap-4`}>
+        <article className="tabby-panel group flex items-center gap-4 rounded-[1.55rem] p-5 sm:gap-5 sm:p-6">
+          <IconTile size="lg" tone={`${permission.tileBg} text-white`} hoverLift>
+            <Icon className="h-6 w-6" strokeWidth={2.5} />
+          </IconTile>
+          <h3 className="text-[1.35rem] font-bold leading-tight tracking-tight text-ink sm:text-[1.55rem]">
+            {permission.title}
+          </h3>
+        </article>
+        <div
+          aria-hidden
+          className="flex items-center justify-center text-subtle"
+        >
+          <ArrowRight className="h-6 w-6 rotate-90 sm:h-7 sm:w-7 sm:rotate-0" strokeWidth={2.5} />
         </div>
-        <h3 className="mt-5 text-[1.6rem] font-bold leading-tight tracking-tight text-ink sm:text-[1.85rem]">
-          {permission.title}
-        </h3>
-        <p className="mt-3 mb-5 text-sm leading-relaxed tracking-tight text-muted sm:text-base">
-          {permission.description}
-        </p>
-        <div className="mt-auto flex items-start gap-3 rounded-2xl border-2 border-line-soft bg-surface-3 p-4">
-          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-blue text-background">
-            <Check className="h-3.5 w-3.5" strokeWidth={3} />
-          </span>
-          <p className="text-sm font-medium leading-relaxed tracking-tight text-ink/85">
-            {permission.stays}
+        <article className="tabby-panel flex items-center rounded-[1.55rem] p-5 sm:p-6">
+          <p className="text-sm leading-relaxed tracking-tight text-muted sm:text-base">
+            {permission.description}
           </p>
-        </div>
-      </article>
+        </article>
+      </div>
     </HoverLift>
   );
 }
@@ -73,18 +86,30 @@ export function PermissionsSection() {
       <SectionHeading
         title="your Mac, your data"
         titleSize="text-[2.9rem] sm:text-[4.1rem]"
-        subtitle="Cotabby needs three macOS permissions to work. Here's exactly what each one does and why nothing ever leaves your machine."
+        subtitle="Cotabby requests the following macOS permissions:"
       />
 
-      <Stagger stagger={0.12} className="mt-14 grid items-stretch gap-8 lg:grid-cols-3">
-        {permissions.map((p, i) => (
-          <StaggerItem key={p.title} className="h-full">
-            <ScaleIn delay={i * 0.08} className="h-full">
-              <PermissionCard permission={p} />
-            </ScaleIn>
-          </StaggerItem>
-        ))}
-      </Stagger>
+      <div className="mx-auto mt-14 max-w-4xl space-y-5">
+        <div className={`hidden ${ROW_GRID} gap-4 px-7 sm:grid`}>
+          <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-subtle">
+            What
+          </h3>
+          <span />
+          <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-subtle">
+            Why
+          </h3>
+        </div>
+
+        <Stagger stagger={0.12} className="space-y-5">
+          {permissions.map((p, i) => (
+            <StaggerItem key={p.title}>
+              <ScaleIn delay={i * 0.08}>
+                <PermissionRow permission={p} />
+              </ScaleIn>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </div>
     </section>
   );
 }

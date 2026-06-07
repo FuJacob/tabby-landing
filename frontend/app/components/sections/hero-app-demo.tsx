@@ -3,6 +3,7 @@
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { TabbyPanel } from "@/app/components/ui/tabby-panel";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -102,6 +103,8 @@ const APPS: AppMock[] = [
     ghost: "#bcbcbc",
     accent: "#4a154b",
     meta: "design",
+    avatar: "/discord-pfp.png",
+    username: "jacob",
     prefix: "the new hero is on staging, can someone ",
     ghostText: "give it a quick design pass before we ship?",
   },
@@ -355,12 +358,6 @@ export function HeroAppDemo() {
     return () => clearTimeout(id);
   }, [active, phase]);
 
-  function selectApp(i: number) {
-    setIndex(i);
-    setTypedLen(reduce ? APPS[i].prefix.length : 0);
-    setPhase(reduce ? "hold" : "typing");
-  }
-
   const showGhost = reduce || phase !== "typing";
   const inked = reduce || phase === "accept" || phase === "hold";
   const showCaret = !reduce && (phase === "typing" || phase === "suggest");
@@ -401,11 +398,12 @@ export function HeroAppDemo() {
         Slack, Discord, iMessage, and Notes.
       </span>
 
-      <div
+      <TabbyPanel
+        size="xl"
         aria-hidden="true"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative w-full max-w-[34rem] overflow-hidden rounded-[1.5rem] border-2 border-line bg-surface shadow-[0_11.8px_0_var(--line)]"
+        className="relative w-full max-w-[34rem] overflow-hidden"
       >
         <AnimatePresence mode="wait" initial={false}>
           <m.div
@@ -474,39 +472,7 @@ export function HeroAppDemo() {
           <span aria-hidden="true">⇥</span>
           <span>tab</span>
         </m.div>
-      </div>
-
-      {/* App tabs — progress indicator + jump-to control. */}
-      <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5 lg:justify-start">
-        {APPS.map((entry, i) => {
-          const isActive = i === index;
-          return (
-            <button
-              key={entry.key}
-              type="button"
-              onClick={() => selectApp(i)}
-              aria-label={`Show Cotabby in ${entry.short}`}
-              aria-pressed={isActive}
-              className={`flex h-10 w-10 items-center justify-center rounded-[0.75rem] border-2 bg-white transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink ${
-                isActive
-                  ? "-translate-y-0.5 border-line shadow-[0_4px_0_var(--line)]"
-                  : "border-line-soft opacity-50 hover:-translate-y-0.5 hover:opacity-100"
-              }`}
-            >
-              <Image
-                src={entry.iconSrc}
-                alt=""
-                width={40}
-                height={40}
-                sizes="22px"
-                className={`h-6 w-6 object-contain${
-                  entry.iconSrc.endsWith(".jpeg") ? " rounded-[0.5rem]" : ""
-                }`}
-              />
-            </button>
-          );
-        })}
-      </div>
+      </TabbyPanel>
     </div>
   );
 }

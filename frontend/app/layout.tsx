@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter_Tight } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { CREATOR, SITE_URL } from "@/app/lib/site";
-import { AnnouncementBanner } from "@/app/components/layout/announcement-banner";
 import { Providers } from "@/app/components/ui/providers";
 
-const bodyFont = Inter_Tight({
+const bodyFont = localFont({
   variable: "--font-body",
-  subsets: ["latin"],
   display: "swap",
+  src: [
+    { path: "./fonts/OpenRunde-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/OpenRunde-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/OpenRunde-Semibold.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/OpenRunde-Bold.woff2", weight: "700", style: "normal" },
+  ],
 });
 
 const displayFont = Bricolage_Grotesque({
@@ -72,8 +77,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://i.ytimg.com" crossOrigin="" />
         <link rel="preconnect" href="https://www.youtube.com" crossOrigin="" />
       </head>
-      <body className="flex min-h-full flex-col bg-background pt-12 text-ink">
-        <AnnouncementBanner />
+      <body className="flex min-h-full flex-col bg-background text-ink">
         <Providers>{children}</Providers>
         <Analytics />
         <SpeedInsights />

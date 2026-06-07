@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "lint:shadows": "node scripts/check-shadows.mjs",
     "typecheck": "tsc --noEmit",
     "test": "node --test \"app/**/*.test.ts\""
   },

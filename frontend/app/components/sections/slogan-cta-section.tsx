@@ -7,10 +7,11 @@ import { AppleIcon, GithubIcon } from "@/app/components/ui/icons";
 import { PawMark } from "@/app/components/ui/paw-mark";
 import { FadeIn, ScaleIn, WordReveal } from "@/app/components/ui/motion";
 import { TabbyButton } from "@/app/components/ui/tabby-button";
+import { TabbyPanel } from "@/app/components/ui/tabby-panel";
 
 export function SloganCtaSection() {
   return (
-    <section className="relative overflow-hidden rounded-4xl border-2 border-line bg-surface-2 px-6 py-14 shadow-[0_11.8px_0_var(--line)] sm:px-10 sm:py-20">
+    <TabbyPanel as="section" size="3xl" tone="bg-surface-2" className="relative overflow-hidden px-6 py-14 sm:px-10 sm:py-20">
       <PawMark className="pointer-events-none absolute right-8 top-7 z-10 w-12 -rotate-12 text-ink/80 sm:w-14" />
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
         <PawMark className="absolute left-[3%] top-8 w-9 rotate-[16deg] text-ink/15 sm:w-11" />
@@ -67,6 +68,6 @@ export function SloganCtaSection() {
           </p>
         </FadeIn>
       </div>
-    </section>
+    </TabbyPanel>
   );
 }

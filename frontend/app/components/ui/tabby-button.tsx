@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 type Variant = "blue" | "secondary" | "primary" | "white";
-type Size = "sm" | "md" | "lg";
+type Size = "icon" | "sm" | "md" | "lg";
 
 const VARIANT: Record<Variant, string> = {
   blue: "tabby-button tabby-button-blue",
@@ -12,18 +12,18 @@ const VARIANT: Record<Variant, string> = {
 };
 
 const SIZE: Record<Size, string> = {
+  icon: "h-12 w-12 rounded-xl text-base",
   sm: "h-12 sm:h-14 gap-2 rounded-2xl px-6 sm:px-7 text-sm sm:text-base",
   md: "h-14 sm:h-16 gap-3 rounded-2xl px-7 text-[1.05rem] sm:text-[1.2rem]",
   lg: "h-14 sm:h-16 gap-3 rounded-2xl px-8 text-[1.15rem] sm:text-[1.4rem]",
 };
 
 const WIDTH_AUTO: Record<Size, string> = {
+  icon: "",
   sm: "w-full sm:w-auto sm:min-w-[200px]",
   md: "w-full sm:w-auto sm:min-w-[270px]",
   lg: "w-full sm:w-auto sm:min-w-[260px] lg:min-w-[320px]",
 };
-
-const SHADOW = { boxShadow: "0 6.7px 0 var(--line)" } as const;
 
 type Common = {
   variant?: Variant;
@@ -108,7 +108,6 @@ export function TabbyButton(props: TabbyButtonProps) {
           target="_blank"
           rel="noopener noreferrer"
           className={cls}
-          style={SHADOW}
           {...rest}
         >
           {content}
@@ -116,7 +115,7 @@ export function TabbyButton(props: TabbyButtonProps) {
       );
     }
     return (
-      <Link href={href} className={cls} style={SHADOW} {...rest}>
+      <Link href={href} className={cls} {...rest}>
         {content}
       </Link>
     );
@@ -135,7 +134,7 @@ export function TabbyButton(props: TabbyButtonProps) {
     ...rest
   } = props as ButtonProps;
   return (
-    <button type={type} className={cls} style={SHADOW} {...rest}>
+    <button type={type} className={cls} {...rest}>
       {content}
     </button>
   );

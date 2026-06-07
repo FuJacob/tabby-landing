@@ -9,6 +9,8 @@ import {
 } from "framer-motion";
 import { Plus } from "lucide-react";
 import Image from "next/image";
+import { IconTile } from "@/app/components/ui/icon-tile";
+import { TabbyPanel } from "@/app/components/ui/tabby-panel";
 import { useRef, type ReactNode } from "react";
 
 type CardProps = {
@@ -86,9 +88,9 @@ function ModelEvidence() {
     <div className="flex items-end justify-around gap-3">
       {engines.map((e) => (
         <div key={e.name} className="flex flex-col items-center gap-2">
-          <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-[0.8rem] border-2 border-line bg-surface-2 text-ink shadow-[0_3.4px_0_var(--line)]">
+          <IconTile size="lg" tone="bg-surface-2 text-ink">
             {e.icon}
-          </div>
+          </IconTile>
           <span className="text-sm font-bold tracking-tight text-ink">
             {e.name}
           </span>
@@ -120,7 +122,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 function Card({ title, description, evidence }: CardProps) {
   return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-[1.25rem] border-2 border-line bg-surface px-5 py-6 shadow-[0_6.7px_0_var(--line)] sm:px-6">
+    <TabbyPanel size="lg" className="relative flex h-full flex-col overflow-hidden px-5 py-6 sm:px-6">
       <div className="tabby-display relative z-10 text-[1.6rem] leading-[1.05] tracking-tight text-ink sm:text-[1.95rem]">
         {title}
       </div>
@@ -128,7 +130,7 @@ function Card({ title, description, evidence }: CardProps) {
         {description}
       </div>
       <div className="mt-auto border-t-2 border-line-soft pt-5">{evidence}</div>
-    </div>
+    </TabbyPanel>
   );
 }
 
