@@ -29,7 +29,7 @@ export default function TermsPage() {
         Cotabby is a macOS menu bar application that provides local AI
         autocomplete across text fields. It uses local language models to
         generate inline suggestions that appear as ghost text near your cursor.
-        All inference runs on your Mac - no text is sent to external servers.
+        All inference runs on your Mac — no text is sent to external servers.
       </p>
 
       <h2 className="text-lg font-bold text-ink sm:text-xl">License</h2>
@@ -88,8 +88,8 @@ export default function TermsPage() {
         Intellectual property
       </h2>
       <p>
-        The Cotabby source code is licensed under AGPL-3.0. Your content - the
-        text you write and the suggestions you accept - belongs to you. Cotabby
+        The Cotabby source code is licensed under AGPL-3.0. Your content — the
+        text you write and the suggestions you accept — belongs to you. Cotabby
         does not claim any rights over your content and has no ability to access
         or store it outside your device.
       </p>

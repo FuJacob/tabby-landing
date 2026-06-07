@@ -20,7 +20,7 @@ export default function PrivacyPage() {
       <h2 className="text-lg font-bold text-ink sm:text-xl">Overview</h2>
       <p>
         Cotabby is a local AI autocomplete app for macOS. It is designed
-        around a local-first architecture - your writing, keystrokes, and
+        around a local-first architecture — your writing, keystrokes, and
         suggestions never leave your Mac. There are no user accounts, no hosted
         dashboards, and no cloud-based processing.
       </p>

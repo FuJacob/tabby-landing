@@ -131,3 +131,35 @@ into it via callback refs.
   Don't confuse them. A design decision the user made ONCE belongs in a
   token, not memory, so future contributors (including future-me) see it
   without reading the chat log.
+
+## Copy & voice — casing, dashes, and the keyboard model
+
+Casing on this site looks casual but it is a system, not a free-for-all.
+Each rule here is a drift that's been corrected. The user notices.
+
+- **The brand is always "Cotabby" — capital C — in prose, headings, and alt
+  text.** It is a proper noun, so it stays capitalized even inside the
+  lowercase section-heading style: "how Cotabby works", "any model, one
+  Cotabby", "Cotabby vs Cotypist". The ONLY lowercase "cotabby" is the giant
+  decorative wordmark in `giant-wordmark-section.tsx` (`aria-hidden`, a logo
+  treatment). Don't lowercase the brand anywhere a human reads it as a word.
+- **Section headings and product feature-names are lowercase by design**
+  ("more than autocomplete", "questions, answered", "emoji shortcodes", "dial
+  the length"). But proper nouns inside them stay capitalized — Cotabby, Apple
+  Intelligence, macOS — as do OS permission names (Accessibility, Input
+  Monitoring, Screen Recording) and the how-it-works step titles ("Install
+  once", "Press Tab"). Lowercase is the heading aesthetic, not a license to
+  lowercase names.
+- **Dashes have three jobs; don't mix them.** Em-dash (—) for a parenthetical
+  break in body copy ("speeds up your typing — all running locally"). En-dash
+  (–) for numeric ranges ("2–4 words"). Hyphen (-) for compounds
+  ("local-first", "word-by-word") and for the " - " separator in
+  `<title>`/meta strings ("Cotabby - local AI autocomplete for macOS") — that
+  separator is intentionally a hyphen and is consistent across every page's
+  metadata. A spaced hyphen inside body copy is the bug; reach for — there.
+- **The keyboard model is fixed: Tab accepts the next word, backtick accepts
+  the whole suggestion, Esc (or keep typing) dismisses.** Every surface that
+  describes acceptance — hero, features bento, how-it-works, FAQ, the
+  comparison table's "Word-by-word acceptance" row — has to agree with this.
+  Don't write "Press Tab to accept" in a way that implies Tab takes the whole
+  suggestion.

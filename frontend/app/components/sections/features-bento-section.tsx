@@ -39,7 +39,7 @@ const FEATURES: Feature[] = [
     tileBg: "bg-emerald-500",
   },
   {
-    gif: "/gifs/macros-feature.webp",
+    gif: "/gifs/macros-feature.gif",
     icon: Zap,
     title: "macros",
     description:

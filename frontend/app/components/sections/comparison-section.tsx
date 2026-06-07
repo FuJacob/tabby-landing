@@ -111,7 +111,7 @@ export function ComparisonSection() {
   return (
     <section className="mx-auto max-w-content">
       <SectionHeading
-        title="cotabby vs cotypist"
+        title="Cotabby vs Cotypist"
         titleSize="text-[2.4rem] sm:text-[4rem]"
         subtitle="Everything Cotypist's free plan does — plus everything it leaves out."
       />

@@ -383,13 +383,13 @@ body {
   align-items: center;
   gap: 1rem;
   width: max-content;
-  animation: tabby-marquee-scroll 36s linear infinite;
+  animation: tabby-marquee-scroll 72s linear infinite;
   will-change: transform;
 }
 
 .tabby-marquee-track-reverse {
   animation-name: tabby-marquee-scroll-reverse;
-  animation-duration: 44s;
+  animation-duration: 88s;
 }
 
 .tabby-marquee-item {
@@ -409,7 +409,7 @@ body {
 
 @media (min-width: 640px) {
   .tabby-marquee-track {
-    animation-duration: 30s;
+    animation-duration: 60s;
   }
 }
 

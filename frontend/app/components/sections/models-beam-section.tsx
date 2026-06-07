@@ -35,8 +35,8 @@ export function ModelsBeamSection() {
   return (
     <div className="mx-auto max-w-content">
       <SectionHeading
-        title="any model, one cotabby"
-        subtitle="Plug in Apple Intelligence, Qwen, or whatever local model you trust — cotabby routes them all through the same tab-complete."
+        title="any model, one Cotabby"
+        subtitle="Plug in Apple Intelligence, Qwen, or whatever local model you trust — Cotabby routes them all through the same tab-complete."
       />
 
       <div className="mt-12">
@@ -85,7 +85,7 @@ export function ModelsBeamSection() {
           >
             <Image
               src="/app-icons/cotabby-icon.webp"
-              alt="cotabby"
+              alt="Cotabby"
               width={128}
               height={128}
               className="h-full w-full object-cover"
