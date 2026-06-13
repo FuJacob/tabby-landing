@@ -4,9 +4,15 @@ import assert from "node:assert/strict";
 
 import {
   ALLOWED_IMAGE_TYPES,
+  FEEDBACK_RATE_LIMIT_WINDOW_MS,
+  formatFeedbackRateLimitWait,
+  getFeedbackRateLimitWaitMs,
   IMAGE_TYPE_EXTENSIONS,
   MAX_SCREENSHOT_BYTES,
   MAX_SCREENSHOTS,
+  parseRecaptchaScoreThreshold,
+  RECAPTCHA_DEFAULT_SCORE_THRESHOLD,
+  RECAPTCHA_FEEDBACK_ACTION,
   SCREENSHOT_PATH_RE,
 } from "./feedback.ts";
 
@@ -41,4 +47,55 @@ test("image type table and limits stay consistent", () => {
   assert.deepEqual(ALLOWED_IMAGE_TYPES, Object.keys(IMAGE_TYPE_EXTENSIONS));
   assert.equal(MAX_SCREENSHOT_BYTES, 5_000_000);
   assert.ok(MAX_SCREENSHOTS > 0);
+});
+
+test("feedback rate limit allows submissions after 10 minutes", () => {
+  const now = 1_000_000;
+
+  assert.equal(
+    getFeedbackRateLimitWaitMs(now - FEEDBACK_RATE_LIMIT_WINDOW_MS, now),
+    0,
+  );
+  assert.equal(
+    getFeedbackRateLimitWaitMs(now - FEEDBACK_RATE_LIMIT_WINDOW_MS - 1, now),
+    0,
+  );
+});
+
+test("feedback rate limit blocks submissions inside the 10 minute window", () => {
+  const now = 10_000_000;
+
+  assert.equal(getFeedbackRateLimitWaitMs(now, now), FEEDBACK_RATE_LIMIT_WINDOW_MS);
+  assert.equal(getFeedbackRateLimitWaitMs(now - 9 * 60_000, now), 60_000);
+});
+
+test("feedback rate limit ignores missing or invalid timestamps", () => {
+  assert.equal(getFeedbackRateLimitWaitMs(Number.NaN, 1_000_000), 0);
+  assert.equal(getFeedbackRateLimitWaitMs(0, 1_000_000), 0);
+  assert.equal(getFeedbackRateLimitWaitMs(-1, 1_000_000), 0);
+});
+
+test("feedback rate limit wait text rounds up to minutes", () => {
+  assert.equal(formatFeedbackRateLimitWait(1), "1 minute");
+  assert.equal(formatFeedbackRateLimitWait(60_000), "1 minute");
+  assert.equal(formatFeedbackRateLimitWait(60_001), "2 minutes");
+});
+
+test("reCAPTCHA feedback action uses the v3 action-safe format", () => {
+  assert.match(RECAPTCHA_FEEDBACK_ACTION, /^[a-zA-Z0-9/_]+$/);
+});
+
+test("reCAPTCHA score threshold parser uses configured valid values", () => {
+  assert.equal(parseRecaptchaScoreThreshold("0"), 0);
+  assert.equal(parseRecaptchaScoreThreshold("0.7"), 0.7);
+  assert.equal(parseRecaptchaScoreThreshold("1"), 1);
+});
+
+test("reCAPTCHA score threshold parser falls back for invalid values", () => {
+  for (const value of [undefined, "", "-0.1", "1.1", "not-a-number"]) {
+    assert.equal(
+      parseRecaptchaScoreThreshold(value),
+      RECAPTCHA_DEFAULT_SCORE_THRESHOLD,
+    );
+  }
 });
