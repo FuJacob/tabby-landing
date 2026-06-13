@@ -70,14 +70,6 @@ export async function createScreenshotUploadUrls(
     }
   }
 
-  // 20 upload-URL requests/hour/IP (4 screenshots × 5 submissions).
-  if (!(await checkRateLimit("feedback:upload", 20, 3600))) {
-    return {
-      success: false,
-      error: "Too many uploads. Please try again later.",
-    };
-  }
-
   try {
     const supabase = getSupabaseAdmin();
     const uploads: UploadTarget[] = [];
