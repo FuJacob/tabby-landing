@@ -11,7 +11,7 @@ export const MAX_SCREENSHOT_BYTES = 5_000_000;
 
 export const FEEDBACK_RATE_LIMIT_COOKIE = "tabby_feedback_submitted_at";
 export const FEEDBACK_RATE_LIMIT_STORAGE_KEY = "tabby.feedback.submittedAt";
-export const FEEDBACK_RATE_LIMIT_WINDOW_MS = 30 * 60 * 1000;
+export const FEEDBACK_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 
 // Allowed image MIME types mapped to the extension we store them under.
 export const IMAGE_TYPE_EXTENSIONS: Record<string, string> = {

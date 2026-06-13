@@ -46,7 +46,7 @@ test("image type table and limits stay consistent", () => {
   assert.ok(MAX_SCREENSHOTS > 0);
 });
 
-test("feedback rate limit allows submissions after 30 minutes", () => {
+test("feedback rate limit allows submissions after 10 minutes", () => {
   const now = 1_000_000;
 
   assert.equal(
@@ -59,11 +59,11 @@ test("feedback rate limit allows submissions after 30 minutes", () => {
   );
 });
 
-test("feedback rate limit blocks submissions inside the 30 minute window", () => {
+test("feedback rate limit blocks submissions inside the 10 minute window", () => {
   const now = 10_000_000;
 
   assert.equal(getFeedbackRateLimitWaitMs(now, now), FEEDBACK_RATE_LIMIT_WINDOW_MS);
-  assert.equal(getFeedbackRateLimitWaitMs(now - 29 * 60_000, now), 60_000);
+  assert.equal(getFeedbackRateLimitWaitMs(now - 9 * 60_000, now), 60_000);
 });
 
 test("feedback rate limit ignores missing or invalid timestamps", () => {
