@@ -49,6 +49,9 @@ export function AnimatedBeam({
   const id = useId();
   const [pathD, setPathD] = useState("");
   const [svgSize, setSvgSize] = useState({ width: 0, height: 0 });
+  // Pause the moving gradient while the beam is scrolled out of view — no point
+  // running an infinite rAF/compositor animation off-screen.
+  const [inView, setInView] = useState(true);
 
   const gradientCoords = reverse
     ? { x1: ["90%", "-10%"], x2: ["100%", "0%"], y1: ["0%", "0%"], y2: ["0%", "0%"] }
@@ -101,6 +104,17 @@ export function AnimatedBeam({
     endYOffset,
   ]);
 
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: "200px" },
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, [containerRef]);
+
   return (
     <svg
       fill="none"
@@ -129,19 +143,27 @@ export function AnimatedBeam({
           id={id}
           gradientUnits="userSpaceOnUse"
           initial={{ x1: "0%", x2: "0%", y1: "0%", y2: "0%" }}
-          animate={{
-            x1: gradientCoords.x1,
-            x2: gradientCoords.x2,
-            y1: gradientCoords.y1,
-            y2: gradientCoords.y2,
-          }}
-          transition={{
-            delay,
-            duration,
-            ease: [0.16, 1, 0.3, 1],
-            repeat: Infinity,
-            repeatDelay: 0,
-          }}
+          animate={
+            inView
+              ? {
+                  x1: gradientCoords.x1,
+                  x2: gradientCoords.x2,
+                  y1: gradientCoords.y1,
+                  y2: gradientCoords.y2,
+                }
+              : { x1: "0%", x2: "0%", y1: "0%", y2: "0%" }
+          }
+          transition={
+            inView
+              ? {
+                  delay,
+                  duration,
+                  ease: [0.16, 1, 0.3, 1],
+                  repeat: Infinity,
+                  repeatDelay: 0,
+                }
+              : { duration: 0 }
+          }
         >
           <stop stopColor={gradientStartColor} stopOpacity="0" />
           <stop stopColor={gradientStartColor} />

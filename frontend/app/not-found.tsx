@@ -14,8 +14,8 @@ export default function NotFound() {
           backgroundImage: "url(/paper.avif)",
           backgroundSize: "cover",
           backgroundRepeat: "repeat",
+          // No mixBlendMode — see app/page.tsx for why (scroll-jank avoidance).
           opacity: 0.5,
-          mixBlendMode: "multiply",
         }}
       />
       <div className="relative z-10 mx-auto flex max-w-xl flex-col items-center text-center">

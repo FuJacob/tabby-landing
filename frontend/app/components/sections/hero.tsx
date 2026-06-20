@@ -72,17 +72,22 @@ export function Hero() {
 
   return (
     <main id="hero" className="relative mt-6 sm:mt-8">
-      <section className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-12 px-2 pt-10 pb-16 sm:px-4 sm:py-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] lg:items-start lg:gap-16 lg:pt-6 lg:pb-24">
+      {/* Two-column layout starts at xl (1280px), not lg. Between 1024–1280px
+          the left column would be too narrow (~284px at 1084px) for the 4.6rem
+          headline, so the long word "autocomplete" overflowed under the demo
+          panel. Below xl we stack (full-width headline); the demo column is
+          34rem to match the panel's own max-w-[34rem] exactly. */}
+      <section className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-12 px-2 pt-10 pb-16 sm:px-4 sm:py-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] xl:items-start xl:gap-16 xl:pt-6 xl:pb-24">
         <m.div
           variants={copyContainer}
           initial="hidden"
           animate={revealState}
-          className="flex w-full flex-col items-center lg:items-start lg:text-left"
+          className="flex w-full flex-col items-center xl:items-start xl:text-left"
         >
-          <div className="mx-auto flex max-w-[88rem] flex-col items-center lg:mx-0 lg:items-start">
+          <div className="mx-auto flex max-w-[88rem] flex-col items-center xl:mx-0 xl:items-start">
             <h1
               aria-label={`${headline.lead} ${headline.accept}`}
-              className="tabby-display mx-auto grid max-w-[88rem] text-center leading-[0.94] tracking-tight text-ink lg:mx-0 lg:text-left"
+              className="tabby-display mx-auto grid max-w-[88rem] text-center leading-[0.94] tracking-tight text-ink xl:mx-0 xl:text-left"
             >
               {HEADLINES.map((h, i) => {
                 const active = i === headlineIndex;
@@ -114,7 +119,7 @@ export function Hero() {
 
           <m.p
             variants={copyItem}
-            className="mt-6 lg:mt-10 max-w-3xl text-balance text-base leading-relaxed tracking-tight text-muted sm:text-xl lg:text-xl text-center lg:text-left"
+            className="mt-6 lg:mt-10 max-w-3xl text-balance text-base leading-relaxed tracking-tight text-muted sm:text-xl lg:text-xl text-center xl:text-left"
           >
             AI autocomplete for the apps you already use. Runs on Apple
             Intelligence or any local model — and never leaves your Mac.
@@ -122,7 +127,7 @@ export function Hero() {
 
           <m.div
             variants={copyItem}
-            className="mt-9 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row lg:justify-start"
+            className="mt-9 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row xl:justify-start"
           >
             <TabbyButton
               href={GITHUB_URL}
@@ -143,7 +148,7 @@ export function Hero() {
 
           <m.div
             variants={copyItem}
-            className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold tracking-tight text-subtle sm:text-sm lg:justify-start"
+            className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold tracking-tight text-subtle sm:text-sm xl:justify-start"
           >
             <span>
               <GitHubVersionLabel />

@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   experimental: {
     transitionIndicator: false,
+    // Tree-shake barrel imports from icon/utility libs (lucide-react exports
+    // hundreds of modules) so only the icons we use ship. Not in Next's
+    // default optimize list as of this version.
+    optimizePackageImports: ["lucide-react"],
   },
   async headers() {
     return [

@@ -41,8 +41,13 @@ export default function Home() {
           backgroundImage: "url(/paper.avif)",
           backgroundSize: "cover",
           backgroundRepeat: "repeat",
+          // NOTE: no `mixBlendMode: multiply` here. This overlay sits at z-0
+          // beneath all content, so it only ever blends against the near-white
+          // page background where multiply ≈ normal — but a fixed + multiply
+          // layer forces a full-viewport re-composite on every scroll frame
+          // (catastrophic scroll jank on macOS Chrome/Safari). Plain opacity
+          // keeps the same look as a cheap, static composited layer.
           opacity: 0.5,
-          mixBlendMode: "multiply",
         }}
       />
       <StructuredData />
