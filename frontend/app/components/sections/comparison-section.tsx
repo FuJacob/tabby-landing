@@ -2,6 +2,7 @@
 
 import type { ComponentType, SVGProps } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Check,
   Clipboard,
@@ -180,6 +181,17 @@ export function ComparisonSection() {
           </div>
         </div>
       </ScaleIn>
+      <p className="mx-auto mt-8 max-w-2xl text-center text-base leading-relaxed text-muted">
+        Compare current pricing, completion limits, model choice, privacy, and
+        switching steps in the full{" "}
+        <Link
+          href="/cotypist-alternative"
+          className="font-bold text-ink underline decoration-accent-deep decoration-2 underline-offset-4"
+        >
+          Cotabby vs Cotypist guide
+        </Link>
+        .
+      </p>
     </section>
   );
 }
