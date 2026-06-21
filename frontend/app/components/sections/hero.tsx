@@ -1,7 +1,6 @@
 "use client";
 
-import { m, useReducedMotion, type Variants } from "framer-motion";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { m, type Variants } from "framer-motion";
 import Link from "next/link";
 import { DOWNLOAD_COUNT, GITHUB_URL, SUPPORT_URL } from "@/app/lib/site";
 import { DownloadButton } from "@/app/components/ui/download-button";
@@ -34,41 +33,8 @@ const copyItem: Variants = {
   },
 };
 
-// Rotating hero headlines. Each is a lead clause (blurs in word-by-word) plus a
-// short accept-phrase (the ghost-text accept animation). Kept similar in length
-// so the layout barely shifts as they cycle.
-const HEADLINES = [
-  { lead: "AI autocomplete", accept: "for macOS." },
-  { lead: "Write faster", accept: "in all macOS apps." },
-  { lead: "Every keystroke", accept: "stays private." },
-  { lead: "Open source, private", accept: "and free." },
-] as const;
-
-const HEADLINE_INTERVAL_MS = 5600;
-
 export function Hero() {
   const revealState = "visible" as const;
-  const prefersReducedMotion = useReducedMotion();
-  const [headlineIndex, setHeadlineIndex] = useState(0);
-  // The headline is the LCP element. Paint the FIRST one immediately (no
-  // opacity/blur entrance) so it isn't gated behind hydration; only animate
-  // the blur-in once the headline starts cycling.
-  const firstHeadlineRef = useRef(true);
-
-  useEffect(() => {
-    firstHeadlineRef.current = false;
-  }, []);
-
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-    const id = setInterval(
-      () => setHeadlineIndex((i) => (i + 1) % HEADLINES.length),
-      HEADLINE_INTERVAL_MS,
-    );
-    return () => clearInterval(id);
-  }, [prefersReducedMotion]);
-
-  const headline = HEADLINES[headlineIndex];
 
   return (
     <main id="hero" className="relative mt-6 sm:mt-8">
@@ -86,34 +52,12 @@ export function Hero() {
         >
           <div className="mx-auto flex max-w-[88rem] flex-col items-center xl:mx-0 xl:items-start">
             <h1
-              aria-label={`${headline.lead} ${headline.accept}`}
               className="tabby-display mx-auto grid max-w-[88rem] text-center leading-[0.94] tracking-tight text-ink xl:mx-0 xl:text-left"
             >
-              {HEADLINES.map((h, i) => {
-                const active = i === headlineIndex;
-                return (
-                  <m.span
-                    key={i}
-                    aria-hidden={!active}
-                    initial={
-                      i === 0 && firstHeadlineRef.current
-                        ? false
-                        : { opacity: 0, filter: "blur(8px)", y: 10 }
-                    }
-                    animate={{
-                      opacity: active ? 1 : 0,
-                      filter: active ? "blur(0px)" : "blur(8px)",
-                      y: active ? 0 : 10,
-                      transition: { duration: 0.5, ease: EASE },
-                    }}
-                    style={{ gridArea: "1 / 1" }}
-                    className="pointer-events-none inline-block text-[2.5rem] sm:text-[4.8rem] lg:text-[4.6rem]"
-                  >
-                    {h.lead}{" "}
-                    <span style={{ color: HERO_ACCEPT_COLOR }}>{h.accept}</span>
-                  </m.span>
-                );
-              })}
+              <span className="inline-block text-[2.5rem] sm:text-[4.8rem] lg:text-[4.6rem]">
+                AI autocomplete{" "}
+                <span style={{ color: HERO_ACCEPT_COLOR }}>for macOS.</span>
+              </span>
             </h1>
           </div>
 

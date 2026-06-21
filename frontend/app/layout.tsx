@@ -29,6 +29,15 @@ const title = "Cotabby - local AI autocomplete for macOS";
 const description =
   "Local AI autocomplete for macOS text fields. Use Apple Intelligence or local GGUF models, accept inline suggestions with Tab, and keep every token on your Mac.";
 
+const verification: Metadata["verification"] = {
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : {}),
+  ...(process.env.BING_SITE_VERIFICATION
+    ? { other: { "msvalidate.01": process.env.BING_SITE_VERIFICATION } }
+    : {}),
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title,
@@ -46,6 +55,7 @@ export const metadata: Metadata = {
   creator: CREATOR.name,
   publisher: CREATOR.name,
   robots: { index: true, follow: true },
+  verification,
   openGraph: {
     type: "website",
     url: SITE_URL,
@@ -77,10 +87,6 @@ export default function RootLayout({
       lang="en"
       className={`${bodyFont.variable} ${displayFont.variable} h-full antialiased`}
     >
-      <head>
-        <link rel="preconnect" href="https://i.ytimg.com" crossOrigin="" />
-        <link rel="preconnect" href="https://www.youtube.com" crossOrigin="" />
-      </head>
       <body className="flex min-h-full flex-col bg-background text-ink">
         <Providers>{children}</Providers>
         <Analytics />

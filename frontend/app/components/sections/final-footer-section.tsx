@@ -20,6 +20,10 @@ import { SupportButton } from "@/app/components/ui/support-button";
 import { TabbyButton } from "@/app/components/ui/tabby-button";
 
 const FOOTER_LINKS = [
+  { label: "Cotabby vs Cotypist", href: "/cotypist-alternative" },
+  { label: "Mac autocomplete guide", href: "/ai-autocomplete-mac" },
+  { label: "Compatibility", href: "/mac-app-compatibility" },
+  { label: "Security", href: "/security" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
   { label: "Release notes", href: "/release-notes" },

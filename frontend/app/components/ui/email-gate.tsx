@@ -8,6 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { track } from "@vercel/analytics";
 import { DOWNLOAD_URL } from "@/app/lib/site";
 import { TabbyPanel } from "@/app/components/ui/tabby-panel";
 
@@ -48,7 +49,10 @@ export function EmailGateProvider({ children }: { children: ReactNode }) {
     setEmail("");
   }, []);
 
-  const requestDownload = useCallback(() => open("download"), [open]);
+  const requestDownload = useCallback(() => {
+    track("download_intent", { path: window.location.pathname });
+    open("download");
+  }, [open]);
   const openMailingList = useCallback(() => open("newsletter"), [open]);
 
   const triggerDownload = () => {
@@ -74,6 +78,10 @@ export function EmailGateProvider({ children }: { children: ReactNode }) {
       if (error) throw error;
       setStatus("success");
       if (mode === "download") {
+        track("download_started", {
+          path: window.location.pathname,
+          source: "email_signup",
+        });
         if (downloadWindow) {
           downloadWindow.opener = null;
           downloadWindow.location.href = DOWNLOAD_URL;
@@ -82,6 +90,7 @@ export function EmailGateProvider({ children }: { children: ReactNode }) {
         }
         setTimeout(() => setIsOpen(false), 1500);
       } else {
+        track("newsletter_signup", { path: window.location.pathname });
         setTimeout(() => setIsOpen(false), 1800);
       }
     } catch {
@@ -91,6 +100,10 @@ export function EmailGateProvider({ children }: { children: ReactNode }) {
   };
 
   const handleSkip = () => {
+    track("download_started", {
+      path: window.location.pathname,
+      source: "skip",
+    });
     triggerDownload();
     setIsOpen(false);
   };

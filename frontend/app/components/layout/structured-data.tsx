@@ -1,12 +1,14 @@
 import { CREATOR, DOWNLOAD_URL, GITHUB_URL, SITE_NAME, SITE_URL } from "@/app/lib/site";
 import { FAQ_ITEMS } from "@/app/components/sections/faq-section";
 
-function JsonLd({ data }: { data: Record<string, unknown> }) {
+export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
     <script
       type="application/ld+json"
       // Safe: the payload is a fully-controlled object serialized server-side.
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, "\\u003c"),
+      }}
     />
   );
 }

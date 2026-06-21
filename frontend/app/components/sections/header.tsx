@@ -8,10 +8,10 @@ import { IconTile } from "@/app/components/ui/icon-tile";
 import { SUPPORT_EMAIL } from "@/app/lib/site";
 
 const textLinks = [
+  { href: "/cotypist-alternative", label: "compare" },
   { href: "#how-it-works", label: "how it works" },
   { href: "#privacy", label: "privacy" },
   { href: "#faq", label: "faq" },
-  { href: "/feedback", label: "feedback" },
   { href: `mailto:${SUPPORT_EMAIL}`, label: "contact" },
 ] as const;
 
